@@ -1,6 +1,41 @@
 # Javascript Cheatsheet
 
-[[toc]]
+- [Javascript Cheatsheet](#javascript-cheatsheet)
+  - [Comments](#comments)
+  - [Data types](#data-types)
+  - [Variables](#variables)
+  - [Strings](#strings)
+    - [Basics](#basics)
+    - [Escape sequences](#escape-sequences)
+    - [The length of a string](#the-length-of-a-string)
+    - [Index of a String](#index-of-a-string)
+  - [Arrays](#arrays)
+    - [Index of an array](#index-of-an-array)
+    - [Manipulate arrays with push, pop, shift and unshift](#manipulate-arrays-with-push-pop-shift-and-unshift)
+    - [Accessing Nested Arrays](#accessing-nested-arrays)
+  - [JavaScript Objects](#java-script-objects)
+    - [Accessing Objects Properties](#accessing-objects-properties)
+    - [Modifying Objects Properties](#modifying-objects-properties)
+    - [Objects for Lookups](#objects-for-lookups)
+    - [Test Object Properties](#test-object-properties)
+    - [Accessing Nested Objects](#accessing-nested-objects)
+  - [Booleans](#booleans)
+  - [If Else Statements](#if-else-statements)
+    - [Else Statement](#else-statement)
+    - [Else if statement](#else-if-statement)
+    - [Conditional (Ternary) Operator](#conditional-ternary-operator)
+    - [Multiple Conditional (Ternary) Operators](#multiple-conditional-ternary-operators)
+  - [Switch Statement](#switch-statement)
+    - [Default in Switch Statement](#default-in-switch-statement)
+    - [Multiple Options with Switch Statement](#multiple-options-with-switch-statement)
+  - [Comparison Operators](#comparison-operators)
+  - [While Loops](#while-loops)
+    - [Do...While Loops](#do-while-loops)
+  - [For Loops](#for-loops)
+  - [Functions](#functions)
+    - [Function Arguments](#function-arguments)
+    - [Return Statement](#return-statement)
+
 
 ## Comments
 
