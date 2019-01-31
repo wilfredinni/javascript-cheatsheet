@@ -4,6 +4,7 @@
   - [Comments](#comments)
   - [Data types](#data-types)
   - [Variables](#variables)
+    - [ES6 var, let and const](#es6-var-let-and-const)
   - [Strings](#strings)
     - [Basics](#basics)
     - [Escape sequences](#escape-sequences)
@@ -13,7 +14,7 @@
     - [Index of an array](#index-of-an-array)
     - [Manipulate arrays with push, pop, shift and unshift](#manipulate-arrays-with-push-pop-shift-and-unshift)
     - [Accessing Nested Arrays](#accessing-nested-arrays)
-  - [JavaScript Objects](#java-script-objects)
+  - [JavaScript Objects](#javascript-objects)
     - [Accessing Objects Properties](#accessing-objects-properties)
     - [Modifying Objects Properties](#modifying-objects-properties)
     - [Objects for Lookups](#objects-for-lookups)
@@ -30,7 +31,7 @@
     - [Multiple Options with Switch Statement](#multiple-options-with-switch-statement)
   - [Comparison Operators](#comparison-operators)
   - [While Loops](#while-loops)
-    - [Do...While Loops](#do-while-loops)
+    - [Do...While Loops](#dowhile-loops)
   - [For Loops](#for-loops)
   - [Functions](#functions)
     - [Function Arguments](#function-arguments)
@@ -57,7 +58,7 @@ JavaScript provides seven different data types which are:
 | boolean    |
 | string     |
 | symbol     |
-| number     |  
+| number     | 
 | object     |
 
 ## Variables
@@ -87,6 +88,27 @@ i--; // is the equivalent of i = i - 1;
 var ourDecimal = 5.7; // float
 ```
 
+### ES6 var, let and const
+
+- Unlike `var`, `let` throws an error if you declare the same variable twice.
+- Variables declared with `let` inside a block, statement, or expression, its scope is limited to that block, statement, or expression.
+- Variables declared with `const` are read-only and cannot be reassigned.
+-  Objects (including arrays and functions) assigned to a variable using `const` are still mutable and only prevents the reassignment of the variable identifier.
+
+To ensure your data doesn't change, JavaScript provides a function Object.freeze to prevent data mutation.
+
+```javascript
+let obj = {
+  name:"FreeCodeCamp",
+  review:"Awesome"
+};
+Object.freeze(obj);
+obj.review = "bad"; //will be ignored. Mutation not allowed
+obj.newProp = "Test"; // will be ignored. Mutation not allowed
+console.log(obj);
+// { name: "FreeCodeCamp", review:"Awesome"}
+```
+
 ## Strings
 
 ### Basics
@@ -96,7 +118,7 @@ var ourDecimal = 5.7; // float
 var sampleStr = "Alan said, \"Peter is learning JavaScript\".";
 // this prints: Alan said, "Peter is learning JavaScript".
 
-// concatenating strings 
+// concatenating strings
 var ourStr = "I come first. " + "I come second.";
 
 // concatenating strings with +=
@@ -572,4 +594,3 @@ function plusThree(num) {
 }
 var answer = plusThree(5); // 8
 ```
-
