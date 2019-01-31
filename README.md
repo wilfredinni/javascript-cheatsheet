@@ -13,7 +13,7 @@
     - [Index of an array](#index-of-an-array)
     - [Manipulate arrays with push, pop, shift and unshift](#manipulate-arrays-with-push-pop-shift-and-unshift)
     - [Accessing Nested Arrays](#accessing-nested-arrays)
-  - [JavaScript Objects](#java-script-objects)
+  - [JavaScript Objects](#javascript-objects)
     - [Accessing Objects Properties](#accessing-objects-properties)
     - [Modifying Objects Properties](#modifying-objects-properties)
     - [Objects for Lookups](#objects-for-lookups)
