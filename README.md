@@ -36,6 +36,8 @@
   - [Functions](#functions)
     - [Function Arguments](#function-arguments)
     - [Return Statement](#return-statement)
+    - [ES6 Arrow Functions](#es6-arrow-functions)
+    - [ES6 Higher Order Arrow Functions](#es6-higher-order-arrow-functions)
 
 
 ## Comments
@@ -593,4 +595,36 @@ function plusThree(num) {
   return num + 3;
 }
 var answer = plusThree(5); // 8
+```
+
+### ES6 Arrow Functions
+
+```javascript
+const myFunc = function() {
+  const myVar = "value";
+  return myVar;
+}
+
+// can be rewritten like this
+const myFunc = () => {
+  const myVar = "value";
+  return myVar;
+}
+
+// and if there is no function body, and only a return value
+const myFunc = () => "value"
+
+// to pass parameters to an arrow function
+const doubler = (item) => item * 2;
+```
+
+### ES6 Higher Order Arrow Functions
+
+```javascript
+FBPosts.filter(function(post) {
+  return post.thumbnail !== null && post.shares > 100 && post.likes > 500;
+})
+
+// the previous function can be rewritten like this
+FBPosts.filter((post) => post.thumbnail !== null && post.shares > 100 && post.likes > 500)
 ```
