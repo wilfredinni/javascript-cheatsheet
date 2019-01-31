@@ -38,6 +38,7 @@
     - [Return Statement](#return-statement)
     - [ES6 Arrow Functions](#es6-arrow-functions)
     - [ES6 Higher Order Arrow Functions](#es6-higher-order-arrow-functions)
+    - [ES6 Rest Operator with Function Parameters](#es6-rest-operator-with-function-parameters)
 
 
 ## Comments
@@ -627,4 +628,16 @@ FBPosts.filter(function(post) {
 
 // the previous function can be rewritten like this
 FBPosts.filter((post) => post.thumbnail !== null && post.shares > 100 && post.likes > 500)
+```
+
+### ES6 Rest Operator with Function Parameters
+
+With the rest operator, you can create functions that take a variable number of arguments. These arguments are stored in an array that can be accessed later from inside the function.
+
+```javascript
+function howMany(...args) {
+  return "You have passed " + args.length + " arguments.";
+}
+console.log(howMany(0, 1, 2)); // You have passed 3 arguments
+console.log(howMany("string", null, [1, 2, 3], { })); // You have passed 4 arguments.
 ```
