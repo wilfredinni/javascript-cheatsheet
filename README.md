@@ -14,13 +14,16 @@
     - [Index of an array](#index-of-an-array)
     - [Manipulate arrays with push, pop, shift and unshift](#manipulate-arrays-with-push-pop-shift-and-unshift)
     - [Accessing Nested Arrays](#accessing-nested-arrays)
-    - [ES6: The Spread Operator to Evaluate Arrays](#es6-the-spread-operator-to-evaluate-arrays)
+    - [ES6 The Spread Operator to Evaluate Arrays](#es6-the-spread-operator-to-evaluate-arrays)
+    - [ES6 Destructuring Arrays to Assign Variables](#es6-destructuring-arrays-to-assign-variables)
   - [JavaScript Objects](#javascript-objects)
     - [Accessing Objects Properties](#accessing-objects-properties)
     - [Modifying Objects Properties](#modifying-objects-properties)
     - [Objects for Lookups](#objects-for-lookups)
     - [Test Object Properties](#test-object-properties)
     - [Accessing Nested Objects](#accessing-nested-objects)
+    - [ES6 Destructuring Variables from Objects](#es6-destructuring-variables-from-objects)
+    - [ES6 Destructuring to Pass an Object as a Function's Parameters](#es6-destructuring-to-pass-an-object-as-a-functions-parameters)
   - [Booleans](#booleans)
   - [If Else Statements](#if-else-statements)
     - [Else Statement](#else-statement)
@@ -118,7 +121,7 @@ console.log(obj);
 ### Basics
 
 ```javascript
-// escape literal cuotes
+// escape literal quotes
 var sampleStr = "Alan said, \"Peter is learning JavaScript\".";
 // this prints: Alan said, "Peter is learning JavaScript".
 
@@ -252,7 +255,7 @@ ourPets[0].names[1]; // "Fluffy"
 ourPets[1].names[0]; // "Spot"
 ```
 
-### ES6: The Spread Operator to Evaluate Arrays
+### ES6 The Spread Operator to Evaluate Arrays
 
 ```javascript
 // The ES5 code below uses apply() to compute the maximum value in an array.
@@ -262,6 +265,22 @@ var maximus = Math.max.apply(null, arr); // returns 89
 // ...arr returns an unpacked array. In other words, it spreads the array.
 const arr = [6, 89, 3, 45];
 const maximus = Math.max(...arr); // returns 89
+```
+
+### ES6 Destructuring Arrays to Assign Variables
+
+```javascript
+const [a, b] = [1, 2, 3, 4, 5, 6];
+console.log(a, b); // 1, 2
+
+// it can access any value by using commas to reach the desired index
+const [a, b,,, c] = [1, 2, 3, 4, 5, 6];
+console.log(a, b, c); // 1, 2, 5
+
+// to collect the rest of the elements into a separate array.
+const [a, b, ...arr] = [1, 2, 3, 4, 5, 7];
+console.log(a, b); // 1, 2
+console.log(arr); // [3, 4, 5, 7]
 ```
 
 ## JavaScript Objects
@@ -382,6 +401,46 @@ var ourStorage = {
 };
 ourStorage.cabinet["top drawer"].folder2; // "secrets"
 ourStorage.desk.drawer; // "stapler"
+```
+
+### ES6 Destructuring Variables from Objects
+
+```javascript
+// Consider the following ES5 code
+var voxel = {x: 3.6, y: 7.4, z: 6.54 };
+var x = voxel.x; // x = 3.6
+var y = voxel.y; // y = 7.4
+var z = voxel.z; // z = 6.54
+
+// the same assignment statement with ES6 destructuring syntax
+const { x, y, z } = voxel; // x = 3.6, y = 7.4, z = 6.54
+
+
+// to store the values of voxel.x into a, voxel.y into b, and voxel.z into c, you have that freedom as well
+const { x : a, y : b, z : c } = voxel // a = 3.6, b = 7.4, c = 6.54
+
+// Destructuring Variables from Nested Objects
+const a = {
+  start: { x: 5, y: 6},
+  end: { x: 6, y: -9 }
+};
+const { start : { x: startX, y: startY }} = a;
+console.log(startX, startY); // 5, 6
+```
+
+### ES6 Destructuring to Pass an Object as a Function's Parameters
+
+```javascript
+// destructure the object in a function argument itself.
+const profileUpdate = (profileData) => {
+  const { name, age, nationality, location } = profileData;
+  // do something with these variables
+}
+
+// this can also be done in-place:
+const profileUpdate = ({ name, age, nationality, location }) => {
+  /* do something with these fields */
+}
 ```
 
 ## Booleans
