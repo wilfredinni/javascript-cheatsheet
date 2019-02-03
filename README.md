@@ -14,6 +14,7 @@
     - [Index of an array](#index-of-an-array)
     - [Manipulate arrays with push, pop, shift and unshift](#manipulate-arrays-with-push-pop-shift-and-unshift)
     - [Accessing Nested Arrays](#accessing-nested-arrays)
+    - [ES6: The Spread Operator to Evaluate Arrays](#es6-the-spread-operator-to-evaluate-arrays)
   - [JavaScript Objects](#javascript-objects)
     - [Accessing Objects Properties](#accessing-objects-properties)
     - [Modifying Objects Properties](#modifying-objects-properties)
@@ -249,6 +250,18 @@ var ourPets = [
 ];
 ourPets[0].names[1]; // "Fluffy"
 ourPets[1].names[0]; // "Spot"
+```
+
+### ES6: The Spread Operator to Evaluate Arrays
+
+```javascript
+// The ES5 code below uses apply() to compute the maximum value in an array.
+var arr = [6, 89, 3, 45];
+var maximus = Math.max.apply(null, arr); // returns 89
+
+// ...arr returns an unpacked array. In other words, it spreads the array.
+const arr = [6, 89, 3, 45];
+const maximus = Math.max(...arr); // returns 89
 ```
 
 ## JavaScript Objects
