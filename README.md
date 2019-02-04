@@ -883,7 +883,7 @@ add(5,4); //Will return 9
 | `g`       | Search or extract a pattern more than once.                                                   |
 | `.`       | The wildcard character `.` will match any character except new lines.                         |
 | `[]`      | Allow you to define the characters to match. `/b[au]g/' will match "bag", "bug" but not "bog" |
-| `[a-z]'   | Match all the characters between a and z.                                                     |
+| `[a-z]`   | Match all the characters between a and z.                                                     |
 
 ### Regex Methods
 
