@@ -65,7 +65,7 @@ JavaScript provides seven different data types which are:
 | boolean    |
 | string     |
 | symbol     |
-| number     | 
+| number     |
 | object     |
 
 ## Variables
@@ -81,7 +81,7 @@ myString = 'myVar';
 // declare variables with the assignment operator
 var myNum = 0;
 
-// add substract, multiply and divide numbers
+// add, subtract, multiply and divide numbers
 myVar = 5 + 10; // assigned 15
 myVar = 12 - 6; // assigned 6
 myVar = 13 * 13; // assigned 169
