@@ -52,7 +52,8 @@
   - [ES6 import and export](#es6-import-and-export)
     - [import](#import)
     - [export](#export)
-    - [Regular Expressions](#regular-expressions)
+  - [Regular Expressions](#regular-expressions)
+    - [Examples](#examples)
 
 
 ## Comments
@@ -872,47 +873,68 @@ import add from "math_functions";
 add(5,4); //Will return 9
 ```
 
-### Regular Expressions
+## Regular Expressions
 
-| Character   | Description                                                                                                                                                                                                                                                                                                                                                                                         |
-| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| \           | Marks the next character as a special character, a literal, a backreference, or an octal escape. For example, 'n' matches the character "n". '\n' matches a newline character. The sequence '\\' matches "\" and "\(" matches "(".                                                                                                                                                                  |
-| ^           | Matches the position at the beginning of the input string. If the RegExp object's Multiline property is set, ^ also matches the position following '\n' or '\r'.                                                                                                                                                                                                                                    |
-| $           | Matches the position at the end of the input string. If the RegExp object's Multiline property is set, $ also matches the position preceding '\n' or '\r'.                                                                                                                                                                                                                                          |
-| *           | Matches the preceding character or subexpression zero or more times. For example, zo* matches "z" and "zoo". * is equivalent to {0,}.                                                                                                                                                                                                                                                               |
-| +           | Matches the preceding character or subexpression one or more times. For example, 'zo+' matches "zo" and "zoo", but not "z". + is equivalent to {1,}.                                                                                                                                                                                                                                                |
-| ?           | Matches the preceding character or subexpression zero or one time. For example, "do(es)?" matches the "do" in "do" or "does". ? is equivalent to {0,1}                                                                                                                                                                                                                                              |
-| {n}         | n is a nonnegative integer. Matches exactly n times. For example, 'o{2}' does not match the 'o' in "Bob," but matches the two o's in "food".                                                                                                                                                                                                                                                        |
-| {n,}        | n is a nonnegative integer. Matches at least n times. For example, 'o{2,}' does not match the "o" in "Bob" and matches all the o's in "foooood". 'o{1,}' is equivalent to 'o+'. 'o{0,}' is equivalent to 'o*'.                                                                                                                                                                                      |
-| {n,m}       | m and n are nonnegative integers, where n <= m. Matches at least n and at most m times. For example, "o{1,3}" matches the first three o's in "fooooood". 'o{0,1}' is equivalent to 'o?'. Note that you cannot put a space between the comma and the numbers.                                                                                                                                        |
-| ?           | When this character immediately follows any of the other quantifiers (*, +, ?, {n}, {n,}, {n,m}), the matching pattern is non-greedy. A non-greedy pattern matches as little of the searched string as possible, whereas the default greedy pattern matches as much of the searched string as possible. For example, in the string "oooo", 'o+?' matches a single "o", while 'o+' matches all 'o's. |
-| .           | Matches any single character except "\n". To match any character including the '\n', use a pattern such as '[\s\S].                                                                                                                                                                                                                                                                                 |
-| (pattern)   | Matches pattern and captures the match. The captured match can be retrieved from the resulting Matches collection, using the SubMatches collection in VBScript or the $0…$9 properties in JScript. To match parentheses characters ( ), use '\(' or '\)'.                                                                                                                                           |
-| (?:pattern) | Matches pattern but does not capture the match, that is, it is a non-capturing match that is not stored for possible later use. This is useful for combining parts of a pattern with the "or" character (                                                                                                                                                                                           | ). For example, 'industr(?:y           | ies) is a more economical expression than 'industry | industries'.                                                                                                                                                                                                                                                                                     |
-| (?=pattern) | Positive lookahead matches the search string at any point where a string matching pattern begins. This is a non-capturing match, that is, the match is not captured for possible later use. For example 'Windows (?=95                                                                                                                                                                              | 98                                     | NT                                                  | 2000)' matches "Windows" in "Windows 2000" but not "Windows" in "Windows 3.1". Lookaheads do not consume characters, that is, after a match occurs, the search for the next match begins immediately following the last match, not after the characters that comprised the lookahead.            |
-| (?!pattern) | Negative lookahead matches the search string at any point where a string not matching pattern begins. This is a non-capturing match, that is, the match is not captured for possible later use. For example 'Windows (?!95                                                                                                                                                                          | 98                                     | NT                                                  | 2000)' matches "Windows" in "Windows 3.1" but does not match "Windows" in "Windows 2000". Lookaheads do not consume characters, that is, after a match occurs, the search for the next match begins immediately following the last match, not after the characters that comprised the lookahead. |
-| x           | y                                                                                                                                                                                                                                                                                                                                                                                                   | Matches either x or y. For example, 'z | food' matches "z" or "food". '(z                    | f)ood' matches "zood" or "food".                                                                                                                                                                                                                                                                 |
-| [xyz]       | A character set. Matches any one of the enclosed characters. For example, '[abc]' matches the 'a' in "plain".                                                                                                                                                                                                                                                                                       |
-| [^xyz]      | A negative character set. Matches any character not enclosed. For example, '[^abc]' matches the 'p' in "plain".                                                                                                                                                                                                                                                                                     |
-| [a-z]       | A range of characters. Matches any character in the specified range. For example, '[a-z]' matches any lowercase alphabetic character in the range 'a' through 'z'.                                                                                                                                                                                                                                  |
-| [^a-z]      | A negative range characters. Matches any character not in the specified range. For example, '[^a-z]' matches any character not in the range 'a' through 'z'.                                                                                                                                                                                                                                        |
-| \b          | Matches a word boundary, that is, the position between a word and a space. For example, 'er\b' matches the 'er' in "never" but not the 'er' in "verb".                                                                                                                                                                                                                                              |
-| \B          | Matches a nonword boundary. 'er\B' matches the 'er' in "verb" but not the 'er' in "never".                                                                                                                                                                                                                                                                                                          |
-| \cx         | Matches the control character indicated by x. For example, \cM matches a Control-M or carriage return character. The value of x must be in the range of A-Z or a-z. If not, c is assumed to be a literal 'c' character.                                                                                                                                                                             |
-| \d          | Matches a digit character. Equivalent to [0-9].                                                                                                                                                                                                                                                                                                                                                     |
-| \D          | Matches a nondigit character. Equivalent to [^0-9].                                                                                                                                                                                                                                                                                                                                                 |
-| \f          | Matches a form-feed character. Equivalent to \x0c and \cL.                                                                                                                                                                                                                                                                                                                                          |
-| \n          | Matches a newline character. Equivalent to \x0a and \cJ.                                                                                                                                                                                                                                                                                                                                            |
-| \r          | Matches a carriage return character. Equivalent to \x0d and \cM.                                                                                                                                                                                                                                                                                                                                    |
-| \s          | Matches any white space character including space, tab, form-feed, and so on. Equivalent to [ \f\n\r\t\v].                                                                                                                                                                                                                                                                                          |
-| \S          | Matches any non-white space character. Equivalent to [^ \f\n\r\t\v].                                                                                                                                                                                                                                                                                                                                |
-| \t          | Matches a tab character. Equivalent to \x09 and \cI.                                                                                                                                                                                                                                                                                                                                                |
-| \v          | Matches a vertical tab character. Equivalent to \x0b and \cK.                                                                                                                                                                                                                                                                                                                                       |
-| \w          | Matches any word character including underscore. Equivalent to '[A-Za-z0-9_]'.                                                                                                                                                                                                                                                                                                                      |
-| \W          | Matches any nonword character. Equivalent to '[^A-Za-z0-9_]'.                                                                                                                                                                                                                                                                                                                                       |
-| \xn         | Matches n, where n is a hexadecimal escape value. Hexadecimal escape values must be exactly two digits long. For example, '\x41' matches "A". '\x041' is equivalent to '\x04' & "1". Allows ASCII codes to be used in regular expressions.                                                                                                                                                          |
-| \num        | Matches num, where num is a positive integer. A reference back to captured matches. For example, '(.)\1' matches two consecutive identical characters.                                                                                                                                                                                                                                              |
-| \n          | Identifies either an octal escape value or a backreference. If \n is preceded by at least n captured subexpressions, n is a backreference. Otherwise, n is an octal escape value if n is an octal digit (0-7).                                                                                                                                                                                      |
-| \nm         | Identifies either an octal escape value or a backreference. If \nm is preceded by at least nm captured subexpressions, nm is a backreference. If \nm is preceded by at least n captures, n is a backreference followed by literal m. If neither of the preceding conditions exist, \nm matches octal escape value nm when n and m are octal digits (0-7).                                           |
-| \nml        | Matches octal escape value nml when n is an octal digit (0-3) and m and l are octal digits (0-7).                                                                                                                                                                                                                                                                                                   |
-| \un         | Matches n, where n is a Unicode character expressed as four hexadecimal digits. For example, \u00A9 matches the copyright symbol (©).                                                                                                                                                                                                                                                               |
+| Character | Description                                                                                   |
+| --------- | --------------------------------------------------------------------------------------------- |
+| `\`       | Escapes a special character.                                                                  |
+| `|`       | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.              |
+| `i`       | This flag is used to ignore upper and lowercase. `/ignorecase/i`.                             |
+| `g`       | Search or extract a pattern more than once.                                                   |
+| `.`       | The wildcard character `.` will match any character except new lines.                         |
+| `[]`      | Allow you to define the characters to match. `/b[au]g/' will match "bag", "bug" but not "bog" |
+| `[a-z]'   | Match all the characters between a and z.                                                     |
+
+### Regex Methods
+
+
+| Method | Description                                                 |
+| ------ | ----------------------------------------------------------- |
+| test() | returns true or false if the pattern match a string or not. |
+| match  | extract the actual matches found.                           |
+| A3     | B3                                                          |
+
+### Examples
+
+```javascript
+// test method returns true or false if the pattern match a string or not
+let myString = "Hello, World!";
+let myRegex = /Hello/;
+let result = myRegex.test(myString);
+
+// extract the matches of a regex with the match method
+let extractStr = "Extract the word 'coding' from this string.";
+let codingRegex = /coding/;
+let result = extractStr.match(codingRegex);
+
+// search for multiple patterns using the alternation or OR operator: |
+let petString = "James has a pet cat.";
+let petRegex = /dog|cat|bird|fish/;
+let result = petRegex.test(petString);
+
+// ignore upper or lowercase
+let myString = "freeCodeCamp";
+let fccRegex = /freeCodeCamp/i; // flag i
+let result = fccRegex.test(myString);
+
+// Search or extract a pattern more than once
+let twinkleStar = "Twinkle, twinkle, little star";
+let starRegex = /Twinkle/gi; // a regex can have multiple flags
+let result = twinkleStar.match(starRegex);
+
+// The wildcard character . will match any character except new lines.
+let exampleStr = "Let's have fun with regular expressions!";
+let unRegex = /.un/;
+let result = unRegex.test(exampleStr);
+
+// define the characters to match, in this example all the vowels in quoteSample
+let quoteSample = "Beware of bugs in the above code; I have only proved it correct, not tried it.";
+let vowelRegex = /[aeiou]/gi;
+let result = quoteSample.match(vowelRegex);
+
+// Match all the characters in quoteSample (between a and z)
+let quoteSample = "The quick brown fox jumps over the lazy dog.";
+let alphabetRegex = /[a-z]/ig;
+let result = quoteSample.match(alphabetRegex);
+console.log(result)
+```
