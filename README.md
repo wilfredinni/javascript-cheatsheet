@@ -41,6 +41,7 @@
   - [While Loops](#while-loops)
     - [Do...While Loops](#dowhile-loops)
   - [For Loops](#for-loops)
+    - [for-of](#for-of)
   - [Functions](#functions)
     - [Function Arguments](#function-arguments)
     - [Return Statement](#return-statement)
@@ -48,8 +49,9 @@
     - [ES6 Higher Order Arrow Functions](#es6-higher-order-arrow-functions)
     - [ES6 Rest Operator with Function Parameters](#es6-rest-operator-with-function-parameters)
     - [ES6 Declarative Functions within Objects](#es6-declarative-functions-within-objects)
-  - [ES6 import](#es6-import)
-    - [ES6 export](#es6-export)
+  - [ES6 import and export](#es6-import-and-export)
+    - [import](#import)
+    - [export](#export)
 
 
 ## Comments
@@ -722,6 +724,14 @@ for (var i=0; i < arr.length; i++) {
 }
 ```
 
+### for-of
+
+```javascript
+for (let value of myArray) {
+  console.log(value);
+}
+```
+
 ## Functions
 
 ```javascript
@@ -815,10 +825,12 @@ const person = {
 };
 ```
 
-## ES6 import
+## ES6 import and export
 
 > The lessons in this section handle non-browser features. import won't work on a browser directly.
 > However, we can use various tools to create code out of this to make it work in browser.
+
+### import
 
 ```javascript
 // we can choose which parts of a module or file to load into a given file.
@@ -830,7 +842,7 @@ import * as name_of_your_choice from "file_path"
 
 ```
 
-### ES6 export
+### export
 
 In order for `import` to work, though, we must first `export` the functions or variables we need.
 Like import, export is a non-browser feature.
