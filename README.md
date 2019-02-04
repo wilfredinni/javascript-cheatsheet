@@ -878,7 +878,7 @@ add(5,4); //Will return 9
 | Character | Description                                                                                   |
 | --------- | --------------------------------------------------------------------------------------------- |
 | `\`       | Escapes a special character.                                                                  |
-| ```|```   | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.              |
+| ` | `     | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.              |
 | `i`       | This flag is used to ignore upper and lowercase. `/ignorecase/i`.                             |
 | `g`       | Search or extract a pattern more than once.                                                   |
 | `.`       | The wildcard character `.` will match any character except new lines.                         |
