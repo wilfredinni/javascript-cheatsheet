@@ -10,6 +10,7 @@
     - [Escape sequences](#escape-sequences)
     - [The length of a string](#the-length-of-a-string)
     - [Index of a String](#index-of-a-string)
+    - [ES6 Template Literals](#es6-template-literals)
   - [Arrays](#arrays)
     - [Index of an array](#index-of-an-array)
     - [Manipulate arrays with push, pop, shift and unshift](#manipulate-arrays-with-push-pop-shift-and-unshift)
@@ -24,6 +25,9 @@
     - [Accessing Nested Objects](#accessing-nested-objects)
     - [ES6 Destructuring Variables from Objects](#es6-destructuring-variables-from-objects)
     - [ES6 Destructuring to Pass an Object as a Function's Parameters](#es6-destructuring-to-pass-an-object-as-a-functions-parameters)
+    - [ES6 Object Literal Declarations Using Simple Fields](#es6-object-literal-declarations-using-simple-fields)
+    - [ES6 class to Define a Constructor Function](#es6-class-to-define-a-constructor-function)
+    - [ES6 getters and setters](#es6-getters-and-setters)
   - [Booleans](#booleans)
   - [If Else Statements](#if-else-statements)
     - [Else Statement](#else-statement)
@@ -43,6 +47,9 @@
     - [ES6 Arrow Functions](#es6-arrow-functions)
     - [ES6 Higher Order Arrow Functions](#es6-higher-order-arrow-functions)
     - [ES6 Rest Operator with Function Parameters](#es6-rest-operator-with-function-parameters)
+    - [ES6 Declarative Functions within Objects](#es6-declarative-functions-within-objects)
+  - [ES6 import](#es6-import)
+    - [ES6 export](#es6-export)
 
 
 ## Comments
@@ -173,6 +180,23 @@ firstLetterOfFirstName = firstName[0];
 // find the las character of a string
 var firstName = "Ada";
 var lastLetterOfFirstName = firstName[firstName.length - 1];
+```
+
+### ES6 Template Literals
+
+```javascript
+const person = {
+  name: "Zodiac Hasbro",
+  age: 56
+};
+
+// Template literal with multi-line and string interpolation
+const greeting = `Hello, my name is ${person.name}!
+I am ${person.age} years old.`;
+
+console.log(greeting); // prints
+// Hello, my name is Zodiac Hasbro!
+// I am 56 years old.
 ```
 
 ## Arrays
@@ -441,6 +465,63 @@ const profileUpdate = (profileData) => {
 const profileUpdate = ({ name, age, nationality, location }) => {
   /* do something with these fields */
 }
+```
+
+### ES6 Object Literal Declarations Using Simple Fields
+
+```javascript
+const getMousePosition = (x, y) => ({
+  x: x,
+  y: y
+});
+
+// the same function rewritten to use this new syntax:
+const getMousePosition = (x, y) => ({ x, y });
+```
+
+### ES6 class to Define a Constructor Function
+
+ES6 provides a new syntax to help create objects, using the keyword class.
+
+This is to be noted, that the class syntax is just a syntax, and not a full-fledged class based implementation of object oriented paradigm, unlike in languages like Java, or Python, or Ruby etc.
+
+```javascript
+// we usually define a constructor function, and use the new keyword to instantiate an object.
+var SpaceShuttle = function(targetPlanet){
+  this.targetPlanet = targetPlanet;
+}
+var zeus = new SpaceShuttle('Jupiter');
+
+
+// The class syntax simply replaces the constructor function creation:
+class SpaceShuttle {
+  constructor(targetPlanet){
+    this.targetPlanet = targetPlanet;
+  }
+}
+const zeus = new SpaceShuttle('Jupiter');
+```
+
+### ES6 getters and setters
+
+```javascript
+class Book {
+  constructor(author) {
+    this._author = author;
+  }
+  // getter
+  get writer(){
+    return this._author;
+  }
+  // setter
+  set writer(updatedAuthor){
+    this._author = updatedAuthor;
+  }
+}
+const lol = new Book('anonymous');
+console.log(lol.writer);  // anonymous
+lol.writer = 'wut';
+console.log(lol.writer);  // wut
 ```
 
 ## Booleans
@@ -712,4 +793,68 @@ function howMany(...args) {
 }
 console.log(howMany(0, 1, 2)); // You have passed 3 arguments
 console.log(howMany("string", null, [1, 2, 3], { })); // You have passed 4 arguments.
+```
+
+### ES6 Declarative Functions within Objects
+
+```javascript
+// When defining functions within objects in ES5, we have to use the keyword function
+const person = {
+  name: "Taylor",
+  sayHello: function() {
+    return `Hello! My name is ${this.name}.`;
+  }
+};
+
+// With ES6, You can remove the function keyword and colon
+const person = {
+  name: "Taylor",
+  sayHello() {
+    return `Hello! My name is ${this.name}.`;
+  }
+};
+```
+
+## ES6 import
+
+> The lessons in this section handle non-browser features. import won't work on a browser directly.
+> However, we can use various tools to create code out of this to make it work in browser.
+
+```javascript
+// we can choose which parts of a module or file to load into a given file.
+import { function } from "file_path"
+// We can also import variables the same way!
+
+// Import Everything from a File
+import * as name_of_your_choice from "file_path"
+
+```
+
+### ES6 export
+
+In order for `import` to work, though, we must first `export` the functions or variables we need.
+Like import, export is a non-browser feature.
+
+```javascript
+const capitalizeString = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+export { capitalizeString } //How to export functions.
+export const foo = "bar"; //How to export variables.
+
+// Alternatively, if you would like to compact all your export statements into one line, you can take this approach
+const capitalizeString = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+const foo = "bar";
+export { capitalizeString, foo }
+
+// use export default if only one value is being exported from a file.
+// It is also used to create a fallback value for a file or module
+export default function add(x,y) {
+  return x + y;
+}
+// and to import
+import add from "math_functions";
+add(5,4); //Will return 9
 ```
