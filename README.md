@@ -56,7 +56,6 @@
     - [Regex Methods](#regex-methods)
     - [Examples](#examples)
 
-
 ## Comments
 
 ```javascript
@@ -88,7 +87,7 @@ var ourName;
 
 // store values
 myNumber = 5;
-myString = 'myVar';
+myString = "myVar";
 
 // declare variables with the assignment operator
 var myNum = 0;
@@ -112,14 +111,14 @@ var ourDecimal = 5.7; // float
 - Unlike `var`, `let` throws an error if you declare the same variable twice.
 - Variables declared with `let` inside a block, statement, or expression, its scope is limited to that block, statement, or expression.
 - Variables declared with `const` are read-only and cannot be reassigned.
--  Objects (including arrays and functions) assigned to a variable using `const` are still mutable and only prevents the reassignment of the variable identifier.
+- Objects (including arrays and functions) assigned to a variable using `const` are still mutable and only prevents the reassignment of the variable identifier.
 
 To ensure your data doesn't change, JavaScript provides a function Object.freeze to prevent data mutation.
 
 ```javascript
 let obj = {
-  name:"FreeCodeCamp",
-  review:"Awesome"
+  name: "FreeCodeCamp",
+  review: "Awesome"
 };
 Object.freeze(obj);
 obj.review = "bad"; //will be ignored. Mutation not allowed
@@ -134,7 +133,7 @@ console.log(obj);
 
 ```javascript
 // escape literal quotes
-var sampleStr = "Alan said, \"Peter is learning JavaScript\".";
+var sampleStr = 'Alan said, "Peter is learning JavaScript".';
 // this prints: Alan said, "Peter is learning JavaScript".
 
 // concatenating strings
@@ -207,29 +206,24 @@ console.log(greeting); // prints
 ## Arrays
 
 ```javascript
-var sandwich = ["peanut butter", "jelly", "bread"]
-
-// nested arrays
-[["Bulls", 23], ["White Sox", 45]]
+var sandwich = ["peanut butter", "jelly", "bread"][
+  // nested arrays
+  (["Bulls", 23], ["White Sox", 45])
+];
 ```
 
 ### Index of an array
 
 ```javascript
-var ourArray = [50,60,70];
+var ourArray = [50, 60, 70];
 var ourData = ourArray[0]; // equals 50
 
 // modify an array with indexes
-var ourArray = [50,40,30];
+var ourArray = [50, 40, 30];
 ourArray[0] = 15; // equals [15,40,30]
 
 // access multi-dimensional arrays with indexes
-var arr = [
-  [1,2,3],
-  [4,5,6],
-  [7,8,9],
-  [[10,11,12], 13, 14]
-];
+var arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [[10, 11, 12], 13, 14]];
 arr[3]; // equals [[10,11,12], 13, 14]
 arr[3][0]; // equals [10,11,12]
 arr[3][0][1]; // equals 11
@@ -239,7 +233,7 @@ arr[3][0][1]; // equals 11
 
 ```javascript
 // push() to append data to the end of an array
-var arr = [1,2,3];
+var arr = [1, 2, 3];
 arr.push(4); // arr is now [1,2,3,4]
 
 // pop() to "pop" a value off of the end of an array
@@ -265,19 +259,11 @@ ourArray.unshift("Happy"); // ourArray now equals ["Happy", "J", "cat"]
 var ourPets = [
   {
     animalType: "cat",
-    names: [
-      "Meowzer",
-      "Fluffy",
-      "Kit-Cat"
-    ]
+    names: ["Meowzer", "Fluffy", "Kit-Cat"]
   },
   {
     animalType: "dog",
-    names: [
-      "Spot",
-      "Bowser",
-      "Frankie"
-    ]
+    names: ["Spot", "Bowser", "Frankie"]
   }
 ];
 ourPets[0].names[1]; // "Fluffy"
@@ -303,7 +289,7 @@ const [a, b] = [1, 2, 3, 4, 5, 6];
 console.log(a, b); // 1, 2
 
 // it can access any value by using commas to reach the desired index
-const [a, b,,, c] = [1, 2, 3, 4, 5, 6];
+const [a, b, , , c] = [1, 2, 3, 4, 5, 6];
 console.log(a, b, c); // 1, 2, 5
 
 // to collect the rest of the elements into a separate array.
@@ -316,10 +302,10 @@ console.log(arr); // [3, 4, 5, 7]
 
 ```javascript
 var cat = {
-  "name": "Whiskers",
-  "legs": 4,
-  "tails": 1,
-  "enemies": ["Water", "Dogs"]
+  name: "Whiskers",
+  legs: 4,
+  tails: 1,
+  enemies: ["Water", "Dogs"]
 };
 ```
 
@@ -342,10 +328,10 @@ Accessing with bracket (`[]`) notation
 var myObj = {
   "Space Name": "Kirk",
   "More Space": "Spock",
-  "NoSpace": "USS Enterprise"
+  NoSpace: "USS Enterprise"
 };
 myObj["Space Name"]; // Kirk
-myObj['More Space']; // Spock
+myObj["More Space"]; // Spock
 myObj["NoSpace"]; // USS Enterprise
 ```
 
@@ -353,7 +339,9 @@ Accessing with variables
 
 ```javascript
 var dogs = {
-  Fido: "Mutt", Hunter: "Doberman", Snoopie: "Beagle"
+  Fido: "Mutt",
+  Hunter: "Doberman",
+  Snoopie: "Beagle"
 };
 var myDog = "Hunter";
 var myBreed = dogs[myDog];
@@ -365,10 +353,10 @@ console.log(myBreed); // "Doberman"
 ```javascript
 // Updating object properties
 var ourDog = {
-  "name": "Camper",
-  "legs": 4,
-  "tails": 1,
-  "friends": ["everything!"]
+  name: "Camper",
+  legs: 4,
+  tails: 1,
+  friends: ["everything!"]
 };
 
 ourDog.name = "Happy Camper"; // or
@@ -417,13 +405,13 @@ myObj.hasOwnProperty("middle"); // false
 
 ```javascript
 var ourStorage = {
-  "desk": {
-    "drawer": "stapler"
+  desk: {
+    drawer: "stapler"
   },
-  "cabinet": {
+  cabinet: {
     "top drawer": {
-      "folder1": "a file",
-      "folder2": "secrets"
+      folder1: "a file",
+      folder2: "secrets"
     },
     "bottom drawer": "soda"
   }
@@ -436,7 +424,7 @@ ourStorage.desk.drawer; // "stapler"
 
 ```javascript
 // Consider the following ES5 code
-var voxel = {x: 3.6, y: 7.4, z: 6.54 };
+var voxel = { x: 3.6, y: 7.4, z: 6.54 };
 var x = voxel.x; // x = 3.6
 var y = voxel.y; // y = 7.4
 var z = voxel.z; // z = 6.54
@@ -444,16 +432,17 @@ var z = voxel.z; // z = 6.54
 // the same assignment statement with ES6 destructuring syntax
 const { x, y, z } = voxel; // x = 3.6, y = 7.4, z = 6.54
 
-
 // to store the values of voxel.x into a, voxel.y into b, and voxel.z into c, you have that freedom as well
-const { x : a, y : b, z : c } = voxel // a = 3.6, b = 7.4, c = 6.54
+const { x: a, y: b, z: c } = voxel; // a = 3.6, b = 7.4, c = 6.54
 
 // Destructuring Variables from Nested Objects
 const a = {
-  start: { x: 5, y: 6},
+  start: { x: 5, y: 6 },
   end: { x: 6, y: -9 }
 };
-const { start : { x: startX, y: startY }} = a;
+const {
+  start: { x: startX, y: startY }
+} = a;
 console.log(startX, startY); // 5, 6
 ```
 
@@ -461,15 +450,15 @@ console.log(startX, startY); // 5, 6
 
 ```javascript
 // destructure the object in a function argument itself.
-const profileUpdate = (profileData) => {
+const profileUpdate = profileData => {
   const { name, age, nationality, location } = profileData;
   // do something with these variables
-}
+};
 
 // this can also be done in-place:
 const profileUpdate = ({ name, age, nationality, location }) => {
   /* do something with these fields */
-}
+};
 ```
 
 ### ES6 Object Literal Declarations Using Simple Fields
@@ -492,19 +481,18 @@ This is to be noted, that the class syntax is just a syntax, and not a full-fled
 
 ```javascript
 // we usually define a constructor function, and use the new keyword to instantiate an object.
-var SpaceShuttle = function(targetPlanet){
+var SpaceShuttle = function(targetPlanet) {
   this.targetPlanet = targetPlanet;
-}
-var zeus = new SpaceShuttle('Jupiter');
-
+};
+var zeus = new SpaceShuttle("Jupiter");
 
 // The class syntax simply replaces the constructor function creation:
 class SpaceShuttle {
-  constructor(targetPlanet){
+  constructor(targetPlanet) {
     this.targetPlanet = targetPlanet;
   }
 }
-const zeus = new SpaceShuttle('Jupiter');
+const zeus = new SpaceShuttle("Jupiter");
 ```
 
 ### ES6 getters and setters
@@ -515,18 +503,18 @@ class Book {
     this._author = author;
   }
   // getter
-  get writer(){
+  get writer() {
     return this._author;
   }
   // setter
-  set writer(updatedAuthor){
+  set writer(updatedAuthor) {
     this._author = updatedAuthor;
   }
 }
-const lol = new Book('anonymous');
-console.log(lol.writer);  // anonymous
-lol.writer = 'wut';
-console.log(lol.writer);  // wut
+const lol = new Book("anonymous");
+console.log(lol.writer); // anonymous
+lol.writer = "wut";
+console.log(lol.writer); // wut
 ```
 
 ## Booleans
@@ -534,8 +522,8 @@ console.log(lol.writer);  // wut
 Booleans may only be one of two values: true or false. They are basically little on-off switches, where true is "on" and false is "off". These two states are mutually exclusive.
 
 ```javascript
-true
-false
+true;
+false;
 ```
 
 ## If Else Statements
@@ -573,10 +561,9 @@ if (num > 15) {
 ```javascript
 // this if statement...
 function findGreater(a, b) {
-  if(a > b) {
+  if (a > b) {
     return "a is greater";
-  }
-  else {
+  } else {
     return "b is greater";
   }
 }
@@ -592,20 +579,22 @@ function findGreater(a, b) {
 ```javascript
 // this if statement...
 function findGreaterOrEqual(a, b) {
-  if(a === b) {
+  if (a === b) {
     return "a and b are equal";
-  }
-  else if(a > b) {
+  } else if (a > b) {
     return "a is greater";
-  }
-  else {
+  } else {
     return "b is greater";
   }
 }
 
 // is equivalent to this ternary operator
 function findGreaterOrEqual(a, b) {
-  return (a === b) ? "a and b are equal" : (a > b) ? "a is greater" : "b is greater";
+  return a === b
+    ? "a and b are equal"
+    : a > b
+    ? "a is greater"
+    : "b is greater";
 }
 ```
 
@@ -646,7 +635,7 @@ switch (num) {
 ### Multiple Options with Switch Statement
 
 ```javascript
-switch(val) {
+switch (val) {
   case 1:
   case 2:
   case 3:
@@ -677,7 +666,7 @@ switch(val) {
 ```javascript
 var ourArray = [];
 var i = 0;
-while(i < 5) {
+while (i < 5) {
   ourArray.push(i);
   i++;
 }
@@ -699,29 +688,27 @@ do {
 ```javascript
 var ourArray = [];
 var i = 0;
-while(i < 5) {
+while (i < 5) {
   ourArray.push(i);
   i++;
 }
 
 // Count Backwards With a For Loop
 var ourArray = [];
-for (var i=10; i > 0; i-=2) {
+for (var i = 10; i > 0; i -= 2) {
   ourArray.push(i);
 }
 
 // Iterate Through an Array
-var arr = [10,9,8,7,6];
+var arr = [10, 9, 8, 7, 6];
 for (var i = 0; i < arr.length; i++) {
-   console.log(arr[i]);
+  console.log(arr[i]);
 }
 
 // Nested for loops
-var arr = [
-  [1,2], [3,4], [5,6]
-];
-for (var i=0; i < arr.length; i++) {
-  for (var j=0; j < arr[i].length; j++) {
+var arr = [[1, 2], [3, 4], [5, 6]];
+for (var i = 0; i < arr.length; i++) {
+  for (var j = 0; j < arr[i].length; j++) {
     console.log(arr[i][j]);
   }
 }
@@ -770,19 +757,19 @@ var answer = plusThree(5); // 8
 const myFunc = function() {
   const myVar = "value";
   return myVar;
-}
+};
 
 // can be rewritten like this
 const myFunc = () => {
   const myVar = "value";
   return myVar;
-}
+};
 
 // and if there is no function body, and only a return value
-const myFunc = () => "value"
+const myFunc = () => "value";
 
 // to pass parameters to an arrow function
-const doubler = (item) => item * 2;
+const doubler = item => item * 2;
 ```
 
 ### ES6 Higher Order Arrow Functions
@@ -790,10 +777,12 @@ const doubler = (item) => item * 2;
 ```javascript
 FBPosts.filter(function(post) {
   return post.thumbnail !== null && post.shares > 100 && post.likes > 500;
-})
+});
 
 // the previous function can be rewritten like this
-FBPosts.filter((post) => post.thumbnail !== null && post.shares > 100 && post.likes > 500)
+FBPosts.filter(
+  post => post.thumbnail !== null && post.shares > 100 && post.likes > 500
+);
 ```
 
 ### ES6 Rest Operator with Function Parameters
@@ -805,7 +794,7 @@ function howMany(...args) {
   return "You have passed " + args.length + " arguments.";
 }
 console.log(howMany(0, 1, 2)); // You have passed 3 arguments
-console.log(howMany("string", null, [1, 2, 3], { })); // You have passed 4 arguments.
+console.log(howMany("string", null, [1, 2, 3], {})); // You have passed 4 arguments.
 ```
 
 ### ES6 Declarative Functions within Objects
@@ -879,7 +868,7 @@ add(5,4); //Will return 9
 | Character  | Description                                                                                      |
 | ---------- | ------------------------------------------------------------------------------------------------ |
 | `\`        | Escapes a special character.                                                                     |
-| ` | `      | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.                 |
+| `|`        | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.                 |
 | `i`        | This flag is used to ignore upper and lowercase. `/ignorecase/i`.                                |
 | `g`        | Search or extract a pattern more than once.                                                      |
 | `.`        | The wildcard character `.` will match any character except new lines.                            |
@@ -887,18 +876,30 @@ add(5,4); //Will return 9
 | `[a-z]`    | Match all the characters between a and z.                                                        |
 | `[1-9]`    | Match all the numbers between 1 and 9.                                                           |
 | `[a-z1-9]` | Match all the character between a and z, and the numbers between 1 and 9.                        |
-| `^`        | Match the characters not in the set. [^A-E] match all other characters except A, B, C, D, and E. |
-| `+`        | Match 1 or more occurrences of the previous character.                                           |
+| `[^]`      | Match the characters not in the set. [^a-e] match all other characters except A, B, C, D, and E. |
+| `+`        | Match 1 or more occurrences of the previous character in a row.                                  |
 | `*`        | Match 0 or more occurrences of the previous character.                                           |
 | `?`        | Match 0 or 1 occurrence of the previous character. Useful for Lazy matching.                     |
+| `^`        | Search for patterns at the beginning of strings.                                                 |
+| `$`        | Search for patterns at the end of a string.                                                      |
+| `\w`       | Equal to [A-Za-z0-9_]. Matches upper, lowercase, numbers the and underscore character (-).       |
+| `\W`       | Matches any nonword character. Equivalent to '[^a-za-z0-9_]'.                                    |
+| `\d`       | Equal to [0-9]. Match one digit.                                                                 |
+| `\D`       | Equal to [^0-9]. Match one non digit.                                                            |
+| `\s`       | Match a whitespace.                                                                              |
+| `\S`       | Match everything except whitespace.                                                              |
+| `a{2,5}`   | Match the letter `a` between 3 and 5 times.                                                      |
+| `a{2,}`    | Specify only the lower number of matches.                                                        |
+| `a{5}`     | Specify the exact number of matches.                                                             |
+| `(...)`    | Specify a group that can be acceded with number (from 1)                                         |
 
 ### Regex Methods
 
-
-| Method | Description                                                 |
-| ------ | ----------------------------------------------------------- |
-| test() | returns true or false if the pattern match a string or not. |
-| match  | extract the actual matches found.                           |
+| Method  | Description                                                 |
+| ------- | ----------------------------------------------------------- |
+| test()  | Returns true or false if the pattern match a string or not. |
+| match() | Extract the actual matches found.                           |
+| replace | Search and replace text in a string .                       |
 
 ### Examples
 
@@ -912,6 +913,11 @@ let result = myRegex.test(myString);
 let extractStr = "Extract the word 'coding' from this string.";
 let codingRegex = /coding/;
 let result = extractStr.match(codingRegex);
+
+// Search and replace
+let wrongText = "The sky is silver.";
+let silverRegex = /silver/;
+wrongText.replace(silverRegex, "blue"); // Returns "The sky is blue."
 
 // search for multiple patterns using the alternation or OR operator: |
 let petString = "James has a pet cat.";
@@ -934,26 +940,27 @@ let unRegex = /.un/;
 let result = unRegex.test(exampleStr);
 
 // define the characters to match, in this example all the vowels in quoteSample
-let quoteSample = "Beware of bugs in the above code; I have only proved it correct, not tried it.";
+let quoteSample =
+  "Beware of bugs in the above code; I have only proved it correct, not tried it.";
 let vowelRegex = /[aeiou]/gi;
 let result = quoteSample.match(vowelRegex);
 
 // Match all the characters in quoteSample (between a and z)
 let quoteSample = "The quick brown fox jumps over the lazy dog.";
-let alphabetRegex = /[a-z]/ig;
+let alphabetRegex = /[a-z]/gi;
 let result = quoteSample.match(alphabetRegex);
 
 // Match all the character between two characters and numbers
 let quoteSample = "Blueberry 3.141592653s are delicious.";
-let myRegex = /[h-s2-6]/ig;
+let myRegex = /[h-s2-6]/gi;
 let result = quoteSample.match(myRegex);
 
-// Match all tha is not a number or a vowel
+// Match all that is not a number or a vowel
 let quoteSample = "3 blind mice.";
-let myRegex = /[^aeiou0-9]/ig;
+let myRegex = /[^aeiou0-9]/gi;
 let result = quoteSample.match(myRegex);
 
-// Match 1 or more occurrences of the previous character (* match 0 or more)
+// Match 1 or more occurrences of the previous character (* for 0 or more)
 let difficultSpelling = "Mississippi";
 let myRegex = /s+/g;
 let result = difficultSpelling.match(myRegex);
@@ -962,4 +969,39 @@ let result = difficultSpelling.match(myRegex);
 let text = "titanic";
 let myRegex = /t[a-z]*?i/;
 let result = text.match(myRegex);
+
+// Search for patterns at the beginning of strings
+let rickyAndCal = "Cal and Ricky both like racing.";
+let calRegex = /^Cal/;
+let result = calRegex.test(rickyAndCal);
+
+// Search for patterns at the end of a string
+let caboose = "The last car on a train is the caboose";
+let lastRegex = /caboose$/;
+let result = lastRegex.test(caboose);
+
+// \w is equal to [A-Za-z0-9_]
+let quoteSample = "The five boxing wizards jump quickly.";
+let alphabetRegexV2 = /\w/g;
+let result = quoteSample.match(alphabetRegexV2).length;
+
+// Match only 3 to 6 letter h's in the word "Oh no"
+let ohStr = "Ohhh no";
+let ohRegex = /Oh{3,6} no/;
+let result = ohRegex.test(ohStr);
+
+// Match both the American English (favorite) and the British English (favourite) version of the word
+let favWord = "favorite";
+let favRegex = /favou?rite/;
+let result = favRegex.test(favWord);
+
+// Groups () let you reuse patterns
+let repeatNum = "42 42 42";
+let reRegex =  /^(\d+)\s\1\s\1$/; // every 1 represent the group (\d+)
+let result = reRegex.test(repeatNum);
+
+// Remove all the spaces at the beginning an end of a string
+let hello = "   Hello, World!  ";
+let wsRegex = /^\s+(.*\S)\s+$/;
+let result = hello.replace(wsRegex, '$1'); // returns 'Hello, World!'
 ```
