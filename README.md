@@ -878,7 +878,7 @@ add(5,4); //Will return 9
 
 | Character  | Description                                                                                      |
 | ---------- | ------------------------------------------------------------------------------------------------ |
-| `\`        | Escapes a special character.                                                                      |
+| `\`        | Escapes a special character.                                                                     |
 | ` | `      | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.                 |
 | `i`        | This flag is used to ignore upper and lowercase. `/ignorecase/i`.                                |
 | `g`        | Search or extract a pattern more than once.                                                      |
@@ -890,6 +890,7 @@ add(5,4); //Will return 9
 | `^`        | Match the characters not in the set. [^A-E] match all other characters except A, B, C, D, and E. |
 | `+`        | Match 1 or more occurrences of the previous character.                                           |
 | `*`        | Match 0 or more occurrences of the previous character.                                           |
+| `?`        | Match 0 or 1 occurrence of the previous character. Useful for Lazy matching.                     |
 
 ### Regex Methods
 
@@ -956,4 +957,9 @@ let result = quoteSample.match(myRegex);
 let difficultSpelling = "Mississippi";
 let myRegex = /s+/g;
 let result = difficultSpelling.match(myRegex);
+
+// ? Match 0 or 1 occurrence of the previous character. Useful for Lazy matching
+let text = "titanic";
+let myRegex = /t[a-z]*?i/;
+let result = text.match(myRegex);
 ```
