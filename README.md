@@ -53,6 +53,7 @@
     - [import](#import)
     - [export](#export)
   - [Regular Expressions](#regular-expressions)
+    - [Regex Methods](#regex-methods)
     - [Examples](#examples)
 
 
@@ -875,15 +876,20 @@ add(5,4); //Will return 9
 
 ## Regular Expressions
 
-| Character | Description                                                                                   |
-| --------- | --------------------------------------------------------------------------------------------- |
-| `\`       | Escapes a special character.                                                                  |
-| ` | `     | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.              |
-| `i`       | This flag is used to ignore upper and lowercase. `/ignorecase/i`.                             |
-| `g`       | Search or extract a pattern more than once.                                                   |
-| `.`       | The wildcard character `.` will match any character except new lines.                         |
-| `[]`      | Allow you to define the characters to match. `/b[au]g/' will match "bag", "bug" but not "bog" |
-| `[a-z]`   | Match all the characters between a and z.                                                     |
+| Character  | Description                                                                                      |
+| ---------- | ------------------------------------------------------------------------------------------------ |
+| `\`        | Escapes a special character.                                                                      |
+| ` | `      | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.                 |
+| `i`        | This flag is used to ignore upper and lowercase. `/ignorecase/i`.                                |
+| `g`        | Search or extract a pattern more than once.                                                      |
+| `.`        | The wildcard character `.` will match any character except new lines.                            |
+| `[]`       | Allow you to define the characters to match. `/b[au]g/' will match "bag", "bug" but not "bog"    |
+| `[a-z]`    | Match all the characters between a and z.                                                        |
+| `[1-9]`    | Match all the numbers between 1 and 9.                                                           |
+| `[a-z1-9]` | Match all the character between a and z, and the numbers between 1 and 9.                        |
+| `^`        | Match the characters not in the set. [^A-E] match all other characters except A, B, C, D, and E. |
+| `+`        | Match 1 or more occurrences of the previous character.                                           |
+| `*`        | Match 0 or more occurrences of the previous character.                                           |
 
 ### Regex Methods
 
@@ -892,7 +898,6 @@ add(5,4); //Will return 9
 | ------ | ----------------------------------------------------------- |
 | test() | returns true or false if the pattern match a string or not. |
 | match  | extract the actual matches found.                           |
-| A3     | B3                                                          |
 
 ### Examples
 
@@ -936,4 +941,19 @@ let result = quoteSample.match(vowelRegex);
 let quoteSample = "The quick brown fox jumps over the lazy dog.";
 let alphabetRegex = /[a-z]/ig;
 let result = quoteSample.match(alphabetRegex);
+
+// Match all the character between two characters and numbers
+let quoteSample = "Blueberry 3.141592653s are delicious.";
+let myRegex = /[h-s2-6]/ig;
+let result = quoteSample.match(myRegex);
+
+// Match all tha is not a number or a vowel
+let quoteSample = "3 blind mice.";
+let myRegex = /[^aeiou0-9]/ig;
+let result = quoteSample.match(myRegex);
+
+// Match 1 or more occurrences of the previous character (* match 0 or more)
+let difficultSpelling = "Mississippi";
+let myRegex = /s+/g;
+let result = difficultSpelling.match(myRegex);
 ```
