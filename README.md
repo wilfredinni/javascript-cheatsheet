@@ -895,11 +895,11 @@ add(5,4); //Will return 9
 
 ### Regex Methods
 
-| Method  | Description                                                 |
-| ------- | ----------------------------------------------------------- |
-| test()  | Returns true or false if the pattern match a string or not. |
-| match() | Extract the actual matches found.                           |
-| replace | Search and replace text in a string .                       |
+| Method    | Description                                                 |
+| --------- | ----------------------------------------------------------- |
+| test()    | Returns true or false if the pattern match a string or not. |
+| match()   | Extract the actual matches found.                           |
+| replace() | Search and replace text in a string .                       |
 
 ### Examples
 
