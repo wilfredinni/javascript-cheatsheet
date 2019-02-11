@@ -1,5 +1,6 @@
 import fs from "fs";
 import "mini.css";
+import "../css/style.css";
 import * as showdown from "showdown";
 import { createIndex } from "./toc";
 

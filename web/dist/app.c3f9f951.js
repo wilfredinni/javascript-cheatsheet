@@ -179,6 +179,11 @@ module.exports = reloadCSS;
         module.hot.dispose(reloadCSS);
         module.hot.accept(reloadCSS);
       
+},{"_css_loader":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"css/style.css":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
 },{"_css_loader":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"../node_modules/showdown/dist/showdown.js":[function(require,module,exports) {
 var define;
 ;/*! showdown v 1.9.0 - 10-11-2018 */
@@ -5333,6 +5338,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.createIndex = createIndex;
 
+/* Insert the index menu, add the anchor links and the ids */
 // insert the index
 function insertIndex(div, title) {
   for (var item in title) {
@@ -5393,6 +5399,33 @@ function replaceAddHref(array) {
       }
     }
   }
+} // add the ids for the jumps
+
+
+function replaceAddId(array) {
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = array[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var item = _step3.value;
+      item.id = replace(item);
+    }
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+        _iterator3.return();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
 } // function to replace spaces (" ") for "-"
 
 
@@ -5401,13 +5434,16 @@ function replace(item) {
 }
 
 function createIndex() {
+  // push and insert the toc
   var index = document.getElementById("index");
   var h2 = document.getElementsByTagName("h2");
   var h2Array = [];
   pushArray(h2, h2Array);
-  insertIndex(index, h2Array);
+  insertIndex(index, h2Array); // add the links and ids
+
   var links = index.querySelectorAll("a");
   replaceAddHref(links);
+  replaceAddId(h2);
 }
 },{}],"js/app.js":[function(require,module,exports) {
 "use strict";
@@ -5415,6 +5451,8 @@ function createIndex() {
 var _fs = _interopRequireDefault(require("fs"));
 
 require("mini.css");
+
+require("../css/style.css");
 
 var showdown = _interopRequireWildcard(require("showdown"));
 
@@ -5436,7 +5474,7 @@ var cheatHtml = converter.makeHtml(cheatsheet);
 cheatsheetDiv.insertAdjacentHTML("beforebegin", cheatHtml); // create the index
 
 (0, _toc.createIndex)();
-},{"fs":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/_empty.js","mini.css":"../node_modules/mini.css/dist/mini-default.min.css","showdown":"../node_modules/showdown/dist/showdown.js","./toc":"js/toc.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"fs":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/_empty.js","mini.css":"../node_modules/mini.css/dist/mini-default.min.css","../css/style.css":"css/style.css","showdown":"../node_modules/showdown/dist/showdown.js","./toc":"js/toc.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -5463,7 +5501,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51509" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51876" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
