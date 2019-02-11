@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/wilfredinni/javascript-cheatsheet#readme",
   "dependencies": {
-    "mini.css": "^3.0.1"
+    "eslint": "^5.13.0",
+    "mini.css": "^3.0.1",
+    "showdown": "^1.9.0"
   }
 }
