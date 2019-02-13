@@ -17,8 +17,8 @@
   },
   "homepage": "https://github.com/wilfredinni/javascript-cheatsheet#readme",
   "dependencies": {
+    "bulma": "^0.7.4",
     "eslint": "^5.13.0",
-    "mini.css": "^3.0.1",
     "showdown": "^1.9.0"
   }
 }

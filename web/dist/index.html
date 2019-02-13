@@ -5,40 +5,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <link rel="stylesheet" href="css/style.css"> -->
   <title>javascript.cheatsheet</title>
 <link rel="stylesheet" href="/app.c3f9f951.css"></head>
 
-<body>
+<body class="has-navbar-fixed-top">
+
   <!-- navbar -->
-  <header class="row sticky">
-    <span class="logo col-sm-3 col-md">javascript.cheatsheet</span>
-    <!-- github -->
-    <a class="button col-sm col-md" href="https://github.com/Chalarangelo/mini.css" target="_blank">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="height: 20px; vertical-align: text-top;">
-        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-      </svg>
-      <span>&nbsp;Github</span></a>
-  </header>
+  <nav class="navbar is-transparent is-fixed-top is-primary">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="#">javascript.cheatsheet</a>
+    </div>
 
-  <div class="row">
-    <!-- table of content -->
-    <input class="drawer" type="checkbox">
-    <nav id="index" class="col-md-4 col-lg-3">
-      <div><input style="width: 100%; margin: 0px;" placeholder="Search..." type="search" id="search-bar"></div>
-    </nav>
+    <div id="navbarExampleTransparentExample" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item">
+          <div class="field is-grouped">
+            <p class="control">
+              <a class="button is-primary" href="https://github.com/jgthms/bulma/releases/download/0.7.4/bulma-0.7.4.zip">
+                <span>Github</span>
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
 
-    <!-- cheatsheet -->
-    <main class="col-sm-12 col-md-8 col-lg-9">
-      <div id="cheatsheet" class="col-sm-12 col-md-8 col-lg-9 card"></div>
-
-      <!-- footer -->
-      <footer>
-        <p>My footer</p>
-      </footer>
-    </main>
+  <div class="">
+    <div class="columns">
+      <div id="index" class="column"></div>
+      <div id="cheatsheet" class="column is-two-fifths"></div>
+    </div>
   </div>
-
 
   <script src="/app.c3f9f951.js"></script>
 </body>

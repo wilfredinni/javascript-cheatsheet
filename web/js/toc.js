@@ -48,4 +48,6 @@ function createIndex() {
   replaceAddId(h2);
 }
 
-export { createIndex };
+export {
+  createIndex
+};

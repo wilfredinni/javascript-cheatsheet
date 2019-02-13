@@ -173,7 +173,7 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/mini.css/dist/mini-default.min.css":[function(require,module,exports) {
+},{"./bundle-url":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/bundle-url.js"}],"../node_modules/bulma/bulma.sass":[function(require,module,exports) {
 
         var reloadCSS = require('_css_loader');
         module.hot.dispose(reloadCSS);
@@ -5450,7 +5450,7 @@ function createIndex() {
 
 var _fs = _interopRequireDefault(require("fs"));
 
-require("mini.css");
+require("bulma");
 
 require("../css/style.css");
 
@@ -5462,6 +5462,7 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+// import "mini.css";
 var converter = new showdown.Converter({
   tables: true
 }); // the cheatsheet div
@@ -5474,7 +5475,7 @@ var cheatHtml = converter.makeHtml(cheatsheet);
 cheatsheetDiv.insertAdjacentHTML("beforebegin", cheatHtml); // create the index
 
 (0, _toc.createIndex)();
-},{"fs":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/_empty.js","mini.css":"../node_modules/mini.css/dist/mini-default.min.css","../css/style.css":"css/style.css","showdown":"../node_modules/showdown/dist/showdown.js","./toc":"js/toc.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"fs":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/_empty.js","bulma":"../node_modules/bulma/bulma.sass","../css/style.css":"css/style.css","showdown":"../node_modules/showdown/dist/showdown.js","./toc":"js/toc.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -5501,7 +5502,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52188" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50990" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
