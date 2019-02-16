@@ -14,8 +14,11 @@
   - [Arrays](#arrays)
     - [Index of an array](#index-of-an-array)
     - [Manipulate arrays with push, pop, shift and unshift](#manipulate-arrays-with-push-pop-shift-and-unshift)
+    - [Remove any element with splice](#remove-any-element-with-splice)
+    - [Copy an array with slice](#copy-an-array-with-slice)
+    - [indexOf](#indexof)
     - [Accessing Nested Arrays](#accessing-nested-arrays)
-    - [ES6 The Spread Operator to Evaluate Arrays](#es6-the-spread-operator-to-evaluate-arrays)
+    - [ES6 The Spread Operator](#es6-the-spread-operator)
     - [ES6 Destructuring Arrays to Assign Variables](#es6-destructuring-arrays-to-assign-variables)
   - [JavaScript Objects](#javascript-objects)
     - [Accessing Objects Properties](#accessing-objects-properties)
@@ -253,6 +256,53 @@ ourArray.shift(); // ourArray now equals ["J", "cat"]
 ourArray.unshift("Happy"); // ourArray now equals ["Happy", "J", "cat"]
 ```
 
+### Remove any element with splice
+
+```javascript
+// first parameter represents the index on the array from which to begin removing
+// elements, while the second parameter indicates the number of elements to delete.
+let array = ['today', 'was', 'not', 'so', 'great'];
+array.splice(2, 2);
+// remove 2 elements beginning with the 3rd element
+// array now equals ['today', 'was', 'great']
+
+// also returns a new array containing the value of the removed elements
+let array = ['I', 'am', 'feeling', 'really', 'happy'];
+let newArray = array.splice(3, 2);
+// newArray equals ['really', 'happy']
+
+// the third parameter, which represents one or more elements, let us add them
+function colorChange(arr, index, newColor) {
+  arr.splice(index, 1, newColor);
+  return arr;
+}
+let colorScheme = ['#878787', '#a08794', '#bb7e8c', '#c9b6be', '#d1becf'];
+colorScheme = colorChange(colorScheme, 2, '#332327');
+// we have removed '#bb7e8c' and added '#332327' in its place
+// colorScheme now equals ['#878787', '#a08794', '#332327', '#c9b6be', '#d1becf']
+```
+
+### Copy an array with slice
+
+slice() copies, or extracts a given number of elements to a new array,
+leaving the array it is called upon untouched.
+
+```javascript
+let weatherConditions = ['rain', 'snow', 'sleet', 'hail', 'clear'];
+let todaysWeather = weatherConditions.slice(1, 3);
+// todaysWeather equals ['snow', 'sleet'];
+// weatherConditions still equals ['rain', 'snow', 'sleet', 'hail', 'clear']
+```
+
+### indexOf
+
+```javascript
+let fruits = ['apples', 'pears', 'oranges', 'peaches', 'pears'];
+fruits.indexOf('dates') // returns -1
+fruits.indexOf('oranges') // returns 2
+fruits.indexOf('pears') // returns 1, the first index at which the element exists
+```
+
 ### Accessing Nested Arrays
 
 ```javascript
@@ -270,7 +320,7 @@ ourPets[0].names[1]; // "Fluffy"
 ourPets[1].names[0]; // "Spot"
 ```
 
-### ES6 The Spread Operator to Evaluate Arrays
+### ES6 The Spread Operator
 
 ```javascript
 // The ES5 code below uses apply() to compute the maximum value in an array.
@@ -280,6 +330,18 @@ var maximus = Math.max.apply(null, arr); // returns 89
 // ...arr returns an unpacked array. In other words, it spreads the array.
 const arr = [6, 89, 3, 45];
 const maximus = Math.max(...arr); // returns 89
+
+// copy an array
+let thisArray = [true, true, undefined, false, null];
+let thatArray = [...thisArray];
+// thatArray equals [true, true, undefined, false, null]
+// thisArray remains unchanged, and is identical to thatArray
+
+// combine arrays
+let thisArray = ['sage', 'rosemary', 'parsley', 'thyme'];
+let thatArray = ['basil', 'cilantro', ...thisArray, 'coriander'];
+// thatArray now equals ['basil', 'cilantro', 'sage', 'rosemary', 'parsley', 'thyme', 'coriander']
+
 ```
 
 ### ES6 Destructuring Arrays to Assign Variables
