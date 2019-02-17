@@ -410,6 +410,54 @@ var myBreed = dogs[myDog];
 console.log(myBreed); // "Doberman"
 ```
 
+Accessing and modifying Nested Objects
+
+```javascript
+let userActivity = {
+  id: 23894201352,
+  date: 'January 1, 2017',
+  data: {
+    totalUsers: 51,
+    online: 42
+  }
+};
+
+userActivity.data.online = 45; // or
+userActivity['data'].online = 45; // or
+userActivity['data']['online'] = 45;
+```
+
+Creating an array from the keys of an object
+
+```javascript
+let users = {
+  Alan: {
+    age: 27,
+    online: false
+  },
+  Jeff: {
+    age: 32,
+    online: true
+  },
+  Sarah: {
+    age: 48,
+    online: false
+  },
+  Ryan: {
+    age: 19,
+    online: true
+  }
+};
+
+function getArrayOfUsers(obj) {
+  let arr = [];
+  for (let key in obj) {
+    arr.push(key)
+  }
+  return arr;
+}
+```
+
 ### Modifying Objects Properties
 
 ```javascript
