@@ -9,15 +9,17 @@
     - [Basics](#basics)
     - [Escape sequences](#escape-sequences)
     - [The length of a string](#the-length-of-a-string)
+    - [Split and Join](#split-and-join)
     - [Index of a String](#index-of-a-string)
     - [ES6 Template Literals](#es6-template-literals)
   - [Arrays](#arrays)
     - [Index of an array](#index-of-an-array)
-    - [Manipulate arrays with push, pop, shift and unshift](#manipulate-arrays-with-push-pop-shift-and-unshift)
+    - [Manipulate arrays with reverse, push, pop, shift and unshift](#manipulate-arrays-with-reverse-push-pop-shift-and-unshift)
     - [Remove any element with splice](#remove-any-element-with-splice)
     - [Copy an array with slice](#copy-an-array-with-slice)
     - [indexOf](#indexof)
     - [Accessing Nested Arrays](#accessing-nested-arrays)
+    - [ES6 Includes to Determine if an Array Contains an Element](#es6-includes-to-determine-if-an-array-contains-an-element)
     - [ES6 The Spread Operator](#es6-the-spread-operator)
     - [ES6 Destructuring Arrays to Assign Variables](#es6-destructuring-arrays-to-assign-variables)
   - [JavaScript Objects](#javascript-objects)
@@ -175,6 +177,17 @@ ourStr += anAdjective;
 "Alan Peter".length; // 10
 ```
 
+### Split and Join
+
+```javascript
+let str = 'a string';
+let splittedStr = str.split('');
+// ​​​​​[ 'a', ' ', 's', 't', 'r', 'i', 'n', 'g' ]​​​​​
+
+let joinedStr = splittedStr.join('')
+// a string​​​​​
+```
+
 ### Index of a String
 
 Most modern programming languages, like JavaScript, don't start counting at 1 like humans do. They start at 0. This is referred to as Zero-based indexing.
@@ -232,9 +245,12 @@ arr[3][0]; // equals [10,11,12]
 arr[3][0][1]; // equals 11
 ```
 
-### Manipulate arrays with push, pop, shift and unshift
+### Manipulate arrays with reverse, push, pop, shift and unshift
 
 ```javascript
+// reverse() an array
+[1, 'two', 3].reverse() // ​​​​​[ 3, 'two', 1 ]
+
 // push() to append data to the end of an array
 var arr = [1, 2, 3];
 arr.push(4); // arr is now [1,2,3,4]
@@ -318,6 +334,13 @@ var ourPets = [
 ];
 ourPets[0].names[1]; // "Fluffy"
 ourPets[1].names[0]; // "Spot"
+```
+
+### ES6 Includes to Determine if an Array Contains an Element
+
+```javascript
+var fruits = ["Banana", "Orange", "Apple", "Mango"];
+var n = fruits.includes("Mango"); // true
 ```
 
 ### ES6 The Spread Operator
