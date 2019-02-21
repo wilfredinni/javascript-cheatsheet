@@ -33,6 +33,12 @@
     - [ES6 Object Literal Declarations Using Simple Fields](#es6-object-literal-declarations-using-simple-fields)
     - [ES6 class to Define a Constructor Function](#es6-class-to-define-a-constructor-function)
     - [ES6 getters and setters](#es6-getters-and-setters)
+  - [Object Oriented Programming](#object-oriented-programming)
+    - [Constructors and New Objects](#constructors-and-new-objects)
+    - [Inheritance](#inheritance)
+    - [Mixins](#mixins)
+    - [Closures to Protect Properties](#closures-to-protect-properties)
+    - [Modules](#modules)
   - [Booleans](#booleans)
   - [If Else Statements](#if-else-statements)
     - [Else Statement](#else-statement)
@@ -50,6 +56,7 @@
   - [Functions](#functions)
     - [Function Arguments](#function-arguments)
     - [Return Statement](#return-statement)
+    - [Immediately Invoked Function Expression or IIFE](#immediately-invoked-function-expression-or-iife)
     - [ES6 Arrow Functions](#es6-arrow-functions)
     - [ES6 Higher Order Arrow Functions](#es6-higher-order-arrow-functions)
     - [ES6 Rest Operator with Function Parameters](#es6-rest-operator-with-function-parameters)
@@ -650,6 +657,207 @@ lol.writer = "wut";
 console.log(lol.writer); // wut
 ```
 
+## Object Oriented Programming
+
+```javascript
+let duck = {
+  name: "Aflac",
+  numLegs: 2,
+  sayName: function() {return "The name of this duck is " + this.name + ".";}
+};
+duck.sayName(); // Returns "The name of this duck is Aflac."
+```
+
+### Constructors and New Objects
+
+Constructors follow a few conventions:
+
+- Constructors are defined with a capitalized name to distinguish them from other functions that are not constructors.
+- Constructors use the keyword this to set properties of the object they will create. Inside the constructor, this refers to the new object it will create.
+- Constructors define properties and behaviors instead of returning a value as other functions might.
+
+```javascript
+// constructor
+function Bird(name, color) {
+  this.name = name;
+  this.color = color;
+}
+
+// create a new instance of Bird
+let cardinal = new Bird("Bruce", "red");
+let duck = new Bird("Donald", "blue");
+
+// access and modify blueBird object
+cardinal.name // Bruce
+cardinal.color // red
+cardinal.color = green;
+cardinal.color // green
+
+// check if an object is an instance of a constructor
+cardinal instanceof Bird; // true
+crow instanceof Bird; // false
+
+// check an objects own (name, color, numLegs) properties
+cardinal.hasOwnProperty('color') // true
+cardinal.hasOwnProperty('age') // false
+
+//check an objects properties with the constructor property
+cardinal.constructor === Bird; // true
+
+// use constructor.prototype to add new properties to object constructors
+Bird.prototype.cute = true;
+cardinal.cute // true
+crow.cute // true
+
+// add more than one properties and methods to a constructor
+Bird.prototype = {
+  constructor: Bird, // specify the constructor
+  numLegs: 2, // new property
+  eat: function() { // new method
+    console.log("nom nom nom");
+  },
+  describe: function() { // new method
+    console.log("My name is " + this.name);
+  }
+};
+
+let chicken = new Bird("Dinner", "brown");
+chicken.numLegs // 2
+chicken.eat() // nom nom nom
+chicken.describe() // My name is Dinner
+```
+
+### Inheritance
+
+```javascript
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+function Cat(name) {
+  this.name = name; 
+}
+
+// make the Cat constructor inherit the eat function from Animal
+Cat.prototype = Object.create(Animal.prototype);
+
+let myCat = new Cat('charles');
+myCat.eat() // nom nom nom
+```
+
+Add methods after Inheritance and override them
+
+```javascript
+function Animal() { }
+Animal.prototype.eat = function() { console.log("nom nom nom"); };
+
+// Dog constructor
+function Dog() { }
+
+// make the Gog constructor inherit the eat function from Animal
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+Dog.prototype.bark = function() {
+  console.log("wof wof!");
+};
+
+// the new object will have both, the inherited eat() and its own bark() method
+let beagle = new Dog();
+beagle.eat(); // "nom nom nom"
+beagle.bark(); // "Woof!"
+
+// override an inherited method is possible
+Dog.prototype.eat = function() {
+  return "nice meeeeat!";
+};
+
+let doberman = new Dog();
+doberman.eat() // nice meeeeat!
+```
+
+### Mixins
+
+A mixin allows unrelated objects to use a collection of functions.
+
+```javascript
+let bird = {
+    name: "Donald",
+    numLegs: 2
+  };
+  
+let boat = {
+    name: "Warrior",
+  type: "race-boat"
+};
+
+// this mixin contain the glide method
+const glideMixin = function(obj) {
+    obj.glide = function() {
+        console.log("gliding...");
+    }
+}
+
+// the object is passed to the mixin and the glide method is assigned
+glideMixin(bird);
+glideMixin(boat);
+
+bird.glide(); // "gliding..."
+boat.glide(); // "gliding..."
+```
+
+### Closures to Protect Properties
+
+In JavaScript, a function always has access to the context in which it was created. This is called closure. Now, the property can only be accessed and changed by methods also within the constructor function. In JavaScript, this is called closure.
+
+```javascript
+function Bird() {
+  // instead of this.hatchedEgg...
+  let hatchedEgg = 10; // private property
+
+  this.getHatchedEggCount = function () { // publicly available method that a bird object can use
+    return hatchedEgg;
+  };
+}
+
+let ducky = new Bird();
+ducky.hatchedEgg = 2; // nothing happens
+ducky.getHatchedEggCount; // 10
+```
+
+### Modules
+
+An immediately invoked function expression (IIFE) is often used to group related functionality into a single object or module.
+
+```javascript
+let funModule = (function () {
+  return {
+    isCuteMixin: function (obj) {
+      obj.isCute = function () {
+        return true;
+      };
+    },
+    singMixin: function (obj) {
+      obj.sing = function () {
+        console.log("Singing to an awesome tune");
+      };
+    }
+  }
+})()
+
+function Dog() { }
+let goodBoy = new Dog;
+
+// assign the singMixin method to the goodBoy object
+funModule.singMixin(goodBoy);
+goodBoy.sing() // Singing to an awesome tune
+```
+
 ## Booleans
 
 Booleans may only be one of two values: true or false. They are basically little on-off switches, where true is "on" and false is "off". These two states are mutually exclusive.
@@ -862,8 +1070,7 @@ function functionName() {
   console.log("Hello World");
 }
 
-// you can call it now
-functionName();
+functionName(); // call the function
 ```
 
 ### Function Arguments
@@ -872,7 +1079,7 @@ functionName();
 function ourFunctionWithArgs(a, b) {
   console.log(a - b);
 }
-ourFunctionWithArgs(10, 5); // Outputs 5
+ourFunctionWithArgs(10, 5); // 5
 ```
 
 ### Return Statement
@@ -882,6 +1089,14 @@ function plusThree(num) {
   return num + 3;
 }
 var answer = plusThree(5); // 8
+```
+
+### Immediately Invoked Function Expression or IIFE
+
+```javascript
+(function () {
+  console.log("A cozy nest is ready");
+})()
 ```
 
 ### ES6 Arrow Functions
