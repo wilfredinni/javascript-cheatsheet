@@ -31,16 +31,6 @@
     - [ES6 Destructuring Variables from Objects](#es6-destructuring-variables-from-objects)
     - [ES6 Destructuring to Pass an Object as a Function's Parameters](#es6-destructuring-to-pass-an-object-as-a-functions-parameters)
     - [ES6 Object Literal Declarations Using Simple Fields](#es6-object-literal-declarations-using-simple-fields)
-  - [Object Oriented Programming](#object-oriented-programming)
-    - [Constructors and New Objects](#constructors-and-new-objects)
-    - [Inheritance](#inheritance)
-    - [Mixins](#mixins)
-    - [Closures to Protect Properties](#closures-to-protect-properties)
-    - [Modules](#modules)
-    - [ES6 Classes](#es6-classes)
-    - [ES6 getters and setters](#es6-getters-and-setters)
-    - [ES6 Statics Methods](#es6-statics-methods)
-    - [ES6 Inheritance](#es6-inheritance)
   - [Booleans](#booleans)
   - [If Else Statements](#if-else-statements)
     - [Else Statement](#else-statement)
@@ -63,12 +53,22 @@
     - [ES6 Higher Order Arrow Functions](#es6-higher-order-arrow-functions)
     - [ES6 Rest Operator with Function Parameters](#es6-rest-operator-with-function-parameters)
     - [ES6 Declarative Functions within Objects](#es6-declarative-functions-within-objects)
-  - [ES6 import and export](#es6-import-and-export)
-    - [import](#import)
-    - [export](#export)
   - [Regular Expressions](#regular-expressions)
     - [Regex Methods](#regex-methods)
     - [Examples](#examples)
+  - [Object Oriented Programming](#object-oriented-programming)
+    - [Constructors and New Objects](#constructors-and-new-objects)
+    - [Inheritance](#inheritance)
+    - [Mixins](#mixins)
+    - [Closures to Protect Properties](#closures-to-protect-properties)
+    - [Modules](#modules)
+    - [ES6 Classes](#es6-classes)
+    - [ES6 getters and setters](#es6-getters-and-setters)
+    - [ES6 Statics Methods](#es6-statics-methods)
+    - [ES6 Inheritance](#es6-inheritance)
+  - [ES6 import and export](#es6-import-and-export)
+    - [import](#import)
+    - [export](#export)
 
 ## Comments
 
@@ -134,6 +134,7 @@ let obj = {
   name: "FreeCodeCamp",
   review: "Awesome"
 };
+
 Object.freeze(obj);
 obj.review = "bad"; //will be ignored. Mutation not allowed
 obj.newProp = "Test"; // will be ignored. Mutation not allowed
@@ -348,8 +349,8 @@ ourPets[1].names[0]; // "Spot"
 ### ES6 Includes to Determine if an Array Contains an Element
 
 ```javascript
-var fruits = ["Banana", "Orange", "Apple", "Mango"];
-var n = fruits.includes("Mango"); // true
+let fruits = ["Banana", "Orange", "Apple", "Mango"];
+fruits.includes("Mango"); // true
 ```
 
 ### ES6 The Spread Operator
@@ -412,6 +413,7 @@ var myObj = {
   prop1: "val1",
   prop2: "val2"
 };
+
 var prop1val = myObj.prop1; // val1
 var prop2val = myObj.prop2; // val2
 ```
@@ -424,6 +426,7 @@ var myObj = {
   "More Space": "Spock",
   NoSpace: "USS Enterprise"
 };
+
 myObj["Space Name"]; // Kirk
 myObj["More Space"]; // Spock
 myObj["NoSpace"]; // USS Enterprise
@@ -437,6 +440,7 @@ var dogs = {
   Hunter: "Doberman",
   Snoopie: "Beagle"
 };
+
 var myDog = "Hunter";
 var myBreed = dogs[myDog];
 console.log(myBreed); // "Doberman"
@@ -539,6 +543,7 @@ var myObj = {
   top: "hat",
   bottom: "pants"
 };
+
 myObj.hasOwnProperty("top"); // true
 myObj.hasOwnProperty("middle"); // false
 ```
@@ -558,6 +563,7 @@ var ourStorage = {
     "bottom drawer": "soda"
   }
 };
+
 ourStorage.cabinet["top drawer"].folder2; // "secrets"
 ourStorage.desk.drawer; // "stapler"
 ```
@@ -582,9 +588,11 @@ const a = {
   start: { x: 5, y: 6 },
   end: { x: 6, y: -9 }
 };
+
 const {
   start: { x: startX, y: startY }
 } = a;
+
 console.log(startX, startY); // 5, 6
 ```
 
@@ -613,309 +621,6 @@ const getMousePosition = (x, y) => ({
 
 // the same function rewritten to use this new syntax:
 const getMousePosition = (x, y) => ({ x, y });
-```
-
-## Object Oriented Programming
-
-```javascript
-let duck = {
-  name: "Aflac",
-  numLegs: 2,
-  sayName: function() {return "The name of this duck is " + this.name + ".";}
-};
-duck.sayName(); // Returns "The name of this duck is Aflac."
-```
-
-### Constructors and New Objects
-
-Constructors follow a few conventions:
-
-- Constructors are defined with a capitalized name to distinguish them from other functions that are not constructors.
-- Constructors use the keyword this to set properties of the object they will create. Inside the constructor, this refers to the new object it will create.
-- Constructors define properties and behaviors instead of returning a value as other functions might.
-
-```javascript
-// constructor
-function Bird(name, color) {
-  this.name = name;
-  this.color = color;
-}
-
-// create a new instance of Bird
-let cardinal = new Bird("Bruce", "red");
-let duck = new Bird("Donald", "blue");
-
-// access and modify blueBird object
-cardinal.name // Bruce
-cardinal.color // red
-cardinal.color = green;
-cardinal.color // green
-
-// check if an object is an instance of a constructor
-cardinal instanceof Bird; // true
-crow instanceof Bird; // false
-
-// check an objects own (name, color, numLegs) properties
-cardinal.hasOwnProperty('color') // true
-cardinal.hasOwnProperty('age') // false
-
-//check an objects properties with the constructor property
-cardinal.constructor === Bird; // true
-
-// use constructor.prototype to add new properties to object constructors
-Bird.prototype.cute = true;
-cardinal.cute // true
-crow.cute // true
-
-// add more than one properties and methods to a constructor
-Bird.prototype = {
-  constructor: Bird, // specify the constructor
-  numLegs: 2, // new property
-  eat: function() { // new method
-    console.log("nom nom nom");
-  },
-  describe: function() { // new method
-    console.log("My name is " + this.name);
-  }
-};
-
-let chicken = new Bird("Dinner", "brown");
-chicken.numLegs // 2
-chicken.eat() // nom nom nom
-chicken.describe() // My name is Dinner
-```
-
-### Inheritance
-
-```javascript
-function Animal() { }
-
-Animal.prototype = {
-  constructor: Animal,
-  eat: function() {
-    console.log("nom nom nom");
-  }
-};
-
-function Cat(name) {
-  this.name = name; 
-}
-
-// make the Cat constructor inherit the eat function from Animal
-Cat.prototype = Object.create(Animal.prototype);
-
-let myCat = new Cat('charles');
-myCat.eat() // nom nom nom
-```
-
-Add methods after Inheritance and override them
-
-```javascript
-function Animal() { }
-Animal.prototype.eat = function() { console.log("nom nom nom"); };
-
-// Dog constructor
-function Dog() { }
-
-// make the Gog constructor inherit the eat function from Animal
-Dog.prototype = Object.create(Animal.prototype);
-Dog.prototype.constructor = Dog;
-
-Dog.prototype.bark = function() {
-  console.log("wof wof!");
-};
-
-// the new object will have both, the inherited eat() and its own bark() method
-let beagle = new Dog();
-beagle.eat(); // "nom nom nom"
-beagle.bark(); // "Woof!"
-
-// override an inherited method is possible
-Dog.prototype.eat = function() {
-  return "nice meeeeat!";
-};
-
-let doberman = new Dog();
-doberman.eat() // nice meeeeat!
-```
-
-### Mixins
-
-A mixin allows unrelated objects to use a collection of functions.
-
-```javascript
-let bird = {
-    name: "Donald",
-    numLegs: 2
-  };
-  
-let boat = {
-    name: "Warrior",
-  type: "race-boat"
-};
-
-// this mixin contain the glide method
-const glideMixin = function(obj) {
-    obj.glide = function() {
-        console.log("gliding...");
-    }
-}
-
-// the object is passed to the mixin and the glide method is assigned
-glideMixin(bird);
-glideMixin(boat);
-
-bird.glide(); // "gliding..."
-boat.glide(); // "gliding..."
-```
-
-### Closures to Protect Properties
-
-In JavaScript, a function always has access to the context in which it was created. This is called closure. Now, the property can only be accessed and changed by methods also within the constructor function. In JavaScript, this is called closure.
-
-```javascript
-function Bird() {
-  // instead of this.hatchedEgg...
-  let hatchedEgg = 10; // private property
-
-  this.getHatchedEggCount = function () { // publicly available method that a bird object can use
-    return hatchedEgg;
-  };
-}
-
-let ducky = new Bird();
-ducky.hatchedEgg = 2; // nothing happens
-ducky.getHatchedEggCount; // 10
-```
-
-### Modules
-
-An immediately invoked function expression (IIFE) is often used to group related functionality into a single object or module.
-
-```javascript
-let funModule = (function () {
-  return {
-    isCuteMixin: function (obj) {
-      obj.isCute = function () {
-        return true;
-      };
-    },
-    singMixin: function (obj) {
-      obj.sing = function () {
-        console.log("Singing to an awesome tune");
-      };
-    }
-  }
-})()
-
-function Dog() { }
-let goodBoy = new Dog;
-
-// assign the singMixin method to the goodBoy object
-funModule.singMixin(goodBoy);
-goodBoy.sing() // Singing to an awesome tune
-```
-
-### ES6 Classes
-
-ES6 provides a new syntax to help create objects, using the keyword class.
-
-This is to be noted, that the class syntax is just a syntax, and not a full-fledged class based implementation of object oriented paradigm, unlike in languages like Java, or Python, or Ruby etc.
-
-```javascript
-class Book {
-  constructor(title, author, year) {
-    this.title = title;
-    this.author = author;
-    this.year = year;
-  }
-
-  getSummary() {
-    return `${this.title} was written by ${this.author} in ${this.year}`
-  }
-
-  getAge() {
-    const years = new Date().getFullYear() - this.year;
-    return `${this.title} is ${years} years old`
-  }
-}
-
-book = new Book('Book One', 'John Doe', 2016);
-book.getSummary(); // Book One was written by John Doe in 2016 
-book.getAge(); // Book One is 3 years old
-```
-
-### ES6 getters and setters
-
-```javascript
-class Book {
-  constructor(author) {
-    this._author = author;
-  }
-  // getter
-  get writer() {
-    return this._author;
-  }
-  // setter
-  set writer(updatedAuthor) {
-    this._author = updatedAuthor;
-  }
-}
-const lol = new Book("anonymous");
-console.log(lol.writer); // anonymous
-lol.writer = "wut";
-console.log(lol.writer); // wut
-```
-
-### ES6 Statics Methods
-
-Static methods allow using methods without instantiating an object
-
-```javascript
-class Book {
-  constructor(title, author, year) {
-    this.title = title;
-    this.author = author;
-    this.year = year;
-  }
-
-  static sayHi() {
-    return "Hi!"
-  }
-}
-
-Book.sayHi(); // Hi!
-```
-
-### ES6 Inheritance
-
-```javascript
-class Book {
-  constructor(title, author, year) {
-    this.title = title;
-    this.author = author;
-    this.year = year;
-  }
-
-  getSummary() {
-    return `${this.title} was written by ${this.author} in ${this.year}`
-  }
-}
-
-class Magazine extends Book {
-  constructor(title, author, year, month) {
-    super(title, author, year)
-    this.month = month;
-  }
-
-  sayHi() {
-    return "Hi!"
-  }
-}
-
-mag = new Magazine('Mag', 'People', 2019, 'jan');
-mag.getSummary(); // Mag was written by People in 2019 
-mag.sayHi(); // Hi!
 ```
 
 ## Booleans
@@ -1225,52 +930,6 @@ const person = {
 };
 ```
 
-## ES6 import and export
-
-> The lessons in this section handle non-browser features. import won't work on a browser directly.
-> However, we can use various tools to create code out of this to make it work in browser.
-
-### import
-
-```javascript
-// we can choose which parts of a module or file to load into a given file.
-import { function } from "file_path"
-// We can also import variables the same way!
-
-// Import Everything from a File
-import * as name_of_your_choice from "file_path"
-
-```
-
-### export
-
-In order for `import` to work, though, we must first `export` the functions or variables we need.
-Like import, export is a non-browser feature.
-
-```javascript
-const capitalizeString = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-export { capitalizeString } //How to export functions.
-export const foo = "bar"; //How to export variables.
-
-// Alternatively, if you would like to compact all your export statements into one line, you can take this approach
-const capitalizeString = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-const foo = "bar";
-export { capitalizeString, foo }
-
-// use export default if only one value is being exported from a file.
-// It is also used to create a fallback value for a file or module
-export default function add(x,y) {
-  return x + y;
-}
-// and to import
-import add from "math_functions";
-add(5,4); //Will return 9
-```
-
 ## Regular Expressions
 
 | Character  | Description                                                                                      |
@@ -1412,4 +1071,357 @@ let result = reRegex.test(repeatNum);
 let hello = "   Hello, World!  ";
 let wsRegex = /^\s+(.*\S)\s+$/;
 let result = hello.replace(wsRegex, '$1'); // returns 'Hello, World!'
+```
+
+## Object Oriented Programming
+
+```javascript
+let duck = {
+  name: "Aflac",
+  numLegs: 2,
+  sayName: function() {return "The name of this duck is " + this.name + ".";}
+};
+
+duck.sayName(); // Returns "The name of this duck is Aflac."
+```
+
+### Constructors and New Objects
+
+Constructors follow a few conventions:
+
+- Constructors are defined with a capitalized name to distinguish them from other functions that are not constructors.
+- Constructors use the keyword this to set properties of the object they will create. Inside the constructor, this refers to the new object it will create.
+- Constructors define properties and behaviors instead of returning a value as other functions might.
+
+```javascript
+// constructor
+function Bird(name, color) {
+  this.name = name;
+  this.color = color;
+}
+
+// create a new instance of Bird
+let cardinal = new Bird("Bruce", "red");
+let duck = new Bird("Donald", "blue");
+
+// access and modify blueBird object
+cardinal.name // Bruce
+cardinal.color // red
+cardinal.color = green;
+cardinal.color // green
+
+// check if an object is an instance of a constructor
+cardinal instanceof Bird; // true
+crow instanceof Bird; // false
+
+// check an objects own (name, color, numLegs) properties
+cardinal.hasOwnProperty('color') // true
+cardinal.hasOwnProperty('age') // false
+
+//check an objects properties with the constructor property
+cardinal.constructor === Bird; // true
+
+// use constructor.prototype to add new properties to object constructors
+Bird.prototype.cute = true;
+cardinal.cute // true
+crow.cute // true
+
+// add more than one property and method to a constructor
+Bird.prototype = {
+  constructor: Bird, // specify the constructor
+  numLegs: 2, // new property
+
+  eat: function() { // new method
+    console.log("nom nom nom");
+  },
+
+  describe: function() { // new method
+    console.log("My name is " + this.name);
+  }
+};
+
+let chicken = new Bird("Dinner", "brown");
+chicken.numLegs // 2
+chicken.eat() // nom nom nom
+chicken.describe() // My name is Dinner
+```
+
+### Inheritance
+
+```javascript
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+function Cat(name) {
+  this.name = name; 
+}
+
+// make the Cat constructor inherit the eat function from Animal
+Cat.prototype = Object.create(Animal.prototype);
+
+let myCat = new Cat('charles');
+myCat.eat() // nom nom nom
+```
+
+Add methods after Inheritance and override them
+
+```javascript
+function Animal() { }
+Animal.prototype.eat = function() { console.log("nom nom nom"); };
+
+// Dog constructor
+function Dog() { }
+
+// make the Gog constructor inherit the eat function from Animal
+Dog.prototype = Object.create(Animal.prototype);
+Dog.prototype.constructor = Dog;
+
+Dog.prototype.bark = function() {
+  console.log("wof wof!");
+};
+
+// the new object will have both, the inherited eat() and its own bark() method
+let beagle = new Dog();
+beagle.eat(); // "nom nom nom"
+beagle.bark(); // "Woof!"
+
+// override an inherited method
+Dog.prototype.eat = function() {
+  return "nice meeeeat!";
+};
+
+let doberman = new Dog();
+doberman.eat() // nice meeeeat!
+```
+
+### Mixins
+
+A mixin allows unrelated objects to use a collection of functions.
+
+```javascript
+let bird = {
+    name: "Donald",
+    numLegs: 2
+  };
+  
+let boat = {
+    name: "Warrior",
+  type: "race-boat"
+};
+
+// this mixin contain the glide method
+const glideMixin = function(obj) {
+    obj.glide = function() {
+        console.log("gliding...");
+    }
+}
+
+// the object is passed to the mixin and the glide method is assigned
+glideMixin(bird);
+glideMixin(boat);
+
+bird.glide(); // "gliding..."
+boat.glide(); // "gliding..."
+```
+
+### Closures to Protect Properties
+
+In JavaScript, a function always has access to the context in which it was created. This is called closure. Now, the property can only be accessed and changed by methods also within the constructor function. In JavaScript, this is called closure.
+
+```javascript
+function Bird() {
+  // instead of this.hatchedEgg...
+  let hatchedEgg = 10; // private property
+
+  this.getHatchedEggCount = function () { // publicly available method that a bird object can use
+    return hatchedEgg;
+  };
+}
+
+let ducky = new Bird();
+ducky.hatchedEgg = 2; // nothing happens
+ducky.getHatchedEggCount; // 10
+```
+
+### Modules
+
+An immediately invoked function expression (IIFE) is often used to group related functionality into a single object or module.
+
+```javascript
+let funModule = (function () {
+  return {
+    isCuteMixin: function (obj) {
+      obj.isCute = function () {
+        return true;
+      };
+    },
+
+    singMixin: function (obj) {
+      obj.sing = function () {
+        console.log("Singing to an awesome tune");
+      };
+    }
+  }
+})()
+
+function Dog() { }
+let goodBoy = new Dog;
+
+// assign the singMixin method to the goodBoy object
+funModule.singMixin(goodBoy);
+goodBoy.sing() // Singing to an awesome tune
+```
+
+### ES6 Classes
+
+ES6 provides a new syntax to help create objects, using the keyword class.
+
+This is to be noted, that the class syntax is just a syntax, and not a full-fledged class based implementation of object oriented paradigm, unlike in languages like Java, or Python, or Ruby etc.
+
+```javascript
+class Book {
+  constructor(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+
+  getSummary() {
+    return `${this.title} was written by ${this.author} in ${this.year}`
+  }
+
+  getAge() {
+    const years = new Date().getFullYear() - this.year;
+    return `${this.title} is ${years} years old`
+  }
+}
+
+book = new Book('Book One', 'John Doe', 2016);
+book.getSummary(); // Book One was written by John Doe in 2016 
+book.getAge(); // Book One is 3 years old
+```
+
+### ES6 getters and setters
+
+```javascript
+class Book {
+  constructor(author) {
+    this._author = author;
+  }
+  // getter
+  get writer() {
+    return this._author;
+  }
+  // setter
+  set writer(updatedAuthor) {
+    this._author = updatedAuthor;
+  }
+}
+const lol = new Book("anonymous");
+console.log(lol.writer); // anonymous
+lol.writer = "wut";
+console.log(lol.writer); // wut
+```
+
+### ES6 Statics Methods
+
+Static methods allow using methods without instantiating an object
+
+```javascript
+class Book {
+  constructor(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+
+  static sayHi() {
+    return "Hi!"
+  }
+}
+
+Book.sayHi(); // Hi!
+```
+
+### ES6 Inheritance
+
+```javascript
+class Book {
+  constructor(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+
+  getSummary() {
+    return `${this.title} was written by ${this.author} in ${this.year}`
+  }
+}
+
+class Magazine extends Book {
+  constructor(title, author, year, month) {
+    super(title, author, year)
+    this.month = month;
+  }
+
+  sayHi() {
+    return "Hi!"
+  }
+}
+
+mag = new Magazine('Mag', 'People', 2019, 'jan');
+mag.getSummary(); // Mag was written by People in 2019 
+mag.sayHi(); // Hi!
+```
+
+## ES6 import and export
+
+> The lessons in this section handle non-browser features. import won't work on a browser directly.
+> However, we can use various tools to create code out of this to make it work in browser.
+
+### import
+
+```javascript
+// we can choose which parts of a module or file to load into a given file.
+import { function } from "file_path"
+// We can also import variables the same way!
+
+// Import Everything from a File
+import * as name_of_your_choice from "file_path"
+
+```
+
+### export
+
+In order for `import` to work, though, we must first `export` the functions or variables we need.
+Like import, export is a non-browser feature.
+
+```javascript
+const capitalizeString = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+export { capitalizeString } //How to export functions.
+export const foo = "bar"; //How to export variables.
+
+// Alternatively, if you would like to compact all your export statements into one line, you can take this approach
+const capitalizeString = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+const foo = "bar";
+export { capitalizeString, foo }
+
+// use export default if only one value is being exported from a file.
+// It is also used to create a fallback value for a file or module
+export default function add(x,y) {
+  return x + y;
+}
+// and to import
+import add from "math_functions";
+add(5,4); //Will return 9
 ```
