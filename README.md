@@ -31,14 +31,16 @@
     - [ES6 Destructuring Variables from Objects](#es6-destructuring-variables-from-objects)
     - [ES6 Destructuring to Pass an Object as a Function's Parameters](#es6-destructuring-to-pass-an-object-as-a-functions-parameters)
     - [ES6 Object Literal Declarations Using Simple Fields](#es6-object-literal-declarations-using-simple-fields)
-    - [ES6 class to Define a Constructor Function](#es6-class-to-define-a-constructor-function)
-    - [ES6 getters and setters](#es6-getters-and-setters)
   - [Object Oriented Programming](#object-oriented-programming)
     - [Constructors and New Objects](#constructors-and-new-objects)
     - [Inheritance](#inheritance)
     - [Mixins](#mixins)
     - [Closures to Protect Properties](#closures-to-protect-properties)
     - [Modules](#modules)
+    - [ES6 Classes](#es6-classes)
+    - [ES6 getters and setters](#es6-getters-and-setters)
+    - [ES6 Statics Methods](#es6-statics-methods)
+    - [ES6 Inheritance](#es6-inheritance)
   - [Booleans](#booleans)
   - [If Else Statements](#if-else-statements)
     - [Else Statement](#else-statement)
@@ -613,50 +615,6 @@ const getMousePosition = (x, y) => ({
 const getMousePosition = (x, y) => ({ x, y });
 ```
 
-### ES6 class to Define a Constructor Function
-
-ES6 provides a new syntax to help create objects, using the keyword class.
-
-This is to be noted, that the class syntax is just a syntax, and not a full-fledged class based implementation of object oriented paradigm, unlike in languages like Java, or Python, or Ruby etc.
-
-```javascript
-// we usually define a constructor function, and use the new keyword to instantiate an object.
-var SpaceShuttle = function(targetPlanet) {
-  this.targetPlanet = targetPlanet;
-};
-var zeus = new SpaceShuttle("Jupiter");
-
-// The class syntax simply replaces the constructor function creation:
-class SpaceShuttle {
-  constructor(targetPlanet) {
-    this.targetPlanet = targetPlanet;
-  }
-}
-const zeus = new SpaceShuttle("Jupiter");
-```
-
-### ES6 getters and setters
-
-```javascript
-class Book {
-  constructor(author) {
-    this._author = author;
-  }
-  // getter
-  get writer() {
-    return this._author;
-  }
-  // setter
-  set writer(updatedAuthor) {
-    this._author = updatedAuthor;
-  }
-}
-const lol = new Book("anonymous");
-console.log(lol.writer); // anonymous
-lol.writer = "wut";
-console.log(lol.writer); // wut
-```
-
 ## Object Oriented Programming
 
 ```javascript
@@ -856,6 +814,108 @@ let goodBoy = new Dog;
 // assign the singMixin method to the goodBoy object
 funModule.singMixin(goodBoy);
 goodBoy.sing() // Singing to an awesome tune
+```
+
+### ES6 Classes
+
+ES6 provides a new syntax to help create objects, using the keyword class.
+
+This is to be noted, that the class syntax is just a syntax, and not a full-fledged class based implementation of object oriented paradigm, unlike in languages like Java, or Python, or Ruby etc.
+
+```javascript
+class Book {
+  constructor(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+
+  getSummary() {
+    return `${this.title} was written by ${this.author} in ${this.year}`
+  }
+
+  getAge() {
+    const years = new Date().getFullYear() - this.year;
+    return `${this.title} is ${years} years old`
+  }
+}
+
+book = new Book('Book One', 'John Doe', 2016);
+book.getSummary(); // Book One was written by John Doe in 2016 
+book.getAge(); // Book One is 3 years old
+```
+
+### ES6 getters and setters
+
+```javascript
+class Book {
+  constructor(author) {
+    this._author = author;
+  }
+  // getter
+  get writer() {
+    return this._author;
+  }
+  // setter
+  set writer(updatedAuthor) {
+    this._author = updatedAuthor;
+  }
+}
+const lol = new Book("anonymous");
+console.log(lol.writer); // anonymous
+lol.writer = "wut";
+console.log(lol.writer); // wut
+```
+
+### ES6 Statics Methods
+
+Static methods allow using methods without instantiating an object
+
+```javascript
+class Book {
+  constructor(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+
+  static sayHi() {
+    return "Hi!"
+  }
+}
+
+Book.sayHi(); // Hi!
+```
+
+### ES6 Inheritance
+
+```javascript
+class Book {
+  constructor(title, author, year) {
+    this.title = title;
+    this.author = author;
+    this.year = year;
+  }
+
+  getSummary() {
+    return `${this.title} was written by ${this.author} in ${this.year}`
+  }
+}
+
+class Magazine extends Book {
+  constructor(title, author, year, month) {
+    super(title, author, year)
+    this.month = month;
+  }
+
+  sayHi() {
+    return "Hi!"
+  }
+}
+
+mag = new Magazine('Mag', 'People', 2019, 'jan');
+mag.getSummary(); // Mag was written by People in 2019 
+mag.sayHi(); // Hi!
 ```
 
 ## Booleans
