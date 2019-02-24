@@ -1,5 +1,4 @@
 import fs from "fs";
-// import "mini.css";
 import "bulma";
 import "../css/style.css";
 import * as showdown from "showdown";
@@ -15,8 +14,7 @@ const converter = new showdown.Converter({
 const cheatsheetDiv = document.getElementById("cheatsheet");
 
 // load the cheatsheet, convert and insert
-// const cheatsheet = fs.readFileSync(__dirname + "/../../README.md", "utf8");
-const cheatsheet = fs.readFileSync(__dirname + "/README.md", "utf8");
+const cheatsheet = fs.readFileSync(__dirname + "/../../README.md", "utf8");
 const cheatHtml = converter.makeHtml(cheatsheet);
 cheatsheetDiv.insertAdjacentHTML("beforebegin", cheatHtml);
 

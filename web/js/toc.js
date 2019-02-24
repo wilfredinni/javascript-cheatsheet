@@ -3,7 +3,7 @@
 // insert the index
 function insertIndex(div, title) {
   for (let item in title) {
-    const index = `<a href="">${title[item].innerText}</a>`;
+    const index = `<li><a href="">${title[item].innerText}</a></li>`;
     div.insertAdjacentHTML("beforeend", index);
   }
 }

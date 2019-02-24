@@ -1,75 +1,3 @@
-# Javascript Cheatsheet
-
-- [Javascript Cheatsheet](#javascript-cheatsheet)
-  - [Comments](#comments)
-  - [Data types](#data-types)
-  - [Variables](#variables)
-    - [ES6 var, let and const](#es6-var-let-and-const)
-  - [Strings](#strings)
-    - [Basics](#basics)
-    - [Escape sequences](#escape-sequences)
-    - [The length of a string](#the-length-of-a-string)
-    - [Split and Join](#split-and-join)
-    - [Index of a String](#index-of-a-string)
-    - [ES6 Template Literals](#es6-template-literals)
-  - [Arrays](#arrays)
-    - [Index of an array](#index-of-an-array)
-    - [Manipulate arrays with reverse, push, pop, shift and unshift](#manipulate-arrays-with-reverse-push-pop-shift-and-unshift)
-    - [Remove any element with splice](#remove-any-element-with-splice)
-    - [Copy an array with slice](#copy-an-array-with-slice)
-    - [indexOf](#indexof)
-    - [Accessing Nested Arrays](#accessing-nested-arrays)
-    - [ES6 Includes to Determine if an Array Contains an Element](#es6-includes-to-determine-if-an-array-contains-an-element)
-    - [ES6 The Spread Operator](#es6-the-spread-operator)
-    - [ES6 Destructuring Arrays to Assign Variables](#es6-destructuring-arrays-to-assign-variables)
-  - [JavaScript Objects](#javascript-objects)
-    - [Accessing Objects Properties](#accessing-objects-properties)
-    - [Modifying Objects Properties](#modifying-objects-properties)
-    - [Objects for Lookups](#objects-for-lookups)
-    - [Test Object Properties](#test-object-properties)
-    - [Accessing Nested Objects](#accessing-nested-objects)
-    - [ES6 Destructuring Variables from Objects](#es6-destructuring-variables-from-objects)
-    - [ES6 Destructuring to Pass an Object as a Function's Parameters](#es6-destructuring-to-pass-an-object-as-a-functions-parameters)
-    - [ES6 Object Literal Declarations Using Simple Fields](#es6-object-literal-declarations-using-simple-fields)
-  - [Booleans](#booleans)
-  - [If Else Statements](#if-else-statements)
-    - [Else Statement](#else-statement)
-    - [Else if statement](#else-if-statement)
-    - [Conditional (Ternary) Operator](#conditional-ternary-operator)
-    - [Multiple Conditional (Ternary) Operators](#multiple-conditional-ternary-operators)
-  - [Switch Statement](#switch-statement)
-    - [Default in Switch Statement](#default-in-switch-statement)
-    - [Multiple Options with Switch Statement](#multiple-options-with-switch-statement)
-  - [Comparison Operators](#comparison-operators)
-  - [While Loops](#while-loops)
-    - [Do...While Loops](#dowhile-loops)
-  - [For Loops](#for-loops)
-    - [for-of](#for-of)
-  - [Functions](#functions)
-    - [Function Arguments](#function-arguments)
-    - [Return Statement](#return-statement)
-    - [Immediately Invoked Function Expression or IIFE](#immediately-invoked-function-expression-or-iife)
-    - [ES6 Arrow Functions](#es6-arrow-functions)
-    - [ES6 Higher Order Arrow Functions](#es6-higher-order-arrow-functions)
-    - [ES6 Rest Operator with Function Parameters](#es6-rest-operator-with-function-parameters)
-    - [ES6 Declarative Functions within Objects](#es6-declarative-functions-within-objects)
-  - [Regular Expressions](#regular-expressions)
-    - [Regex Methods](#regex-methods)
-    - [Examples](#examples)
-  - [Object Oriented Programming](#object-oriented-programming)
-    - [Constructors and New Objects](#constructors-and-new-objects)
-    - [Inheritance](#inheritance)
-    - [Mixins](#mixins)
-    - [Closures to Protect Properties](#closures-to-protect-properties)
-    - [Modules](#modules)
-    - [ES6 Classes](#es6-classes)
-    - [ES6 getters and setters](#es6-getters-and-setters)
-    - [ES6 Statics Methods](#es6-statics-methods)
-    - [ES6 Inheritance](#es6-inheritance)
-  - [ES6 import and export](#es6-import-and-export)
-    - [import](#import)
-    - [export](#export)
-
 ## Comments
 
 ```javascript
@@ -1378,6 +1306,52 @@ class Magazine extends Book {
 mag = new Magazine('Mag', 'People', 2019, 'jan');
 mag.getSummary(); // Mag was written by People in 2019 
 mag.sayHi(); // Hi!
+```
+
+## Functional Programming
+
+### Map
+
+```javascript
+var watchList = [{
+    "Title": "Inception",
+    "imdbRating": "8.8",
+    "Type": "movie",
+  },
+  {
+    "Title": "Interstellar",
+    "imdbRating": "8.6",
+    "Type": "movie",
+  },
+  {
+    "Title": "The Dark Knight",
+    "imdbRating": "9.0",
+    "Type": "movie",
+  },
+  {
+    "Title": "Batman Begins",
+    "imdbRating": "7.9",
+    "Type": "movie",
+  }
+];
+
+const rating = watchList.map(function (movie) {
+  return {title: movie.Title, rating: movie.imdbRating}
+});
+/* [ { title: 'Inception', rating: '8.8' }, 
+  { title: 'Interstellar', rating: '8.6' }, 
+  { title: 'The Dark Knight', rating: '9.0' }, 
+  { title: 'Batman Begins', rating: '7.9' } ]  */
+
+// or...
+const rating = watchList.map(movie => ({
+    title: movie.Title,
+    rating: movie.imdbRating
+}));
+/* [ { title: 'Inception', rating: '8.8' }, 
+  { title: 'Interstellar', rating: '8.6' }, 
+  { title: 'The Dark Knight', rating: '9.0' }, 
+  { title: 'Batman Begins', rating: '7.9' } ]  */
 ```
 
 ## ES6 import and export
