@@ -1,6 +1,7 @@
 import fs from "fs";
 import "bulma";
 import "../css/style.css";
+import "../css/atom-one-light.min.css";
 import * as showdown from "showdown";
 import {
   createIndex

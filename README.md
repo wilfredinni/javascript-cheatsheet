@@ -11,15 +11,15 @@ multi-line comment */
 
 JavaScript provides seven different data types which are:
 
-| Data Types |
-| ---------- |
-| undefined  |
-| null       |
-| boolean    |
-| string     |
-| symbol     |
-| number     |
-| object     |
+| Data Types  | Examples                                                              |
+| ----------- | --------------------------------------------------------------------- |
+| `undefined` | A variable that has not been assigned a value is of type `undefined`. |
+| `null`      | no value.                                                             |
+| `string`    | `'a', 'aa', 'aaa', 'Hello!', '11 cats'`                               |
+| `number`    | `12, -1, 0.4`                                                         |
+| `boolean`   | `true, false`                                                         |
+| `object`    | A collection of properties.                                           |
+| `symbol`    | Represents a unique identifier.                                       |
 
 ## Variables
 
@@ -98,16 +98,16 @@ ourStr += anAdjective;
 
 ### Escape sequences
 
-| Code | Output          |
-| ---- | --------------- |
-| \'   | single quote    |
-| \"   | double quote    |
-| \\   | backslash       |
-| \n   | newline         |
-| \r   | carriage return |
-| \t   | tab             |
-| \b   | backspace       |
-| \f   | from feed       |
+| Code | Output             |
+| ---- | ------------------ |
+| `\'` | single quote (`'`) |
+| `\"` | double quote (`"`) |
+| `\\` | backslash (`\`)    |
+| `\n` | newline            |
+| `\r` | carriage return    |
+| `\t` | tab                |
+| `\b` | backspace          |
+| `\f` | from feed          |
 
 ### The length of a string
 
@@ -128,16 +128,15 @@ let joinedStr = splittedStr.join('')
 
 ### Index of a String
 
-Most modern programming languages, like JavaScript, don't start counting at 1 like humans do. They start at 0. This is referred to as Zero-based indexing.
-
 ```javascript
+//first element has an index of 0
 var firstLetterOfFirstName = "";
 var firstName = "Ada";
-firstLetterOfFirstName = firstName[0];
+firstLetterOfFirstName = firstName[0]; // A
 
 // find the las character of a string
 var firstName = "Ada";
-var lastLetterOfFirstName = firstName[firstName.length - 1];
+var lastLetterOfFirstName = firstName[firstName.length - 1]; // a
 ```
 
 ### ES6 Template Literals
@@ -152,7 +151,7 @@ const person = {
 const greeting = `Hello, my name is ${person.name}!
 I am ${person.age} years old.`;
 
-console.log(greeting); // prints
+console.log(greeting);
 // Hello, my name is Zodiac Hasbro!
 // I am 56 years old.
 ```
@@ -178,15 +177,15 @@ ourArray[0] = 15; // equals [15,40,30]
 
 // access multi-dimensional arrays with indexes
 var arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [[10, 11, 12], 13, 14]];
-arr[3]; // equals [[10,11,12], 13, 14]
-arr[3][0]; // equals [10,11,12]
-arr[3][0][1]; // equals 11
+arr[3]; // [[10,11,12], 13, 14]
+arr[3][0]; // [10,11,12]
+arr[3][0][1]; // 11
 ```
 
 ### Manipulate arrays with reverse, push, pop, shift and unshift
 
 ```javascript
-// reverse() an array
+// reverse an array
 [1, 'two', 3].reverse() // ​​​​​[ 3, 'two', 1 ]
 
 // push() to append data to the end of an array
@@ -213,8 +212,7 @@ ourArray.unshift("Happy"); // ourArray now equals ["Happy", "J", "cat"]
 ### Remove any element with splice
 
 ```javascript
-// first parameter represents the index on the array from which to begin removing
-// elements, while the second parameter indicates the number of elements to delete.
+// first parameter is the index, the second indicates the number of elements to delete.
 let array = ['today', 'was', 'not', 'so', 'great'];
 array.splice(2, 2);
 // remove 2 elements beginning with the 3rd element
@@ -225,7 +223,7 @@ let array = ['I', 'am', 'feeling', 'really', 'happy'];
 let newArray = array.splice(3, 2);
 // newArray equals ['really', 'happy']
 
-// the third parameter, which represents one or more elements, let us add them
+// the third parameter, represents one or more elements, let us add them
 function colorChange(arr, index, newColor) {
   arr.splice(index, 1, newColor);
   return arr;
@@ -238,10 +236,8 @@ colorScheme = colorChange(colorScheme, 2, '#332327');
 
 ### Copy an array with slice
 
-slice() copies, or extracts a given number of elements to a new array,
-leaving the array it is called upon untouched.
-
 ```javascript
+// Copies a given number of elements to a new array and leaves the original array untouched
 let weatherConditions = ['rain', 'snow', 'sleet', 'hail', 'clear'];
 let todaysWeather = weatherConditions.slice(1, 3);
 // todaysWeather equals ['snow', 'sleet'];
@@ -252,9 +248,9 @@ let todaysWeather = weatherConditions.slice(1, 3);
 
 ```javascript
 let fruits = ['apples', 'pears', 'oranges', 'peaches', 'pears'];
-fruits.indexOf('dates') // returns -1
-fruits.indexOf('oranges') // returns 2
-fruits.indexOf('pears') // returns 1, the first index at which the element exists
+fruits.indexOf('dates') // -1
+fruits.indexOf('oranges') // 2
+fruits.indexOf('pears') // 1, the first index at which the element exists
 ```
 
 ### Accessing Nested Arrays
@@ -286,11 +282,11 @@ fruits.includes("Mango"); // true
 ```javascript
 // The ES5 code below uses apply() to compute the maximum value in an array.
 var arr = [6, 89, 3, 45];
-var maximus = Math.max.apply(null, arr); // returns 89
+var maximus = Math.max.apply(null, arr); // 89
 
 // ...arr returns an unpacked array. In other words, it spreads the array.
 const arr = [6, 89, 3, 45];
-const maximus = Math.max(...arr); // returns 89
+const maximus = Math.max(...arr); // 89
 
 // copy an array
 let thisArray = [true, true, undefined, false, null];
@@ -553,7 +549,8 @@ const getMousePosition = (x, y) => ({ x, y });
 
 ## Booleans
 
-Booleans may only be one of two values: true or false. They are basically little on-off switches, where true is "on" and false is "off". These two states are mutually exclusive.
+Booleans may only be one of two values: true or false. They are basically little on-off switches,
+where true is "on" and false is "off". These two states are mutually exclusive.
 
 ```javascript
 true;
@@ -649,7 +646,7 @@ switch(num) {
 }
 ```
 
-### Default in Switch Statement
+### Default Switch Statement
 
 ```javascript
 switch (num) {
@@ -748,7 +745,7 @@ for (var i = 0; i < arr.length; i++) {
 }
 ```
 
-### for-of
+### ES6 for-of
 
 ```javascript
 for (let value of myArray) {
@@ -860,41 +857,41 @@ const person = {
 
 ## Regular Expressions
 
-| Character  | Description                                                                                      |
-| ---------- | ------------------------------------------------------------------------------------------------ |
-| `\`        | Escapes a special character.                                                                     |
-| `|`        | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.                 |
-| `i`        | This flag is used to ignore upper and lowercase. `/ignorecase/i`.                                |
-| `g`        | Search or extract a pattern more than once.                                                      |
-| `.`        | The wildcard character `.` will match any character except new lines.                            |
-| `[]`       | Allow you to define the characters to match. `/b[au]g/' will match "bag", "bug" but not "bog"    |
-| `[a-z]`    | Match all the characters between a and z.                                                        |
-| `[1-9]`    | Match all the numbers between 1 and 9.                                                           |
-| `[a-z1-9]` | Match all the character between a and z, and the numbers between 1 and 9.                        |
-| `[^]`      | Match the characters not in the set. [^a-e] match all other characters except A, B, C, D, and E. |
-| `+`        | Match 1 or more occurrences of the previous character in a row.                                  |
-| `*`        | Match 0 or more occurrences of the previous character.                                           |
-| `?`        | Match 0 or 1 occurrence of the previous character. Useful for Lazy matching.                     |
-| `^`        | Search for patterns at the beginning of strings.                                                 |
-| `$`        | Search for patterns at the end of a string.                                                      |
-| `\w`       | Equal to [A-Za-z0-9_]. Matches upper, lowercase, numbers the and underscore character (-).       |
-| `\W`       | Matches any nonword character. Equivalent to '[^a-za-z0-9_]'.                                    |
-| `\d`       | Equal to [0-9]. Match one digit.                                                                 |
-| `\D`       | Equal to [^0-9]. Match one non digit.                                                            |
-| `\s`       | Match a whitespace.                                                                              |
-| `\S`       | Match everything except whitespace.                                                              |
-| `a{2,5}`   | Match the letter `a` between 3 and 5 times.                                                      |
-| `a{2,}`    | Specify only the lower number of matches.                                                        |
-| `a{5}`     | Specify the exact number of matches.                                                             |
-| `(...)`    | Specify a group that can be acceded with number (from 1)                                         |
+| Character  | Description                                                                                        |
+| ---------- | -------------------------------------------------------------------------------------------------- |
+| `\`        | Escapes a special character.                                                                       |
+| `|`        | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.                   |
+| `i`        | This flag is used to ignore upper and lowercase. `/ignorecase/i`.                                  |
+| `g`        | Search or extract a pattern more than once.                                                        |
+| `.`        | The wildcard character `.` will match any character except new lines.                              |
+| `[]`       | Allow you to define the characters to match. `/b[au]g/` will match "bag", "bug" but not "bog".     |
+| `[a-z]`    | Match all the characters between a and z.                                                          |
+| `[1-9]`    | Match all the numbers between 1 and 9.                                                             |
+| `[a-z1-9]` | Match all the character between a and z, and the numbers between 1 and 9.                          |
+| `[^]`      | Match the characters not in the set. `[^a-e]` match all other characters except A, B, C, D, and E. |
+| `+`        | Match 1 or more occurrences of the previous character in a row.                                    |
+| `*`        | Match 0 or more occurrences of the previous character.                                             |
+| `?`        | Match 0 or 1 occurrence of the previous character. Useful for Lazy matching.                       |
+| `^`        | Search for patterns at the beginning of strings.                                                   |
+| `$`        | Search for patterns at the end of a string.                                                        |
+| `\w`       | Equal to `[A-Za-z0-9_]`. Matches upper, lowercase, numbers the and underscore character (-).       |
+| `\W`       | Matches any nonword character. Equivalent to `[^a-za-z0-9_]`.                                      |
+| `\d`       | Equal to `[0-9]`. Match one digit.                                                                 |
+| `\D`       | Equal to `[^0-9]`. Match one non digit.                                                            |
+| `\s`       | Match a whitespace.                                                                                |
+| `\S`       | Match everything except whitespace.                                                                |
+| `a{2,5}`   | Match the letter `a` between 3 and 5 times.                                                        |
+| `a{2,}`    | Specify only the lower number of matches.                                                          |
+| `a{5}`     | Specify the exact number of matches.                                                               |
+| `(...)`    | Specify a group that can be acceded with number (from 1)                                           |
 
 ### Regex Methods
 
-| Method    | Description                                                 |
-| --------- | ----------------------------------------------------------- |
-| test()    | Returns true or false if the pattern match a string or not. |
-| match()   | Extract the actual matches found.                           |
-| replace() | Search and replace text in a string .                       |
+| Method      | Description                                                 |
+| ----------- | ----------------------------------------------------------- |
+| `test()`    | Returns true or false if the pattern match a string or not. |
+| `match()`   | Extract the actual matches found.                           |
+| `replace()` | Search and replace text in a string .                       |
 
 ### Examples
 
@@ -1206,11 +1203,13 @@ funModule.singMixin(goodBoy);
 goodBoy.sing() // Singing to an awesome tune
 ```
 
+## ES6 Object Oriented Programming
+
+ES6 provides a new syntax to help create objects, the keyword `class`.The class syntax
+is just a syntax, and not a full-fledged class based implementation of object oriented paradigm,
+unlike in languages like Java, or Python, or Ruby etc.
+
 ### ES6 Classes
-
-ES6 provides a new syntax to help create objects, using the keyword class.
-
-This is to be noted, that the class syntax is just a syntax, and not a full-fledged class based implementation of object oriented paradigm, unlike in languages like Java, or Python, or Ruby etc.
 
 ```javascript
 class Book {

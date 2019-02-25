@@ -6,3 +6,15 @@
     margin: -60px 0 0;
     /* negative fixed header height */
 }
+
+.fixed-index {
+    position: fixed;
+    overflow: auto;
+    height: 80%;
+    width: 21%;
+}
+
+.search-icon {
+    margin-left: 58em;
+    /* padding-left: 50px !important; */
+}
