@@ -21,20 +21,48 @@
 
     <div id="navbarExampleTransparentExample" class="navbar-menu">
       <div class="navbar-end search-icon">
-        <a href="/" class="navbar-item">
+        <a id="search-icon" class="navbar-item">
           <span class="icon">
             <i class="fas fa-search fa-lg"></i>
           </span>
         </a>
-        <div href="/" class="navbar-item">
+        <div class="navbar-item">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
-          or ctr+z
+          ctr+z
         </div>
       </div>
     </div>
   </nav>
+
+  <!-- search modal -->
+  <div id="search-modal">
+    <div class="search-content">
+      <!-- search bar -->
+      <div class="field">
+        <spam class="control has-icons-left">
+          <input id="search-bar" class="input search-bar" type="search" placeholder="Search">
+          <span class="icon is-small is-left">
+            <i class="fas fa-search"></i>
+          </span>
+        </spam>
+      </div>
+      <!-- search title -->
+      <div id="search-message" class="search-message">
+        Type to start searching
+      </div>
+      <!-- search title (clear search bar) -->
+      <div style="display:none" id="clear-message" class="search-message">
+        <span class="icon is-small">
+          <i class="fas fa-times"></i>
+        </span>
+        Clear Search...
+      </div>
+      <!-- results -->
+      <div id="results"></div>
+    </div>
+  </div>
 
   <div class="section container">
     <div class="columns">
@@ -43,7 +71,7 @@
       </div>
       <div class="column content">
         <div class="fixed-index">
-          <h3>Table of Content</h3>
+          <h4>Table of Content</h4>
           <ul id="index"></ul>
         </div>
       </div>

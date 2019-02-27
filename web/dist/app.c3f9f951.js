@@ -5479,7 +5479,184 @@ var cheatsheet = "## Comments\n\n```javascript\n// This is an in-line comment.\n
 var cheatHtml = converter.makeHtml(cheatsheet);
 cheatsheetDiv.insertAdjacentHTML("beforebegin", cheatHtml); // create the index
 
-(0, _toc.createIndex)();
+(0, _toc.createIndex)(); // --------------------------------------
+
+/* Search function from h2 and h3 tags */
+// --------------------------------------
+
+var searchBar = document.getElementById("search-bar");
+var searchIcon = document.getElementById("search-icon");
+var searchMessage = document.getElementById("search-message");
+var clearMessage = document.getElementById("clear-message");
+var searchModal = document.getElementById("search-modal");
+var results = document.getElementById("results");
+searchIcon.addEventListener("click", showModal);
+searchModal.addEventListener("click", removeBackground);
+searchBar.addEventListener("keyup", filterTopics); // get all h2 and h3 tags
+
+var topics = [];
+var h2 = document.getElementsByTagName("h2");
+var h3 = document.getElementsByTagName("h3");
+replaceAddId(h2);
+replaceAddId(h3);
+pushArray(h2, topics);
+pushArray(h3, topics);
+
+for (var _i = 0; _i < topics.length; _i++) {
+  var item = topics[_i];
+  var link = replace(item);
+  results.insertAdjacentHTML("beforeend", "<a style=\"display:none\" href=\"#".concat(link, "\" class=\"results_a\">\n\n                            <p class=\"results_p\">").concat(item.innerText, "</p>\n</a>"));
+}
+
+var links = results.querySelectorAll("a");
+
+function showModal() {
+  searchModal.style.display = "block";
+  searchBar.focus();
+}
+
+function filterTopics() {
+  var search = searchBar.value.toUpperCase();
+
+  if (searchBar.value.length > 0) {
+    searchMessage.style.display = "none";
+    clearMessage.style.display = "block";
+    results.style.display = "block";
+  } else {
+    clearMessage.style.display = "none";
+    searchMessage.style.display = "block";
+    results.style.display = "none";
+  }
+
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
+
+  try {
+    for (var _iterator = links[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var item = _step.value;
+
+      if (item.innerText.toUpperCase().indexOf(search) > -1) {
+        item.style.display = "block";
+      } else {
+        item.style.display = "none";
+      }
+    }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return != null) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
+}
+
+function removeBackground(e) {
+  if (e.target == searchBar) {
+    searchBar.focus();
+  } else if (e.target == clearMessage) {
+    clearMessage.style.display = "none";
+    searchMessage.style.display = "block";
+    searchBar.value = "";
+    searchBar.focus();
+    var _iteratorNormalCompletion2 = true;
+    var _didIteratorError2 = false;
+    var _iteratorError2 = undefined;
+
+    try {
+      for (var _iterator2 = links[Symbol.iterator](), _step2; !(_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done); _iteratorNormalCompletion2 = true) {
+        var result = _step2.value;
+        result.style.display = "none";
+      }
+    } catch (err) {
+      _didIteratorError2 = true;
+      _iteratorError2 = err;
+    } finally {
+      try {
+        if (!_iteratorNormalCompletion2 && _iterator2.return != null) {
+          _iterator2.return();
+        }
+      } finally {
+        if (_didIteratorError2) {
+          throw _iteratorError2;
+        }
+      }
+    }
+  } else {
+    searchModal.style.display = "none";
+  }
+}
+
+function replace(item) {
+  return item.innerText.replace(/\s/g, "-");
+}
+
+function pushArray(array, newArray) {
+  var _iteratorNormalCompletion3 = true;
+  var _didIteratorError3 = false;
+  var _iteratorError3 = undefined;
+
+  try {
+    for (var _iterator3 = array[Symbol.iterator](), _step3; !(_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done); _iteratorNormalCompletion3 = true) {
+      var item = _step3.value;
+      newArray.push(item);
+    }
+  } catch (err) {
+    _didIteratorError3 = true;
+    _iteratorError3 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion3 && _iterator3.return != null) {
+        _iterator3.return();
+      }
+    } finally {
+      if (_didIteratorError3) {
+        throw _iteratorError3;
+      }
+    }
+  }
+}
+
+function replaceAddId(array) {
+  var _iteratorNormalCompletion4 = true;
+  var _didIteratorError4 = false;
+  var _iteratorError4 = undefined;
+
+  try {
+    for (var _iterator4 = array[Symbol.iterator](), _step4; !(_iteratorNormalCompletion4 = (_step4 = _iterator4.next()).done); _iteratorNormalCompletion4 = true) {
+      var item = _step4.value;
+      item.id = replace(item);
+    }
+  } catch (err) {
+    _didIteratorError4 = true;
+    _iteratorError4 = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion4 && _iterator4.return != null) {
+        _iterator4.return();
+      }
+    } finally {
+      if (_didIteratorError4) {
+        throw _iteratorError4;
+      }
+    }
+  }
+}
+
+document.onkeyup = function (e) {
+  if (e.ctrlKey && e.which == 90) {
+    showModal();
+  } else if (e.which == 27) {
+    searchModal.style.display = "none";
+  }
+};
 },{"fs":"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/_empty.js","bulma":"../node_modules/bulma/bulma.sass","../css/style.css":"css/style.css","../css/atom-one-light.min.css":"css/atom-one-light.min.css","showdown":"../node_modules/showdown/dist/showdown.js","./toc":"js/toc.js"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -5507,7 +5684,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54176" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56469" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);

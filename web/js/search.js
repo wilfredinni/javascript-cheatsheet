@@ -1,31 +1,3 @@
-import fs from "fs";
-import "bulma";
-import "../css/style.css";
-import "../css/atom-one-light.min.css";
-import * as showdown from "showdown";
-import {
-  createIndex
-} from "./toc";
-
-const converter = new showdown.Converter({
-  tables: true
-});
-
-// the cheatsheet div
-const cheatsheetDiv = document.getElementById("cheatsheet");
-
-// load the cheatsheet, convert and insert
-const cheatsheet = fs.readFileSync(__dirname + "/../../README.md", "utf8");
-const cheatHtml = converter.makeHtml(cheatsheet);
-cheatsheetDiv.insertAdjacentHTML("beforebegin", cheatHtml);
-
-// create the index
-createIndex();
-
-// --------------------------------------
-/* Search function from h2 and h3 tags */
-// --------------------------------------
-
 let searchBar = document.getElementById("search-bar");
 let searchIcon = document.getElementById("search-icon");
 let searchMessage = document.getElementById("search-message");
@@ -40,13 +12,15 @@ searchBar.addEventListener("keyup", filterTopics);
 // get all h2 and h3 tags
 let topics = [];
 let h2 = document.getElementsByTagName("h2");
-let h3 = document.getElementsByTagName("h3");
+console.log(h2);
 
-replaceAddId(h2);
-replaceAddId(h3);
+// let h3 = document.getElementsByTagName("h3");
+
+// replaceAddId(h2);
+// replaceAddId(h3);
 
 pushArray(h2, topics);
-pushArray(h3, topics);
+// pushArray(h3, topics);
 
 
 for (let item of topics) {
@@ -108,11 +82,11 @@ function pushArray(array, newArray) {
   }
 }
 
-function replaceAddId(array) {
-  for (let item of array) {
-    item.id = replace(item);
-  }
-}
+// function replaceAddId(array) {
+//   for (let item of array) {
+//     item.id = replace(item);
+//   }
+// }
 
 document.onkeyup = function (e) {
   if (e.ctrlKey && e.which == 90) {
