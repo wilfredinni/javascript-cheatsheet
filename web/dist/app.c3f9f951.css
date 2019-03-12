@@ -9102,6 +9102,10 @@ label.panel-block:hover {
     width: 21%;
 }
 
+.field-nmb {
+    margin-bottom: 0px !important;
+}
+
 .search-icon {
     margin-left: 58em;
     /* padding-left: 50px !important; */
@@ -9127,6 +9131,8 @@ label.panel-block:hover {
     width: 50%;
     animation: openModal;
     animation-duration: 0.3s;
+    /* max-height: 80%;
+    overflow: auto; */
 }
 
 .search-bar {
@@ -9135,7 +9141,7 @@ label.panel-block:hover {
     font-size: 1rem;
     height: 40px;
     padding: 0 0 0 34px;
-    position: relative;
+    /* position: fixed; */
     width: 100%;
 }
 
@@ -9146,6 +9152,7 @@ label.panel-block:hover {
 
 .search-bar:focus {
     color: #3f3f3f;
+    box-shadow: none;
 }
 
 .search-message {
@@ -9155,6 +9162,7 @@ label.panel-block:hover {
     color: rgba(0, 0, 0, 0.54);
     font-size: 13px;
     line-height: 40px;
+    height: 100%;
 }
 
 #search-message {

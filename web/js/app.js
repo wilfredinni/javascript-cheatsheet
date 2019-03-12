@@ -14,7 +14,7 @@ const converter = new showdown.Converter({
 // the cheatsheet div
 const cheatsheetDiv = document.getElementById("cheatsheet");
 
-// load the cheatsheet, convert and insert
+// load the markdown cheatsheet, convert to html and insert
 const cheatsheet = fs.readFileSync(__dirname + "/../../README.md", "utf8");
 const cheatHtml = converter.makeHtml(cheatsheet);
 cheatsheetDiv.insertAdjacentHTML("beforebegin", cheatHtml);

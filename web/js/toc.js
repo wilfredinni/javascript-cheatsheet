@@ -1,4 +1,6 @@
-/* Insert the index menu, add the anchor links and the ids */
+/* --------------------------------------------------- */
+/* Insert the index menu, add the anchor links and ids */
+/* --------------------------------------------------- */
 
 // insert the index
 function insertIndex(div, title) {
@@ -8,7 +10,7 @@ function insertIndex(div, title) {
   }
 }
 
-// function to push the h2 and h3 to a new array
+// push the h2 and h3 to a new array
 function pushArray(array, newArray) {
   for (let item of array) {
     newArray.push(item);
