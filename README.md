@@ -9,7 +9,7 @@ multi-line comment */
 
 ## Data types
 
-JavaScript provides seven different data types which are:
+JavaScript provides seven different data types:
 
 | Data Types  | Examples                                                              |
 | ----------- | --------------------------------------------------------------------- |
@@ -35,14 +35,14 @@ myString = "myVar";
 var myNum = 0;
 
 // add, subtract, multiply and divide numbers
-myVar = 5 + 10; // assigned 15
-myVar = 12 - 6; // assigned 6
-myVar = 13 * 13; // assigned 169
-myVar = 16 / 2; // assigned 8
+myVar = 5 + 10; // 15
+myVar = 12 - 6; // 6
+myVar = 13 * 13; // 169
+myVar = 16 / 2; // 8
 
 // increment and decrement numbers
-i++; // is the equivalent of i = i + 1
-i--; // is the equivalent of i = i - 1;
+i++; // the equivalent of i = i + 1
+i--; // the equivalent of i = i - 1;
 
 // decimals
 var ourDecimal = 5.7; // float

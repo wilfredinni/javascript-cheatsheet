@@ -9,19 +9,11 @@ searchIcon.addEventListener("click", showModal);
 searchModal.addEventListener("click", removeBackground);
 searchBar.addEventListener("keyup", filterTopics);
 
-// get all h2 and h3 tags
+// get all h2 tags
 let topics = [];
 let h2 = document.getElementsByTagName("h2");
-console.log(h2);
-
-// let h3 = document.getElementsByTagName("h3");
-
-// replaceAddId(h2);
-// replaceAddId(h3);
 
 pushArray(h2, topics);
-// pushArray(h3, topics);
-
 
 for (let item of topics) {
   let link = replace(item);
@@ -81,12 +73,6 @@ function pushArray(array, newArray) {
     newArray.push(item);
   }
 }
-
-// function replaceAddId(array) {
-//   for (let item of array) {
-//     item.id = replace(item);
-//   }
-// }
 
 document.onkeyup = function (e) {
   if (e.ctrlKey && e.which == 90) {

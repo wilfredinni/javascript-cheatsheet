@@ -20,17 +20,16 @@
     </div>
 
     <div id="navbarExampleTransparentExample" class="navbar-menu">
-      <div class="navbar-end search-icon">
+      <div class="navbar-end navbar-search-icon">
         <a id="search-icon" class="navbar-item">
           <span class="icon">
-            <i class="fas fa-search fa-lg"></i>
+            <i class="fas fa-search fa-lg" title="Quick Search - ctrl+z"></i>
           </span>
         </a>
         <div class="navbar-item">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
-          ctr+z
         </div>
       </div>
     </div>
@@ -40,9 +39,9 @@
   <div id="search-modal">
     <div class="search-content">
       <!-- search bar -->
-      <div class="field field-nmb">
+      <div class="field field-mb">
         <spam class="control has-icons-left">
-          <input id="search-bar" class="input search-bar" type="search" placeholder="Search">
+          <input id="search-bar" class="input" type="search" placeholder="Search">
           <span class="icon is-small is-left">
             <i class="fas fa-search"></i>
           </span>
@@ -60,15 +59,17 @@
         Clear Search...
       </div>
       <!-- results -->
-      <div id="results"></div>
+      <div id="results" class="results"></div>
     </div>
   </div>
 
   <div class="section container">
-    <div class="columns">
+    <div class="columns reverse-columns">
+      <!-- cheatsheet -->
       <div class="content column is-three-quarters">
-        <div id="cheatsheet" class=""></div>
+        <div id="cheatsheet"></div>
       </div>
+      <!-- TOC -->
       <div class="column content">
         <div class="fixed-toc">
           <h4>Table of Content</h4>
