@@ -3,6 +3,7 @@ import "bulma";
 import "../sass/style.scss";
 import "../css/atom-one-light.min.css";
 import * as showdown from "showdown";
+import "./notification";
 import {
   createIndex
 } from "./toc";
