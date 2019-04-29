@@ -290,7 +290,7 @@ const maximus = Math.max(...arr); // 89
 
 // [...new Set(arr)] = unique value array
 const arr = [1,2,2,3,3,4,5,5];
-const uniq = [1,2,3,4,5];
+const uniq = [...new Set(arr)]; // [1,2,3,4,5]
 
 // copy an array
 let thisArray = [true, true, undefined, false, null];
