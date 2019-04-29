@@ -4,7 +4,7 @@
   "description": "Simple cheat sheet for javascript",
   "main": "index.js",
   "scripts": {
-    "dev": "parcel ./web/index.html",
+    "dev": "parcel ./web/index.html -d ./localserver",
     "build": "parcel build ./web/index.html --public-url ."
   },
   "repository": {

@@ -4,3 +4,4 @@ node_modules/*
 web/.cache/*
 .DS_Store
 .cache
+localserver/*
