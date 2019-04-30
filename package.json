@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel ./web/index.html -d ./localserver",
-    "build": "parcel build ./web/index.html --public-url ."
+    "build": "parcel build ./web/index.html --public-url . -d ./docs"
   },
   "repository": {
     "type": "git",
