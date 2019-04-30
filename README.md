@@ -107,7 +107,7 @@ ourStr += anAdjective;
 | `\r` | carriage return    |
 | `\t` | tab                |
 | `\b` | backspace          |
-| `\f` | from feed          |
+| `\f` | form feed          |
 
 ### The length of a string
 
