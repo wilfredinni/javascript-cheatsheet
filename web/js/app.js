@@ -1,9 +1,15 @@
+// js
+import * as showdown from "showdown";
 import fs from "fs";
+import "./notification";
+import "./tinyquoter.min";
+
+// css and scss
 import "bulma";
 import "../sass/style.scss";
 import "../css/atom-one-light.min.css";
-import * as showdown from "showdown";
-import "./notification";
+
+// js
 import {
   createIndex
 } from "./toc";
