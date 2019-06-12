@@ -18,12 +18,12 @@
   },
   "homepage": "https://github.com/wilfredinni/javascript-cheatsheet#readme",
   "dependencies": {
-    "bulma": "^0.7.4",
+    "bulma": "^0.7.5",
     "showdown": "^1.9.0"
   },
   "devDependencies": {
     "cssnano": "^4.1.10",
     "eslint": "^5.16.0",
-    "sass": "^1.19.0"
+    "sass": "^1.21.0"
   }
 }
