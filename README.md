@@ -1402,3 +1402,117 @@ export default function add(x,y) {
 import add from "math_functions";
 add(5,4); //Will return 9
 ```
+
+## Async/Await
+
+### JavaScript is a synchronous language!
+
+> This means only one operation can be carried out at a time. Also There are many ways JavaScript provides us with the ability to make it behave like an 
+> asynchronous language. One of them is with the Async-Await clause.
+
+### What is async-await?
+
+Async and Await are extensions of promises. First you need to clear the concepts of `Promises(Future)` before coming to async/await.
+
+### Async
+
+Async functions enable us to write promise based code as if it were synchronous, but without blocking the execution thread. It operates asynchronously via the event-loop. Async functions will always return a value. Using `async` simply implies that a promise will be returned, and if a `promise` is not returned, JavaScript automatically wraps it in a resolved promise with its value.
+
+```javascript
+async function firstAsync() {
+  return 23;
+}
+
+firstAsync().then(alert); // 23
+```
+
+Running the above code gives the alert output as 23, it means that a `promise` was returned, otherwise the `.then()` method simply would not be possible.
+
+### Await
+
+The await operator is used to wait for a Promise to complete. It can be used inside an `async` block only. The keyword `await` makes JavaScript wait until the promise returns a result. It has to be noted that it only makes the `async` function block wait and not the whole program execution.
+
+The code block below shows the use of Async Await together.
+
+```javascript
+async function firstAsync() {
+    let promise = new Promise((res, rej) => {
+        setTimeout(() => res("Now it's done!"), 1000)
+    });
+
+    // wait until the promise returns us a value
+    let result = await promise; 
+  
+    // "Now it's done!"
+    alert(result); 
+    }
+};
+firstAsync();
+```
+### Things to remember when using Async Await
+
+#### We can’t use the `await` keyword inside of regular functions.
+
+```javascript
+function firstAsync() {
+  let promise = Promise.resolve(10);
+  let result = await promise; // Syntax error
+}
+```
+
+To make the above function work properly, we need to add `async` before the function `firstAsync();`
+
+#### Async Await makes execution sequential
+
+Not necessarily a bad thing, but having paralleled execution is much much faster.
+
+For example:
+
+```javascript
+async function sequence() {
+  await promise1(50); // Wait 50ms…
+  await promise2(50); // …then wait another 50ms.
+  return "done!";
+}
+```
+
+The above takes 100ms to complete, not a huge amount of time but still slow.
+
+This is because it is happening in sequence. Two promises are returned, both of which takes 50ms to complete. The second promise executes only after the first promise is resolved. This is not a good practice, as large requests can be very time consuming. We have to make the execution parallel.
+
+That can be achieved by using `Promise.all()` .
+
+According to MDN:
+> The `Promise.all()` method returns a single `Promise` that resolves when all of the promises passed as an iterable have resolved or when the iterable contains > no promises. It rejects with the reason of the first promise that rejects.
+
+#### Promise.all()
+
+```javascript
+async function sequence() {
+    await Promise.all([promise1(), promise2()]);  
+    return "done!";
+}
+```
+
+The `promise.all()` function resolves when all the promises inside the iterable have been resolved and then returns the result.
+
+Another method:
+
+```javascript
+async function parallel() {
+    // Start a 500ms timer asynchronously…
+    const wait1 = promise1(50); 
+    // …meaning this timer happens in parallel.
+    const wait2 = promise2(50); 
+  
+    // Wait 50ms for the first timer…
+    await wait1; 
+    
+    // …by which time this timer has already finished.
+    await wait2; 
+  
+    return "done!";
+}
+```
+
+Async Await is very powerful but they come with caveats. But if we use them properly, they help to make our code very readable and efficient.
