@@ -1426,7 +1426,7 @@ There are two consumers in promise
 
 e.g -:
 var promise = new Promise(function(resolve, reject) { 
-  const x = 10"; 
+  const x = 10; 
   const y = 10
   if(x === y) { 
     resolve(); 
