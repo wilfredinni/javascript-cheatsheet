@@ -1516,3 +1516,25 @@ async function parallel() {
 ```
 
 Async Await is very powerful but they come with caveats. But if we use them properly, they help to make our code very readable and efficient.
+
+
+
+##Promise
+
+Promises in javascript is a way to handle asynchronous operations.
+
+Asynchronous operations are those operations which can run parallel to some other operation . You don't have to wait for other operation to finish so it can makes your work quite faster.
+
+var promise = new Promise(function(resolve, reject){ //do something });
+
+Promise takes a callback function as argument and that function takes two callback functions as argument (resolve,reject) If the operation got succeeded without any error then the resolve callback function is called. If there is any error while doing the operation , reject callback is called.
+
+There are two consumers in promise 1 .then() 2 .catch()
+
+.then() is invoked when the promise is either resolved or rejected
+
+.catch() is invoked when a promise is either rejected or some error has occured in execution.
+
+e.g -: var promise = new Promise(function(resolve, reject) { const x = 10; const y = 10 if(x === y) { resolve(); } else { reject(); } });
+
+promise. then(function () { console.log('Success, They are equal and are of same type'); }). catch(function () { console.log('Some error has occured'); });
