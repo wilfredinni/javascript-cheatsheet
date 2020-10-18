@@ -1,11 +1,23 @@
 <template>
   <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6"> </v-col>
+    <v-col cols="12" sm="8" md="6">
+      <nuxt-content :document="cheatsheet" />
+    </v-col>
   </v-row>
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
+
 export default {
-  components: {},
+  computed: {
+    ...mapGetters('cheatsheet', ['cheatsheet']),
+  },
+  created() {
+    this.loadCheatsheet()
+  },
+  methods: {
+    ...mapActions('cheatsheet', ['loadCheatsheet']),
+  },
 }
 </script>
