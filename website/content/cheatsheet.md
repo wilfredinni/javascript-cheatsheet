@@ -325,6 +325,53 @@ console.log(a, b) // 1, 2
 console.log(arr) // [3, 4, 5, 7]
 ```
 
+## Array Methods
+
+### Map
+
+```javascript
+var watchList = [
+  {
+    Title: 'Inception',
+    imdbRating: '8.8',
+    Type: 'movie',
+  },
+  {
+    Title: 'Interstellar',
+    imdbRating: '8.6',
+    Type: 'movie',
+  },
+  {
+    Title: 'The Dark Knight',
+    imdbRating: '9.0',
+    Type: 'movie',
+  },
+  {
+    Title: 'Batman Begins',
+    imdbRating: '7.9',
+    Type: 'movie',
+  },
+]
+
+const rating = watchList.map(function (movie) {
+  return { title: movie.Title, rating: movie.imdbRating }
+})
+/* [ { title: 'Inception', rating: '8.8' }, 
+  { title: 'Interstellar', rating: '8.6' }, 
+  { title: 'The Dark Knight', rating: '9.0' }, 
+  { title: 'Batman Begins', rating: '7.9' } ]  */
+
+// or...
+const rating = watchList.map((movie) => ({
+  title: movie.Title,
+  rating: movie.imdbRating,
+}))
+/* [ { title: 'Inception', rating: '8.8' }, 
+  { title: 'Interstellar', rating: '8.6' }, 
+  { title: 'The Dark Knight', rating: '9.0' }, 
+  { title: 'Batman Begins', rating: '7.9' } ]  */
+```
+
 ## JavaScript Objects
 
 ```javascript
@@ -1320,53 +1367,6 @@ class Magazine extends Book {
 mag = new Magazine('Mag', 'People', 2019, 'jan')
 mag.getSummary() // Mag was written by People in 2019
 mag.sayHi() // Hi!
-```
-
-## Functional Programming
-
-### Map
-
-```javascript
-var watchList = [
-  {
-    Title: 'Inception',
-    imdbRating: '8.8',
-    Type: 'movie',
-  },
-  {
-    Title: 'Interstellar',
-    imdbRating: '8.6',
-    Type: 'movie',
-  },
-  {
-    Title: 'The Dark Knight',
-    imdbRating: '9.0',
-    Type: 'movie',
-  },
-  {
-    Title: 'Batman Begins',
-    imdbRating: '7.9',
-    Type: 'movie',
-  },
-]
-
-const rating = watchList.map(function (movie) {
-  return { title: movie.Title, rating: movie.imdbRating }
-})
-/* [ { title: 'Inception', rating: '8.8' }, 
-  { title: 'Interstellar', rating: '8.6' }, 
-  { title: 'The Dark Knight', rating: '9.0' }, 
-  { title: 'Batman Begins', rating: '7.9' } ]  */
-
-// or...
-const rating = watchList.map((movie) => ({
-  title: movie.Title,
-  rating: movie.imdbRating,
-}))
-/* [ { title: 'Inception', rating: '8.8' }, 
-  { title: 'Interstellar', rating: '8.6' }, 
-  { title: 'The Dark Knight', rating: '9.0' }, 
-  { title: 'Batman Begins', rating: '7.9' } ]  */
 ```
 
 ## ES6 import and export
