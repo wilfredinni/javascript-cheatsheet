@@ -1063,7 +1063,7 @@ let ohStr = 'Ohhh no'
 let ohRegex = /Oh{3,6} no/
 let result = ohRegex.test(ohStr)
 
-// Match both the American English (favorite) and the British English (favourite) version of the word
+// Match both the American English (favorite) and the British English (favorite) version of the word
 let favWord = 'favorite'
 let favRegex = /favou?rite/
 let result = favRegex.test(favWord)
