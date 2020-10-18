@@ -12,7 +12,7 @@
           <v-expansion-panel-header expand-icon="mdi-menu-down" class="pb-0">
             <div>
               <v-icon class="mr-2" v-text="linkIcon(link)" />
-              {{ link.id }}
+              {{ link.text }}
             </div>
           </v-expansion-panel-header>
 

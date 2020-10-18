@@ -1,5 +1,7 @@
 ## Comments
 
+### Examples
+
 ```javascript
 // This is an in-line comment.
 
@@ -8,6 +10,8 @@ multi-line comment */
 ```
 
 ## Data types
+
+### Basics
 
 JavaScript provides seven different data types:
 
@@ -22,6 +26,8 @@ JavaScript provides seven different data types:
 | `symbol`    | Represents a unique identifier.                                       |
 
 ## Variables
+
+### Examples
 
 ```javascript
 // declare a variable
@@ -72,7 +78,7 @@ console.log(obj)
 
 ## Strings
 
-### Basics
+### Examples
 
 ```javascript
 // escape literal quotes
@@ -157,6 +163,8 @@ console.log(greeting)
 ```
 
 ## Arrays
+
+### Example
 
 ```javascript
 var sandwich = ['peanut butter', 'jelly', 'bread'][
@@ -373,6 +381,8 @@ const rating = watchList.map((movie) => ({
 ```
 
 ## JavaScript Objects
+
+### Example
 
 ```javascript
 var cat = {
@@ -604,6 +614,8 @@ const getMousePosition = (x, y) => ({ x, y })
 
 ## Booleans
 
+### Basics
+
 Booleans may only be one of two values: true or false. They are basically little on-off switches,
 where true is "on" and false is "off". These two states are mutually exclusive.
 
@@ -613,6 +625,8 @@ false
 ```
 
 ## If Else Statements
+
+### If Statement
 
 ```javascript
 if (condition is true) {
@@ -682,6 +696,8 @@ function findGreaterOrEqual(a, b) {
 
 ## Switch Statement
 
+### Example
+
 ```javascript
 switch(num) {
   case value1:
@@ -730,6 +746,8 @@ switch (val) {
 
 ## Comparison Operators
 
+### Basics
+
 | Operator | Meaning               |
 | -------- | --------------------- |
 | `==`     | Equality              |
@@ -744,6 +762,8 @@ switch (val) {
 | `        |                       | ` | Or |
 
 ## While Loops
+
+### While Loop
 
 ```javascript
 var ourArray = []
@@ -766,6 +786,8 @@ do {
 ```
 
 ## For Loops
+
+### For Loop
 
 ```javascript
 var ourArray = []
@@ -809,6 +831,8 @@ for (let value of myArray) {
 ```
 
 ## Functions
+
+### Example
 
 ```javascript
 function functionName() {
@@ -911,6 +935,8 @@ const person = {
 ```
 
 ## Regular Expressions
+
+### Resume Table
 
 | Character  | Description                                                                                        |
 | ---------- | -------------------------------------------------------------------------------------------------- |
@@ -1054,6 +1080,8 @@ let result = hello.replace(wsRegex, '$1') // returns 'Hello, World!'
 ```
 
 ## Object Oriented
+
+### Example
 
 ```javascript
 let duck = {
@@ -1267,6 +1295,8 @@ goodBoy.sing() // Singing to an awesome tune
 
 ## ES6 Object Oriented
 
+### Basics
+
 ES6 provides a new syntax to help create objects, the keyword `class`.The class syntax
 is just a syntax, and not a full-fledged class based implementation of object oriented paradigm,
 unlike in languages like Java, or Python, or Ruby etc.
@@ -1370,6 +1400,8 @@ mag.sayHi() // Hi!
 ```
 
 ## ES6 import and export
+
+### Basics
 
 > The lessons in this section handle non-browser features. import won't work on a browser directly.
 > However, we can use various tools to create code out of this to make it work in browser.
