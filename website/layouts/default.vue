@@ -1,15 +1,13 @@
 <template>
   <v-app dark>
     <v-navigation-drawer v-model="drawer" clipped fixed app width="320">
-      <!-- <pre>{{ toc }}</pre> -->
-
       <v-expansion-panels accordion flat active-class="primary--text">
         <v-expansion-panel v-for="link of toc" :key="link.id">
           <!-- header -->
           <v-expansion-panel-header expand-icon="mdi-menu-down" class="pb-0">
             <div>
-              <v-icon class="mr-2">mdi-comment-text-outline</v-icon>
-              {{ link.text }}
+              <v-icon class="mr-2" v-text="linkIcon(link)" />
+              {{ link.id }}
             </div>
           </v-expansion-panel-header>
 
@@ -22,14 +20,10 @@
                 :to="`#${item.id}`"
               >
                 <v-list-item-icon class="mr-2">
-                  <v-icon small color="yellow darken-3">
-                    mdi-comment-text-outline
-                  </v-icon>
+                  <v-icon small color="yellow darken-3" v-text="currentIcon" />
                 </v-list-item-icon>
                 <v-list-item-content>
-                  <v-list-item-title>
-                    {{ item.text }}
-                  </v-list-item-title>
+                  <v-list-item-title v-text="item.text" />
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -43,7 +37,7 @@
       <v-toolbar-title v-text="'Javascript Cheatsheet'" />
       <v-spacer />
       <v-btn color="grey darken-4" icon>
-        <v-icon>mdi-github</v-icon>
+        <v-icon v-text="'mdi-github'" />
       </v-btn>
     </v-app-bar>
     <v-main>
@@ -61,7 +55,18 @@ export default {
   data() {
     return {
       drawer: true,
-      items: [],
+      currentIcon: '',
+      icons: [
+        { id: 'comments', icon: 'mdi-comment-text-outline' },
+        { id: 'strings', icon: 'mdi-format-letter-case' },
+        { id: 'arrays', icon: 'mdi-contain' },
+        { id: 'booleans', icon: 'mdi-toggle-switch-outline' },
+        { id: 'if-else-statements', icon: 'mdi-swap-horizontal' },
+        { id: 'comparison-operators', icon: 'mdi-not-equal-variant' },
+        { id: 'while-loops', icon: 'mdi-sync' },
+        { id: 'for-loops', icon: 'mdi-refresh' },
+        { id: 'functions', icon: 'mdi-function-variant' },
+      ],
     }
   },
   computed: {
@@ -79,6 +84,17 @@ export default {
         })
       }
       return toc
+    },
+  },
+  methods: {
+    linkIcon(link) {
+      const icon = this.icons.find((icon) => link.id === icon.id)
+      if (icon) {
+        this.currentIcon = icon.icon
+        return icon.icon
+      }
+      this.currentIcon = 'mdi-pulse'
+      return 'mdi-pulse'
     },
   },
 }
