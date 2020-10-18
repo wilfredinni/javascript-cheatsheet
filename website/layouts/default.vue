@@ -101,6 +101,7 @@ export default {
       return toc
     },
   },
+
   methods: {
     linkIcon(link) {
       const icon = this.icons.find((icon) => link.id === icon.id)
@@ -110,3 +111,38 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.nuxt-content h2 {
+  margin-top: 1rem;
+}
+.nuxt-content h3 {
+  padding-top: 0.5;
+  margin-bottom: 0.5rem;
+}
+:target:before {
+  content: '';
+  display: block;
+  height: 60px;
+  margin: -60px 0 0;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+</style>
