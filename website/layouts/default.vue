@@ -121,14 +121,14 @@ export default {
 
 <style lang="scss">
 .nuxt-content h2 {
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  font-size: 2.15rem;
+  margin-top: 1.9rem;
+  margin-bottom: 0.5rem;
+  font-size: 2.25rem;
   font-weight: 400;
   letter-spacing: 0.0073529412em;
 }
 .nuxt-content h3 {
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
   padding-top: 70px; /* fixed header height*/
