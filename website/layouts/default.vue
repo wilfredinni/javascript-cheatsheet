@@ -43,7 +43,11 @@
 
     <v-app-bar color="yellow darken-2" flat clipped-left fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title v-text="'Javascript Cheatsheet'" />
+      <v-toolbar-title
+        class="home-link"
+        @click="toHome()"
+        v-text="'Javascript Cheatsheet'"
+      />
       <v-spacer />
       <v-btn color="grey darken-4" icon>
         <v-icon v-text="'mdi-github'" />
@@ -108,6 +112,9 @@ export default {
       if (icon) return icon.icon
       return 'mdi-nodejs'
     },
+    toHome() {
+      this.$router.push('/')
+    },
   },
 }
 </script>
@@ -132,6 +139,9 @@ export default {
 }
 .nuxt-content table {
   margin-bottom: 1.5rem;
+}
+.home-link {
+  cursor: pointer;
 }
 /* width */
 ::-webkit-scrollbar {
