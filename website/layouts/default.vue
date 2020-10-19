@@ -12,6 +12,8 @@
         v-text="'Javascript Cheatsheet'"
       />
       <v-spacer />
+      <SearchBar />
+      <v-spacer />
       <v-btn
         color="grey darken-4"
         href="https://github.com/wilfredinni/javascript-cheatsheet"
@@ -33,9 +35,10 @@
 <script>
 import { mapGetters } from 'vuex'
 import Sidebar from '~/components/core/Sidebar.vue'
+import SearchBar from '~/components/core/SearchBar.vue'
 
 export default {
-  components: { Sidebar },
+  components: { Sidebar, SearchBar },
   data() {
     return {
       drawer: true,
