@@ -12,10 +12,16 @@
         v-text="'Javascript Cheatsheet'"
       />
       <v-spacer />
-      <v-btn color="grey darken-4" icon>
+      <v-btn
+        color="grey darken-4"
+        href="https://github.com/wilfredinni/javascript-cheatsheet"
+        target="_blank"
+        icon
+      >
         <v-icon v-text="'mdi-github'" />
       </v-btn>
     </v-app-bar>
+
     <v-main>
       <v-container>
         <nuxt />
