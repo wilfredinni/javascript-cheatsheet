@@ -41,14 +41,7 @@
       </v-expansion-panels>
     </v-navigation-drawer>
 
-    <v-app-bar
-      color="yellow darken-1"
-      flat
-      clipped-left
-      fixed
-      app
-      collapse-on-scroll
-    >
+    <v-app-bar color="transparent" flat clipped-left fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="'Javascript Cheatsheet'" />
       <v-spacer />
@@ -121,11 +114,22 @@ export default {
 
 <style lang="scss">
 .nuxt-content h2 {
-  margin-top: 1rem;
+  margin-top: 1.5rem;
+  font-size: 2.15rem;
+  font-weight: 400;
+  letter-spacing: 0.0073529412em;
 }
 .nuxt-content h3 {
-  padding-top: 0.5;
+  font-size: 1.5rem;
+  font-weight: 500;
+  padding-top: 0.5rem;
   margin-bottom: 0.5rem;
+}
+.nuxt-content pre {
+  margin-bottom: 1.5rem;
+}
+.nuxt-content table {
+  margin-bottom: 1.5rem;
 }
 /* width */
 ::-webkit-scrollbar {

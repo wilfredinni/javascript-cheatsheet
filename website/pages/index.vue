@@ -26,7 +26,7 @@ export default {
 :target:before {
   content: '' !important;
   display: block !important;
-  height: 60px !important;
-  margin: -60px 0 0 !important;
+  height: 300px !important;
+  margin: -300px 0 0 !important;
 }
 </style>
