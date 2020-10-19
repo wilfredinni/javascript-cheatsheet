@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-navigation-drawer v-model="drawer" clipped fixed app width="320">
-      <Sidebar v-if="cheatsheet.toc" :toc="toc" />
+      <Sidebar :toc="toc" />
     </v-navigation-drawer>
 
     <v-app-bar color="yellow darken-2" flat clipped-left fixed app>
@@ -12,7 +12,7 @@
         v-text="'Javascript Cheatsheet'"
       />
       <v-spacer />
-      <SearchBar />
+      <SearchBar :toc="cheatsheet.toc" />
       <v-spacer />
       <v-btn
         color="grey darken-4"
@@ -48,24 +48,21 @@ export default {
     ...mapGetters('cheatsheet', ['cheatsheet']),
     toc() {
       const toc = []
-      this.cheatsheet.toc.forEach((link, index) => {
-        if (link.depth === 2) {
-          link.links = []
-          toc.push(link)
-        } else {
-          toc[toc.length - 1].links.push(link)
-        }
-      })
+      if (this.cheatsheet.toc) {
+        this.cheatsheet.toc.forEach((link, index) => {
+          if (link.depth === 2) {
+            link.links = []
+            toc.push(link)
+          } else {
+            toc[toc.length - 1].links.push(link)
+          }
+        })
+      }
       return toc
     },
   },
 
   methods: {
-    linkIcon(link) {
-      const icon = this.icons.find((icon) => link.id === icon.id)
-      if (icon) return icon.icon
-      return 'mdi-nodejs'
-    },
     toHome() {
       this.$router.push('/')
     },
@@ -75,11 +72,12 @@ export default {
 
 <style lang="scss">
 .nuxt-content h2 {
-  margin-top: 1.9rem;
-  margin-bottom: 0.5rem;
   font-size: 2.25rem;
   font-weight: 400;
   letter-spacing: 0.0073529412em;
+  margin-bottom: 0.5rem;
+  margin-top: -70px; /* negative fixed header height */
+  padding-top: 70px; /* fixed header height*/
 }
 .nuxt-content h3 {
   font-size: 1.6rem;

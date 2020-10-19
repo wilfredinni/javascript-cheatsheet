@@ -1,14 +1,66 @@
 <template>
-  <v-text-field
-    flat
-    hide-details
-    solo-inverted
-    placeholder="Type to start searching"
-  />
+  <div style="width: 600px">
+    <div class="text-center">
+      <v-menu offset-y tile>
+        <template v-slot:activator="{ on, attrs }">
+          <v-text-field
+            v-model="searchText"
+            flat
+            hide-details
+            solo-inverted
+            autocomplete="off"
+            placeholder="Type to start searching"
+            clearable
+            v-bind="attrs"
+            v-on="on"
+          />
+        </template>
+        <v-card v-if="searchText" tile max-height="600">
+          <v-list outlined tile class="pa-0">
+            <v-list-item
+              v-for="result in searchResults"
+              :key="result.id"
+              :to="`#${result.id}`"
+            >
+              <v-list-item-content>
+                <v-list-item-title>{{ result.text }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-card>
+      </v-menu>
+    </div>
+  </div>
 </template>
 
 <script>
-export default {}
+export default {
+  name: 'SearchBar',
+  props: {
+    toc: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+  },
+  data() {
+    return {
+      searchText: '',
+    }
+  },
+  computed: {
+    searchResults() {
+      if (this.searchText) {
+        const results = this.toc.filter((item) =>
+          item.text.toLowerCase().includes(this.searchText.toLowerCase())
+        )
+        return results
+      }
+      return []
+    },
+  },
+}
 </script>
 
 <style></style>
