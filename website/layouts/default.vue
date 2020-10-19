@@ -41,7 +41,7 @@
       </v-expansion-panels>
     </v-navigation-drawer>
 
-    <v-app-bar color="transparent" flat clipped-left fixed app>
+    <v-app-bar color="yellow darken-2" flat clipped-left fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title v-text="'Javascript Cheatsheet'" />
       <v-spacer />
@@ -115,6 +115,7 @@ export default {
 <style lang="scss">
 .nuxt-content h2 {
   margin-top: 1.5rem;
+  margin-bottom: 1rem;
   font-size: 2.15rem;
   font-weight: 400;
   letter-spacing: 0.0073529412em;
@@ -122,8 +123,9 @@ export default {
 .nuxt-content h3 {
   font-size: 1.5rem;
   font-weight: 500;
-  padding-top: 0.5rem;
   margin-bottom: 0.5rem;
+  padding-top: 70px; /* fixed header height*/
+  margin-top: -70px; /* negative fixed header height */
 }
 .nuxt-content pre {
   margin-bottom: 1.5rem;

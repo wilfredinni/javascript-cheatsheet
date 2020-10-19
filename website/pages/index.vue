@@ -22,11 +22,4 @@ export default {
 }
 </script>
 
-<style scoped>
-:target:before {
-  content: '' !important;
-  display: block !important;
-  height: 300px !important;
-  margin: -300px 0 0 !important;
-}
-</style>
+<style scoped></style>
