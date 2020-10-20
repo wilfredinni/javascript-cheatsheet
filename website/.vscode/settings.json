@@ -19,6 +19,7 @@
         "stimpson",
         "unshift",
         "voxel",
-        "vuex"
+        "vuex",
+        "whitespaces"
     ]
 }
