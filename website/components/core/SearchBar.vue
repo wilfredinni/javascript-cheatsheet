@@ -1,7 +1,7 @@
 <template>
   <div style="width: 600px">
     <div class="text-center">
-      <v-menu offset-y tile>
+      <v-menu v-model="searchMenu" offset-y tile>
         <template v-slot:activator="{ on, attrs }">
           <v-text-field
             v-model="searchText"
@@ -15,9 +15,10 @@
             append-icon="mdi-menu-down"
             v-bind="attrs"
             v-on="on"
+            @click:append="searchMenu = !searchMenu"
           />
         </template>
-        <v-card v-if="searchText" tile max-height="600">
+        <v-card tile max-height="600">
           <v-list outlined class="pa-0">
             <v-list-item style="background: #e5e5e5">
               <v-list-item-content>
@@ -27,11 +28,12 @@
               </v-list-item-content>
             </v-list-item>
           </v-list>
-          <v-list outlined tile class="pa-0">
+          <v-list v-if="searchText" outlined tile class="pa-0">
             <v-list-item
               v-for="result in searchResults"
               :key="result.id"
               :to="`#${result.id}`"
+              @click="searchText = result.text"
             >
               <v-list-item-content>
                 <v-list-item-subtitle>{{ result.text }}</v-list-item-subtitle>
@@ -58,6 +60,7 @@ export default {
   data() {
     return {
       searchText: '',
+      searchMenu: false,
     }
   },
   computed: {
@@ -69,6 +72,11 @@ export default {
         return results
       }
       return []
+    },
+  },
+  methods: {
+    talert() {
+      alert('sdf')
     },
   },
 }

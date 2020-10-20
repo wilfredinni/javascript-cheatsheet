@@ -1,12 +1,7 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
-      <v-alert
-        color="primary lighten-2"
-        border="left"
-        elevation="2"
-        colored-border
-      >
+      <v-alert dense color="blue-grey" text>
         <h1 class="display-1 mb-3">Welcome to Javascript Cheatsheet ☕️</h1>
         <span
           >Anyone can forget how to Match
