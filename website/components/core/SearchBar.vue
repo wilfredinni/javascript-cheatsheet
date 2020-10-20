@@ -11,11 +11,22 @@
             autocomplete="off"
             placeholder="Type to start searching"
             clearable
+            prepend-inner-icon="mdi-magnify"
+            append-icon="mdi-menu-down"
             v-bind="attrs"
             v-on="on"
           />
         </template>
         <v-card v-if="searchText" tile max-height="600">
+          <v-list outlined class="pa-0">
+            <v-list-item style="background: #e5e5e5">
+              <v-list-item-content>
+                <v-list-item-subtitle>
+                  {{ searchResults.length }} matching results
+                </v-list-item-subtitle>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
           <v-list outlined tile class="pa-0">
             <v-list-item
               v-for="result in searchResults"
@@ -23,7 +34,7 @@
               :to="`#${result.id}`"
             >
               <v-list-item-content>
-                <v-list-item-title>{{ result.text }}</v-list-item-title>
+                <v-list-item-subtitle>{{ result.text }}</v-list-item-subtitle>
               </v-list-item-content>
             </v-list-item>
           </v-list>
