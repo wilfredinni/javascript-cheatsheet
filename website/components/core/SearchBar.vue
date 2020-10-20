@@ -74,11 +74,7 @@ export default {
       return []
     },
   },
-  methods: {
-    talert() {
-      alert('sdf')
-    },
-  },
+  methods: {},
 }
 </script>
 
