@@ -4,7 +4,6 @@
       <Sidebar :toc="toc" />
     </v-navigation-drawer>
     <v-navigation-drawer right width="320" clipped fixed app>
-      dfsd
     </v-navigation-drawer>
 
     <v-app-bar
