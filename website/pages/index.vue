@@ -1,7 +1,7 @@
 <template>
   <v-row justify="center">
-    <v-col cols="12" sm="10" md="10" lg="9" xl="7">
-      <v-alert dense color="blue-grey" text>
+    <v-col cols="12" sm="10" md="10" lg="9" xl="8">
+      <v-alert color="blue-grey" text>
         <h1 class="display-1 mb-3">Welcome to Javascript Cheatsheet ☕️</h1>
         <span
           >Anyone can forget how to Match

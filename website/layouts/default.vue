@@ -91,7 +91,7 @@ export default {
 
   methods: {
     toHome() {
-      this.$router.push('/')
+      this.$router.push('/#')
     },
   },
 }
@@ -140,5 +140,8 @@ export default {
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
+}
+.v-application code {
+  background-color: transparent;
 }
 </style>

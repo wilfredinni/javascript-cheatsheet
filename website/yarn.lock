@@ -9200,6 +9200,11 @@ pretty@^2.0.0:
     extend-shallow "^2.0.1"
     js-beautify "^1.6.12"
 
+prism-themes@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/prism-themes/-/prism-themes-1.4.1.tgz#2e1b5877792e3d19fa365b1f0462335ae348aceb"
+  integrity sha512-Sxk5+Wr63WxMq/sU/JYxnq5WbB0CTjv9dscGGMF91iBo3rHEJFfhZVxEsepEOMRbOQ9Exc+xySuAEaX4ATxtIQ==
+
 prismjs@^1.22.0:
   version "1.22.0"
   resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.22.0.tgz#73c3400afc58a823dd7eed023f8e1ce9fd8977fa"
