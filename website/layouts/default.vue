@@ -3,21 +3,47 @@
     <v-navigation-drawer v-model="drawer" clipped fixed app width="320">
       <Sidebar :toc="toc" />
     </v-navigation-drawer>
+    <v-navigation-drawer right width="320" clipped fixed app>
+      dfsd
+    </v-navigation-drawer>
 
-    <v-app-bar color="yellow darken-2" flat clipped-left fixed app>
+    <v-app-bar
+      color="yellow darken-2"
+      flat
+      clipped-left
+      clipped-right
+      fixed
+      app
+    >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title
         class="home-link"
         @click="toHome()"
-        v-text="'Javascript Cheatsheet'"
+        v-text="'JS Cheatsheet'"
       />
       <v-spacer />
-      <SearchBar :toc="cheatsheet.toc" />
+      <SearchBar class="d-none d-md-block" :toc="cheatsheet.toc" />
       <v-spacer />
+      <!-- python cheatsheet -->
       <v-btn
-        color="grey darken-4"
+        class="mr-1 ml-9"
+        color="grey darken-3"
+        href="https://www.pythoncheatsheet.org/"
+        icon
+      >
+        <v-icon v-text="'mdi-language-python'" />
+      </v-btn>
+
+      <!-- dark/light -->
+      <v-btn class="mr-1" color="grey darken-3" icon>
+        <v-icon v-text="'mdi-brightness-6'" />
+      </v-btn>
+
+      <!-- github -->
+      <v-btn
+        class="mr-1"
+        color="grey darken-3"
         href="https://github.com/wilfredinni/javascript-cheatsheet"
-        target="_blank"
         icon
       >
         <v-icon v-text="'mdi-github'" />
@@ -42,6 +68,7 @@ export default {
   data() {
     return {
       drawer: true,
+      drawer2: true,
     }
   },
   computed: {

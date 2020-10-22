@@ -1,6 +1,6 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
+  <v-row justify="center">
+    <v-col cols="12" sm="10" md="10" lg="9" xl="7">
       <v-alert dense color="blue-grey" text>
         <h1 class="display-1 mb-3">Welcome to Javascript Cheatsheet ☕️</h1>
         <span
