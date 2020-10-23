@@ -34,7 +34,12 @@
       </v-btn>
 
       <!-- dark/light -->
-      <v-btn class="mr-1" color="grey darken-3" icon>
+      <v-btn
+        class="mr-1"
+        color="grey darken-3"
+        icon
+        @click="darkThemeChanger()"
+      >
         <v-icon v-text="'mdi-brightness-6'" />
       </v-btn>
 
@@ -68,6 +73,7 @@ export default {
     return {
       drawer: true,
       drawer2: true,
+      darkTheme: false,
     }
   },
   computed: {
@@ -87,10 +93,13 @@ export default {
       return toc
     },
   },
-
   methods: {
     toHome() {
       this.$router.push('/#')
+    },
+    darkThemeChanger() {
+      this.darkTheme = !this.darkTheme
+      this.$vuetify.theme.dark = this.darkTheme
     },
   },
 }
