@@ -20,9 +20,7 @@
         </template>
         <v-card tile max-height="600">
           <v-list outlined class="pa-0">
-            <v-list-item
-              :class="{ 'light-background': !this.$vuetify.theme.dark }"
-            >
+            <v-list-item :class="resultsCountBackground">
               <v-list-item-content>
                 <v-list-item-subtitle>
                   {{ searchResults.length }} matching results
@@ -95,6 +93,10 @@ export default {
         return results
       }
       return []
+    },
+    resultsCountBackground() {
+      if (!this.$vuetify.theme.dark) return 'light-background'
+      return ''
     },
   },
   methods: {},
