@@ -9,7 +9,8 @@
     "generate": "nuxt generate",
     "lint:js": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "lint": "yarn lint:js",
-    "test": "jest"
+    "test": "jest",
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
   },
   "dependencies": {
     "@nuxt/content": "^1.9.0",
@@ -31,6 +32,7 @@
     "eslint-plugin-prettier": "^3.1.4",
     "jest": "^26.5.0",
     "prettier": "^2.1.2",
+    "push-dir": "^0.4.1",
     "vue-jest": "^3.0.4"
   }
 }
