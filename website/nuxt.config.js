@@ -24,7 +24,7 @@ export default {
           'Anyone can forget how to Match whitespaces with a regex, remove an element from an Array or do a For Loop. This basic cheat sheet, mostly based on the lessons on freeCodeCamp, tries to provide a basic reference for beginner and advanced developers and lower the entry barrier for newcomers.',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/javascript.svg' }],
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
