@@ -3,9 +3,9 @@ import colors from 'vuetify/es5/util/colors'
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
-  router: {
-    base: '/javascript-cheatsheet/',
-  },
+  // router: {
+  //   base: '/javascript-cheatsheet/',
+  // },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
