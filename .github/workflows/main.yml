@@ -25,7 +25,6 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: |
-          sudo apt install yarn
           cd website
           yarn generate
           yarn deploy
