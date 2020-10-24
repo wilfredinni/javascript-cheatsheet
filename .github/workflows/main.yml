@@ -1,4 +1,4 @@
-name: Github pages deploy
+name: github pages
 
 on:
   push:
@@ -6,16 +6,33 @@ on:
       - master
 
 jobs:
-  gh-pages-deploy:
-    name: Deploying to gh-pages
-    runs-on: ubuntu-latest
+  build-deploy:
+    runs-on: ubuntu-18.04
     steps:
-      - name: Setup Node.js for use with actions
-        uses: actions/setup-node@v1.1.0
-        with:
-          version: 14.x
+      - uses: actions/checkout@master
 
-      - name: Run deploy script
-        run: |
-          ls
-          pwd
+      - name: Setup Node
+        uses: actions/setup-node@v1
+        with:
+          node-version: "10.x"
+
+      - name: Cache dependencies
+        uses: actions/cache@v1
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - run: npm run generate
+      - run: |
+          cd website
+          npm run generate
+          npm run deploy
+
+    # - name: Deploy
+    #   uses: peaceiris/actions-gh-pages@v2.5.0
+    #   env:
+    #     ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+    #     PUBLISH_BRANCH: gh-pages
+    #     PUBLISH_DIR: ./dist
