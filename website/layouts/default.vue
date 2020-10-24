@@ -3,17 +3,17 @@
     <v-navigation-drawer v-model="drawer" clipped fixed app width="320">
       <Sidebar :cheatsheet-toc="cheatsheet.toc" />
     </v-navigation-drawer>
-    <v-navigation-drawer right width="320" clipped fixed app>
-    </v-navigation-drawer>
-
-    <v-app-bar
-      color="yellow darken-2"
-      flat
-      clipped-left
-      clipped-right
+    <v-navigation-drawer
+      :color="rightDrawerColor"
+      right
+      width="320"
+      clipped
       fixed
       app
     >
+    </v-navigation-drawer>
+
+    <v-app-bar :color="appBarStyle" flat clipped-left clipped-right fixed app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
       <v-toolbar-title
         class="home-link"
@@ -26,7 +26,7 @@
       <!-- python cheatsheet -->
       <v-btn
         class="mr-1 ml-9"
-        color="grey darken-3"
+        :color="iconColor"
         href="https://www.pythoncheatsheet.org/"
         icon
       >
@@ -34,19 +34,14 @@
       </v-btn>
 
       <!-- dark/light -->
-      <v-btn
-        class="mr-1"
-        color="grey darken-3"
-        icon
-        @click="darkThemeChanger()"
-      >
+      <v-btn class="mr-1" :color="iconColor" icon @click="darkThemeChanger()">
         <v-icon v-text="'mdi-brightness-6'" />
       </v-btn>
 
       <!-- github -->
       <v-btn
         class="mr-1"
-        color="grey darken-3"
+        :color="iconColor"
         href="https://github.com/wilfredinni/javascript-cheatsheet"
         icon
       >
@@ -78,6 +73,18 @@ export default {
   },
   computed: {
     ...mapGetters('cheatsheet', ['cheatsheet']),
+    appBarStyle() {
+      if (!this.$vuetify.theme.dark) return 'yellow darken-2'
+      return ''
+    },
+    iconColor() {
+      if (!this.$vuetify.theme.dark) return 'grey darken-3'
+      return ''
+    },
+    rightDrawerColor() {
+      if (!this.$vuetify.theme.dark) return ''
+      return '#1E1E1E'
+    },
   },
   methods: {
     toHome() {
