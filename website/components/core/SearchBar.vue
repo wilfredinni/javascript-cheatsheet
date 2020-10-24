@@ -88,7 +88,9 @@ export default {
     searchResults() {
       if (this.searchText) {
         const results = this.cheatsheetToc.filter((item) =>
-          item.text.toLowerCase().includes(this.searchText.toLowerCase())
+          `${item.text} ${item.parent}`
+            .toLowerCase()
+            .includes(this.searchText.toLowerCase())
         )
         return results
       }
