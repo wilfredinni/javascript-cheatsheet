@@ -7,11 +7,19 @@ export default {
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '%s - javascript-cheatsheet',
-    title: 'javascript-cheatsheet',
+    title: 'Javascript Cheatsheet',
+    htmlAttrs: {
+      lang: 'en',
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: '' },
+      {
+        hid: 'description',
+        name: 'description',
+        content:
+          'Anyone can forget how to Match whitespaces with a regex, remove an element from an Array or do a For Loop. This basic cheat sheet, mostly based on the lessons on freeCodeCamp, tries to provide a basic reference for beginner and advanced developers and lower the entry barrier for newcomers.',
+      },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
@@ -42,9 +50,9 @@ export default {
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {
     markdown: {
-      // prism: {
-      //   theme: 'prism-themes/themes/prism-nord.css',
-      // },
+      prism: {
+        theme: 'prism-themes/themes/prism-nord.css',
+      },
     },
   },
 

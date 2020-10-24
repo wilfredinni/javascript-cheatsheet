@@ -9,7 +9,7 @@
             hide-details
             solo-inverted
             autocomplete="off"
-            placeholder="Type to start searching"
+            label="Type to start searching"
             clearable
             prepend-inner-icon="mdi-magnify"
             append-icon="mdi-menu-down"
