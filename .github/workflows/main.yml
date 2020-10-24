@@ -17,7 +17,6 @@ jobs:
 
       - name: Run deploy script
         run: |
-          cd website
           npm install
           npm run generate
           npm run deploy
