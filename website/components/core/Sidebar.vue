@@ -34,10 +34,10 @@
 export default {
   name: 'Sidebar',
   props: {
-    cheatsheet: {
-      type: String,
+    cheatsheetToc: {
+      type: Array,
       default() {
-        return ''
+        return []
       },
     },
   },
@@ -68,12 +68,15 @@ export default {
   computed: {
     toc() {
       const toc = []
-      if (this.cheatsheet.toc) {
-        this.cheatsheet.toc.forEach((link, index) => {
+      if (this.cheatsheetToc) {
+        let parent = ''
+        this.cheatsheetToc.forEach((link, index) => {
           if (link.depth === 2) {
             link.links = []
+            parent = link.text
             toc.push(link)
           } else {
+            link.parent = parent
             toc[toc.length - 1].links.push(link)
           }
         })

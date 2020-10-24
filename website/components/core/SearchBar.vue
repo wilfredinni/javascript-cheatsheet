@@ -20,7 +20,9 @@
         </template>
         <v-card tile max-height="600">
           <v-list outlined class="pa-0">
-            <v-list-item style="background: #e5e5e5">
+            <v-list-item
+              :class="{ 'light-background': !this.$vuetify.theme.dark }"
+            >
               <v-list-item-content>
                 <v-list-item-subtitle>
                   {{ searchResults.length }} matching results
@@ -36,8 +38,27 @@
               @click="searchText = result.text"
             >
               <v-list-item-content>
-                <v-list-item-subtitle>{{ result.text }}</v-list-item-subtitle>
+                <v-list-item-subtitle
+                  v-if="result.depth === 2"
+                  class="font-weight-medium"
+                >
+                  {{ result.text }}
+                </v-list-item-subtitle>
+                <v-list-item-subtitle v-else>
+                  {{ result.text }}
+                </v-list-item-subtitle>
               </v-list-item-content>
+              <v-list-item-action>
+                <v-list-item-subtitle
+                  v-if="result.depth === 2"
+                  class="font-weight-medium"
+                >
+                  <v-icon small color="warning">mdi-star</v-icon>
+                </v-list-item-subtitle>
+                <v-list-item-subtitle v-else class="font-weight-medium">
+                  {{ result.parent }}
+                </v-list-item-subtitle>
+              </v-list-item-action>
             </v-list-item>
           </v-list>
         </v-card>
@@ -50,7 +71,7 @@
 export default {
   name: 'SearchBar',
   props: {
-    toc: {
+    cheatsheetToc: {
       type: Array,
       default() {
         return []
@@ -66,7 +87,7 @@ export default {
   computed: {
     searchResults() {
       if (this.searchText) {
-        const results = this.toc.filter((item) =>
+        const results = this.cheatsheetToc.filter((item) =>
           item.text.toLowerCase().includes(this.searchText.toLowerCase())
         )
         return results
@@ -78,4 +99,8 @@ export default {
 }
 </script>
 
-<style></style>
+<style scoped>
+.light-background {
+  background: #e5e5e5;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-navigation-drawer v-model="drawer" clipped fixed app width="320">
-      <Sidebar :cheatsheet="cheatsheet" />
+      <Sidebar :cheatsheet-toc="cheatsheet.toc" />
     </v-navigation-drawer>
     <v-navigation-drawer right width="320" clipped fixed app>
     </v-navigation-drawer>
@@ -21,7 +21,7 @@
         v-text="'JS Cheatsheet'"
       />
       <v-spacer />
-      <SearchBar class="d-none d-md-block" :toc="cheatsheet.toc" />
+      <SearchBar class="d-none d-md-block" :cheatsheet-toc="cheatsheet.toc" />
       <v-spacer />
       <!-- python cheatsheet -->
       <v-btn
