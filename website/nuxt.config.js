@@ -4,7 +4,7 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
   router: {
-    base: '/',
+    base: '/javascript-cheatsheet/website/',
   },
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
