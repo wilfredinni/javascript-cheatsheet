@@ -35,9 +35,9 @@ export default {
   name: 'Sidebar',
   props: {
     cheatsheet: {
-      type: Object,
+      type: String,
       default() {
-        return {}
+        return ''
       },
     },
   },
