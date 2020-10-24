@@ -1,5 +1,7 @@
 ## Comments
 
+### Examples
+
 ```javascript
 // This is an in-line comment.
 
@@ -8,6 +10,8 @@ multi-line comment */
 ```
 
 ## Data types
+
+### Basics
 
 JavaScript provides seven different data types:
 
@@ -22,6 +26,8 @@ JavaScript provides seven different data types:
 | `symbol`    | Represents a unique identifier.                                       |
 
 ## Variables
+
+### Examples
 
 ```javascript
 // declare a variable
@@ -60,7 +66,7 @@ To ensure your data doesn't change, JavaScript provides a function Object.freeze
 ```javascript
 let obj = {
   name: "FreeCodeCamp",
-  review: "Awesome"
+  review: "Awesome",
 };
 
 Object.freeze(obj);
@@ -72,7 +78,7 @@ console.log(obj);
 
 ## Strings
 
-### Basics
+### Examples
 
 ```javascript
 // escape literal quotes
@@ -118,11 +124,11 @@ ourStr += anAdjective;
 ### Split and Join
 
 ```javascript
-let str = 'a string';
-let splittedStr = str.split('');
+let str = "a string";
+let splittedStr = str.split("");
 // ​​​​​[ 'a', ' ', 's', 't', 'r', 'i', 'n', 'g' ]​​​​​
 
-let joinedStr = splittedStr.join('')
+let joinedStr = splittedStr.join("");
 // a string​​​​​
 ```
 
@@ -144,7 +150,7 @@ var lastLetterOfFirstName = firstName[firstName.length - 1]; // a
 ```javascript
 const person = {
   name: "Zodiac Hasbro",
-  age: 56
+  age: 56,
 };
 
 // Template literal with multi-line and string interpolation
@@ -157,6 +163,8 @@ console.log(greeting);
 ```
 
 ## Arrays
+
+### Example
 
 ```javascript
 var sandwich = ["peanut butter", "jelly", "bread"][
@@ -176,7 +184,12 @@ var ourArray = [50, 40, 30];
 ourArray[0] = 15; // equals [15,40,30]
 
 // access multi-dimensional arrays with indexes
-var arr = [[1, 2, 3], [4, 5, 6], [7, 8, 9], [[10, 11, 12], 13, 14]];
+var arr = [
+  [1, 2, 3],
+  [4, 5, 6],
+  [7, 8, 9],
+  [[10, 11, 12], 13, 14],
+];
 arr[3]; // [[10,11,12], 13, 14]
 arr[3][0]; // [10,11,12]
 arr[3][0][1]; // 11
@@ -186,7 +199,7 @@ arr[3][0][1]; // 11
 
 ```javascript
 // reverse an array
-[1, 'two', 3].reverse() // ​​​​​[ 3, 'two', 1 ]
+[1, "two", 3].reverse(); // ​​​​​[ 3, 'two', 1 ]
 
 // push() to append data to the end of an array
 var arr = [1, 2, 3];
@@ -213,13 +226,13 @@ ourArray.unshift("Happy"); // ourArray now equals ["Happy", "J", "cat"]
 
 ```javascript
 // first parameter is the index, the second indicates the number of elements to delete.
-let array = ['today', 'was', 'not', 'so', 'great'];
+let array = ["today", "was", "not", "so", "great"];
 array.splice(2, 2);
 // remove 2 elements beginning with the 3rd element
 // array now equals ['today', 'was', 'great']
 
 // also returns a new array containing the value of the removed elements
-let array = ['I', 'am', 'feeling', 'really', 'happy'];
+let array = ["I", "am", "feeling", "really", "happy"];
 let newArray = array.splice(3, 2);
 // newArray equals ['really', 'happy']
 
@@ -228,8 +241,8 @@ function colorChange(arr, index, newColor) {
   arr.splice(index, 1, newColor);
   return arr;
 }
-let colorScheme = ['#878787', '#a08794', '#bb7e8c', '#c9b6be', '#d1becf'];
-colorScheme = colorChange(colorScheme, 2, '#332327');
+let colorScheme = ["#878787", "#a08794", "#bb7e8c", "#c9b6be", "#d1becf"];
+colorScheme = colorChange(colorScheme, 2, "#332327");
 // we have removed '#bb7e8c' and added '#332327' in its place
 // colorScheme now equals ['#878787', '#a08794', '#332327', '#c9b6be', '#d1becf']
 ```
@@ -238,7 +251,7 @@ colorScheme = colorChange(colorScheme, 2, '#332327');
 
 ```javascript
 // Copies a given number of elements to a new array and leaves the original array untouched
-let weatherConditions = ['rain', 'snow', 'sleet', 'hail', 'clear'];
+let weatherConditions = ["rain", "snow", "sleet", "hail", "clear"];
 let todaysWeather = weatherConditions.slice(1, 3);
 // todaysWeather equals ['snow', 'sleet'];
 // weatherConditions still equals ['rain', 'snow', 'sleet', 'hail', 'clear']
@@ -247,10 +260,10 @@ let todaysWeather = weatherConditions.slice(1, 3);
 ### indexOf
 
 ```javascript
-let fruits = ['apples', 'pears', 'oranges', 'peaches', 'pears'];
-fruits.indexOf('dates') // -1
-fruits.indexOf('oranges') // 2
-fruits.indexOf('pears') // 1, the first index at which the element exists
+let fruits = ["apples", "pears", "oranges", "peaches", "pears"];
+fruits.indexOf("dates"); // -1
+fruits.indexOf("oranges"); // 2
+fruits.indexOf("pears"); // 1, the first index at which the element exists
 ```
 
 ### Accessing Nested Arrays
@@ -259,12 +272,12 @@ fruits.indexOf('pears') // 1, the first index at which the element exists
 var ourPets = [
   {
     animalType: "cat",
-    names: ["Meowzer", "Fluffy", "Kit-Cat"]
+    names: ["Meowzer", "Fluffy", "Kit-Cat"],
   },
   {
     animalType: "dog",
-    names: ["Spot", "Bowser", "Frankie"]
-  }
+    names: ["Spot", "Bowser", "Frankie"],
+  },
 ];
 ourPets[0].names[1]; // "Fluffy"
 ourPets[1].names[0]; // "Spot"
@@ -289,7 +302,7 @@ const arr = [6, 89, 3, 45];
 const maximus = Math.max(...arr); // 89
 
 // [...new Set(arr)] = unique value array
-const arr = [1,2,2,3,3,4,5,5];
+const arr = [1, 2, 2, 3, 3, 4, 5, 5];
 const uniq = [...new Set(arr)]; // [1,2,3,4,5]
 
 // copy an array
@@ -299,10 +312,9 @@ let thatArray = [...thisArray];
 // thisArray remains unchanged, and is identical to thatArray
 
 // combine arrays
-let thisArray = ['sage', 'rosemary', 'parsley', 'thyme'];
-let thatArray = ['basil', 'cilantro', ...thisArray, 'coriander'];
+let thisArray = ["sage", "rosemary", "parsley", "thyme"];
+let thatArray = ["basil", "cilantro", ...thisArray, "coriander"];
 // thatArray now equals ['basil', 'cilantro', 'sage', 'rosemary', 'parsley', 'thyme', 'coriander']
-
 ```
 
 ### ES6 Destructuring Arrays to Assign Variables
@@ -321,14 +333,63 @@ console.log(a, b); // 1, 2
 console.log(arr); // [3, 4, 5, 7]
 ```
 
+## Array Methods
+
+### Map
+
+```javascript
+var watchList = [
+  {
+    Title: "Inception",
+    imdbRating: "8.8",
+    Type: "movie",
+  },
+  {
+    Title: "Interstellar",
+    imdbRating: "8.6",
+    Type: "movie",
+  },
+  {
+    Title: "The Dark Knight",
+    imdbRating: "9.0",
+    Type: "movie",
+  },
+  {
+    Title: "Batman Begins",
+    imdbRating: "7.9",
+    Type: "movie",
+  },
+];
+
+const rating = watchList.map(function (movie) {
+  return { title: movie.Title, rating: movie.imdbRating };
+});
+/* [ { title: 'Inception', rating: '8.8' }, 
+  { title: 'Interstellar', rating: '8.6' }, 
+  { title: 'The Dark Knight', rating: '9.0' }, 
+  { title: 'Batman Begins', rating: '7.9' } ]  */
+
+// or...
+const rating = watchList.map((movie) => ({
+  title: movie.Title,
+  rating: movie.imdbRating,
+}));
+/* [ { title: 'Inception', rating: '8.8' }, 
+  { title: 'Interstellar', rating: '8.6' }, 
+  { title: 'The Dark Knight', rating: '9.0' }, 
+  { title: 'Batman Begins', rating: '7.9' } ]  */
+```
+
 ## JavaScript Objects
+
+### Example
 
 ```javascript
 var cat = {
   name: "Whiskers",
   legs: 4,
   tails: 1,
-  enemies: ["Water", "Dogs"]
+  enemies: ["Water", "Dogs"],
 };
 ```
 
@@ -339,7 +400,7 @@ Accessing with dot (`.`) notation
 ```javascript
 var myObj = {
   prop1: "val1",
-  prop2: "val2"
+  prop2: "val2",
 };
 
 var prop1val = myObj.prop1; // val1
@@ -352,7 +413,7 @@ Accessing with bracket (`[]`) notation
 var myObj = {
   "Space Name": "Kirk",
   "More Space": "Spock",
-  NoSpace: "USS Enterprise"
+  NoSpace: "USS Enterprise",
 };
 
 myObj["Space Name"]; // Kirk
@@ -366,7 +427,7 @@ Accessing with variables
 var dogs = {
   Fido: "Mutt",
   Hunter: "Doberman",
-  Snoopie: "Beagle"
+  Snoopie: "Beagle",
 };
 
 var myDog = "Hunter";
@@ -379,16 +440,16 @@ Accessing and modifying Nested Objects
 ```javascript
 let userActivity = {
   id: 23894201352,
-  date: 'January 1, 2017',
+  date: "January 1, 2017",
   data: {
     totalUsers: 51,
-    online: 42
-  }
+    online: 42,
+  },
 };
 
 userActivity.data.online = 45; // or
-userActivity['data'].online = 45; // or
-userActivity['data']['online'] = 45;
+userActivity["data"].online = 45; // or
+userActivity["data"]["online"] = 45;
 ```
 
 Creating an array from the keys of an object
@@ -397,26 +458,26 @@ Creating an array from the keys of an object
 let users = {
   Alan: {
     age: 27,
-    online: false
+    online: false,
   },
   Jeff: {
     age: 32,
-    online: true
+    online: true,
   },
   Sarah: {
     age: 48,
-    online: false
+    online: false,
   },
   Ryan: {
     age: 19,
-    online: true
-  }
+    online: true,
+  },
 };
 
 function getArrayOfUsers(obj) {
   let arr = [];
   for (let key in obj) {
-    arr.push(key)
+    arr.push(key);
   }
   return arr;
 }
@@ -430,7 +491,7 @@ var ourDog = {
   name: "Camper",
   legs: 4,
   tails: 1,
-  friends: ["everything!"]
+  friends: ["everything!"],
 };
 
 ourDog.name = "Happy Camper"; // or
@@ -469,7 +530,7 @@ alpha[value]; // "Y"
 ```javascript
 var myObj = {
   top: "hat",
-  bottom: "pants"
+  bottom: "pants",
 };
 
 myObj.hasOwnProperty("top"); // true
@@ -481,15 +542,15 @@ myObj.hasOwnProperty("middle"); // false
 ```javascript
 var ourStorage = {
   desk: {
-    drawer: "stapler"
+    drawer: "stapler",
   },
   cabinet: {
     "top drawer": {
       folder1: "a file",
-      folder2: "secrets"
+      folder2: "secrets",
     },
-    "bottom drawer": "soda"
-  }
+    "bottom drawer": "soda",
+  },
 };
 
 ourStorage.cabinet["top drawer"].folder2; // "secrets"
@@ -514,11 +575,11 @@ const { x: a, y: b, z: c } = voxel; // a = 3.6, b = 7.4, c = 6.54
 // Destructuring Variables from Nested Objects
 const a = {
   start: { x: 5, y: 6 },
-  end: { x: 6, y: -9 }
+  end: { x: 6, y: -9 },
 };
 
 const {
-  start: { x: startX, y: startY }
+  start: { x: startX, y: startY },
 } = a;
 
 console.log(startX, startY); // 5, 6
@@ -528,7 +589,7 @@ console.log(startX, startY); // 5, 6
 
 ```javascript
 // destructure the object in a function argument itself.
-const profileUpdate = profileData => {
+const profileUpdate = (profileData) => {
   const { name, age, nationality, location } = profileData;
   // do something with these variables
 };
@@ -544,7 +605,7 @@ const profileUpdate = ({ name, age, nationality, location }) => {
 ```javascript
 const getMousePosition = (x, y) => ({
   x: x,
-  y: y
+  y: y,
 });
 
 // the same function rewritten to use this new syntax:
@@ -552,6 +613,8 @@ const getMousePosition = (x, y) => ({ x, y });
 ```
 
 ## Booleans
+
+### Basics
 
 Booleans may only be one of two values: true or false. They are basically little on-off switches,
 where true is "on" and false is "off". These two states are mutually exclusive.
@@ -562,6 +625,8 @@ false;
 ```
 
 ## If Else Statements
+
+### If Statement
 
 ```javascript
 if (condition is true) {
@@ -635,6 +700,8 @@ function findGreaterOrEqual(a, b) {
 
 ## Switch Statement
 
+### Example
+
 ```javascript
 switch(num) {
   case value1:
@@ -683,6 +750,8 @@ switch (val) {
 
 ## Comparison Operators
 
+### Basics
+
 | Operator | Meaning               |
 | -------- | --------------------- |
 | `==`     | Equality              |
@@ -694,9 +763,11 @@ switch (val) {
 | `<`      | Less Than             |
 | `<=`     | Less or Equal Than    |
 | `&&`     | And                   |
-| `||`     | Or                    |
+| `        |                       | ` | Or |
 
 ## While Loops
+
+### While Loop
 
 ```javascript
 var ourArray = [];
@@ -720,6 +791,8 @@ do {
 
 ## For Loops
 
+### For Loop
+
 ```javascript
 var ourArray = [];
 var i = 0;
@@ -741,7 +814,11 @@ for (var i = 0; i < arr.length; i++) {
 }
 
 // Nested for loops
-var arr = [[1, 2], [3, 4], [5, 6]];
+var arr = [
+  [1, 2],
+  [3, 4],
+  [5, 6],
+];
 for (var i = 0; i < arr.length; i++) {
   for (var j = 0; j < arr[i].length; j++) {
     console.log(arr[i][j]);
@@ -758,6 +835,8 @@ for (let value of myArray) {
 ```
 
 ## Functions
+
+### Example
 
 ```javascript
 function functionName() {
@@ -790,13 +869,13 @@ var answer = plusThree(5); // 8
 ```javascript
 (function () {
   console.log("A cozy nest is ready");
-})()
+})();
 ```
 
 ### ES6 Arrow Functions
 
 ```javascript
-const myFunc = function() {
+const myFunc = function () {
   const myVar = "value";
   return myVar;
 };
@@ -811,19 +890,19 @@ const myFunc = () => {
 const myFunc = () => "value";
 
 // to pass parameters to an arrow function
-const doubler = item => item * 2;
+const doubler = (item) => item * 2;
 ```
 
 ### ES6 Higher Order Arrow Functions
 
 ```javascript
-FBPosts.filter(function(post) {
+FBPosts.filter(function (post) {
   return post.thumbnail !== null && post.shares > 100 && post.likes > 500;
 });
 
 // the previous function can be rewritten like this
 FBPosts.filter(
-  post => post.thumbnail !== null && post.shares > 100 && post.likes > 500
+  (post) => post.thumbnail !== null && post.shares > 100 && post.likes > 500
 );
 ```
 
@@ -845,9 +924,9 @@ console.log(howMany("string", null, [1, 2, 3], {})); // You have passed 4 argume
 // When defining functions within objects in ES5, we have to use the keyword function
 const person = {
   name: "Taylor",
-  sayHello: function() {
+  sayHello: function () {
     return `Hello! My name is ${this.name}.`;
-  }
+  },
 };
 
 // With ES6, You can remove the function keyword and colon
@@ -855,16 +934,18 @@ const person = {
   name: "Taylor",
   sayHello() {
     return `Hello! My name is ${this.name}.`;
-  }
+  },
 };
 ```
 
 ## Regular Expressions
 
+### Resume Table
+
 | Character  | Description                                                                                        |
 | ---------- | -------------------------------------------------------------------------------------------------- |
 | `\`        | Escapes a special character.                                                                       |
-| `|`        | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`.                   |
+| `          | `                                                                                                  | Search for multiple patterns. To match "yes" or "no", the regex is `/yes | no/`. |
 | `i`        | This flag is used to ignore upper and lowercase. `/ignorecase/i`.                                  |
 | `g`        | Search or extract a pattern more than once.                                                        |
 | `.`        | The wildcard character `.` will match any character except new lines.                              |
@@ -986,29 +1067,33 @@ let ohStr = "Ohhh no";
 let ohRegex = /Oh{3,6} no/;
 let result = ohRegex.test(ohStr);
 
-// Match both the American English (favorite) and the British English (favourite) version of the word
+// Match both the American English (favorite) and the British English (favorite) version of the word
 let favWord = "favorite";
 let favRegex = /favou?rite/;
 let result = favRegex.test(favWord);
 
 // Groups () let you reuse patterns
 let repeatNum = "42 42 42";
-let reRegex =  /^(\d+)\s\1\s\1$/; // every 1 represent the group (\d+)
+let reRegex = /^(\d+)\s\1\s\1$/; // every 1 represent the group (\d+)
 let result = reRegex.test(repeatNum);
 
 // Remove all the spaces at the beginning an end of a string
 let hello = "   Hello, World!  ";
 let wsRegex = /^\s+(.*\S)\s+$/;
-let result = hello.replace(wsRegex, '$1'); // returns 'Hello, World!'
+let result = hello.replace(wsRegex, "$1"); // returns 'Hello, World!'
 ```
 
-## Object Oriented Programming
+## Object Oriented
+
+### Example
 
 ```javascript
 let duck = {
   name: "Aflac",
   numLegs: 2,
-  sayName: function() {return "The name of this duck is " + this.name + ".";}
+  sayName: function () {
+    return "The name of this duck is " + this.name + ".";
+  },
 };
 
 duck.sayName(); // Returns "The name of this duck is Aflac."
@@ -1034,84 +1119,88 @@ let cardinal = new Bird("Bruce", "red");
 let duck = new Bird("Donald", "blue");
 
 // access and modify blueBird object
-cardinal.name // Bruce
-cardinal.color // red
+cardinal.name; // Bruce
+cardinal.color; // red
 cardinal.color = green;
-cardinal.color // green
+cardinal.color; // green
 
 // check if an object is an instance of a constructor
 cardinal instanceof Bird; // true
 crow instanceof Bird; // false
 
 // check an objects own (name, color, numLegs) properties
-cardinal.hasOwnProperty('color') // true
-cardinal.hasOwnProperty('age') // false
+cardinal.hasOwnProperty("color"); // true
+cardinal.hasOwnProperty("age"); // false
 
 //check an objects properties with the constructor property
 cardinal.constructor === Bird; // true
 
 // use constructor.prototype to add new properties to object constructors
 Bird.prototype.cute = true;
-cardinal.cute // true
-crow.cute // true
+cardinal.cute; // true
+crow.cute; // true
 
 // add more than one property and method to a constructor
 Bird.prototype = {
   constructor: Bird, // specify the constructor
   numLegs: 2, // new property
 
-  eat: function() { // new method
+  eat: function () {
+    // new method
     console.log("nom nom nom");
   },
 
-  describe: function() { // new method
+  describe: function () {
+    // new method
     console.log("My name is " + this.name);
-  }
+  },
 };
 
 let chicken = new Bird("Dinner", "brown");
-chicken.numLegs // 2
-chicken.eat() // nom nom nom
-chicken.describe() // My name is Dinner
+chicken.numLegs; // 2
+chicken.eat(); // nom nom nom
+chicken.describe(); // My name is Dinner
 ```
 
 ### Inheritance
 
 ```javascript
-function Animal() { }
+function Animal() {}
 
 Animal.prototype = {
   constructor: Animal,
-  eat: function() {
+  eat: function () {
     console.log("nom nom nom");
-  }
+  },
 };
 
 function Cat(name) {
-  this.name = name; 
+  this.name = name;
 }
 
 // make the Cat constructor inherit the eat function from Animal
 Cat.prototype = Object.create(Animal.prototype);
 
-let myCat = new Cat('charles');
-myCat.eat() // nom nom nom
+let myCat = new Cat("charles");
+myCat.eat(); // nom nom nom
 ```
 
 Add methods after Inheritance and override them
 
 ```javascript
-function Animal() { }
-Animal.prototype.eat = function() { console.log("nom nom nom"); };
+function Animal() {}
+Animal.prototype.eat = function () {
+  console.log("nom nom nom");
+};
 
 // Dog constructor
-function Dog() { }
+function Dog() {}
 
 // make the Gog constructor inherit the eat function from Animal
 Dog.prototype = Object.create(Animal.prototype);
 Dog.prototype.constructor = Dog;
 
-Dog.prototype.bark = function() {
+Dog.prototype.bark = function () {
   console.log("wof wof!");
 };
 
@@ -1121,12 +1210,12 @@ beagle.eat(); // "nom nom nom"
 beagle.bark(); // "Woof!"
 
 // override an inherited method
-Dog.prototype.eat = function() {
+Dog.prototype.eat = function () {
   return "nice meeeeat!";
 };
 
 let doberman = new Dog();
-doberman.eat() // nice meeeeat!
+doberman.eat(); // nice meeeeat!
 ```
 
 ### Mixins
@@ -1135,21 +1224,21 @@ A mixin allows unrelated objects to use a collection of functions.
 
 ```javascript
 let bird = {
-    name: "Donald",
-    numLegs: 2
-  };
-  
+  name: "Donald",
+  numLegs: 2,
+};
+
 let boat = {
-    name: "Warrior",
-  type: "race-boat"
+  name: "Warrior",
+  type: "race-boat",
 };
 
 // this mixin contain the glide method
-const glideMixin = function(obj) {
-    obj.glide = function() {
-        console.log("gliding...");
-    }
-}
+const glideMixin = function (obj) {
+  obj.glide = function () {
+    console.log("gliding...");
+  };
+};
 
 // the object is passed to the mixin and the glide method is assigned
 glideMixin(bird);
@@ -1168,7 +1257,8 @@ function Bird() {
   // instead of this.hatchedEgg...
   let hatchedEgg = 10; // private property
 
-  this.getHatchedEggCount = function () { // publicly available method that a bird object can use
+  this.getHatchedEggCount = function () {
+    // publicly available method that a bird object can use
     return hatchedEgg;
   };
 }
@@ -1195,19 +1285,21 @@ let funModule = (function () {
       obj.sing = function () {
         console.log("Singing to an awesome tune");
       };
-    }
-  }
-})()
+    },
+  };
+})();
 
-function Dog() { }
-let goodBoy = new Dog;
+function Dog() {}
+let goodBoy = new Dog();
 
 // assign the singMixin method to the goodBoy object
 funModule.singMixin(goodBoy);
-goodBoy.sing() // Singing to an awesome tune
+goodBoy.sing(); // Singing to an awesome tune
 ```
 
-## ES6 Object Oriented Programming
+## ES6 Object Oriented
+
+### Basics
 
 ES6 provides a new syntax to help create objects, the keyword `class`.The class syntax
 is just a syntax, and not a full-fledged class based implementation of object oriented paradigm,
@@ -1224,17 +1316,17 @@ class Book {
   }
 
   getSummary() {
-    return `${this.title} was written by ${this.author} in ${this.year}`
+    return `${this.title} was written by ${this.author} in ${this.year}`;
   }
 
   getAge() {
     const years = new Date().getFullYear() - this.year;
-    return `${this.title} is ${years} years old`
+    return `${this.title} is ${years} years old`;
   }
 }
 
-book = new Book('Book One', 'John Doe', 2016);
-book.getSummary(); // Book One was written by John Doe in 2016 
+book = new Book("Book One", "John Doe", 2016);
+book.getSummary(); // Book One was written by John Doe in 2016
 book.getAge(); // Book One is 3 years old
 ```
 
@@ -1273,7 +1365,7 @@ class Book {
   }
 
   static sayHi() {
-    return "Hi!"
+    return "Hi!";
   }
 }
 
@@ -1291,73 +1383,29 @@ class Book {
   }
 
   getSummary() {
-    return `${this.title} was written by ${this.author} in ${this.year}`
+    return `${this.title} was written by ${this.author} in ${this.year}`;
   }
 }
 
 class Magazine extends Book {
   constructor(title, author, year, month) {
-    super(title, author, year)
+    super(title, author, year);
     this.month = month;
   }
 
   sayHi() {
-    return "Hi!"
+    return "Hi!";
   }
 }
 
-mag = new Magazine('Mag', 'People', 2019, 'jan');
-mag.getSummary(); // Mag was written by People in 2019 
+mag = new Magazine("Mag", "People", 2019, "jan");
+mag.getSummary(); // Mag was written by People in 2019
 mag.sayHi(); // Hi!
 ```
 
-## Functional Programming
-
-### Map
-
-```javascript
-var watchList = [{
-    "Title": "Inception",
-    "imdbRating": "8.8",
-    "Type": "movie",
-  },
-  {
-    "Title": "Interstellar",
-    "imdbRating": "8.6",
-    "Type": "movie",
-  },
-  {
-    "Title": "The Dark Knight",
-    "imdbRating": "9.0",
-    "Type": "movie",
-  },
-  {
-    "Title": "Batman Begins",
-    "imdbRating": "7.9",
-    "Type": "movie",
-  }
-];
-
-const rating = watchList.map(function (movie) {
-  return {title: movie.Title, rating: movie.imdbRating}
-});
-/* [ { title: 'Inception', rating: '8.8' }, 
-  { title: 'Interstellar', rating: '8.6' }, 
-  { title: 'The Dark Knight', rating: '9.0' }, 
-  { title: 'Batman Begins', rating: '7.9' } ]  */
-
-// or...
-const rating = watchList.map(movie => ({
-    title: movie.Title,
-    rating: movie.imdbRating
-}));
-/* [ { title: 'Inception', rating: '8.8' }, 
-  { title: 'Interstellar', rating: '8.6' }, 
-  { title: 'The Dark Knight', rating: '9.0' }, 
-  { title: 'Batman Begins', rating: '7.9' } ]  */
-```
-
 ## ES6 import and export
+
+### Basics
 
 > The lessons in this section handle non-browser features. import won't work on a browser directly.
 > However, we can use various tools to create code out of this to make it work in browser.
@@ -1366,12 +1414,11 @@ const rating = watchList.map(movie => ({
 
 ```javascript
 // we can choose which parts of a module or file to load into a given file.
-import { function } from "file_path"
+import { function } from "file_path";
 // We can also import variables the same way!
 
 // Import Everything from a File
-import * as name_of_your_choice from "file_path"
-
+import * as name_of_your_choice from "file_path";
 ```
 
 ### export
@@ -1382,32 +1429,32 @@ Like import, export is a non-browser feature.
 ```javascript
 const capitalizeString = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
-export { capitalizeString } //How to export functions.
+};
+export { capitalizeString }; //How to export functions.
 export const foo = "bar"; //How to export variables.
 
 // Alternatively, if you would like to compact all your export statements into one line, you can take this approach
 const capitalizeString = (string) => {
   return string.charAt(0).toUpperCase() + string.slice(1);
-}
+};
 const foo = "bar";
-export { capitalizeString, foo }
+export { capitalizeString, foo };
 
 // use export default if only one value is being exported from a file.
 // It is also used to create a fallback value for a file or module
-export default function add(x,y) {
+export default function add(x, y) {
   return x + y;
 }
 // and to import
 import add from "math_functions";
-add(5,4); //Will return 9
+add(5, 4); //Will return 9
 ```
 
 ## Async/Await
 
 ### JavaScript is a synchronous language!
 
-> This means only one operation can be carried out at a time. Also There are many ways JavaScript provides us with the ability to make it behave like an 
+> This means only one operation can be carried out at a time. Also There are many ways JavaScript provides us with the ability to make it behave like an
 > asynchronous language. One of them is with the Async-Await clause.
 
 ### What is async-await?
@@ -1441,14 +1488,15 @@ async function firstAsync() {
     });
 
     // wait until the promise returns us a value
-    let result = await promise; 
-  
+    let result = await promise;
+
     // "Now it's done!"
-    alert(result); 
+    alert(result);
     }
 };
 firstAsync();
 ```
+
 ### Things to remember when using Async Await
 
 #### We can’t use the `await` keyword inside of regular functions.
@@ -1483,14 +1531,15 @@ This is because it is happening in sequence. Two promises are returned, both of 
 That can be achieved by using `Promise.all()` .
 
 According to MDN:
+
 > The `Promise.all()` method returns a single `Promise` that resolves when all of the promises passed as an iterable have resolved or when the iterable contains > no promises. It rejects with the reason of the first promise that rejects.
 
 #### Promise.all()
 
 ```javascript
 async function sequence() {
-    await Promise.all([promise1(), promise2()]);  
-    return "done!";
+  await Promise.all([promise1(), promise2()]);
+  return "done!";
 }
 ```
 
@@ -1500,18 +1549,18 @@ Another method:
 
 ```javascript
 async function parallel() {
-    // Start a 500ms timer asynchronously…
-    const wait1 = promise1(50); 
-    // …meaning this timer happens in parallel.
-    const wait2 = promise2(50); 
-  
-    // Wait 50ms for the first timer…
-    await wait1; 
-    
-    // …by which time this timer has already finished.
-    await wait2; 
-  
-    return "done!";
+  // Start a 500ms timer asynchronously…
+  const wait1 = promise1(50);
+  // …meaning this timer happens in parallel.
+  const wait2 = promise2(50);
+
+  // Wait 50ms for the first timer…
+  await wait1;
+
+  // …by which time this timer has already finished.
+  await wait2;
+
+  return "done!";
 }
 ```
 
