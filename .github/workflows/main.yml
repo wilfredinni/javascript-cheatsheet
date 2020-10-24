@@ -25,9 +25,10 @@ jobs:
             ${{ runner.os }}-node-
 
       - run: |
+          sudo apt install yarn
           cd website
-          npm run generate
-          npm run deploy
+          yarn generate
+          yarn deploy
 
     # - name: Deploy
     #   uses: peaceiris/actions-gh-pages@v2.5.0
