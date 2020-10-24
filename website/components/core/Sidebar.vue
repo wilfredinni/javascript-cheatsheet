@@ -34,7 +34,7 @@
 export default {
   name: 'Sidebar',
   props: {
-    toc: {
+    cheatsheet: {
       type: Array,
       default() {
         return []
@@ -64,6 +64,22 @@ export default {
         { id: 'asyncawait', icon: 'mdi-monitor-multiple' },
       ],
     }
+  },
+  computed: {
+    toc() {
+      const toc = []
+      if (this.cheatsheet.toc) {
+        this.cheatsheet.toc.forEach((link, index) => {
+          if (link.depth === 2) {
+            link.links = []
+            toc.push(link)
+          } else {
+            toc[toc.length - 1].links.push(link)
+          }
+        })
+      }
+      return toc
+    },
   },
   methods: {
     linkIcon(link) {

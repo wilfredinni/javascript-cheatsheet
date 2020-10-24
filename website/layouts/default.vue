@@ -1,7 +1,7 @@
 <template>
   <v-app dark>
     <v-navigation-drawer v-model="drawer" clipped fixed app width="320">
-      <Sidebar :toc="toc" />
+      <Sidebar :cheatsheet="cheatsheet" />
     </v-navigation-drawer>
     <v-navigation-drawer right width="320" clipped fixed app>
     </v-navigation-drawer>
@@ -78,20 +78,6 @@ export default {
   },
   computed: {
     ...mapGetters('cheatsheet', ['cheatsheet']),
-    toc() {
-      const toc = []
-      if (this.cheatsheet.toc) {
-        this.cheatsheet.toc.forEach((link, index) => {
-          if (link.depth === 2) {
-            link.links = []
-            toc.push(link)
-          } else {
-            toc[toc.length - 1].links.push(link)
-          }
-        })
-      }
-      return toc
-    },
   },
   methods: {
     toHome() {
