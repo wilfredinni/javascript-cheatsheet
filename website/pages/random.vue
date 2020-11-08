@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <h2>Random number generator</h2> -->
     <v-row>
       <v-col cols="6">
         <v-text-field
@@ -39,10 +38,12 @@
         <v-chip
           v-for="n in sortedResults"
           :key="n"
-          color="cyan lighten-3"
+          :color="getResultColor(n)"
           label
+          dark
           class="ma-2 font-weight-medium"
           :class="getNumberPadding(n)"
+          @click="workDone(n)"
         >
           {{ n }}
         </v-chip>
@@ -61,7 +62,8 @@ export default {
     return {
       total: null,
       randomNumbers: null,
-      results: [].sort(),
+      results: [],
+      done: [],
     }
   },
   computed: {
@@ -85,9 +87,21 @@ export default {
       if (this.results.includes(randomNumber)) this.generateNumber()
       else this.results.push(randomNumber)
     },
+    workDone(n) {
+      if (this.done.includes(n)) {
+        const index = this.done.indexOf(n)
+        if (index > -1) this.done.splice(index, 1)
+      } else {
+        this.done.push(n)
+      }
+    },
     getNumberPadding(n) {
       if (n < 10) return 'pa-5'
       return 'px-4 py-5'
+    },
+    getResultColor(n) {
+      if (this.done.includes(n)) return 'red'
+      return 'cyan lighten-3'
     },
   },
 }
