@@ -34,10 +34,10 @@
       </v-col>
     </v-row>
 
-    <v-row>
-      <v-col cols="12">
+    <v-row class="fill-height" align="center" justify="center">
+      <v-col v-if="results.length > 0" cols="12">
         <v-chip
-          v-for="n in results"
+          v-for="n in sortedResults"
           :key="n"
           color="cyan lighten-3"
           label
@@ -46,6 +46,10 @@
         >
           {{ n }}
         </v-chip>
+      </v-col>
+
+      <v-col v-else cols="12" class="mt-16">
+        <v-img height="100%" src="/analytics.svg"></v-img>
       </v-col>
     </v-row>
   </div>
@@ -57,10 +61,17 @@ export default {
     return {
       total: null,
       randomNumbers: null,
-      results: [],
+      results: [].sort(),
     }
   },
-  computed: {},
+  computed: {
+    sortedResults() {
+      const results = this.results.slice()
+      return results.sort(function (a, b) {
+        return a - b
+      })
+    },
+  },
   methods: {
     getRandomNumber(results) {
       this.results = []
