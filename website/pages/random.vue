@@ -1,5 +1,6 @@
 <template>
   <div>
+    <!-- form -->
     <v-row>
       <v-col cols="6">
         <v-text-field
@@ -21,18 +22,43 @@
       </v-col>
 
       <v-col cols="12" class="pt-0">
-        <v-btn
-          block
-          color="cyan darken-1"
-          depressed
-          dark
-          @click="getRandomNumber(randomNumbers)"
-        >
+        <v-btn block color="cyan darken-1" depressed dark @click="generate">
           Generar
         </v-btn>
       </v-col>
     </v-row>
 
+    <v-dialog v-model="confirmDialog" width="500">
+      <v-card>
+        <v-card-title class="headline white--text red lighten-1">
+          ¿Estás seguro?
+        </v-card-title>
+
+        <v-card-text class="pt-5">
+          Se eliminarán los todos los resultados actuales. Esta acción no se
+          puede deshacer.
+        </v-card-text>
+
+        <v-divider></v-divider>
+
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="grey" text @click="confirmDialog = false">
+            Cancelar
+          </v-btn>
+          <v-btn
+            color="cyan darken-1"
+            dark
+            depressed
+            @click=";(confirmDialog = false), getRandomNumber()"
+          >
+            Aceptar
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <!-- results -->
     <v-row class="fill-height" align="center" justify="center">
       <v-col v-if="results.length > 0" cols="12">
         <v-chip
@@ -60,6 +86,7 @@
 export default {
   data() {
     return {
+      confirmDialog: false,
       total: null,
       randomNumbers: null,
       results: [],
@@ -75,10 +102,14 @@ export default {
     },
   },
   methods: {
-    getRandomNumber(results) {
+    generate() {
+      if (this.results.length > 0) this.confirmDialog = true
+      else this.getRandomNumber()
+    },
+    getRandomNumber() {
       this.results = []
       this.done = []
-      for (let step = 0; step < results; step++) {
+      for (let step = 0; step < this.randomNumbers; step++) {
         this.generateNumber()
       }
     },
