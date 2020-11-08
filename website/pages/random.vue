@@ -28,6 +28,7 @@
       </v-col>
     </v-row>
 
+    <!-- confirm dialog -->
     <v-dialog v-model="confirmDialog" width="500">
       <v-card>
         <v-card-title class="headline white--text red lighten-1">
@@ -35,8 +36,8 @@
         </v-card-title>
 
         <v-card-text class="pt-5">
-          Se eliminarán los todos los resultados actuales. Esta acción no se
-          puede deshacer.
+          Se eliminarán los todos los resultados y se generaran nuevos. Esta
+          acción no se puede deshacer.
         </v-card-text>
 
         <v-divider></v-divider>

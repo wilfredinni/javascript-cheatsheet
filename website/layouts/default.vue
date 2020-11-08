@@ -1,5 +1,6 @@
 <template>
   <v-app dark>
+    <!-- :permanent="!$vuetify.breakpoint.xsOnly" -->
     <v-navigation-drawer v-model="drawer" clipped fixed app width="320">
       <Sidebar :cheatsheet-toc="cheatsheet.toc" />
     </v-navigation-drawer>
