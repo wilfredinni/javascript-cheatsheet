@@ -77,6 +77,7 @@ export default {
   methods: {
     getRandomNumber(results) {
       this.results = []
+      this.done = []
       for (let step = 0; step < results; step++) {
         this.generateNumber()
       }
