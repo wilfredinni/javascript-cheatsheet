@@ -1,17 +1,7 @@
 <template>
   <v-app dark>
-    <!-- :permanent="!$vuetify.breakpoint.xsOnly" -->
     <v-navigation-drawer v-model="drawer" clipped fixed app width="320">
       <Sidebar :cheatsheet-toc="cheatsheet.toc" />
-    </v-navigation-drawer>
-    <v-navigation-drawer
-      :color="rightDrawerColor"
-      right
-      width="320"
-      clipped
-      fixed
-      app
-    >
     </v-navigation-drawer>
 
     <v-app-bar :color="appBarStyle" flat clipped-left clipped-right fixed app>
@@ -68,7 +58,6 @@ export default {
   data() {
     return {
       drawer: true,
-      drawer2: true,
       darkTheme: false,
     }
   },
