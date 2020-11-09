@@ -104,12 +104,12 @@
 
           <v-btn
             color="error"
-            class="mb-10"
             dark
             absolute
-            bottom
+            icon
+            x-large
             right
-            fab
+            bottom
             @click="resetDialog = true"
           >
             <v-icon>mdi-delete-forever</v-icon>
@@ -138,8 +138,8 @@ export default {
   },
   computed: {
     sortedResults() {
-      const results = this.results.slice()
-      return results.sort(function (a, b) {
+      const sorted = this.results.slice()
+      return sorted.sort(function (a, b) {
         return a - b
       })
     },
