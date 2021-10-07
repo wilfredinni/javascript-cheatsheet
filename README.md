@@ -1565,3 +1565,60 @@ async function parallel() {
 ```
 
 Async Await is very powerful but they come with caveats. But if we use them properly, they help to make our code very readable and efficient.
+
+## Math Objects
+
+```javascript
+console.log(Math.PI);
+
+//output - 3.141592653589793
+```
+
+#### round() Method
+It rounds a number to the nearest integer.
+
+```javascript
+console.log(Math.floor(2.1));
+
+//output - 2
+```
+
+#### sqrt(a) Method
+It returns square root of a number.
+
+```javascript
+var x = 25;
+Math.sqrt(x);
+
+//output - 5
+```
+
+#### pow(a,b) Method
+It returns value of a to the power b.
+
+```javascript
+console.log(Math.floor(2.1));
+
+//output - 2
+```
+
+#### ceil(x) Method
+It rounds a number upwards to the nearest integer.
+
+```javascript
+var x = 25.3;
+Math.ceil(x);
+
+//output - 26
+```
+
+#### log(x) Method
+It returns the logarithmic value of x.
+
+```javascript
+var x = 25.3;
+
+Math.log(x);
+
+//output - 3.2308043957334744
+```
