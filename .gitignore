@@ -1,7 +1,0 @@
-.vscode/settings.json
-tests.js
-node_modules/*
-web/.cache/*
-.DS_Store
-.cache
-localserver/*
