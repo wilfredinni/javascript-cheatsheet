@@ -7,6 +7,6 @@ useHead({
 
 <template>
   <div class="text-center">
-    <h1 class="text-blue-500 text-4xl font-bold">Home</h1>
+    <h1 class="text-4xl font-bold text-blue-500">Home</h1>
   </div>
 </template>

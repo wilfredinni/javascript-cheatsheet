@@ -4,5 +4,25 @@
     "cSpell.words": [
         "Parens",
         "singleline"
-    ]
+    ],
+    "workbench.colorCustomizations": {
+        "activityBar.activeBackground": "#294176",
+        "activityBar.background": "#294176",
+        "activityBar.foreground": "#e7e7e7",
+        "activityBar.inactiveForeground": "#e7e7e799",
+        "activityBarBadge.background": "#000000",
+        "activityBarBadge.foreground": "#e7e7e7",
+        "commandCenter.border": "#e7e7e799",
+        "sash.hoverBorder": "#294176",
+        "statusBar.background": "#1c2c50",
+        "statusBar.foreground": "#e7e7e7",
+        "statusBarItem.hoverBackground": "#294176",
+        "statusBarItem.remoteBackground": "#1c2c50",
+        "statusBarItem.remoteForeground": "#e7e7e7",
+        "titleBar.activeBackground": "#1c2c50",
+        "titleBar.activeForeground": "#e7e7e7",
+        "titleBar.inactiveBackground": "#1c2c5099",
+        "titleBar.inactiveForeground": "#e7e7e799"
+    },
+    "peacock.remoteColor": "1c2c50"
 }
