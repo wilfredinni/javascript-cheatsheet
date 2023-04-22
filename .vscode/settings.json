@@ -24,5 +24,6 @@
         "titleBar.inactiveBackground": "#1c2c5099",
         "titleBar.inactiveForeground": "#e7e7e799"
     },
-    "peacock.remoteColor": "1c2c50"
+    "peacock.remoteColor": "1c2c50",
+    "vue.features.codeActions.enable": false
 }
