@@ -7,8 +7,18 @@ const setColorTheme = (theme: 'light' | 'dark') => {
 
 <template>
   <ClientOnly>
-    <button @click="setColorTheme(useColorMode().preference === 'light' ? 'dark' : 'light')">
-      <Icon :name="currentTheme === 'light' ? 'heroicons:sun-solid' : 'heroicons:moon-solid'" />
+    <button
+      @click="
+        setColorTheme(useColorMode().preference === 'light' ? 'dark' : 'light')
+      "
+    >
+      <Icon
+        :name="
+          currentTheme === 'light'
+            ? 'heroicons:sun-solid'
+            : 'heroicons:moon-solid'
+        "
+      />
     </button>
     <template #fallback>
       <Icon name="heroicons:computer-desktop-solid" />
