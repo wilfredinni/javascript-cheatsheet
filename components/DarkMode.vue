@@ -12,6 +12,7 @@ const setColorTheme = (theme: 'light' | 'dark') => {
         setColorTheme(useColorMode().preference === 'light' ? 'dark' : 'light')
       "
     >
+      <span class="sr-only">Theme</span>
       <Icon
         :name="
           currentTheme === 'light'
