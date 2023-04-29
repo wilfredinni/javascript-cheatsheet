@@ -1,7 +1,73 @@
+<script setup lang="ts">
+const route = useRoute()
+</script>
+
 <template>
   <nav
     class="sticky top-0 z-40 w-full flex-none border-b border-slate-900/10 bg-white/90 backdrop-blur dark:border-slate-50/[0.06] dark:bg-transparent lg:z-50"
   >
-    t
+    <div class="max-w-8xl mx-auto px-2 sm:px-6 lg:px-12">
+      <div class="relative flex h-14 justify-between">
+        <!-- menu -->
+        <div class="ml-14 flex flex-1 items-center space-x-6 lg:ml-0">
+          <div class="mr-3 flex flex-shrink-0 items-center">
+            <nuxt-link to="/">
+              <img
+                class="h-5 w-auto rounded"
+                src="/img/javascript-logo.png"
+                alt="python-cheatsheet"
+                height="10"
+                width="10"
+              />
+            </nuxt-link>
+          </div>
+
+          <a href="https://ggt.ink/PoVKNkO" rel="noreferrer">
+            <ui-base-badge class="hidden lg:flex">
+              <span class="hidden xl:flex">
+                ✨ Read the latest Python Cheatsheet Issue!
+              </span>
+              <span class="hidden lg:block xl:hidden"> ✨ Latest Issue </span>
+            </ui-base-badge>
+          </a>
+        </div>
+
+        <!-- actions -->
+        <div
+          class="absolute inset-y-0 right-0 flex items-center space-x-5 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+        >
+          <div
+            class="hidden border-r border-slate-200 pr-6 dark:border-slate-800 sm:ml-6 sm:space-x-6 lg:flex"
+          >
+            <a
+              v-once
+              href="/"
+              target="_blank"
+              class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 transition duration-300 hover:text-sky-500 dark:text-gray-200 dark:hover:text-sky-400"
+            >
+              Newsletter
+            </a>
+
+            <nuxt-link
+              to="/sponsor"
+              class="inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-300"
+              :class="
+                route.path === '/sponsor'
+                  ? 'text-sky-600 dark:text-sky-400'
+                  : 'text-slate-700 hover:text-sky-500 dark:text-gray-200 dark:hover:text-sky-400'
+              "
+            >
+              Sponsor
+              <span class="ml-1 text-red-500"> ❤</span>
+            </nuxt-link>
+          </div>
+          <dark-mode />
+          <a target="_blank" href="https://ggt.ink/vf7kKkS" rel="noreferrer">
+            <icons-github-icon />
+            <span class="sr-only">python cheatsheet repository</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </nav>
 </template>
