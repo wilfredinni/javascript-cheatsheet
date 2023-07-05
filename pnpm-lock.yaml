@@ -12,7 +12,7 @@ specifiers:
   nuxt: ^3.4.3
   nuxt-icon: ^0.4.0
   postcss: ^8.4.23
-  prettier: ^2.8.8
+  prettier: ^3.0.0
   prettier-plugin-tailwindcss: ^0.3.0
   tailwindcss: ^3.3.2
   typescript: ^5.0.4
@@ -31,8 +31,8 @@ devDependencies:
   nuxt: 3.4.3_qbkwib4x74nsb7pjius6z43idm
   nuxt-icon: 0.4.1
   postcss: 8.4.23
-  prettier: 2.8.8
-  prettier-plugin-tailwindcss: 0.3.0_prettier@2.8.8
+  prettier: 3.0.0
+  prettier-plugin-tailwindcss: 0.3.0_prettier@3.0.0
   tailwindcss: 3.3.2
   typescript: 5.0.4
 
@@ -4805,7 +4805,7 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  /prettier-plugin-tailwindcss/0.3.0_prettier@2.8.8:
+  /prettier-plugin-tailwindcss/0.3.0_prettier@3.0.0:
     resolution: {integrity: sha512-009/Xqdy7UmkcTBpwlq7jsViDqXAYSOMLDrHAdTMlVZOrKfM2o9Ci7EMWTMZ7SkKBFTG04UM9F9iM2+4i6boDA==}
     engines: {node: '>=12.17.0'}
     peerDependencies:
@@ -4857,12 +4857,12 @@ packages:
       prettier-plugin-twig-melody:
         optional: true
     dependencies:
-      prettier: 2.8.8
+      prettier: 3.0.0
     dev: true
 
-  /prettier/2.8.8:
-    resolution: {integrity: sha512-tdN8qQGvNjw4CHbY+XXk0JgCXn9QiF21a55rBe5LJAU+kDyC4WQn4+awm2Xfk2lQMk5fKup9XgzTZtGkjBdP9Q==}
-    engines: {node: '>=10.13.0'}
+  /prettier/3.0.0:
+    resolution: {integrity: sha512-zBf5eHpwHOGPC47h0zrPyNn+eAEIdEzfywMoYn2XPi0P44Zp0tSq64rq0xAREh4auw2cJZHo9QUob+NqCQky4g==}
+    engines: {node: '>=14'}
     hasBin: true
     dev: true
 
