@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@nuxt-themes/docus':
-    specifier: ^1.14.3
-    version: 1.14.3(nuxt@3.6.5)(postcss@8.4.27)(rollup@3.26.3)(vue@3.3.4)
+    specifier: ^1.14.4
+    version: 1.14.4(nuxt@3.6.5)(postcss@8.4.27)(rollup@3.26.3)(vue@3.3.4)
   '@nuxt/devtools':
     specifier: ^0.7.1
     version: 0.7.1(nuxt@3.6.5)(rollup@3.26.3)(vite@4.4.6)
@@ -1040,13 +1040,13 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt-themes/docus@1.14.3(nuxt@3.6.5)(postcss@8.4.27)(rollup@3.26.3)(vue@3.3.4):
-    resolution: {integrity: sha512-GNTyyZSvNjWK7y0efIME7xY9YfV7kkDM8uWqeq5rCwHVUoYtwNFmhKEuBbCssmaGwx0kl031PuQOkLnUMdC2Dg==}
+  /@nuxt-themes/docus@1.14.4(nuxt@3.6.5)(postcss@8.4.27)(rollup@3.26.3)(vue@3.3.4):
+    resolution: {integrity: sha512-weZrPh7EBvjZZ3KY/83sB+ps64Fc6T35mqJtrf2XF8sWf0pgwLOMs+0OLdG6vcSKy1bcc8ov4Jr2qMFbK5MLFA==}
     dependencies:
       '@nuxt-themes/elements': 0.9.4(postcss@8.4.27)(rollup@3.26.3)(vue@3.3.4)
       '@nuxt-themes/tokens': 1.9.1(postcss@8.4.27)(rollup@3.26.3)(vue@3.3.4)
       '@nuxt-themes/typography': 0.11.0(postcss@8.4.27)(rollup@3.26.3)(vue@3.3.4)
-      '@nuxt/content': 2.7.1(rollup@3.26.3)
+      '@nuxt/content': 2.7.2(rollup@3.26.3)
       '@nuxthq/studio': 0.13.4(rollup@3.26.3)
       '@vueuse/integrations': 10.2.1(focus-trap@7.5.2)(fuse.js@6.6.2)(vue@3.3.4)
       '@vueuse/nuxt': 10.2.1(nuxt@3.6.5)(rollup@3.26.3)(vue@3.3.4)
@@ -1128,8 +1128,8 @@ packages:
       - vue
     dev: true
 
-  /@nuxt/content@2.7.1(rollup@3.26.3):
-    resolution: {integrity: sha512-v7PozrJncWgo4FhjPSGz2hjcVlKYStZhazA2f2WxocKSpMWShR/bEnukn+7Ns+0oP7Llo53Nlw0LZs/nFL/XIg==}
+  /@nuxt/content@2.7.2(rollup@3.26.3):
+    resolution: {integrity: sha512-fP0nrnyjtFbluKltKUtC7jSMFc1xAH+bwweZyLwXb3gkIap2EHlVL+e9ptGt39+4HIkRkLgME7TNr/fUO+CHug==}
     dependencies:
       '@nuxt/kit': 3.6.5(rollup@3.26.3)
       consola: 3.2.3
