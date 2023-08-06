@@ -9,8 +9,8 @@ devDependencies:
     specifier: ^1.14.6
     version: 1.14.6(nuxt@3.6.5)(postcss@8.4.27)(rollup@3.27.0)(vue@3.3.4)
   '@nuxt/devtools':
-    specifier: ^0.7.4
-    version: 0.7.4(nuxt@3.6.5)(rollup@3.27.0)(vite@4.4.7)
+    specifier: ^0.7.5
+    version: 0.7.5(nuxt@3.6.5)(rollup@3.27.0)(vite@4.4.7)
   '@nuxt/eslint-config':
     specifier: ^0.1.1
     version: 0.1.1(eslint@8.46.0)
@@ -1188,8 +1188,8 @@ packages:
     resolution: {integrity: sha512-GBzP8zOc7CGWyFQS6dv1lQz8VVpz5C2yRszbXufwG/9zhStTIH50EtD87NmWbTMwXDvZLNg8GIpb1UFdH93JCA==}
     dev: true
 
-  /@nuxt/devtools-kit@0.7.4(nuxt@3.6.5)(rollup@3.27.0)(vite@4.4.7):
-    resolution: {integrity: sha512-+CKSSqalyW3elK364FamcHtXm6F03Iarfs9ftBiWmj3CdCTuv9aGpJFi0FKzXKzq/xlCtbWvIrqcaf2Iy//6NQ==}
+  /@nuxt/devtools-kit@0.7.5(nuxt@3.6.5)(rollup@3.27.0)(vite@4.4.7):
+    resolution: {integrity: sha512-Zadd4s2vHlFQYRBLqmCADLMs1qxht8KKCZzfdhEdCAHby/s3EkfnYIuRUBlrfuAuNxa4cyExKFpeDpQ67N5fIQ==}
     peerDependencies:
       nuxt: ^3.6.5
       vite: '*'
@@ -1204,8 +1204,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/devtools-wizard@0.7.4:
-    resolution: {integrity: sha512-Ga+OgxTEZu0AnOmak5eMPrFThvLdoFVB5kEyyCrnBNdkTvX5Dtr8FvVAL+6jV0ALmqhWSXp99op2+QwHg7kgDg==}
+  /@nuxt/devtools-wizard@0.7.5:
+    resolution: {integrity: sha512-A8Urgy3hJBi3MSDEsr3yzOhO1jHoE80cQHmQUqAD8sD2e2fQSOwaH5CZMVGPbnSCWDfbchy+1cCwJ30JuEfeKg==}
     hasBin: true
     dependencies:
       consola: 3.2.3
@@ -1221,15 +1221,15 @@ packages:
       semver: 7.5.4
     dev: true
 
-  /@nuxt/devtools@0.7.4(nuxt@3.6.5)(rollup@3.27.0)(vite@4.4.7):
-    resolution: {integrity: sha512-uaKvVIYWuJ5L1NasXYiZfOh3w2HkHwaMyyVCceabVsOh27PBIeV7rzF5zyMrkyO3vivmWUuXcoZo3M0JO41sqg==}
+  /@nuxt/devtools@0.7.5(nuxt@3.6.5)(rollup@3.27.0)(vite@4.4.7):
+    resolution: {integrity: sha512-Uxjow3J0QcYnbgMA8XR/1myr6Nw8P5vA/PMxTTj8LKqSZhd2+BgjnAg1gRUmMeKQCvkUfNOD+AqTK2HOBdHaBw==}
     hasBin: true
     peerDependencies:
       nuxt: ^3.6.5
       vite: '*'
     dependencies:
-      '@nuxt/devtools-kit': 0.7.4(nuxt@3.6.5)(rollup@3.27.0)(vite@4.4.7)
-      '@nuxt/devtools-wizard': 0.7.4
+      '@nuxt/devtools-kit': 0.7.5(nuxt@3.6.5)(rollup@3.27.0)(vite@4.4.7)
+      '@nuxt/devtools-wizard': 0.7.5
       '@nuxt/kit': 3.6.5(rollup@3.27.0)
       birpc: 0.2.12
       boxen: 7.1.1
@@ -1257,7 +1257,7 @@ packages:
       rc9: 2.1.1
       semver: 7.5.4
       sirv: 2.0.3
-      unimport: 3.1.0(rollup@3.27.0)
+      unimport: 3.1.3(rollup@3.27.0)
       vite: 4.4.7(@types/node@20.4.8)
       vite-plugin-inspect: 0.7.35(@nuxt/kit@3.6.5)(rollup@3.27.0)(vite@4.4.7)
       vite-plugin-vue-inspector: 3.5.0(vite@4.4.7)
@@ -1307,7 +1307,7 @@ packages:
       scule: 1.0.0
       semver: 7.5.4
       unctx: 2.3.1
-      unimport: 3.1.0(rollup@3.27.0)
+      unimport: 3.1.3(rollup@3.27.0)
       untyped: 1.4.0
     transitivePeerDependencies:
       - rollup
@@ -7779,6 +7779,12 @@ packages:
       acorn: 8.10.0
     dev: true
 
+  /strip-literal@1.3.0:
+    resolution: {integrity: sha512-PugKzOsyXpArk0yWmUwqOZecSO0GH0bPoctLcqNDH9J04pVW3lflYE0ujElBGTloevcxF5MofAOZ7C5l2b+wLg==}
+    dependencies:
+      acorn: 8.10.0
+    dev: true
+
   /style-dictionary-esm@1.3.7:
     resolution: {integrity: sha512-xO2o8sKGera0SMLCLtix1dPvgD2ZyX2VohZ09cGRRuXBb8HQObqhgDQw4dLW+qJy4gj7r4Mdhz9J1rS2p50xDw==}
     engines: {node: '>=12.0.0'}
@@ -8160,6 +8166,24 @@ packages:
       pkg-types: 1.0.3
       scule: 1.0.0
       strip-literal: 1.0.1
+      unplugin: 1.4.0
+    transitivePeerDependencies:
+      - rollup
+    dev: true
+
+  /unimport@3.1.3(rollup@3.27.0):
+    resolution: {integrity: sha512-up4TE2yA+nMyyErGTjbYGVw95MriGa2hVRXQ3/JRp7984cwwqULcnBjHaovVpsO8tZc2j0fvgGu9yiBKOyxvYw==}
+    dependencies:
+      '@rollup/pluginutils': 5.0.2(rollup@3.27.0)
+      escape-string-regexp: 5.0.0
+      fast-glob: 3.3.1
+      local-pkg: 0.4.3
+      magic-string: 0.30.2
+      mlly: 1.4.0
+      pathe: 1.1.1
+      pkg-types: 1.0.3
+      scule: 1.0.0
+      strip-literal: 1.3.0
       unplugin: 1.4.0
     transitivePeerDependencies:
       - rollup
