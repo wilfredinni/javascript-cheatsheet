@@ -103,7 +103,7 @@ function Header({ navigation }) {
         <MobileNavigation navigation={navigation} />
       </div>
       <div className="relative flex flex-grow basis-0 items-center">
-        <Link href="/" aria-label="Home page">
+        <Link href="/" aria-label="Home page" rel="noreferrer">
           <Logomark className="h-9 w-9 lg:hidden" />
           <Logo className="hidden h-9 w-auto fill-slate-700 dark:fill-sky-100 lg:block" />
         </Link>
@@ -113,7 +113,7 @@ function Header({ navigation }) {
       </div>
       <div className="relative flex basis-0 justify-end gap-6 sm:gap-8 md:flex-grow">
         <ThemeSelector className="relative z-10" />
-        <Link href="https://github.com" className="group" aria-label="GitHub">
+        <Link href="https://github.com" rel="noreferrer" className="group" aria-label="GitHub">
           <GitHubIcon className="h-6 w-6 fill-slate-400 group-hover:fill-slate-500 dark:group-hover:fill-slate-300" />
         </Link>
       </div>
@@ -238,6 +238,7 @@ export function Layout({
                   <dd className="mt-1">
                     <Link
                       href={previousPage.href}
+                      rel="noreferrer"
                       className="text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                     >
                       <span aria-hidden="true">&larr;</span>{' '}
@@ -254,6 +255,7 @@ export function Layout({
                   <dd className="mt-1">
                     <Link
                       href={nextPage.href}
+                      rel="noreferrer"
                       className="text-base font-semibold text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300"
                     >
                       {nextPage.title} <span aria-hidden="true">&rarr;</span>
@@ -281,6 +283,7 @@ export function Layout({
                         <h3>
                           <Link
                             href={`#${section.id}`}
+                            rel="noreferrer"
                             className={clsx(
                               isActive(section)
                                 ? 'text-sky-500'
@@ -299,6 +302,7 @@ export function Layout({
                               <li key={subSection.id}>
                                 <Link
                                   href={`#${subSection.id}`}
+                                  rel="noreferrer"
                                   className={
                                     isActive(subSection)
                                       ? 'text-sky-500'

@@ -12,7 +12,7 @@ export function Button({ variant = 'primary', className, href, ...props }) {
   className = clsx(styles[variant], className)
 
   return href ? (
-    <Link href={href} className={className} {...props} />
+    <Link href={href} className={className} {...props} rel="noreferrer" />
   ) : (
     <button className={className} {...props} />
   )

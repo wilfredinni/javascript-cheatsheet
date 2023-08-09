@@ -19,6 +19,7 @@ export default function NotFound() {
         </p>
         <Link
           href="/"
+          rel="noreferrer"
           className="mt-8 text-sm font-medium text-slate-900 dark:text-white"
         >
           Go back home

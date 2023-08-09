@@ -17,7 +17,7 @@ export function QuickLink({ title, description, href, icon }) {
       <div className="relative overflow-hidden rounded-xl p-6">
         <Icon icon={icon} className="h-8 w-8" />
         <h2 className="mt-4 font-display text-base text-slate-900 dark:text-white">
-          <Link href={href}>
+          <Link href={href} rel="noreferrer">
             <span className="absolute -inset-px rounded-xl" />
             {title}
           </Link>
