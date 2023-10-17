@@ -30,6 +30,7 @@
   - [Example](#example-1)
   - [Accessing Objects Properties](#accessing-objects-properties)
   - [Modifying Objects Properties](#modifying-objects-properties)
+  - [Acessing Possible Objects Properties Optional Chaining](#acessing-possible-objects-properties-optional-chaining)
   - [Objects for Lookups](#objects-for-lookups)
   - [Test Object Properties](#test-object-properties)
   - [Accessing Nested Objects](#accessing-nested-objects)
@@ -608,6 +609,26 @@ ourDog["bark"] = "bow-wow";
 
 // delete properties
 delete ourDog.bark;
+```
+
+### Acessing Possible Objects Properties Optional Chaining
+
+Sometimes we need to access object properties that are invalid or null, creating a TypeError. In this scenario, we use Optional Chaining (?.) as a way to access the property only if it exists.
+
+```javascript
+const car = {
+  brand: "Toyota",
+  model: "Corolla",
+  // The Object Car haven't the "motor" property
+  // motor: {
+  //   cylinder: "2.0L",
+  //   power: "150hp"
+  // }
+};
+
+// Using Optional Chaining to access the "cylinder" property of the "engine" object in a secure way
+const cylinder = car?.motor?.cylinder;
+
 ```
 
 ### Objects for Lookups
