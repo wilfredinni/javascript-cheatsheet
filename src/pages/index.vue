@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { breakpointsTailwind } from '@vueuse/core'
-import ReferenceIcon from '~/components/icons/ReferenceIcon.vue'
+// import ReferenceIcon from '~/components/icons/ReferenceIcon.vue'
 import PluginIcon from '~/components/icons/PluginIcon.vue'
 import ArrowIcon from '~/components/icons/ArrowIcon.vue'
 import GridIcon from '~/components/icons/GridIcon.vue'
@@ -19,12 +19,12 @@ const cardLinks = [
     description: `Get to know how easy it is to contribute to the Javascript Cheatsheet.`,
     icon: PluginIcon,
   },
-  {
-    path: '/blog',
-    name: 'Blog',
-    description: `Read detailed articles about Python and it's ecosystem.`,
-    icon: ReferenceIcon,
-  },
+  // {
+  //   path: '/blog',
+  //   name: 'Blog',
+  //   description: `Read detailed articles about Python and it's ecosystem.`,
+  //   icon: ReferenceIcon,
+  // },
   {
     path: '/changelog',
     name: 'Changelog',
