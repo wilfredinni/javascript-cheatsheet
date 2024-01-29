@@ -50,7 +50,7 @@ const routesWithoutGithub = ['index', 'blog']
           <a
             target="_blank"
             :href="`${repository}${$route.path}.md`"
-            class="ml-1 flex text-sky-500 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500"
+            class="ml-1 flex text-green-500 hover:text-green-600 dark:text-green-400 dark:hover:text-green-500"
           >
             {{ EditLink.linkText }}
           </a>
@@ -67,7 +67,7 @@ const routesWithoutGithub = ['index', 'blog']
           <a
             target="_blank"
             :href="link.url"
-            class="ml-1 flex text-sky-500 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500"
+            class="ml-1 flex text-green-500 hover:text-green-600 dark:text-green-400 dark:hover:text-green-500"
           >
             {{ link.linkText }}
           </a>

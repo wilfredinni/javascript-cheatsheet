@@ -18,7 +18,7 @@ const showBanner = useLocalStorage(keyName.value, true)
     <div class="kinsta-background">
       <div class="mx-auto max-w-7xl py-3 px-3 sm:px-6 md:px-0 lg:px-8">
         <div class="sm:px-16 sm:text-center">
-          <div class="text-sm font-medium text-sky-600 dark:text-sky-400">
+          <div class="text-sm font-medium text-green-600 dark:text-green-400">
             <div class="flex items-center text-white md:hidden">
               <slot name="shortMsg">We announced a new product!</slot>
             </div>

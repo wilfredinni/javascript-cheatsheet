@@ -39,7 +39,7 @@ const pageToc = computed(() => {
             class="block py-1 font-medium transition duration-200"
             :class="
               currentSection === item.id
-                ? 'text-sky-500 '
+                ? 'text-green-500 '
                 : ' text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300'
             "
           >

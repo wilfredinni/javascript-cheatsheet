@@ -20,7 +20,7 @@ const sizes: Sizes = {
       class="relative flex items-center rounded-full px-4 leading-6 text-gray-600 dark:ring-slate-100/10 dark:text-slate-300 ring-1 ring-slate-900/10 hover:ring-gray-900/20"
       :class="sizes[size]"
     >
-      <span class="font-semibold text-sky-600 dark:text-sky-500">
+      <span class="font-semibold text-green-600 dark:text-green-500">
         <slot name="title"> Changelog </slot>
       </span>
       <span
