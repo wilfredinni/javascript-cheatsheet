@@ -7,7 +7,6 @@ import Layouts from 'vite-plugin-vue-layouts'
 import Components from 'unplugin-vue-components/vite'
 import { HeadlessUiResolver } from 'unplugin-vue-components/resolvers'
 import AutoImport from 'unplugin-auto-import/vite'
-import { VitePWA } from 'vite-plugin-pwa'
 import Markdown from 'unplugin-vue-markdown/vite'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
@@ -94,35 +93,6 @@ export default defineConfig(({ mode }) => {
               rel: 'noopener',
             },
           })
-        },
-      }),
-
-      // https://github.com/antfu/vite-plugin-pwa
-      VitePWA({
-        registerType: 'autoUpdate',
-        includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
-        manifest: {
-          name: 'Javascript Cheatsheet',
-          short_name: 'Javascript Cheatsheet',
-          theme_color: '#ffffff',
-          icons: [
-            {
-              src: '/android-chrome-192x192.png',
-              sizes: '192x192',
-              type: 'image/png',
-            },
-            {
-              src: '/android-chrome-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-            },
-            {
-              src: '/android-chrome-512x512.png',
-              sizes: '512x512',
-              type: 'image/png',
-              purpose: 'any maskable',
-            },
-          ],
         },
       }),
     ],

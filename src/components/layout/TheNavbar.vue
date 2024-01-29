@@ -64,18 +64,6 @@ const route = useRoute()
                 </a>
               </div>
             </template>
-            <router-link
-              to="/sponsor"
-              class="inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-300"
-              :class="
-                route.path === '/sponsor'
-                  ? 'text-sky-600 dark:text-sky-400'
-                  : 'text-slate-700 hover:text-sky-500 dark:text-gray-200 dark:hover:text-sky-400'
-              "
-            >
-              Sponsor
-              <span class="ml-1 text-red-500"> ❤</span>
-            </router-link>
             <base-reader-mode />
           </div>
 
