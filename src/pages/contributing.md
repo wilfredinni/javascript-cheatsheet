@@ -1,6 +1,6 @@
 ---
-title: 'Contributing - Python Cheatsheet'
-description: The following is a set of guidelines for contributing to the Python cheatsheet. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document.
+title: 'Contributing - Javascript Cheatsheet'
+description: The following is a set of guidelines for contributing to the Javascript Cheatsheet. These are mostly guidelines, not rules. Use your best judgment, and feel free to propose changes to this document.
 date: June 09, 2018
 updated: July 3, 2022
 ---
@@ -11,7 +11,7 @@ Contributing
 
 First off, thank you for taking the time to contribute!
 
-The following is a set of guidelines for contributing to the Python cheatsheet. These are mostly guidelines, not rules. Use your best judgment, and please don't hesitate to propose changes to [this document](https://github.com/wilfredinni/python-cheatsheet/blob/master/src/pages/contributing.md).
+The following is a set of guidelines for contributing to the Javascript Cheatsheet. These are mostly guidelines, not rules. Use your best judgment, and please don't hesitate to propose changes to [this document](https://github.com/wilfredinni/python-cheatsheet/blob/master/src/pages/contributing.md).
 
 ## Code of Conduct
 

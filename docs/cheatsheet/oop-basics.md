@@ -1,5 +1,5 @@
  ---
-title: Python OOP Basics - Python Cheatsheet
+title: Python OOP Basics - Javascript Cheatsheet
 
 description: Object-Oriented Programming (OOP) is a programming paradigm that revolves around the concept of objects, which are instances of classes. OOP principles are fundamental concepts that guide the design and development of software in an object-oriented way. In Python, OOP is supported by the use of classes and objects. Here are some of the basic OOP principles in Python
 ---

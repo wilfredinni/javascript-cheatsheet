@@ -1,11 +1,11 @@
 <script setup lang="ts">
 useHead({
-  title: 'Sponsor - Python Cheatsheet',
+  title: 'Sponsor - Javascript Cheatsheet',
   meta: [
     {
       name: 'description',
       content:
-        'Sponsor Python Cheatsheet and reach an ever-growing number of developers',
+        'Sponsor Javascript Cheatsheet and reach an ever-growing number of developers',
     },
   ],
 })
@@ -21,8 +21,8 @@ useHead({
       </h1>
 
       <p class="lead mt-0 text-center sm:text-start">
-        Python Cheatsheet relies on the support of sponsors to content for the
-        Python community
+        Javascript Cheatsheet relies on the support of sponsors to content for
+        the Python community
       </p>
     </prose>
   </section>
@@ -94,7 +94,7 @@ useHead({
     <prose>
       <h2 class="mb-4">Sponsors</h2>
       <p>
-        Thanks to all the current and previous sponsors of Python Cheatsheet
+        Thanks to all the current and previous sponsors of Javascript Cheatsheet
       </p>
     </prose>
 

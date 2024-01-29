@@ -1,5 +1,5 @@
 ---
-title: Python Dictionaries - Python Cheatsheet
+title: Python Dictionaries - Javascript Cheatsheet
 description: In Python, a dictionary is an insertion-ordered (from Python > 3.7) collection of key, value pairs.
 ---
 

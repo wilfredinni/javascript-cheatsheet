@@ -38,20 +38,20 @@ export function useMeta() {
   ]
 
   const meta = {
-    title: 'Python Cheatsheet - Python Cheatsheet',
+    title: 'Javascript Cheatsheet - Javascript Cheatsheet',
     description,
     meta: [
       { name: 'theme-color', content: themeColor },
       { name: 'description', content: description },
-      { name: 'author', content: 'Python Cheatsheet' },
+      { name: 'author', content: 'Javascript Cheatsheet' },
       { name: 'keywords', content: keywords.join(', ') },
-      { property: 'og:title', content: 'Python Cheatsheet' },
+      { property: 'og:title', content: 'Javascript Cheatsheet' },
       { property: 'og:description', content: description },
       { property: 'og:url', content: url },
       { property: 'og:type', content: 'article' },
       { property: 'og:image', content: cardImage },
-      { name: 'twitter:title', content: 'Python Cheatsheet' },
-      { name: 'twitter:description', content: 'The Python Cheatsheet' },
+      { name: 'twitter:title', content: 'Javascript Cheatsheet' },
+      { name: 'twitter:description', content: 'The Javascript Cheatsheet' },
       { name: 'twitter:image', content: cardImage },
       { name: 'twitter:card', content: 'summary' },
     ],

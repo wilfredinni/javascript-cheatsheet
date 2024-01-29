@@ -1,5 +1,5 @@
 ---
-title: Python Decorators - Python Cheatsheet
+title: Python Decorators - Javascript Cheatsheet
 description: A Python Decorator is a syntax that provide a concise and reusable way for extending a function or a class.
 ---
 

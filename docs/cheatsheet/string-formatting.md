@@ -1,5 +1,5 @@
 ---
-title: Python String Formatting - Python Cheatsheet
+title: Python String Formatting - Javascript Cheatsheet
 description: If your are using Python 3.6+, string f-strings are the recommended way to format strings.
 ---
 

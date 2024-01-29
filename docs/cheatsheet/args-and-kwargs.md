@@ -1,5 +1,5 @@
 ---
-title: Python Args and Kwargs - Python Cheatsheet
+title: Python Args and Kwargs - Javascript Cheatsheet
 description: args and kwargs may seem scary, but the truth is that they are not that difficult to grasp and have the power to grant your functions with flexibility and readability
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: Python Basics - Python Cheatsheet
+title: Python Basics - Javascript Cheatsheet
 description: The basics of python. We all need to start somewhere, so how about doing it here.
 ---
 

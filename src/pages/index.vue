@@ -16,7 +16,7 @@ const cardLinks = [
   {
     path: '/contributing',
     name: 'Contribute',
-    description: `Get to know how easy it is to contribute to the Python Cheatsheet.`,
+    description: `Get to know how easy it is to contribute to the Javascript Cheatsheet.`,
     icon: PluginIcon,
   },
   {
@@ -53,16 +53,16 @@ const smAndLarger = breakpoints.greater('sm')
       <base-title
         v-if="smAndLarger"
         id="python-cheatsheet"
-        title="Python Cheatsheet"
+        title="Javascript Cheatsheet"
         :description="description"
       >
-        <h1>Python Cheatsheet</h1>
+        <h1>Javascript Cheatsheet</h1>
       </base-title>
       <h1
         v-else
         class="mb-2 bg-gradient-to-r from-indigo-400 to-green-400 bg-clip-text text-center font-display text-4xl font-medium tracking-tight text-transparent dark:from-sky-400 dark:via-teal-300 dark:to-orange-300"
       >
-        Python Cheatsheet
+        Javascript Cheatsheet
       </h1>
 
       <p class="lead mt-0 text-center sm:text-start">
@@ -108,9 +108,9 @@ const smAndLarger = breakpoints.greater('sm')
         <router-link to="/cheatsheet/control-flow#for-loop">
           for loop
         </router-link>
-        . This Python cheatsheet tries to provide basic reference for beginner
-        and advanced developers, lower the entry barrier for newcomers and help
-        veterans refresh the old tricks.
+        . This Javascript Cheatsheet tries to provide basic reference for
+        beginner and advanced developers, lower the entry barrier for newcomers
+        and help veterans refresh the old tricks.
       </p>
     </prose>
 

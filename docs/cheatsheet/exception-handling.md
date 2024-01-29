@@ -1,5 +1,5 @@
 ---
-title: Python Exception Handling - Python Cheatsheet
+title: Python Exception Handling - Javascript Cheatsheet
 description: In Python, exception handling is the process of responding to the occurrence of exceptions.
 ---
 

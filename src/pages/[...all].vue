@@ -5,7 +5,7 @@ useHead({
     {
       name: 'description',
       content:
-        'These articles provide a deeper look to the the contents of the Python Cheatsheet.',
+        'These articles provide a deeper look to the the contents of the Javascript Cheatsheet.',
     },
   ],
 })
@@ -18,7 +18,7 @@ useHead({
     >
       <div class="flex flex-shrink-0 justify-center">
         <router-link to="/" class="inline-flex">
-          <span class="sr-only">Python Cheatsheet</span>
+          <span class="sr-only">Javascript Cheatsheet</span>
           <img
             class="h-12 w-auto"
             src="https://raw.githubusercontent.com/wilfredinni/merken/master/static/merken/img/snake.svg"

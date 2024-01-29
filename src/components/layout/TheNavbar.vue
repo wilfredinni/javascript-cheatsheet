@@ -86,7 +86,7 @@ const route = useRoute()
             rel="noreferrer"
           >
             <github-icon />
-            <span class="sr-only">python cheatsheet repository</span>
+            <span class="sr-only">Javascript Cheatsheet repository</span>
           </a>
         </div>
       </div>

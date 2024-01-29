@@ -1,5 +1,5 @@
 ---
-title: Python Sets - Python Cheatsheet
+title: Python Sets - Javascript Cheatsheet
 description: Python comes equipped with several built-in data types to help us organize our data. These structures include lists, dictionaries, tuples and sets.
 ---
 

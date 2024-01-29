@@ -1,5 +1,5 @@
 ---
-title: 'Changelog - Python Cheatsheet'
+title: 'Changelog - Javascript Cheatsheet'
 description: See what is new, what got fixed, and what is coming.
 date: July 19, 2022
 updated: February 25, 2023
@@ -191,7 +191,7 @@ Changelog
 
 ### Website
 
-- Launched Python Cheatsheet [newsletter](https://news.pythoncheatsheet.org/) 🎉
+- Launched Javascript Cheatsheet [newsletter](https://news.pythoncheatsheet.org/) 🎉
 - Added a newsletter subscription form component.
 
 ### Cheatsheet
