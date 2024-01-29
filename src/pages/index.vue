@@ -7,7 +7,7 @@ import GridIcon from '~/components/icons/GridIcon.vue'
 
 const cardLinks = [
   {
-    path: 'https://github.com/wilfredinni/python-cheatsheet',
+    path: 'https://github.com/wilfredinni/javascript-cheatsheet',
     name: 'View on GitHub',
     description: `Drop a star on GitHub if you find this project useful.`,
     icon: ArrowIcon,
@@ -46,13 +46,13 @@ const smAndLarger = breakpoints.greater('sm')
         <img
           class="h-20 w-auto"
           src="https://raw.githubusercontent.com/wilfredinni/merken/master/static/merken/img/snake.svg"
-          alt="python-cheatsheet"
+          alt="javascript-cheatsheet"
         />
       </div>
 
       <base-title
         v-if="smAndLarger"
-        id="python-cheatsheet"
+        id="javascript-cheatsheet"
         title="Javascript Cheatsheet"
         :description="description"
       >
@@ -73,8 +73,6 @@ const smAndLarger = breakpoints.greater('sm')
         and many other sources.
       </p>
     </prose>
-
-    <subscription-form class="mb-8 mt-6" />
 
     <div className="not-prose my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
       <base-link-card

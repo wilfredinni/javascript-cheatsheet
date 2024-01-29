@@ -22,7 +22,7 @@ useHead({
           <img
             class="h-12 w-auto"
             src="https://raw.githubusercontent.com/wilfredinni/merken/master/static/merken/img/snake.svg"
-            alt="python-cheatsheet"
+            alt="javascript-cheatsheet"
           />
         </router-link>
       </div>

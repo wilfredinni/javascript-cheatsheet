@@ -20,13 +20,13 @@ const footerLinks = [
   {
     linkHeader: 'Do you have a question?',
     linkText: 'ask the community',
-    url: 'https://github.com/wilfredinni/python-cheatsheet/discussions',
+    url: 'https://github.com/wilfredinni/javascript-cheatsheet/discussions',
     icon: QuestionIcon,
   },
   {
     linkHeader: 'Do you see a bug?',
     linkText: 'open an issue on GitHub',
-    url: 'https://github.com/wilfredinni/python-cheatsheet/issues',
+    url: 'https://github.com/wilfredinni/javascript-cheatsheet/issues',
     icon: BugIcon,
   },
 ]

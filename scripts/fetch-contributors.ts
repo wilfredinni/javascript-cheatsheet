@@ -10,7 +10,7 @@ async function fetchContributors(page = 1) {
   const collaborators: string[] = []
   const data =
     (await ofetch<Contributor[]>(
-      `https://api.github.com/repos/wilfredinni/python-cheatsheet/contributors?per_page=100&page=1`,
+      `https://api.github.com/repos/wilfredinni/javascript-cheatsheet/contributors?per_page=100&page=1`,
       {
         method: 'get',
         headers: {

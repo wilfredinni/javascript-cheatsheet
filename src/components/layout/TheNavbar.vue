@@ -18,7 +18,7 @@ const route = useRoute()
               <img
                 class="h-6 w-auto rounded"
                 src="/icons/javascript_logo.png"
-                alt="python-cheatsheet"
+                alt="javascript-cheatsheet"
                 height="10"
                 width="10"
               />
@@ -82,7 +82,7 @@ const route = useRoute()
           <base-theme-toggle />
           <a
             target="_blank"
-            href="https://github.com/wilfredinni/python-cheatsheet"
+            href="https://github.com/wilfredinni/javascript-cheatsheet"
             rel="noreferrer"
           >
             <github-icon />

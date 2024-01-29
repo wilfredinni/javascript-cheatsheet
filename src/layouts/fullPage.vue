@@ -43,8 +43,8 @@ const rootRepositoryRoutes = ['contributing', 'changelog']
         <the-footer
           :repository="
             !rootRepositoryRoutes.includes($route.name as string)
-              ? 'https://github.com/wilfredinni/python-cheatsheet/blob/master/docs'
-              : 'https://github.com/wilfredinni/python-cheatsheet/blob/master/src/pages'
+              ? 'https://github.com/wilfredinni/javascript-cheatsheet/blob/master/docs'
+              : 'https://github.com/wilfredinni/javascript-cheatsheet/blob/master/src/pages'
           "
         />
       </div>
