@@ -1,0 +1,40 @@
+/* https://github.com/antfu/prism-theme-vars */
+@import 'prism-theme-vars/base.css';
+
+.prose {
+  --prism-font-family: 'DM Mono', monospace;
+}
+
+.prose img {
+  width: 100%;
+}
+
+html .prose {
+  --prism-foreground: #f8fafc;
+  --prism-background: #2f2f2f;
+  --prism-comment: #94a3b8;
+  --prism-string: #a5e844;
+  --prism-interpolation: #ff6666;
+  --prism-literal: #429988;
+  --prism-keyword: #7bddff;
+  --prism-operator: #7bddff;
+  --prism-boolean: #7bddff;
+  --prism-number: #fd9170;
+  --prism-variable: #ff6666;
+  --prism-function: #c792ea;
+  --prism-deleted: #a14f55;
+  --prism-class: #ffcb6b;
+  --prism-builtin: #82aaff;
+  --prism-property: #80cbc4;
+  --prism-namespace: #db889a;
+  --prism-punctuation: #89ddff;
+  --prism-decorator: #bd8f8f;
+  --prism-regex: #f2ff00;
+  --prism-json-property: #6b8b9e;
+  --prism-line-number: #888888;
+  --prism-line-number-gutter: #eeeeee;
+  --prism-line-highlight-background: #444444;
+  --prism-selection-background: #444444;
+  --prism-font-size: 1.03em;
+  --prism-tab-size: 4;
+}
