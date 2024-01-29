@@ -36,13 +36,18 @@ export const useNavigationStore = defineStore('navigation', {
         updated: false,
       },
       {
-        name: 'Array Methods',
-        path: '/cheatsheet/array-methods',
+        name: 'Functions',
+        path: '/cheatsheet/functions',
         updated: false,
       },
       {
-        name: 'Functions',
-        path: '/cheatsheet/functions',
+        name: 'Arrays',
+        path: '/cheatsheet/arrays',
+        updated: false,
+      },
+      {
+        name: 'Array Methods',
+        path: '/cheatsheet/array-methods',
         updated: false,
       },
     ] as NavigationItem[],
