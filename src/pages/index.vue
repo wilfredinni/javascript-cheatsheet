@@ -64,31 +64,9 @@ const smAndLarger = breakpoints.greater('sm')
       >
         Javascript Cheatsheet
       </h1>
-
-      <p class="lead mt-0 text-center sm:text-start">
-        Based on the book
-        <a target="_blank" href="https://automatetheboringstuff.com/">
-          Automate the Boring Stuff with Python
-        </a>
-        and many other sources.
-      </p>
     </prose>
 
-    <div className="not-prose my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
-      <base-link-card
-        v-for="link in cardLinks"
-        v-once
-        :key="link.path"
-        :title="link.name"
-        :description="link.description"
-        :path="link.path"
-        :icon="link.icon"
-        :is-external="link.external"
-      />
-    </div>
-
     <prose class="hidden sm:block">
-      <h2 id="getting-started">Getting started</h2>
       <p>
         Anyone can forget how to
         <router-link
@@ -111,6 +89,19 @@ const smAndLarger = breakpoints.greater('sm')
         and help veterans refresh the old tricks.
       </p>
     </prose>
+
+    <div className="not-prose my-8 grid grid-cols-1 gap-6 sm:grid-cols-2">
+      <base-link-card
+        v-for="link in cardLinks"
+        v-once
+        :key="link.path"
+        :title="link.name"
+        :description="link.description"
+        :path="link.path"
+        :icon="link.icon"
+        :is-external="link.external"
+      />
+    </div>
 
     <div class="mt-10">
       <prose>
