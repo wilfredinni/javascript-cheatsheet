@@ -26,69 +26,76 @@ JavaScript provides seven different data types:
 
 ## Variables
 
-```javascript
-// declare a variable
-var ourName;
+In JavaScript, you can declare variables using `var`, `let`, and `const` keywords. Here's what you need to know about each:
 
-// store values
-myNumber = 5;
-myString = "myVar";
+1. `var`: This is the oldest way to declare variables. It's not used as much in modern JavaScript, but it's still important to understand. Variables declared with var are function-scoped, meaning they are only available within the function they're declared in.
 
-// declare variables with the assignment operator
-var myNum = 0;
+    ```javascript
+    var name = "John"
+    ```
 
-// add, subtract, multiply and divide numbers
-myVar = 5 + 10; // 15
-myVar = 12 - 6; // 6
-myVar = 13 * 13; // 169
-myVar = 16 / 2; // 8
+2. `let`: This is a newer way to declare variables, introduced in ES6 (ES2015). Variables declared with let are block-scoped, meaning they are only available within the block they're declared in.
 
-// increment and decrement numbers
-i++; // the equivalent of i = i + 1
-i--; // the equivalent of i = i - 1;
+    ```javascript
+    let age = 25;
+    ```
 
-// decimals
-var ourDecimal = 5.7; // float
-```
+3. `const`: Also introduced in ES6, const is used to declare constants, i.e., variables that cannot be reassigned. Like let, const is also block-scoped.
 
-### var, let and const
+    ```javascript
+    const pi = 3.14159;
+    ```
 
-- Unlike `var`, `let` throws an error if you declare the same variable twice.
-- Variables declared with `let` inside a block, statement, or expression, its scope is limited to that block, statement, or expression.
-- Variables declared with `const` are read-only and cannot be reassigned.
-- Objects (including arrays and functions) assigned to a variable using `const` are still mutable and only prevents the reassignment of the variable identifier.
+### Here are some important points to remember:
 
-To ensure your data doesn't change, JavaScript provides a function Object.freeze to prevent data mutation.
-
-```javascript
-let obj = {
-  name: "FreeCodeCamp",
-  review: "Awesome",
-};
-
-Object.freeze(obj);
-obj.review = "bad"; //will be ignored. Mutation not allowed
-obj.newProp = "Test"; // will be ignored. Mutation not allowed
-console.log(obj);
-// { name: "FreeCodeCamp", review:"Awesome"}
-```
+- Variables declared with `var` are hoisted to the top of their scope. This means they can be used before they're declared. This is not the case with `let` and `const`.
+- `let` and `const` create variables that are block-scoped, meaning they exist only within the block they're declared in. This is different from `var`, which creates function-scoped variables.
+- Variables declared with `const` cannot be reassigned. However, if the variable is an object or an array, its properties or elements can still be modified.
 
 ## Comments
 
-```javascript
-// This is an in-line comment.
+In JavaScript, you can write comments in your code to explain what it does, leave notes for yourself or others, or to prevent execution of code. There are two types of comments in JavaScript:
 
-/* This is a
-multi-line comment */
-```
+1. **Single-line comments**: These are created using two forward slashes `//`. Everything to the right of `//` on the same line is a comment.
+
+    ```javascript
+    // This is a single-line comment
+    ```
+
+2. **Multi-line comments**: These are created using `/*` to start the comment, and `*/` to end the comment. Everything between `/*` and `*/`, including multiple lines, is a comment.
+
+    ```javascript
+    /*
+    This is a multi-line comment
+    It can span multiple lines
+    */
+    ```
+
+Comments are ignored by the JavaScript interpreter and do not affect the execution of the code. They are purely for humans to read.
 
 ## The console.log Function
 
-`console.log()` is a function in JavaScript that is used to print any kind of variables defined before in it or just to print any message that needs to be displayed to the user. It's a very useful debugging tool, as it allows you to check the values of variables and the flow of execution of your code.
+The `console.log()` function in JavaScript is used to print output to the console. This can be very useful for debugging, as it allows you to output the values of variables at different points in your code, or to output messages that help you understand the flow of execution in your code.
+
+Here's how you use it:
 
 ```javascript
 console.log("Hello, World!"); // prints "Hello, World!" to the console
+```
 
+You can print the value of variables:
+
+```javascript
 let a = 1;
 console.log(a); // prints the value of a (1) to the console
 ```
+
+You can also print multiple values at once by separating them with commas:
+
+```javascript
+let a = 1;
+let b = 2;
+console.log(a, b); // prints "1 2" to the console
+```
+
+Note that `console.log()` does not affect the execution of your code. It's purely for outputting information to the console.
