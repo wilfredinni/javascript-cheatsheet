@@ -16,8 +16,8 @@ const route = useRoute()
           <div class="mr-3 flex flex-shrink-0 items-center">
             <router-link to="/">
               <img
-                class="h-5 w-auto"
-                src="https://raw.githubusercontent.com/wilfredinni/merken/master/static/merken/img/snake.svg"
+                class="h-6 w-auto rounded"
+                src="/icons/javascript_logo.png"
                 alt="python-cheatsheet"
                 height="10"
                 width="10"
