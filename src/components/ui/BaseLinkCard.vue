@@ -13,7 +13,7 @@ defineProps<{
     class="group relative rounded-xl border border-slate-200 dark:border-slate-800"
   >
     <div
-      class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 transition duration-300 [background:linear-gradient(var(--link-grid-hover-bg,theme(colors.lime.50)),var(--link-grid-hover-bg,theme(colors.lime.50)))_padding-box,linear-gradient(to_top,theme(colors.green.400),theme(colors.green.400),theme(colors.teal.500))_border-box] group-hover:opacity-100 dark:[--link-grid-hover-bg:theme(colors.slate.800)]"
+      class="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 transition duration-300 [background:linear-gradient(var(--link-grid-hover-bg,theme(colors.sky.50)),var(--link-grid-hover-bg,theme(colors.sky.50)))_padding-box,linear-gradient(to_top,theme(colors.indigo.400),theme(colors.cyan.400),theme(colors.sky.500))_border-box] group-hover:opacity-100 dark:[--link-grid-hover-bg:theme(colors.slate.800)]"
     />
     <div class="relative overflow-hidden rounded-xl p-6">
       <component :is="icon" class="h-8 w-8" />

@@ -33,12 +33,12 @@ const next = computed(() => {
     <router-link
       v-if="previous"
       :to="previous.path"
-      class="grid w-full rounded-lg border border-slate-300/70 p-5 transition duration-300 hover:border-green-500 hover:bg-green-400/5 dark:border-slate-800 dark:hover:border-green-400"
+      class="grid w-full rounded-lg border border-slate-300/70 p-5 transition duration-300 hover:border-sky-500 hover:bg-sky-400/5 dark:border-slate-800 dark:hover:border-sky-400"
     >
       <span class="text-sm text-slate-500 dark:text-slate-400">
         Previous page
       </span>
-      <span class="font-medium text-green-500 dark:text-green-400">
+      <span class="font-medium text-sky-500 dark:text-sky-400">
         {{ previous.name }}
       </span>
     </router-link>
@@ -46,12 +46,12 @@ const next = computed(() => {
     <router-link
       v-if="next"
       :to="next.path"
-      class="grid w-full rounded-lg border border-slate-300/70 p-5 text-end transition duration-300 hover:border-green-500 hover:bg-green-400/5 dark:border-slate-800 dark:hover:border-green-400"
+      class="grid w-full rounded-lg border border-slate-300/70 p-5 text-end transition duration-300 hover:border-sky-500 hover:bg-sky-400/5 dark:border-slate-800 dark:hover:border-sky-400"
     >
       <span class="text-sm text-slate-500 dark:text-slate-400">
         Next page
       </span>
-      <span class="font-medium text-green-500 dark:text-green-400">
+      <span class="font-medium text-sky-500 dark:text-sky-400">
         {{ next.name }}
       </span>
     </router-link>

@@ -46,8 +46,8 @@ const route = useRoute()
                   class="inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-300"
                   :class="
                     route.path === item.path
-                      ? 'text-green-600 dark:text-green-400'
-                      : 'text-slate-700 hover:text-green-500 dark:text-gray-200 dark:hover:text-green-400'
+                      ? 'text-sky-600 dark:text-sky-400'
+                      : 'text-slate-700 hover:text-sky-500 dark:text-gray-200 dark:hover:text-sky-400'
                   "
                 >
                   {{ item.name }}
@@ -58,7 +58,7 @@ const route = useRoute()
                   v-once
                   :href="item.path"
                   target="_blank"
-                  class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 transition duration-300 hover:text-green-500 dark:text-gray-200 dark:hover:text-green-400"
+                  class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 transition duration-300 hover:text-sky-500 dark:text-gray-200 dark:hover:text-sky-400"
                 >
                   {{ item.name }}
                 </a>
@@ -69,8 +69,8 @@ const route = useRoute()
               class="inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-300"
               :class="
                 route.path === '/sponsor'
-                  ? 'text-green-600 dark:text-green-400'
-                  : 'text-slate-700 hover:text-green-500 dark:text-gray-200 dark:hover:text-green-400'
+                  ? 'text-sky-600 dark:text-sky-400'
+                  : 'text-slate-700 hover:text-sky-500 dark:text-gray-200 dark:hover:text-sky-400'
               "
             >
               Sponsor

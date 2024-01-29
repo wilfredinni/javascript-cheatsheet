@@ -35,7 +35,7 @@ const decreaseFont = () => {
             <button
               class="text-slate-400 transition duration-300 dark:text-slate-500"
               :class="
-                hasNext ? 'hover:text-green-500 dark:hover:text-green-500' : ''
+                hasNext ? 'hover:text-sky-500 dark:hover:text-sky-500' : ''
               "
               @click="increaseFont"
             >
@@ -44,9 +44,7 @@ const decreaseFont = () => {
             <button
               class="text-slate-400 transition duration-300 dark:text-slate-500"
               :class="
-                hasPrevious
-                  ? 'hover:text-green-500 dark:hover:text-green-500'
-                  : ''
+                hasPrevious ? 'hover:text-sky-500 dark:hover:text-sky-500' : ''
               "
               @click="decreaseFont"
             >
@@ -58,7 +56,7 @@ const decreaseFont = () => {
           <base-theme-toggle />
 
           <button
-            class="rounded text-slate-400 transition duration-300 hover:text-green-500 dark:hover:bg-transparent"
+            class="rounded text-slate-400 transition duration-300 hover:text-sky-500 dark:hover:bg-transparent"
             @click="reader.toggle()"
           >
             <span class="sr-only">close reader mode</span>
