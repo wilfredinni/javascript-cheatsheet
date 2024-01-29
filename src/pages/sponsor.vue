@@ -15,7 +15,7 @@ useHead({
   <section>
     <prose>
       <h1
-        class="mb-4 bg-gradient-to-r from-indigo-400 to-green-400 bg-clip-text text-center font-display text-4xl font-medium tracking-tight text-transparent dark:from-sky-400 dark:via-teal-300 dark:to-orange-300 sm:text-start"
+        class="mb-4 bg-gradient-to-r from-indigo-400 to-green-400 bg-clip-text text-center font-display text-4xl font-medium tracking-tight text-transparent dark:from-sky-400 dark:via-teal-300 dark:to-sky-300 sm:text-start"
       >
         Sponsorship Opportunities
       </h1>
