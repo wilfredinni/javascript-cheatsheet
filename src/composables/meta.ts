@@ -9,7 +9,7 @@ export function useMeta() {
   const themeColor = computed(() => (isDark.value ? '#1f2937' : '#ffffff'))
   const url = computed(() => `https://${base_url}${route.path}`)
   const keywords = [
-    'python',
+    'javascript',
     'cheatsheet',
     'cheat',
     'sheet',
