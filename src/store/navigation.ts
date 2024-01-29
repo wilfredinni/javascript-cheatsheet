@@ -30,6 +30,11 @@ export const useNavigationStore = defineStore('navigation', {
         path: '/cheatsheet/basics',
         updated: false,
       },
+      {
+        name: 'Control Flow',
+        path: '/cheatsheet/control-flow',
+        updated: false,
+      },
     ] as NavigationItem[],
   }),
 })
