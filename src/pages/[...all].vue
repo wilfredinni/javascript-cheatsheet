@@ -20,8 +20,8 @@ useHead({
         <router-link to="/" class="inline-flex">
           <span class="sr-only">Javascript Cheatsheet</span>
           <img
-            class="h-12 w-auto"
-            src="https://raw.githubusercontent.com/wilfredinni/merken/master/static/merken/img/snake.svg"
+            class="h-12 w-auto rounded"
+            src="/icons/javascript_logo.png"
             alt="javascript-cheatsheet"
           />
         </router-link>

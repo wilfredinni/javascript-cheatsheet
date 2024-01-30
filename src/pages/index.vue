@@ -42,11 +42,13 @@ const smAndLarger = breakpoints.greater('sm')
 <template>
   <article>
     <prose>
-      <div class="flex justify-center sm:hidden">
+      <div class="flex justify-center sm:hidden px-32">
         <img
-          class="h-20 w-auto"
-          src="https://raw.githubusercontent.com/wilfredinni/merken/master/static/merken/img/snake.svg"
+          class="rounded"
+          src="/icons/javascript_logo.png"
           alt="javascript-cheatsheet"
+          height="10"
+          width="10"
         />
       </div>
 
