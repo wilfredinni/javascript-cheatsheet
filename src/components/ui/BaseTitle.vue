@@ -20,12 +20,12 @@ function startShare() {
     class="not-prose group mb-8 grid w-full grid-cols-12 content-center leading-[1.1111111]"
   >
     <h1
-      class="doc-title col-span-11 text-[2.25em] font-medium text-slate-900 dark:text-white"
+      class="doc-title col-span-11 text-[2.25em] font-medium text-zinc-900 dark:text-white"
     >
       <slot />
     </h1>
     <div
-      class="flex w-full justify-end text-slate-400 opacity-0 transition duration-200 group-hover:opacity-100"
+      class="flex w-full justify-end text-zinc-400 opacity-0 transition duration-200 group-hover:opacity-100"
     >
       <button
         v-if="isSupported"

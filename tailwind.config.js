@@ -30,6 +30,6 @@ module.exports = {
       },
     },
   },
-  safelist: ['text-slate-400'],
+  safelist: ['text-zinc-400'],
   plugins: [require('@tailwindcss/typography')],
 }

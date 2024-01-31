@@ -27,7 +27,7 @@ const pageToc = computed(() => {
   >
     <div>
       <h3
-        class="font-display text-sm font-medium text-slate-900 dark:text-white"
+        class="font-display text-sm font-medium text-zinc-900 dark:text-white"
       >
         On this page
       </h3>
@@ -40,7 +40,7 @@ const pageToc = computed(() => {
             :class="
               currentSection === item.id
                 ? 'text-sky-500 '
-                : ' text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-300'
+                : ' text-zinc-500 hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-300'
             "
           >
             {{ item.header }}

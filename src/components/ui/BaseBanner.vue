@@ -36,7 +36,7 @@ const showBanner = useLocalStorage(keyName.value, true)
         >
           <button
             type="button"
-            class="hidden rounded-md p-2 text-white transition duration-300 focus:outline-none dark:hover:text-slate-300 sm:block"
+            class="hidden rounded-md p-2 text-white transition duration-300 focus:outline-none dark:hover:text-zinc-300 sm:block"
             @click="showBanner = false"
           >
             <span class="sr-only">Dismiss</span>

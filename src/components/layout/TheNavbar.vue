@@ -5,7 +5,7 @@ const route = useRoute()
 
 <template>
   <nav
-    class="sticky top-0 z-40 w-full flex-none border-b border-slate-900/10 bg-white/90 backdrop-blur dark:border-slate-50/[0.06] dark:bg-transparent lg:z-50"
+    class="sticky top-0 z-40 w-full flex-none border-b border-zinc-900/10 bg-white/90 backdrop-blur dark:border-zinc-50/[0.06] dark:bg-transparent lg:z-50"
   >
     <div class="mx-auto max-w-8xl px-2 sm:px-6 lg:px-12">
       <div class="relative flex h-14 justify-between">
@@ -33,7 +33,7 @@ const route = useRoute()
           class="absolute inset-y-0 right-0 flex items-center space-x-5 pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
         >
           <div
-            class="hidden border-r border-slate-200 pr-6 dark:border-slate-800 sm:ml-6 sm:space-x-6 lg:flex"
+            class="hidden border-r border-zinc-200 pr-6 dark:border-zinc-800 sm:ml-6 sm:space-x-6 lg:flex"
           >
             <template
               v-for="item in navigation.navbarNavigation"
@@ -47,7 +47,7 @@ const route = useRoute()
                   :class="
                     route.path === item.path
                       ? 'text-sky-600 dark:text-sky-400'
-                      : 'text-slate-700 hover:text-sky-500 dark:text-gray-200 dark:hover:text-sky-400'
+                      : 'text-zinc-700 hover:text-sky-500 dark:text-zinc-200 dark:hover:text-sky-400'
                   "
                 >
                   {{ item.name }}
@@ -58,7 +58,7 @@ const route = useRoute()
                   v-once
                   :href="item.path"
                   target="_blank"
-                  class="inline-flex items-center px-1 pt-1 text-sm font-medium text-slate-700 transition duration-300 hover:text-sky-500 dark:text-gray-200 dark:hover:text-sky-400"
+                  class="inline-flex items-center px-1 pt-1 text-sm font-medium text-zinc-700 transition duration-300 hover:text-sky-500 dark:text-zinc-200 dark:hover:text-sky-400"
                 >
                   {{ item.name }}
                 </a>

@@ -7,13 +7,13 @@ const enabled = ref(isDark)
 <template>
   <Switch
     v-model="enabled"
-    :class="[enabled ? 'bg-gray-600' : 'bg-gray-200']"
+    :class="[enabled ? 'bg-zinc-600' : 'bg-zinc-200']"
     class="relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none"
   >
     <span class="sr-only">Use setting</span>
     <span
       :class="[
-        enabled ? 'translate-x-5 bg-gray-800' : 'translate-x-0 bg-white',
+        enabled ? 'translate-x-5 bg-zinc-800' : 'translate-x-0 bg-white',
       ]"
       class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full shadow ring-0 transition duration-200 ease-in-out"
     >

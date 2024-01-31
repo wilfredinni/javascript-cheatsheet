@@ -35,7 +35,7 @@ const routesWithoutGithub = ['index', 'blog']
 </script>
 
 <template>
-  <footer class="mt-5 border-t dark:border-t-slate-800">
+  <footer class="mt-5 border-t dark:border-t-zinc-800">
     <div class="justify-between pt-5 sm:flex">
       <div
         class="grid text-xs"
@@ -43,14 +43,14 @@ const routesWithoutGithub = ['index', 'blog']
       >
         <div
           v-if="!routesWithoutGithub.includes(route.name as string)"
-          class="flex items-center text-slate-600 dark:text-slate-400"
+          class="flex items-center text-zinc-600 dark:text-zinc-400"
         >
           <component :is="EditLink.icon" class="mr-2 h-4 w-4" />
           {{ EditLink.linkHeader }}
           <a
             target="_blank"
             :href="`${repository}${$route.path}.md`"
-            class="ml-1 flex text-sky-500 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500"
+            class="ml-1 flex text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-500"
           >
             {{ EditLink.linkText }}
           </a>
@@ -60,14 +60,14 @@ const routesWithoutGithub = ['index', 'blog']
           v-for="link in footerLinks"
           v-once
           :key="link.url"
-          class="flex items-center text-slate-600 dark:text-slate-400"
+          class="flex items-center text-zinc-600 dark:text-zinc-400"
         >
           <component :is="link.icon" class="mr-2 h-4 w-4" />
           {{ link.linkHeader }}
           <a
             target="_blank"
             :href="link.url"
-            class="ml-1 flex text-sky-500 hover:text-sky-600 dark:text-sky-400 dark:hover:text-sky-500"
+            class="ml-1 flex text-amber-500 hover:text-amber-600 dark:text-amber-400 dark:hover:text-amber-500"
           >
             {{ link.linkText }}
           </a>

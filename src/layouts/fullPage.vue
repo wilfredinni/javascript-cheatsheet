@@ -5,7 +5,7 @@ const rootRepositoryRoutes = ['contributing', 'changelog']
 </script>
 
 <template>
-  <div class="min-h-screen bg-white dark:bg-gray-900">
+  <div class="min-h-screen bg-white dark:bg-zinc-900">
     <the-navbar v-show="!reader.isActive" />
     <the-navbar-reader v-show="reader.isActive" />
 
@@ -22,10 +22,10 @@ const rootRepositoryRoutes = ['contributing', 'changelog']
           class="sticky top-[3.6rem] -ml-0.5 h-[calc(100vh-3.6rem)] overflow-y-auto overflow-x-hidden py-10 pl-0.5"
         >
           <div
-            class="absolute bottom-0 right-0 top-16 hidden h-12 w-px bg-gradient-to-t from-slate-800 dark:block"
+            class="absolute bottom-0 right-0 top-16 hidden h-12 w-px bg-gradient-to-t from-zinc-800 dark:block"
           />
           <div
-            class="absolute bottom-0 right-0 top-28 hidden w-px bg-slate-800 dark:block"
+            class="absolute bottom-0 right-0 top-28 hidden w-px bg-zinc-800 dark:block"
           />
           <div class="w-64 pr-8 xl:w-72 xl:pr-16">
             <the-sidebar-desktop />

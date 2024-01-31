@@ -12,7 +12,7 @@ useHead({
 </script>
 
 <template>
-  <div class="flex min-h-full flex-col bg-gray-900 pb-12 pt-16">
+  <div class="flex min-h-full flex-col bg-zinc-900 pb-12 pt-16">
     <main
       class="mx-auto flex w-full max-w-7xl flex-grow flex-col justify-center px-4 sm:px-6 lg:px-8"
     >
@@ -32,11 +32,11 @@ useHead({
             404 error
           </p>
           <h1
-            class="mt-2 text-4xl font-extrabold tracking-tight text-slate-200 sm:text-5xl"
+            class="mt-2 text-4xl font-extrabold tracking-tight text-zinc-200 sm:text-5xl"
           >
             Page not found.
           </h1>
-          <p class="mt-2 text-base text-slate-500">
+          <p class="mt-2 text-base text-zinc-500">
             Sorry, we couldn’t find the page you’re looking for.
           </p>
           <div class="mt-6">

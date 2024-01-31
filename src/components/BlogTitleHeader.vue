@@ -22,10 +22,10 @@ const tags = props.frontmatter.tags?.split(', ')
       >
         Posted on {{ frontmatter.date }}
       </span>
-      <span class="ml-2 hidden text-slate-400 sm:flex">·</span>
+      <span class="ml-2 hidden text-zinc-400 sm:flex">·</span>
       <span
         v-if="frontmatter.updated"
-        class="font-display text-sm text-slate-400 sm:ml-2"
+        class="font-display text-sm text-zinc-400 sm:ml-2"
       >
         Updated on {{ frontmatter.updated }}
       </span>
@@ -34,7 +34,7 @@ const tags = props.frontmatter.tags?.split(', ')
 
     <div
       v-if="tags && !reader.isActive"
-      class="mb-10 mt-3 flex flex-wrap gap-3 text-xs text-slate-50 dark:text-white"
+      class="mb-10 mt-3 flex flex-wrap gap-3 text-xs text-zinc-50 dark:text-white"
     >
       <span
         v-for="tag in tags"

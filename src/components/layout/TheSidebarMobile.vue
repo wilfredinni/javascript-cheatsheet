@@ -11,7 +11,7 @@ watch(useRoute(), () => (isOpen.value = false))
       <span class="sr-only">Open navigation</span>
       <svg
         xmlns="http://www.w3.org/2000/svg"
-        class="h-7 w-7 stroke-slate-400"
+        class="h-7 w-7 stroke-zinc-400"
         fill="none"
         viewBox="0 0 24 24"
         stroke="currentColor"
@@ -29,7 +29,7 @@ watch(useRoute(), () => (isOpen.value = false))
 
   <TransitionRoot as="template" :show="isOpen">
     <Dialog
-      class="fixed inset-0 z-50 flex items-start overflow-y-auto bg-slate-900/50 pr-10 backdrop-blur lg:hidden"
+      class="fixed inset-0 z-50 flex items-start overflow-y-auto bg-zinc-900/50 pr-10 backdrop-blur lg:hidden"
       @close="isOpen = false"
     >
       <TransitionChild
@@ -42,7 +42,7 @@ watch(useRoute(), () => (isOpen.value = false))
         leave-to="-translate-x-full"
       >
         <DialogPanel
-          class="min-h-full w-full max-w-xs bg-white px-4 pb-12 pt-5 dark:bg-slate-900 sm:px-6"
+          class="min-h-full w-full max-w-xs bg-white px-4 pb-12 pt-5 dark:bg-zinc-900 sm:px-6"
         >
           <DialogTitle class="sr-only">Navigation</DialogTitle>
           <div class="flex items-center">
@@ -50,7 +50,7 @@ watch(useRoute(), () => (isOpen.value = false))
               <span class="sr-only">Close navigation</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 stroke-slate-400"
+                class="h-6 w-6 stroke-zinc-400"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"

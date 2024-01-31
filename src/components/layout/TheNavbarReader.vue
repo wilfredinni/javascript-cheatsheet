@@ -22,7 +22,7 @@ const decreaseFont = () => {
 
 <template>
   <nav
-    class="sticky top-0 z-40 w-full flex-none bg-transparent backdrop-blur dark:border-slate-50/[0.06] lg:z-50 lg:border-b lg:border-slate-900/10"
+    class="sticky top-0 z-40 w-full flex-none bg-transparent backdrop-blur dark:border-zinc-50/[0.06] lg:z-50 lg:border-b lg:border-zinc-900/10"
   >
     <div class="mx-auto max-w-8xl px-4 xl:px-10">
       <div class="relative flex h-14 justify-between">
@@ -30,10 +30,10 @@ const decreaseFont = () => {
           class="flex flex-1 items-center justify-end space-x-5 sm:items-center"
         >
           <div
-            class="ml-6 space-x-6 border-r border-slate-200 dark:border-slate-800"
+            class="ml-6 space-x-6 border-r border-zinc-200 dark:border-zinc-800"
           >
             <button
-              class="text-slate-400 transition duration-300 dark:text-slate-500"
+              class="text-zinc-400 transition duration-300 dark:text-zinc-500"
               :class="
                 hasNext ? 'hover:text-sky-500 dark:hover:text-sky-500' : ''
               "
@@ -42,7 +42,7 @@ const decreaseFont = () => {
               A+
             </button>
             <button
-              class="text-slate-400 transition duration-300 dark:text-slate-500"
+              class="text-zinc-400 transition duration-300 dark:text-zinc-500"
               :class="
                 hasPrevious ? 'hover:text-sky-500 dark:hover:text-sky-500' : ''
               "
@@ -56,7 +56,7 @@ const decreaseFont = () => {
           <base-theme-toggle />
 
           <button
-            class="rounded text-slate-400 transition duration-300 hover:text-sky-500 dark:hover:bg-transparent"
+            class="rounded text-zinc-400 transition duration-300 hover:text-sky-500 dark:hover:bg-transparent"
             @click="reader.toggle()"
           >
             <span class="sr-only">close reader mode</span>
