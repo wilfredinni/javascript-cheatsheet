@@ -14,8 +14,9 @@
         gradientUnits="userSpaceOnUse"
         gradientTransform="rotate(65.924 1.519 20.92) scale(25.7391)"
       >
-        <stop stop-color="#FDE68A" offset=".08"></stop>
-        <stop stop-color="#F59E0B" offset=".837"></stop>
+        <stop stop-color="#fbbf24"></stop>
+        <stop stop-color="#fb923c" offset=".527"></stop>
+        <stop stop-color="#f87171" offset="1"></stop>
       </radialGradient>
       <radialGradient
         id=":rh:-gradient-dark"
@@ -25,8 +26,9 @@
         gradientUnits="userSpaceOnUse"
         gradientTransform="matrix(0 24.5 -24.5 0 16 5.5)"
       >
-        <stop stop-color="#FDE68A" offset=".08"></stop>
-        <stop stop-color="#F59E0B" offset=".837"></stop>
+        <stop stop-color="#fbbf24"></stop>
+        <stop stop-color="#fb923c" offset=".527"></stop>
+        <stop stop-color="#f87171" offset="1"></stop>
       </radialGradient>
     </defs>
     <g class="dark:hidden">
