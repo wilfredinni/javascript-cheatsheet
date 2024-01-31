@@ -1,6 +1,6 @@
 <template>
   <div
-    class="text-xs relative flex items-center rounded-full px-4 py-0.5 leading-6 text-sky-600 dark:text-sky-500 dark:ring-zinc-100/10 ring-1 ring-zinc-900/10 hover:ring-zinc-900/20"
+    class="text-xs relative flex items-center rounded-full px-4 py-0.5 leading-6 text-amber-500 dark:text-amber-400 dark:ring-zinc-100/10 ring-1 ring-zinc-900/10 hover:ring-zinc-900/20"
   >
     <strong class="line-clamp-1 font-semibold">
       <slot></slot>
@@ -8,7 +8,7 @@
     <svg
       width="3"
       height="6"
-      class="ml-3 overflow-visible text-sky-600 dark:text-sky-500"
+      class="ml-3 overflow-visible text-amber-500 dark:text-amber-400"
       aria-hidden="true"
     >
       <path

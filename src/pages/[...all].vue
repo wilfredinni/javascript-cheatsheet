@@ -28,7 +28,9 @@ useHead({
       </div>
       <div class="py-12">
         <div class="text-center">
-          <p class="text-sm font-semibold uppercase tracking-wide text-sky-400">
+          <p
+            class="text-sm font-semibold uppercase tracking-wide text-amber-400"
+          >
             404 error
           </p>
           <h1
@@ -42,7 +44,7 @@ useHead({
           <div class="mt-6">
             <router-link
               to="/"
-              class="text-base font-medium text-sky-400 hover:text-sky-500"
+              class="text-base font-medium text-amber-400 hover:text-amber-500"
             >
               Go back home<span aria-hidden="true"> &rarr;</span>
             </router-link>

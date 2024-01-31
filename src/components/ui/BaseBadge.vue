@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex w-auto items-center rounded-full bg-sky-400/10 px-3 py-1 text-xs font-medium leading-5 text-sky-600 transition duration-300 hover:bg-sky-400/20 dark:text-sky-400"
+    class="flex w-auto items-center rounded-full bg-amber-400/10 px-3 py-1 text-xs font-medium leading-5 text-amber-600 transition duration-300 hover:bg-amber-400/20 dark:text-amber-400"
   >
     <strong class="line-clamp-1 font-semibold">
       <slot>
@@ -15,7 +15,7 @@
     <svg
       width="3"
       height="6"
-      class="ml-3 overflow-visible text-sky-300 dark:text-sky-400"
+      class="ml-3 overflow-visible text-amber-300 dark:text-amber-400"
       aria-hidden="true"
     >
       <path

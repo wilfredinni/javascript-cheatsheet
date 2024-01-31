@@ -46,8 +46,8 @@ const route = useRoute()
                   class="inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-300"
                   :class="
                     route.path === item.path
-                      ? 'text-sky-600 dark:text-sky-400'
-                      : 'text-zinc-700 hover:text-sky-500 dark:text-zinc-200 dark:hover:text-sky-400'
+                      ? 'text-amber-600 dark:text-amber-400'
+                      : 'text-zinc-700 hover:text-amber-500 dark:text-zinc-200 dark:hover:text-amber-400'
                   "
                 >
                   {{ item.name }}
@@ -58,7 +58,7 @@ const route = useRoute()
                   v-once
                   :href="item.path"
                   target="_blank"
-                  class="inline-flex items-center px-1 pt-1 text-sm font-medium text-zinc-700 transition duration-300 hover:text-sky-500 dark:text-zinc-200 dark:hover:text-sky-400"
+                  class="inline-flex items-center px-1 pt-1 text-sm font-medium text-zinc-700 transition duration-300 hover:text-amber-500 dark:text-zinc-200 dark:hover:text-amber-400"
                 >
                   {{ item.name }}
                 </a>

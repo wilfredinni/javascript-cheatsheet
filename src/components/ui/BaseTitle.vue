@@ -29,7 +29,7 @@ function startShare() {
     >
       <button
         v-if="isSupported"
-        class="transition duration-200 hover:text-sky-500"
+        class="transition duration-200 hover:text-amber-500"
         @click="startShare"
       >
         <svg
