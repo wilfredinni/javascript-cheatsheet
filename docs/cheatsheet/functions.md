@@ -4,7 +4,7 @@ description: A function is a block of organized code that is used to perform a s
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
-Python Functions
+Javascript Functions
 </base-title>
 
 <base-disclaimer>
