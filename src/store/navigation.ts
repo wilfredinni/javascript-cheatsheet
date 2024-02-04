@@ -65,6 +65,11 @@ export const useNavigationStore = defineStore('navigation', {
         path: '/cheatsheet/manipulating-strings',
         updated: false,
       },
+      {
+        name: 'String Formatting',
+        path: '/cheatsheet/string-formatting',
+        updated: false,
+      },
     ] as NavigationItem[],
   }),
 })
