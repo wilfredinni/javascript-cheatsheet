@@ -39,7 +39,6 @@ declare module 'vue' {
     EmptySection: typeof import('./components/EmptySection.vue')['default']
     GithubIcon: typeof import('./components/icons/GithubIcon.vue')['default']
     GridIcon: typeof import('./components/icons/GridIcon.vue')['default']
-    KinstaBanner: typeof import('./components/KinstaBanner.vue')['default']
     LightBulbIcon: typeof import('./components/icons/LightBulbIcon.vue')['default']
     NetlifyBadge: typeof import('./components/NetlifyBadge.vue')['default']
     NewBadge: typeof import('./components/ui/newBadge.vue')['default']
