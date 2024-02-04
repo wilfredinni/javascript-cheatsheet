@@ -18,7 +18,7 @@ Javascript Array Methods
 
 ## Array Push
 
-The `push()` method in JavaScript is used to add one or more elements to the end of an array. It modifies the original array, returns the new length of the array, and is a destructive method.
+The `push()` method is used to add one or more elements to the end of an array. It modifies the original array, returns the new length of the array, and is a destructive method.
 
 ```javascript
 let fruits = ['apple', 'banana'];
@@ -38,7 +38,7 @@ fruits.push('orange', 'pineapple'); // fruits is now ['apple', 'banana', 'orange
 
 ## Array Pop
 
-The `pop()` method in JavaScript is used to remove the last element from an array and return that element. This method changes the length of the array.
+The `pop()` method is used to remove the last element from an array and return that element. This method changes the length of the array.
 
 ```javascript
 let fruits = ['apple', 'banana', 'orange'];
@@ -49,7 +49,7 @@ let lastFruit = fruits.pop(); // lastFruit is 'orange', fruits is now ['apple', 
 
 ## Array Shift
 
-The `shift()` method in JavaScript is used to remove the first element from an array and return that element. This method changes the length of the array.
+The `shift()` method is used to remove the first element from an array and return that element. This method changes the length of the array.
 
 ```javascript
 let fruits = ['apple', 'banana', 'orange'];
@@ -60,7 +60,7 @@ let firstFruit = fruits.shift(); // firstFruit is 'apple', fruits is now ['banan
 
 ## Array Unshift
 
-The `unshift()` method in JavaScript is used to add one or more elements to the beginning of an array and returns the new length of the array. This method changes the length of the array.
+The `unshift()` method is used to add one or more elements to the beginning of an array and returns the new length of the array. This method changes the length of the array.
 
 ```javascript
 let fruits = ['banana', 'orange'];
@@ -80,7 +80,7 @@ fruits.unshift('apple', 'pineapple'); // fruits is now ['apple', 'pineapple', 'b
 
 ## Array Concat
 
-The `concat()` method in JavaScript is used to merge two or more arrays into one. This method does not change the existing arrays, but instead returns a new array that contains all the elements from the arrays you want to combine.
+The `concat()` method is used to merge two or more arrays into one. This method does not change the existing arrays, but instead returns a new array that contains all the elements from the arrays you want to combine.
 
 ```javascript
 let fruits1 = ['apple', 'banana'];
@@ -103,7 +103,7 @@ let allFruits = fruits1.concat(fruits2, fruits3); // allFruits is ['apple', 'ban
 
 ## Array Slice
 
-The `slice()` method in JavaScript returns a shallow copy of a portion of an array into a new array object selected from `start` to `end` (`end` not included). The original array will not be modified.
+The `slice()` method returns a shallow copy of a portion of an array into a new array object selected from `start` to `end` (`end` not included). The original array will not be modified.
 
 ```javascript
 let fruits = ['apple', 'banana', 'orange', 'pineapple', 'mango'];
@@ -123,7 +123,7 @@ let someFruits = fruits.slice(2); // someFruits is ['orange', 'pineapple', 'mang
 
 ## Array Splice
 
-The `splice()` method in JavaScript changes the contents of an array by removing, replacing, or adding elements. It modifies the original array and returns an array containing the deleted elements, if any.
+The `splice()` method changes the contents of an array by removing, replacing, or adding elements. It modifies the original array and returns an array containing the deleted elements, if any.
 
 1. **Removing elements:**
 
@@ -155,7 +155,7 @@ Here, `splice()` replaces the element at index 1 ('banana') with 'orange' in the
 
 ## Array Join
 
-The `join()` method in JavaScript is used to join all elements of an array into a string. The elements will be separated by a specified separator. The default separator is a comma (`,`).
+The `join()` method is used to join all elements of an array into a string. The elements will be separated by a specified separator. The default separator is a comma (`,`).
 
 ```javascript
 let fruits = ['apple', 'banana', 'orange'];
@@ -175,7 +175,7 @@ let fruitsString = fruits.join(' - '); // fruitsString is 'apple - banana - oran
 
 ## Array Reverse
 
-The `reverse()` method in JavaScript is used to reverse the order of the elements in an array. It mutates the original array.
+The `reverse()` method is used to reverse the order of the elements in an array. It mutates the original array.
 
 ```javascript
 let fruits = ['apple', 'banana', 'orange'];
@@ -186,7 +186,7 @@ fruits.reverse(); // fruits is now ['orange', 'banana', 'apple']
 
 ## Array Sort
 
-The `sort()` method in JavaScript is used to sort the elements of an array in place and returns the array. The default sort order is built upon converting the elements into strings, then comparing their sequences of UTF-16 code unit values.
+The `sort()` method is used to sort the elements of an array in place and returns the array. The default sort order is built upon converting the elements into strings, then comparing their sequences of UTF-16 code unit values.
 
 ```javascript
 let fruits = ['banana', 'apple', 'orange'];
@@ -208,7 +208,7 @@ numbers.sort(function(a, b) {
 
 ## Array IndexOf
 
-The `indexOf()` method in JavaScript is used to search an array for a specific element and returns its first index. If the element is not found, it returns -1.
+The `indexOf()` method is used to search an array for a specific element and returns its first index. If the element is not found, it returns -1.
 
 ```javascript
 let fruits = ['apple', 'banana', 'orange'];
@@ -228,7 +228,7 @@ let index = fruits.indexOf('pineapple'); // index is -1
 
 ## Array FindIndex
 
-The `findIndex()` method in JavaScript is used to find the index of the first element in an array that satisfies a provided testing function. If no elements satisfy the testing function, it returns -1.
+The `findIndex()` method is used to find the index of the first element in an array that satisfies a provided testing function. If no elements satisfy the testing function, it returns -1.
 
 ```javascript
 let numbers = [5, 12, 8, 130, 44];
@@ -250,7 +250,7 @@ let index = numbers.findIndex(isLargeNumber); // index is -1
 
 ## Array Find
 
-The `find()` method in JavaScript returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.
+The `find()` method returns the value of the first element in the provided array that satisfies the provided testing function. If no values satisfy the testing function, undefined is returned.
 
 ```javascript
 let numbers = [5, 12, 8, 130, 44];
@@ -272,7 +272,7 @@ let found = numbers.find(isLargeNumber); // found is undefined
 
 ## Array Filter
 
-The `filter()` method in JavaScript creates a new array with all elements that pass the test implemented by the provided function.
+The `filter()` method creates a new array with all elements that pass the test implemented by the provided function.
 
 ```javascript
 let numbers = [5, 12, 8, 130, 44];
@@ -294,7 +294,7 @@ let filtered = numbers.filter(isLargeNumber); // filtered is []
 
 ## Array Map
 
-The `map()` method in JavaScript creates a new array with the results of calling a provided function on every element in the calling array.
+The `map()` method creates a new array with the results of calling a provided function on every element in the calling array.
 
 ```javascript
 let numbers = [1, 4, 9, 16];
@@ -314,7 +314,7 @@ let doubles = numbers.map((num) => num * 2); // doubles is [2, 8, 18, 32]
 
 ## Array Reduce
 
-The `reduce()` method in JavaScript applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
+The `reduce()` method applies a function against an accumulator and each element in the array (from left to right) to reduce it to a single value.
 
 ```javascript
 let numbers = [1, 2, 3, 4];
@@ -334,7 +334,7 @@ let sum = numbers.reduce((accumulator, currentValue) => accumulator + currentVal
 
 ## Array Every
 
-The `every()` method in JavaScript tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
+The `every()` method tests whether all elements in the array pass the test implemented by the provided function. It returns a Boolean value.
 
 ```javascript
 let numbers = [1, 30, 39, 29, 10, 13];
@@ -356,7 +356,7 @@ let result = numbers.every(isBelowThreshold); // result is false
 
 ## Array Some
 
-The `some()` method in JavaScript tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.
+The `some()` method tests whether at least one element in the array passes the test implemented by the provided function. It returns a Boolean value.
 
 ```javascript
 let numbers = [1, 2, 3, 4, 5];
@@ -378,7 +378,7 @@ let result = numbers.some(isEven); // result is false
 
 ## Array ForEach
 
-The `forEach()` method in JavaScript executes a provided function once for each array element.
+The `forEach()` method executes a provided function once for each array element.
 
 ```javascript
 let numbers = [1, 2, 3, 4, 5];
@@ -391,7 +391,7 @@ Please note that `forEach()` does not return a value. It simply executes the pro
 
 ## Array isArray
 
-The `Array.isArray()` method in JavaScript is used to determine whether the passed value is an Array. It returns a Boolean.
+The `Array.isArray()` method is used to determine whether the passed value is an Array. It returns a Boolean.
 
 ```javascript
 let fruits = ['apple', 'banana', 'orange'];
@@ -411,7 +411,7 @@ let result = Array.isArray(number); // result is false
 
 ## Array Includes
 
-The `includes()` method in JavaScript is used to determine whether an array includes a certain value among its entries, returning true or false as appropriate.
+The `includes()` method is used to determine whether an array includes a certain value among its entries, returning true or false as appropriate.
 
 ```javascript
 let fruits = ['apple', 'banana', 'orange'];
@@ -431,7 +431,7 @@ let result = fruits.includes('pineapple'); // result is false
 
 ## Array Fill
 
-The `fill()` method in JavaScript changes all elements in an array to a static value, from a start index (default 0) to an end index (default array.length). It returns the modified array.
+The `fill()` method changes all elements in an array to a static value, from a start index (default 0) to an end index (default array.length). It returns the modified array.
 
 ```javascript
 let numbers = [1, 2, 3, 4, 5];
@@ -451,7 +451,7 @@ numbers.fill(0, 1, 3); // numbers is now [1, 0, 0, 4, 5]
 
 ## Array Flat
 
-The `flat()` method in JavaScript creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
+The `flat()` method creates a new array with all sub-array elements concatenated into it recursively up to the specified depth.
 
 ```javascript
 let nestedArray = [1, 2, [3, 4]];
@@ -471,7 +471,7 @@ let flatArray = deeplyNestedArray.flat(3); // flatArray is [1, 2, 3, 4]
 
 ## Array FlatMap
 
-The `flatMap()` method in JavaScript first maps each element using a mapping function, then flattens the result into a new array. It's essentially equivalent to a `map()` followed by a `flat()` of depth 1, but `flatMap()` is often quite useful, as merging both into one method is slightly more efficient.
+The `flatMap()` method first maps each element using a mapping function, then flattens the result into a new array. It's essentially equivalent to a `map()` followed by a `flat()` of depth 1, but `flatMap()` is often quite useful, as merging both into one method is slightly more efficient.
 
 ```javascript
 let arr = [1, 2, 3, 4];
@@ -491,7 +491,7 @@ let newArr = arr.flatMap(x => x.split(' ')); // newArr is ["it's", "Sunny", "in"
 
 ## Array From
 
-The `Array.from()` method in JavaScript creates a new, shallow-copied Array instance from an array-like or iterable object.
+The `Array.from()` method creates a new, shallow-copied Array instance from an array-like or iterable object.
 
 ```javascript
 let string = 'hello';
@@ -511,7 +511,7 @@ let doubles = Array.from(numbers, x => x * 2); // doubles is [2, 4, 6, 8]
 
 ## Array Keys
 
-The `keys()` method in JavaScript returns a new Array Iterator object that contains the keys for each index in the array.
+The `keys()` method returns a new Array Iterator object that contains the keys for each index in the array.
 
 ```javascript
 let array = ['a', 'b', 'c'];
@@ -528,7 +528,7 @@ Please note that the keys are the indices of the array elements, not the element
 
 ## Array Values
 
-The `values()` method in JavaScript returns a new Array Iterator object that contains the values for each index in the array.
+The `values()` method returns a new Array Iterator object that contains the values for each index in the array.
 
 ```javascript
 let array = ['a', 'b', 'c'];
@@ -545,7 +545,7 @@ Please note that the values are the elements of the array, not the indices. If y
 
 ## Array Entries
 
-The `entries()` method in JavaScript returns a new Array Iterator object that contains the key/value pairs for each index in the array.
+The `entries()` method returns a new Array Iterator object that contains the key/value pairs for each index in the array.
 
 ```javascript
 let array = ['a', 'b', 'c'];
