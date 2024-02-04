@@ -55,6 +55,11 @@ export const useNavigationStore = defineStore('navigation', {
         path: '/cheatsheet/objects',
         updated: false,
       },
+      {
+        name: 'Sets',
+        path: '/cheatsheet/sets',
+        updated: false,
+      },
     ] as NavigationItem[],
   }),
 })
