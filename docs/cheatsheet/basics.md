@@ -9,6 +9,14 @@ Javascript Basics
 
 We all need to start somewhere, so how about doing it here.
 
+<base-disclaimer>
+  <base-disclaimer-title>
+    From the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript">MDN web docs</a>
+  </base-disclaimer-title>
+  <base-disclaimer-content>
+   JavaScript is a scripting language that allows you to implement complex features on web pages: displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. You can bet that JavaScript is probably involved.
+  </base-disclaimer-content>
+</base-disclaimer>
 
 ## Data Types
 
@@ -56,28 +64,37 @@ In JavaScript, you can declare variables using `var`, `let`, and `const` keyword
 
 In JavaScript, you can write comments in your code to explain what it does, leave notes for yourself or others, or to prevent execution of code. There are two types of comments in JavaScript:
 
-1. **Single-line comments**: These are created using two forward slashes `//`. Everything to the right of `//` on the same line is a comment.
+### Single-line comments
 
-    ```javascript
-    // This is a single-line comment
-    ```
+These are created using two forward slashes `//`. Everything to the right of `//` on the same line is a comment.
 
-2. **Multi-line comments**: These are created using `/*` to start the comment, and `*/` to end the comment. Everything between `/*` and `*/`, including multiple lines, is a comment.
+```javascript
+// This is a single-line comment
+```
 
-    ```javascript
-    /*
-    This is a multi-line comment
-    It can span multiple lines
-    */
-    ```
+### Multi-line comments
 
-Comments are ignored by the JavaScript interpreter and do not affect the execution of the code. They are purely for humans to read.
+These are created using `/*` to start the comment, and `*/` to end the comment. Everything between `/*` and `*/`, including multiple lines, is a comment.
+
+```javascript
+/*
+This is a multi-line comment
+It can span multiple lines
+*/
+```
+
+<base-warning>
+  <base-warning-title>
+    Comments and the Interpreter
+  </base-warning-title>
+  <base-warning-content>
+    Comments are ignored by the JavaScript interpreter and do not affect the execution of the code. They are purely for humans to read.
+  </base-warning-content>
+</base-warning>
 
 ## The console.log Function
 
 The `console.log()` function in JavaScript is used to print output to the console. This can be very useful for debugging, as it allows you to output the values of variables at different points in your code, or to output messages that help you understand the flow of execution in your code.
-
-Here's how you use it:
 
 ```javascript
 console.log("Hello, World!"); // prints "Hello, World!" to the console
@@ -98,4 +115,12 @@ let b = 2;
 console.log(a, b); // prints "1 2" to the console
 ```
 
-Note that `console.log()` does not affect the execution of your code. It's purely for outputting information to the console.
+<base-warning>
+  <base-warning-title>
+    console.log and the Interpreter
+  </base-warning-title>
+  <base-warning-content>
+    Note that `console.log()` does not affect the execution of your code. It's purely for outputting information to the console.
+  </base-warning-content>
+</base-warning>
+

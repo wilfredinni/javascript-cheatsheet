@@ -16,13 +16,11 @@ Javascript Functions
   </base-disclaimer-content>
 </base-disclaimer>
 
-A function in JavaScript is a block of organized, reusable code that is used to perform a single, related action. Functions provide better modularity for your application and a high degree of code reusing.
+A function is a block of organized, reusable code that is used to perform a single, related action. Functions provide better modularity for your application and a high degree of code reusing.
 
 ## Function Declaration
 
 A function declaration in JavaScript is a way to define a function. It's also known as a function statement. The function keyword is used, followed by the name of the function, a list of parameters in parentheses, and the function body enclosed in curly braces.
-
-Here's an example of a function declaration:
 
 ```javascript
 function greet() {
@@ -30,7 +28,7 @@ function greet() {
 }
 ```
 
-In this example, `greet` is a function that prints "Hello, world!" to the console. You can call this function using its name followed by parentheses:
+`greet` is a function that prints "Hello, world!" to the console. You can call this function using its name followed by parentheses:
 
 ```javascript
 greet(); // Calls the function and prints "Hello, world!" to the console
@@ -52,29 +50,25 @@ In this case, even though the function call appears before the function declarat
 
 In JavaScript, function parameters are the names listed in the function definition. They are used to pass values (arguments) into functions.
 
-Here's an example:
-
 ```javascript
 function add(a, b) {
   return a + b;
 }
 ```
 
-In this example, `a` and `b` are the parameters of the `add` function. When you call the function, you provide values for `a` and `b`:
+`a` and `b` are the parameters of the `add` function. When you call the function, you provide values for `a` and `b`:
 
 ```javascript
 let sum = add(1, 2); // 1 is the argument for 'a', and 2 is the argument for 'b'
 ```
 
-In this case, 1 and 2 are the arguments that are passed into the function. The function adds these values together and returns the result.
+1 and 2 are the arguments that are passed into the function. The function adds these values together and returns the result.
 
 You can have as many parameters as you want, separated by commas. If you call a function with more arguments than there are parameters, the extra arguments are ignored. If you call a function with fewer arguments than there are parameters, the missing arguments are set to `undefined`.
 
 ## Function Return
 
 In JavaScript, the `return` statement ends function execution and specifies a value to be returned to the function caller.
-
-Here's an example of a function with a return statement:
 
 ```javascript
 function add(a, b) {
@@ -84,15 +78,20 @@ function add(a, b) {
 let sum = add(1, 2); // sum is now 3
 ```
 
-In this example, `add` is a function that takes two parameters, `a` and `b`, and returns their sum. The `return` statement specifies that the sum of `a` and `b` should be returned to the function caller. When you call this function with arguments 1 and 2, the return value is 3, which is then assigned to the variable `sum`.
+`add` is a function that takes two parameters, `a` and `b`, and returns their sum. The `return` statement specifies that the sum of `a` and `b` should be returned to the function caller. When you call this function with arguments 1 and 2, the return value is 3, which is then assigned to the variable `sum`.
 
-If a function doesn't have a `return` statement, it returns `undefined` by default. If the `return` statement is used without a value, the function also returns `undefined`.
+<base-disclaimer>
+  <base-disclaimer-title>
+    Functions without a return statement
+  </base-disclaimer-title>
+  <base-disclaimer-content>
+  If a function doesn't have a `return` statement, it returns `undefined` by default. If the `return` statement is used without a value, the function also returns `undefined`.
+  </base-disclaimer-content>
+</base-disclaimer>
 
 ## Function Expressions
 
 A function expression in JavaScript is a way to define a function as an expression, rather than as a statement. It can be anonymous, or it can have a name. The function is defined and assigned to a variable, and it can be used later by referencing that variable.
-
-Here's an example of a function expression:
 
 ```javascript
 let greet = function() {
@@ -102,7 +101,7 @@ let greet = function() {
 greet(); // Calls the function and prints "Hello, world!" to the console
 ```
 
-In this example, the function is assigned to the variable `greet`. This is a function expression. The function can be called later by referencing the variable `greet`.
+The function is assigned to the variable `greet`. This is a function expression. The function can be called later by referencing the variable `greet`.
 
 Function expressions are not hoisted, unlike function declarations. This means that you can't use the function before it's defined:
 
@@ -119,8 +118,6 @@ In this case, calling `greet` before it's defined results in an error, because f
 ## Anonymous Functions
 
 An anonymous function in JavaScript is a function that is not given a name. Instead, it is usually used where a function is expected as an argument, such as in a callback function or an event handler.
-
-Here's an example of an anonymous function:
 
 ```javascript
 let greet = function() {
@@ -140,14 +137,12 @@ setTimeout(function() {
 }, 1000);
 ```
 
-In this case, the anonymous function is passed as an argument to `setTimeout`. The function will be called after 1 second (1000 milliseconds).
+Here, the anonymous function is passed as an argument to `setTimeout`. The function will be called after 1 second (1000 milliseconds).
 
 
 ## Arrow Functions
 
 Arrow functions in JavaScript provide a concise syntax to write function expressions. They are anonymous and change the way `this` binds in functions.
-
-Here's a simple example of an arrow function:
 
 ```javascript
 let greet = () => {
@@ -157,7 +152,7 @@ let greet = () => {
 greet(); // Calls the function and prints "Hello, world!" to the console
 ```
 
-In this example, the function is assigned to the variable `greet`. This is an arrow function, indicated by the `() =>` syntax.
+The function is assigned to the variable `greet`. This is an arrow function, indicated by the `() =>` syntax.
 
 Arrow functions can also take parameters:
 
@@ -177,8 +172,7 @@ let square = x => x * x;
 let result = square(5); // result is now 25
 ```
 
-In this case, `square` is an arrow function that takes one parameter, `x`, and returns its square.
-
+`square` is an arrow function that takes one parameter, `x`, and returns its square.
 
 ## Arrow Functions vs Regular Functions
 

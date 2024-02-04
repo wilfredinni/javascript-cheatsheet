@@ -57,7 +57,14 @@ console.log(5 >= 5); // true
 console.log(5 <= 4); // false
 ```
 
-Remember, comparison operators always return a boolean value - either `true` or `false`.
+<base-disclaimer>
+  <base-disclaimer-title>
+    Comparison operators always return a boolean value
+  </base-disclaimer-title>
+  <base-disclaimer-content>
+  Remember, comparison operators always return either `true` or `false`.
+  </base-disclaimer-content>
+</base-disclaimer>
 
 ## Boolean Operators
 
@@ -100,7 +107,9 @@ In this example, the message will be printed to the console because both conditi
 
 In JavaScript, `if`, `else if`, and `else` are used to create conditional statements that allow your code to make decisions and take different actions depending on certain conditions. Here's how they work:
 
-1. **if**: This is used to specify a block of code to be executed if a specified condition is true.
+### if
+
+This is used to specify a block of code to be executed if a specified condition is true.
 
 ```javascript
 let a = 10;
@@ -109,9 +118,11 @@ if (a > 5) {
 }
 ```
 
-In this example, because `a` is indeed greater than 5, the message 'a is greater than 5' will be printed to the console.
+Because `a` is indeed greater than 5, the message 'a is greater than 5' will be printed to the console.
 
-2. **else if**: This is used to specify a new condition to test if the first condition is false.
+### else if
+
+This is used to specify a new condition to test if the first condition is false.
 
 ```javascript
 let a = 5;
@@ -122,9 +133,11 @@ if (a > 5) {
 }
 ```
 
-In this example, because `a` is not greater than 5, the first block of code is not executed. However, because `a` is indeed equal to 5, the message 'a is equal to 5' will be printed to the console.
+Because `a` is not greater than 5, the first block of code is not executed. However, because `a` is indeed equal to 5, the message 'a is equal to 5' will be printed to the console.
 
-3. **else**: This is used to specify a block of code to be executed if all previous conditions are false.
+### else
+
+This is used to specify a block of code to be executed if all previous conditions are false.
 
 ```javascript
 let a = 4;
@@ -137,13 +150,11 @@ if (a > 5) {
 }
 ```
 
-In this example, because `a` is neither greater than 5 nor equal to 5, the message **a is less than 5** will be printed to the console.
+Because `a` is neither greater than 5 nor equal to 5, the message **a is less than 5** will be printed to the console.
 
 ## Ternary Operator
 
 The ternary operator in JavaScript is a shortcut for the `if` statement. It's called "ternary" because it takes three operands: a condition, a result for `true`, and a result for `false`.
-
-Here's the syntax:
 
 ```javascript
 condition ? expressionIfTrue : expressionIfFalse
@@ -151,23 +162,19 @@ condition ? expressionIfTrue : expressionIfFalse
 
 If the `condition` is `true`, the operator returns the value of `expressionIfTrue`; if the `condition` is `false`, it returns the value of `expressionIfFalse`.
 
-Here's an example:
-
 ```javascript
 let a = 10;
 let result = a > 5 ? 'a is greater than 5' : 'a is not greater than 5';
 console.log(result); // prints "a is greater than 5"
 ```
 
-In this example, because `a` is indeed greater than 5, the variable `result` is set to the string 'a is greater than 5', and that's what gets printed to the console.
+ `a` is indeed greater than 5, the variable `result` is set to the string 'a is greater than 5', and that's what gets printed to the console.
 
 The ternary operator can be very useful for short, simple conditions, but for more complex conditions, using `if`, `else if`, and `else` can be more readable.
 
 ## Switch Statement
 
 The `switch` statement in JavaScript is used to perform different actions based on different conditions. It's a good alternative to a series of `if`...`else if` statements when you have a single condition that can lead to several possible outcomes.
-
-Here's the syntax:
 
 ```javascript
 switch(expression) {
@@ -185,8 +192,6 @@ switch(expression) {
 
 The `switch` statement evaluates an expression, matching the expression's value to a `case` clause, and executes statements associated with that case. If no matching case is found, it executes the code in the `default` clause.
 
-Here's an example:
-
 ```javascript
 let fruit = 'apple';
 switch (fruit) {
@@ -201,7 +206,7 @@ switch (fruit) {
 }
 ```
 
-In this example, because `fruit` is 'apple', the message 'I am an apple' will be printed to the console. If `fruit` was 'banana', it would print 'I am a banana'. If `fruit` was anything else, it would print 'I am not a banana or an apple'. The `break` keyword is used to prevent the code from running into the next case automatically.
+Because `fruit` is 'apple', the message 'I am an apple' will be printed to the console. If `fruit` was 'banana', it would print 'I am a banana'. If `fruit` was anything else, it would print 'I am not a banana or an apple'. The `break` keyword is used to prevent the code from running into the next case automatically.
 
 
 ## While Loop
@@ -216,8 +221,6 @@ while (condition) {
 
 The `condition` can be any expression that evaluates to a boolean value, either `true` or `false`. If the condition is `true`, the code inside the loop will be executed. After each execution, the condition is checked again, and if it's still `true`, the loop continues to run. This process repeats until the condition becomes `false`.
 
-Here's an example:
-
 ```javascript
 let i = 0;
 while (i < 5) {
@@ -226,24 +229,33 @@ while (i < 5) {
 }
 ```
 
-In this example, the loop will print the numbers 0 through 4 to the console. The variable `i` starts at 0 and is incremented by 1 after each loop iteration. When `i` becomes 5, the condition `i < 5` is no longer true, so the loop stops running.
+The loop will print the numbers 0 through 4 to the console. The variable `i` starts at 0 and is incremented by 1 after each loop iteration. When `i` becomes 5, the condition `i < 5` is no longer true, so the loop stops running.
 
-Be careful when writing `while` loops, because if the condition never becomes `false`, the loop will run indefinitely, which can cause your program to crash.
+<base-warning>
+  <base-warning-title>
+    Always ensure the condition becomes false
+  </base-warning-title>
+  <base-warning-content>
+    Be careful when writing `while` loops, because if the condition never becomes `false`, the loop will run indefinitely, which can cause your program to crash.
+  </base-warning-content>
+</base-warning>
 
-<base-disclaimer>
-  <base-disclaimer-title>
-    Performance Considerations
-  </base-disclaimer-title>
-  <base-disclaimer-content>
+<base-warning>
+  <base-warning-title>
+    Performance considerations
+  </base-warning-title>
+  <base-warning-content>
     Keep in mind that looping operations can be resource-intensive, especially with large data sets. Always consider the performance implications of your code when using loops.
-  </base-disclaimer-content>
-</base-disclaimer>
+  </base-warning-content>
+</base-warning>
 
 ## Break and Continue Statements
 
 In JavaScript, `break` and `continue` are two control flow statements that you can use in loops.
 
-1. **Break**: The `break` statement is used to exit the current loop prematurely, stopping its execution immediately. It's often used in `switch` statements, but can also be used in `for`, `while`, and `do...while` loops.
+### Break
+
+The `break` statement is used to exit the current loop prematurely, stopping its execution immediately. It's often used in `switch` statements, but can also be used in `for`, `while`, and `do...while` loops.
 
 ```javascript
 for (let i = 0; i < 10; i++) {
@@ -255,9 +267,11 @@ for (let i = 0; i < 10; i++) {
 // This will print the numbers 0 through 4 to the console
 ```
 
-In this example, the loop stops running when `i` is equal to 5, even though the loop condition `i < 10` would still be true.
+The loop stops running when `i` is equal to 5, even though the loop condition `i < 10` would still be true.
 
-2. **Continue**: The `continue` statement is used to skip the current iteration of the loop and move directly to the next one. It ends the current iteration and continues with the next one.
+### Continue
+
+The `continue` statement is used to skip the current iteration of the loop and move directly to the next one. It ends the current iteration and continues with the next one.
 
 ```javascript
 for (let i = 0; i < 10; i++) {
@@ -271,13 +285,18 @@ for (let i = 0; i < 10; i++) {
 
 In this example, the number 5 is not printed to the console because when `i` is equal to 5, the `continue` statement is executed, ending that iteration of the loop early.
 
-Both `break` and `continue` can be very useful for controlling the flow of your loops, but they should be used judiciously, as they can make your code more difficult to read and understand if used excessively.
+<base-warning>
+  <base-warning-title>
+    Use `break` and `continue` judiciously
+  </base-warning-title>
+  <base-warning-content>
+    Both `break` and `continue` can be very useful for controlling the flow of your loops, but they should be used judiciously, as they can make your code more difficult to read and understand if used excessively.
+  </base-warning-content>
+</base-warning>
 
 ## Do...While Loop
 
 The `do...while` loop is a variant of the `while` loop in JavaScript. This loop will execute the block of code once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.
-
-Here's the syntax:
 
 ```javascript
 do {
@@ -287,8 +306,6 @@ do {
 
 The `condition` can be any expression that evaluates to a boolean value, either `true` or `false`. If the condition is `true`, the loop will continue to run. This process repeats until the condition becomes `false`.
 
-Here's an example:
-
 ```javascript
 let i = 0;
 do {
@@ -297,15 +314,20 @@ do {
 } while (i < 5);
 ```
 
-In this example, the loop will print the numbers 0 through 4 to the console. The variable `i` starts at 0 and is incremented by 1 after each loop iteration. When `i` becomes 5, the condition `i < 5` is no longer true, so the loop stops running.
+The loop will print the numbers 0 through 4 to the console. The variable `i` starts at 0 and is incremented by 1 after each loop iteration. When `i` becomes 5, the condition `i < 5` is no longer true, so the loop stops running.
 
-The key difference between `do...while` and `while` is that `do...while` guarantees the loop will run at least once, because it checks the condition after executing the loop body. In a `while` loop, if the condition is false at the start, the loop body might not run at all.
+<base-disclaimer>
+  <base-disclaimer-title>
+    Difference between `do...while` and `while`
+  </base-disclaimer-title>
+  <base-disclaimer-content>
+  The key difference between `do...while` and `while` is that `do...while` guarantees the loop will run at least once, because it checks the condition after executing the loop body. In a `while` loop, if the condition is false at the start, the loop body might not run at all.
+  </base-disclaimer-content>
+</base-disclaimer>
 
 ## For Loop
 
 The `for` loop in JavaScript is used to repeatedly execute a block of code a certain number of times. It's often used when you know beforehand how many times you need to loop.
-
-Here's the syntax:
 
 ```javascript
 for (initialization; condition; finalExpression) {
@@ -317,19 +339,17 @@ for (initialization; condition; finalExpression) {
 - `condition` is checked before each loop iteration. If it's `true`, the loop continues; if it's `false`, the loop stops.
 - `finalExpression` is executed at the end of each loop iteration, usually to update the counter.
 
-Here's an example:
-
 ```javascript
 for (let i = 0; i < 5; i++) {
   console.log(i);
 }
 ```
 
-In this example, the loop will print the numbers 0 through 4 to the console. The variable `i` starts at 0 and is incremented by 1 after each loop iteration. When `i` becomes 5, the condition `i < 5` is no longer true, so the loop stops running.
+The  `for` loop will print the numbers 0 through 4 to the console. The variable `i` starts at 0 and is incremented by 1 after each loop iteration. When `i` becomes 5, the condition `i < 5` is no longer true, so the loop stops running.
 
 ## For loops vs Array methods
 
-The choice between a `for` loop and array methods like `forEach`, `map`, `filter`, `reduce`, etc., depends on the specific situation and your personal preference. Both have their uses and can be better in different scenarios.
+The choice between a `for` loop and <router-link to="/cheatsheet/array-methods">array methods</router-link> like `forEach`, `map`, `filter`, `reduce`, etc., depends on the specific situation and your personal preference. Both have their uses and can be better in different scenarios.
 
 **For Loop:**
 
