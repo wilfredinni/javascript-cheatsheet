@@ -136,6 +136,7 @@
         "qkniep",
         "randint",
         "randrange",
+        "readdir",
         "readlines",
         "reencode",
         "Regexes",

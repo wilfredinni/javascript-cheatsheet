@@ -70,6 +70,11 @@ export const useNavigationStore = defineStore('navigation', {
         path: '/cheatsheet/string-formatting',
         updated: false,
       },
+      {
+        name: 'Files and Directories',
+        path: '/cheatsheet/directory-files',
+        updated: true,
+      },
     ] as NavigationItem[],
   }),
 })
