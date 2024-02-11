@@ -34,7 +34,7 @@ JavaScript provides seven different data types:
 
 ## Variables
 
-In JavaScript, you can declare variables using `var`, `let`, and `const` keywords. Here's what you need to know about each:
+You can declare variables using `var`, `let`, and `const` keywords. Here's what you need to know about each:
 
 1. `var`: This is the oldest way to declare variables. It's not used as much in modern JavaScript, but it's still important to understand. Variables declared with var are function-scoped, meaning they are only available within the function they're declared in.
 
@@ -351,7 +351,7 @@ These operators are less commonly used than the arithmetic, assignment, comparis
 
 ## Comments
 
-In JavaScript, you can write comments in your code to explain what it does, leave notes for yourself or others, or to prevent execution of code. There are two types of comments in JavaScript:
+To write comments in your code to explain what it does, leave notes for yourself or others, or to prevent execution of code:
 
 ### Single-line comments
 
@@ -383,7 +383,7 @@ It can span multiple lines
 
 ## The console.log Function
 
-The `console.log()` function in JavaScript is used to print output to the console. This can be very useful for debugging, as it allows you to output the values of variables at different points in your code, or to output messages that help you understand the flow of execution in your code.
+The `console.log()` function is used to print output to the console. This can be very useful for debugging, as it allows you to output the values of variables at different points in your code, or to output messages that help you understand the flow of execution in your code.
 
 ```javascript
 console.log("Hello, World!"); // prints "Hello, World!" to the console
@@ -412,4 +412,3 @@ console.log(a, b); // prints "1 2" to the console
     Note that `console.log()` does not affect the execution of your code. It's purely for outputting information to the console.
   </base-warning-content>
 </base-warning>
-
