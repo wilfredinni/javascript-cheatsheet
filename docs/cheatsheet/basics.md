@@ -60,6 +60,247 @@ In JavaScript, you can declare variables using `var`, `let`, and `const` keyword
 - `let` and `const` create variables that are block-scoped, meaning they exist only within the block they're declared in. This is different from `var`, which creates function-scoped variables.
 - Variables declared with `const` cannot be reassigned. However, if the variable is an object or an array, its properties or elements can still be modified.
 
+## Arithmetic Operators
+
+Arithmetic operators are used to perform mathematical operation:
+
+1. **Addition (`+`)**: Adds two numbers.
+
+```javascript
+let result = 5 + 10; // result is 15
+```
+
+2. **Subtraction (`-`)**: Subtracts the second number from the first.
+
+```javascript
+let result = 10 - 5; // result is 5
+```
+
+3. **Multiplication (`*`)**: Multiplies two numbers.
+
+```javascript
+let result = 5 * 10; // result is 50
+```
+
+4. **Division (`/`)**: Divides the first number by the second.
+
+```javascript
+let result = 10 / 5; // result is 2
+```
+
+5. **Modulus (`%`)**: Returns the remainder of the division of the first number by the second.
+
+```javascript
+let result = 10 % 3; // result is 1
+```
+
+6. **Increment (`++`)**: Increases a number by 1.
+
+```javascript
+let num = 5;
+num++; // num is now 6
+```
+
+7. **Decrement (`--`)**: Decreases a number by 1.
+
+```javascript
+let num = 5;
+num--; // num is now 4
+```
+
+8. **Exponentiation (`**`)**: Raises the first number to the power of the second number.
+
+```javascript
+let result = 5 ** 2; // result is 25
+```
+
+These operators can be used with numbers, variables, or expressions.
+
+## Assignment Operators
+
+Assignment operators are used to assign values to variables:
+
+1. **Assignment (`=`)**: Assigns the value on the right to the variable on the left.
+
+```javascript
+let x = 10; // x is now 10
+```
+
+2. **Addition assignment (`+=`)**: Adds the value on the right to the variable on the left and assigns the result to the variable on the left.
+
+```javascript
+let x = 5;
+x += 10; // x is now 15
+```
+
+3. **Subtraction assignment (`-=`)**: Subtracts the value on the right from the variable on the left and assigns the result to the variable on the left.
+
+```javascript
+let x = 10;
+x -= 5; // x is now 5
+```
+
+4. **Multiplication assignment (`*=`)**: Multiplies the variable on the left by the value on the right and assigns the result to the variable on the left.
+
+```javascript
+let x = 5;
+x *= 10; // x is now 50
+```
+
+5. **Division assignment (`/=`)**: Divides the variable on the left by the value on the right and assigns the result to the variable on the left.
+
+```javascript
+let x = 10;
+x /= 5; // x is now 2
+```
+
+6. **Modulus assignment (`%=`)**: Divides the variable on the left by the value on the right and assigns the remainder to the variable on the left.
+
+```javascript
+let x = 10;
+x %= 3; // x is now 1
+```
+
+7. **Exponentiation assignment (`**=`)**: Raises the variable on the left to the power of the value on the right and assigns the result to the variable on the left.
+
+```javascript
+let x = 5;
+x **= 2; // x is now 25
+```
+
+These operators provide a shorthand way to update the value of a variable in relation to its current value.
+
+## Comparison Operators
+
+Comparison operators are used to compare two values:
+
+1. **Equal to (`==`)**: Returns true if the operands are equal.
+
+```javascript
+5 == 5; // true
+'5' == 5; // true, because it does type coercion
+```
+
+2. **Not equal to (`!=`)**: Returns true if the operands are not equal.
+
+```javascript
+5 != 4; // true
+```
+
+3. **Strictly equal to (`===`)**: Returns true if the operands are equal and of the same type.
+
+```javascript
+5 === 5; // true
+'5' === 5; // false, because the types are different
+```
+
+4. **Strictly not equal to (`!==`)**: Returns true if the operands are not equal or not of the same type.
+
+```javascript
+5 !== '5'; // true
+```
+
+5. **Greater than (`>`)**: Returns true if the left operand is greater than the right operand.
+
+```javascript
+10 > 5; // true
+```
+
+6. **Less than (`<`)**: Returns true if the left operand is less than the right operand.
+
+```javascript
+5 < 10; // true
+```
+
+7. **Greater than or equal to (`>=`)**: Returns true if the left operand is greater than or equal to the right operand.
+
+```javascript
+10 >= 10; // true
+```
+
+8. **Less than or equal to (`<=`)**: Returns true if the left operand is less than or equal to the right operand.
+
+```javascript
+5 <= 5; // true
+```
+
+These operators are often used in conditional statements to perform different actions based on different conditions.
+
+## Logical Operators
+
+Logical operators are used to determine the logic between variables or values:
+
+1. **Logical AND (`&&`)**: Returns true if both operands are true.
+
+```javascript
+true && true; // true
+true && false; // false
+```
+
+2. **Logical OR (`||`)**: Returns true if at least one of the operands is true.
+
+```javascript
+true || false; // true
+false || false; // false
+```
+
+3. **Logical NOT (`!`)**: Returns true if the operand is false, and false if the operand is true. It basically reverses the boolean value of the operand.
+
+```javascript
+!true; // false
+!false; // true
+```
+
+These operators are often used in conditional statements to combine or invert boolean conditions. For example, you might use the logical AND operator (`&&`) to check that two conditions are both true before running a piece of code.
+
+## Bitwise Operators
+
+Bitwise operators operate on 32-bit binary representations of numbers:
+
+1. **Bitwise AND (`&`)**: Returns a one in each bit position where operands have ones.
+
+```javascript
+5 & 1; // 1 (0101 & 0001 => 0001)
+```
+
+2. **Bitwise OR (`|`)**: Returns a one in each bit position where at least one operand has a one.
+
+```javascript
+5 | 1; // 5 (0101 | 0001 => 0101)
+```
+
+3. **Bitwise XOR (`^`)**: Returns a one in each bit position where exactly one operand has a one.
+
+```javascript
+5 ^ 1; // 4 (0101 ^ 0001 => 0100)
+```
+
+4. **Bitwise NOT (`~`)**: Inverts the bits of its operand.
+
+```javascript
+~5; // -6 (~0101 => 1010)
+```
+
+5. **Left shift (`<<`)**: Shifts the bits of the first operand to the left by the number of places specified in the second operand. New bits get filled with zeros.
+
+```javascript
+5 << 1; // 10 (0101 << 1 => 1010)
+```
+
+6. **Sign-propagating right shift (`>>`)**: Shifts the bits of the first operand to the right by the number of places specified in the second operand. The sign bit is used to fill the new bits.
+
+```javascript
+5 >> 1; // 2 (0101 >> 1 => 0010)
+```
+
+7. **Zero-fill right shift (`>>>`)**: Shifts the bits of the first operand to the right by the number of places specified in the second operand. New bits get filled with zeros.
+
+```javascript
+5 >>> 1; // 2 (0101 >>> 1 => 0010)
+```
+
+These operators are less commonly used than the arithmetic, assignment, comparison, and logical operators, but they can be useful in certain scenarios, particularly in low-level programming tasks.
+
 ## Comments
 
 In JavaScript, you can write comments in your code to explain what it does, leave notes for yourself or others, or to prevent execution of code. There are two types of comments in JavaScript:
