@@ -75,6 +75,11 @@ export const useNavigationStore = defineStore('navigation', {
         path: '/cheatsheet/directory-files',
         updated: true,
       },
+      {
+        name: 'Error Handling',
+        path: '/cheatsheet/error-handling',
+        updated: true,
+      },
     ] as NavigationItem[],
   }),
 })

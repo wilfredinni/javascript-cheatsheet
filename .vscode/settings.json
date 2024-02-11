@@ -74,6 +74,7 @@
         "imag",
         "importlib",
         "infolist",
+        "instanceof",
         "isabs",
         "isalpha",
         "isdecimal",
