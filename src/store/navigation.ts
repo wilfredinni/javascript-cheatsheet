@@ -73,12 +73,17 @@ export const useNavigationStore = defineStore('navigation', {
       {
         name: 'Files and Directories',
         path: '/cheatsheet/directory-files',
-        updated: true,
+        updated: false,
       },
       {
         name: 'Error Handling',
         path: '/cheatsheet/error-handling',
-        updated: true,
+        updated: false,
+      },
+      {
+        name: 'Debugging',
+        path: '/cheatsheet/debugging',
+        updated: false,
       },
     ] as NavigationItem[],
   }),

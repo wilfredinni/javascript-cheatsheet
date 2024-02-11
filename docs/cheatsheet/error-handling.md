@@ -1,6 +1,6 @@
 ---
 title: Javascript Error Handling - Javascript Cheatsheet
-description:  JavaScript, running in a Node.js environment can interact with the file system using the built-in fs module.
+description: Error handling in programming is the process of responding to and managing errors that occur during the execution of a program.
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
