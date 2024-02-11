@@ -64,6 +64,18 @@ In JavaScript, you can declare variables using `var`, `let`, and `const` keyword
 
 Arithmetic operators are used to perform mathematical operation:
 
+| Operator | Description         | Example           | Result     |
+| -------- | ------------------- | ----------------- | ---------- |
+| `+`      | Addition            | `5 + 2`           | `7`        |
+| `-`      | Subtraction         | `5 - 2`           | `3`        |
+| `*`      | Multiplication      | `5 * 2`           | `10`       |
+| `/`      | Division            | `5 / 2`           | `2.5`      |
+| `%`      | Modulus (Remainder) | `5 % 2`           | `1`        |
+| `++`     | Increment           | `let x = 5; x++;` | `x` is `6` |
+| `--`     | Decrement           | `let x = 5; x--;` | `x` is `4` |
+| `**`     | Exponentiation      | `5 ** 2`          | `25`       |
+
+
 1. **Addition (`+`)**: Adds two numbers.
 
 ```javascript
@@ -120,6 +132,16 @@ These operators can be used with numbers, variables, or expressions.
 
 Assignment operators are used to assign values to variables:
 
+| Operator | Description               | Example               | Result      |
+| -------- | ------------------------- | --------------------- | ----------- |
+| `=`      | Assignment                | `let x = 10;`         | `x` is `10` |
+| `+=`     | Addition assignment       | `let x = 5; x += 10;` | `x` is `15` |
+| `-=`     | Subtraction assignment    | `let x = 10; x -= 5;` | `x` is `5`  |
+| `*=`     | Multiplication assignment | `let x = 5; x *= 10;` | `x` is `50` |
+| `/=`     | Division assignment       | `let x = 10; x /= 5;` | `x` is `2`  |
+| `%=`     | Modulus assignment        | `let x = 10; x %= 3;` | `x` is `1`  |
+| `**=`    | Exponentiation assignment | `let x = 5; x **= 2;` | `x` is `25` |
+
 1. **Assignment (`=`)**: Assigns the value on the right to the variable on the left.
 
 ```javascript
@@ -173,6 +195,17 @@ These operators provide a shorthand way to update the value of a variable in rel
 ## Comparison Operators
 
 Comparison operators are used to compare two values:
+
+| Operator | Description              | Example     | Result |
+| -------- | ------------------------ | ----------- | ------ |
+| `==`     | Equal to                 | `5 == 5`    | `true` |
+| `!=`     | Not equal to             | `5 != 4`    | `true` |
+| `===`    | Strictly equal to        | `5 === 5`   | `true` |
+| `!==`    | Strictly not equal to    | `5 !== '5'` | `true` |
+| `>`      | Greater than             | `10 > 5`    | `true` |
+| `<`      | Less than                | `5 < 10`    | `true` |
+| `>=`     | Greater than or equal to | `10 >= 10`  | `true` |
+| `<=`     | Less than or equal to    | `5 <= 5`    | `true` |
 
 1. **Equal to (`==`)**: Returns true if the operands are equal.
 
@@ -230,6 +263,12 @@ These operators are often used in conditional statements to perform different ac
 
 Logical operators are used to determine the logic between variables or values:
 
+| Operator | Description | Example           | Result  |
+| -------- | ----------- | ----------------- | ------- |
+| `&&`     | Logical AND | `true && true`    | `true`  |
+| `\|\|`   | Logical OR  | `true \|\| false` | `true`  |
+| `!`      | Logical NOT | `!true`           | `false` |
+
 1. **Logical AND (`&&`)**: Returns true if both operands are true.
 
 ```javascript
@@ -256,6 +295,15 @@ These operators are often used in conditional statements to combine or invert bo
 ## Bitwise Operators
 
 Bitwise operators operate on 32-bit binary representations of numbers:
+
+| Operator | Description                  | Example   | Result |
+| -------- | ---------------------------- | --------- | ------ |
+| `&`      | Bitwise AND                  | `5 & 1`   | `1`    |
+| `^`      | Bitwise XOR                  | `5 ^ 1`   | `4`    |
+| `~`      | Bitwise NOT                  | `~5`      | `-6`   |
+| `<<`     | Left shift                   | `5 << 1`  | `10`   |
+| `>>`     | Sign-propagating right shift | `5 >> 1`  | `2`    |
+| `>>>`    | Zero-fill right shift        | `5 >>> 1` | `2`    |
 
 1. **Bitwise AND (`&`)**: Returns a one in each bit position where operands have ones.
 
