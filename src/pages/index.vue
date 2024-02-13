@@ -30,7 +30,6 @@ const cardLinks = [
     name: 'Changelog',
     description: `See what is new, what got fixed, and what is coming.`,
     icon: GridIcon,
-    external: false,
   },
 ]
 
