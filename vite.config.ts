@@ -10,6 +10,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Markdown from 'unplugin-vue-markdown/vite'
 import Prism from 'markdown-it-prism'
 import LinkAttributes from 'markdown-it-link-attributes'
+import { VitePWA } from 'vite-plugin-pwa'
 import string from 'string'
 
 // https://vitejs.dev/config/
@@ -36,7 +37,7 @@ export default defineConfig(({ mode }) => {
     plugins: [
       vue({
         include: [/\.vue$/, /\.md$/],
-        reactivityTransform: true,
+        // reactivityTransform: true,
       }),
 
       // https://github.com/hannoeru/vite-plugin-pages
@@ -93,6 +94,35 @@ export default defineConfig(({ mode }) => {
               rel: 'noopener',
             },
           })
+        },
+      }),
+
+      // https://github.com/antfu/vite-plugin-pwa
+      VitePWA({
+        registerType: 'autoUpdate',
+        includeAssets: ['favicon.svg', 'safari-pinned-tab.svg'],
+        manifest: {
+          name: 'JavaScript Cheatsheet',
+          short_name: 'JavaScript Cheatsheet',
+          theme_color: '#ffffff',
+          icons: [
+            {
+              src: '/android-chrome-192x192.png',
+              sizes: '192x192',
+              type: 'image/png',
+            },
+            {
+              src: '/android-chrome-512x512.png',
+              sizes: '512x512',
+              type: 'image/png',
+            },
+            {
+              src: '/android-chrome-512x512.png',
+              sizes: '512x512',
+              type: 'image/png',
+              purpose: 'any maskable',
+            },
+          ],
         },
       }),
     ],
