@@ -64,6 +64,15 @@ const route = useRoute()
                 </a>
               </div>
             </template>
+
+            <a
+              href="https://github.com/sponsors/wilfredinni"
+              class="inline-flex items-center px-1 pt-1 text-sm font-medium transition duration-300 hover:text-amber-500 dark:text-zinc-200 dark:hover:text-amber-400"
+            >
+              Sponsor
+              <span class="ml-1 text-red-500"> ❤</span>
+            </a>
+
             <base-reader-mode />
           </div>
 
