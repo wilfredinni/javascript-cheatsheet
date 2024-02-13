@@ -71,6 +71,11 @@ export const useNavigationStore = defineStore('navigation', {
         updated: false,
       },
       {
+        name: 'Regular Expressions',
+        path: '/cheatsheet/regular-expressions',
+        updated: true,
+      },
+      {
         name: 'Files and Directories',
         path: '/cheatsheet/directory-files',
         updated: false,
