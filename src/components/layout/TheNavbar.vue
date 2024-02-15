@@ -25,7 +25,7 @@ const route = useRoute()
             </router-link>
           </div>
 
-          <!-- <algolia-doc-search /> -->
+          <algolia-doc-search />
         </div>
 
         <!-- actions -->
