@@ -14,7 +14,7 @@ Changelog
 The release of the new **www.javascriptcheatsheet.org** website:
 
 - Complete re-design with **Vue 3** and **Tailwind CSS**.
-- The site is now a **PWA** (Progressive web app) and can be installed in any platform that has a compatible web browser.
+- The site is now a **PWA** and can be installed in any platform that has a compatible web browser.
 - Added a **dark mode**.
 - Added a **reader mode**.
 - Added **Algolia search**.
