@@ -17,7 +17,6 @@
     "pinia": "^2.1.7",
     "prism-theme-vars": "^0.2.4",
     "vue": "^3.4.21",
-    "vue-gtag": "^2.0.1",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {
