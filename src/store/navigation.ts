@@ -73,7 +73,7 @@ export const useNavigationStore = defineStore('navigation', {
       {
         name: 'Regular Expressions',
         path: '/cheatsheet/regular-expressions',
-        updated: true,
+        updated: false,
       },
       {
         name: 'Files and Directories',
