@@ -306,7 +306,6 @@ Bitwise operators operate on 32-bit binary representations of numbers:
 | `>>`     | Sign-propagating right shift | `5 >> 1`  | `2`    |
 | `>>>`    | Zero-fill right shift        | `5 >>> 1` | `2`    |
 
-
 1. **Bitwise AND (`&`)**: Returns a one in each bit position where operands have ones.
 
 ```javascript
