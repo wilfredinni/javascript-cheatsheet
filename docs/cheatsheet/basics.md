@@ -14,7 +14,7 @@ We all need to start somewhere, so how about doing it here.
     From the <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript">MDN web docs</a>
   </base-disclaimer-title>
   <base-disclaimer-content>
-   JavaScript is a scripting language that allows you to implement complex features on web pages: displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. You can bet that JavaScript is probably involved.
+   JavaScript is a scripting language that allows you to implement complex features on web pages: displaying timely content updates, interactive maps, animated 2D/3D graphics, scrolling video jukeboxes, etc. You can bet that JavaScript is probably involved. It is a commonly used programming language to create dynamic and interactive elements in web applications and it is easy to learn.
   </base-disclaimer-content>
 </base-disclaimer>
 
@@ -299,11 +299,13 @@ Bitwise operators operate on 32-bit binary representations of numbers:
 | Operator | Description                  | Example   | Result |
 | -------- | ---------------------------- | --------- | ------ |
 | `&`      | Bitwise AND                  | `5 & 1`   | `1`    |
+| `|"      | Bitwise OR                   | `5 | 1`   | `5`    |
 | `^`      | Bitwise XOR                  | `5 ^ 1`   | `4`    |
 | `~`      | Bitwise NOT                  | `~5`      | `-6`   |
 | `<<`     | Left shift                   | `5 << 1`  | `10`   |
 | `>>`     | Sign-propagating right shift | `5 >> 1`  | `2`    |
 | `>>>`    | Zero-fill right shift        | `5 >>> 1` | `2`    |
+
 
 1. **Bitwise AND (`&`)**: Returns a one in each bit position where operands have ones.
 
