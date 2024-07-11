@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@docsearch/js':
     specifier: ^3.6.0
@@ -121,8 +125,8 @@ devDependencies:
     specifier: ^5.5.3
     version: 5.5.3
   unplugin-auto-import:
-    specifier: ^0.17.8
-    version: 0.17.8(@vueuse/core@10.11.0)(rollup@2.79.1)
+    specifier: ^0.18.0
+    version: 0.18.0(@vueuse/core@10.11.0)(rollup@2.79.1)
   unplugin-vue-components:
     specifier: ^0.27.2
     version: 0.27.2(rollup@2.79.1)(vue@3.4.31)
@@ -6040,8 +6044,8 @@ packages:
     engines: {node: '>= 10.0.0'}
     dev: true
 
-  /unplugin-auto-import@0.17.8(@vueuse/core@10.11.0)(rollup@2.79.1):
-    resolution: {integrity: sha512-CHryj6HzJ+n4ASjzwHruD8arhbdl+UXvhuAIlHDs15Y/IMecG3wrf7FVg4pVH/DIysbq/n0phIjNHAjl7TG7Iw==}
+  /unplugin-auto-import@0.18.0(@vueuse/core@10.11.0)(rollup@2.79.1):
+    resolution: {integrity: sha512-DZcj8tceMpwuZgBPM9hhKd7v05WAYCUc/qYjxV7vGbeVCGsQ8SHWumCyOYBDqYzkPd4FlQkuh+OH0cWgdCjcdw==}
     engines: {node: '>=14'}
     peerDependencies:
       '@nuxt/kit': ^3.2.2
@@ -6800,7 +6804,3 @@ packages:
 
   /zhead@2.2.4:
     resolution: {integrity: sha512-8F0OI5dpWIA5IGG5NHUg9staDwz/ZPxZtvGVf01j7vHqSyZ0raHY+78atOVxRqb73AotX22uV1pXt3gYSstGag==}
-
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
