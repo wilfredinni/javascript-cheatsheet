@@ -9,7 +9,12 @@ updated: February 25, 2023
 Changelog
 </base-title>
 
-## Unreleased
+## 2024-07-11
+
+- Added a missing operator in Bitwise operators. Thanks [@Kishore007raj](https://github.com/Kishore007raj)
+- Fixed missing style (DocSearch-VisuallyHiddenForAccessibility). Thanks [@gritgary101](https://github.com/gritgary101)
+
+## 2024-01-29
 
 The release of the new **www.javascriptcheatsheet.org** website:
 
