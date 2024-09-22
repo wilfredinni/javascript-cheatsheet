@@ -66,6 +66,9 @@ devDependencies:
   autoprefixer:
     specifier: ^10.4.20
     version: 10.4.20(postcss@8.4.47)
+  esbuild:
+    specifier: ^0.23.1
+    version: 0.23.1
   eslint:
     specifier: ^9.11.0
     version: 9.11.0

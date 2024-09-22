@@ -61,7 +61,8 @@
     "vite-ssg": "^0.23.8",
     "vite-ssg-sitemap": "^0.6.1",
     "vitest": "^2.1.1",
-    "vue-tsc": "^2.1.6"
+    "vue-tsc": "^2.1.6",
+    "esbuild": "^0.23.1"
   },
   "pnpm": {
     "peerDependencyRules": {
