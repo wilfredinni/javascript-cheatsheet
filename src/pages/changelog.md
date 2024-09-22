@@ -12,6 +12,9 @@ Changelog
 ## 2024-09-22
 
 - Added Javascript Map Objects. Thanks [@Harish-clb](https://github.com/Harish-clb)
+- Updated changelog.
+- Updated contributors.
+- Updated packages and dependencies.
 
 ## 2024-07-11
 
