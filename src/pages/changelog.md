@@ -9,6 +9,10 @@ updated: February 25, 2023
 Changelog
 </base-title>
 
+## 2024-09-22
+
+- Added Javascript Map Objects. Thanks [@Harish-clb](https://github.com/Harish-clb)
+
 ## 2024-07-11
 
 - Added a missing operator in Bitwise operators. Thanks [@Kishore007raj](https://github.com/Kishore007raj)
