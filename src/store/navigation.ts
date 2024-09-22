@@ -56,6 +56,11 @@ export const useNavigationStore = defineStore('navigation', {
         updated: false,
       },
       {
+        name: 'Map',
+        path: '/cheatsheet/map',
+        updated: false,
+      },
+      {
         name: 'Sets',
         path: '/cheatsheet/sets',
         updated: false,
