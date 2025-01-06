@@ -244,7 +244,7 @@ Here's an example of how you can use the `debugger` statement:
 ```javascript
 function potentiallyBuggyFunction() {
   let obj = { a: 1, b: 2 };
-s
+
   // Insert debugger statement
   debugger;
 
