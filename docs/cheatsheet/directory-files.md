@@ -31,7 +31,7 @@ To interact with the file system in JavaScript, you typically use the built-in `
 Here's a simple example of reading a file using the `fs` module:
 
 ```javascript
-const fs = require('fs');
+const fs = require('fs').promises;
 
 async function readFileAsync() {
   try {
