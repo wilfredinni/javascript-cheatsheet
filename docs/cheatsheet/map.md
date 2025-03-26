@@ -143,8 +143,8 @@ You can iterate over the map values using `values()` method as in the order it w
 ```javascript
 const map = new Map()
 map.set('name', 'Bob').set('age', 20)
-for (const key of map.values()) {
-  console.log(`${key}`)
+for (const value of map.values()) {
+  console.log(`${value}`)
 }
 
 // Bob
