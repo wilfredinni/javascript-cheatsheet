@@ -15,8 +15,8 @@ importers:
         specifier: ^1.7.23
         version: 1.7.23(vue@3.5.13(typescript@5.8.2))
       '@vueuse/core':
-        specifier: ^10.11.1
-        version: 10.11.1(vue@3.5.13(typescript@5.8.2))
+        specifier: ^14.0.0
+        version: 14.2.0(vue@3.5.13(typescript@5.8.2))
       '@vueuse/head':
         specifier: ^2.0.0
         version: 2.0.0(vue@3.5.13(typescript@5.8.2))
@@ -131,7 +131,7 @@ importers:
         version: 5.8.2
       unplugin-auto-import:
         specifier: ^0.18.4
-        version: 0.18.6(@vueuse/core@10.11.1(vue@3.5.13(typescript@5.8.2)))(rollup@2.79.2)
+        version: 0.18.6(@vueuse/core@14.2.0(vue@3.5.13(typescript@5.8.2)))(rollup@2.79.2)
       unplugin-vue-components:
         specifier: ^0.27.4
         version: 0.27.5(@babel/parser@7.26.9)(rollup@2.79.2)(vue@3.5.13(typescript@5.8.2))
@@ -1421,51 +1421,61 @@ packages:
     resolution: {integrity: sha512-88I+D3TeKItrw+Y/2ud4Tw0+3CxQ2kLgu3QvrogZ0OfkmX/DEppehus7L3TS2Q4lpB+hYyxhkQiYPJ6Mf5/dPg==}
     cpu: [arm]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm-musleabihf@4.34.9':
     resolution: {integrity: sha512-3qyfWljSFHi9zH0KgtEPG4cBXHDFhwD8kwg6xLfHQ0IWuH9crp005GfoUUh/6w9/FWGBwEHg3lxK1iHRN1MFlA==}
     cpu: [arm]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-arm64-gnu@4.34.9':
     resolution: {integrity: sha512-6TZjPHjKZUQKmVKMUowF3ewHxctrRR09eYyvT5eFv8w/fXarEra83A2mHTVJLA5xU91aCNOUnM+DWFMSbQ0Nxw==}
     cpu: [arm64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-arm64-musl@4.34.9':
     resolution: {integrity: sha512-LD2fytxZJZ6xzOKnMbIpgzFOuIKlxVOpiMAXawsAZ2mHBPEYOnLRK5TTEsID6z4eM23DuO88X0Tq1mErHMVq0A==}
     cpu: [arm64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-linux-loongarch64-gnu@4.34.9':
     resolution: {integrity: sha512-dRAgTfDsn0TE0HI6cmo13hemKpVHOEyeciGtvlBTkpx/F65kTvShtY/EVyZEIfxFkV5JJTuQ9tP5HGBS0hfxIg==}
     cpu: [loong64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-powerpc64le-gnu@4.34.9':
     resolution: {integrity: sha512-PHcNOAEhkoMSQtMf+rJofwisZqaU8iQ8EaSps58f5HYll9EAY5BSErCZ8qBDMVbq88h4UxaNPlbrKqfWP8RfJA==}
     cpu: [ppc64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-riscv64-gnu@4.34.9':
     resolution: {integrity: sha512-Z2i0Uy5G96KBYKjeQFKbbsB54xFOL5/y1P5wNBsbXB8yE+At3oh0DVMjQVzCJRJSfReiB2tX8T6HUFZ2k8iaKg==}
     cpu: [riscv64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-s390x-gnu@4.34.9':
     resolution: {integrity: sha512-U+5SwTMoeYXoDzJX5dhDTxRltSrIax8KWwfaaYcynuJw8mT33W7oOgz0a+AaXtGuvhzTr2tVKh5UO8GVANTxyQ==}
     cpu: [s390x]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-gnu@4.34.9':
     resolution: {integrity: sha512-FwBHNSOjUTQLP4MG7y6rR6qbGw4MFeQnIBrMe161QGaQoBQLqSUEKlHIiVgF3g/mb3lxlxzJOpIBhaP+C+KP2A==}
     cpu: [x64]
     os: [linux]
+    libc: [glibc]
 
   '@rollup/rollup-linux-x64-musl@4.34.9':
     resolution: {integrity: sha512-cYRpV4650z2I3/s6+5/LONkjIz8MBeqrk+vPXV10ORBnshpn8S32bPqQ2Utv39jCiDcO2eJTuSlPXpnvmaIgRA==}
     cpu: [x64]
     os: [linux]
+    libc: [musl]
 
   '@rollup/rollup-win32-arm64-msvc@4.34.9':
     resolution: {integrity: sha512-z4mQK9dAN6byRA/vsSgQiPeuO63wdiDxZ9yg9iyX2QTzKuQM7T4xlBoeUP/J8uiFkqxkcWndWi+W7bXdPbt27Q==}
@@ -1548,8 +1558,8 @@ packages:
   '@types/trusted-types@2.0.7':
     resolution: {integrity: sha512-ScaPdn1dQczgbl0QFTeTOmVHFULt394XJgOQNoyVhZ6r2vLnMLJfBPd53SB52T/3G36VI1/g2MZaX0cwDuXsfw==}
 
-  '@types/web-bluetooth@0.0.20':
-    resolution: {integrity: sha512-g9gZnnXVq7gM7v3tJCWV/qw7w+KeOlSHAhgF9RytFyifW6AF61hdT2ucrYhPq9hLs5JIryeupHV3qGk95dH9ow==}
+  '@types/web-bluetooth@0.0.21':
+    resolution: {integrity: sha512-oIQLCGWtcFZy2JW77j9k8nHzAOpqMHLQejDA48XXMWH6tjCQHz5RCFz1bzsmROyL6PUm+LLnUiI4BCn221inxA==}
 
   '@typescript-eslint/eslint-plugin@8.25.0':
     resolution: {integrity: sha512-VM7bpzAe7JO/BFf40pIT1lJqS/z1F8OaSsUB3rpFJucQA4cOSuH2RVVVkFULN+En0Djgr29/jb4EQnedUo95KA==}
@@ -1715,19 +1725,23 @@ packages:
   '@vue/test-utils@2.4.6':
     resolution: {integrity: sha512-FMxEjOpYNYiFe0GkaHsnJPXFHxQ6m4t8vI/ElPGpMWxZKpmRvQ33OIrvRXemy6yha03RxhOlQuy+gZMC3CQSow==}
 
-  '@vueuse/core@10.11.1':
-    resolution: {integrity: sha512-guoy26JQktXPcz+0n3GukWIy/JDNKti9v6VEMu6kV2sYBsWuGiTU8OWdg+ADfUbHg3/3DlqySDe7JmdHrktiww==}
+  '@vueuse/core@14.2.0':
+    resolution: {integrity: sha512-tpjzVl7KCQNVd/qcaCE9XbejL38V6KJAEq/tVXj7mDPtl6JtzmUdnXelSS+ULRkkrDgzYVK7EerQJvd2jR794Q==}
+    peerDependencies:
+      vue: ^3.5.0
 
   '@vueuse/head@2.0.0':
     resolution: {integrity: sha512-ykdOxTGs95xjD4WXE4na/umxZea2Itl0GWBILas+O4oqS7eXIods38INvk3XkJKjqMdWPcpCyLX/DioLQxU1KA==}
     peerDependencies:
       vue: '>=2.7 || >=3'
 
-  '@vueuse/metadata@10.11.1':
-    resolution: {integrity: sha512-IGa5FXd003Ug1qAZmyE8wF3sJ81xGLSqTqtQ6jaVfkeZ4i5kS2mwQF61yhVqojRnenVew5PldLyRgvdl4YYuSw==}
+  '@vueuse/metadata@14.2.0':
+    resolution: {integrity: sha512-i3axTGjU8b13FtyR4Keeama+43iD+BwX9C2TmzBVKqjSHArF03hjkp2SBZ1m72Jk2UtrX0aYCugBq2R1fhkuAQ==}
 
-  '@vueuse/shared@10.11.1':
-    resolution: {integrity: sha512-LHpC8711VFZlDaYUXEBbFBCQ7GS3dVU9mjOhhMhXP6txTV4EhYQg/KGnQuvt/sPAtoUKq7VVUnL6mVtFoL42sA==}
+  '@vueuse/shared@14.2.0':
+    resolution: {integrity: sha512-Z0bmluZTlAXgUcJ4uAFaML16JcD8V0QG00Db3quR642I99JXIDRa2MI2LGxiLVhcBjVnL1jOzIvT5TT2lqJlkA==}
+    peerDependencies:
+      vue: ^3.5.0
 
   abbrev@2.0.0:
     resolution: {integrity: sha512-6/mh1E2u2YgEsCHdY0Yx5oW+61gZU+1vXaoiHHrpKeuRNNgFvS+/jrwHiQhB5apAf5oB7UB7E19ol2R2LKH8hQ==}
@@ -3368,6 +3382,7 @@ packages:
   source-map@0.8.0-beta.0:
     resolution: {integrity: sha512-2ymg6oRBpebeZi9UUNsgQ89bhx01TcTkmNTGnNO88imTmbSgy4nfujrgVEFKWpMTEGA11EDkTt7mqObTPdigIA==}
     engines: {node: '>= 8'}
+    deprecated: The work that was done in this beta branch won't be included in future versions
 
   sourcemap-codec@1.4.8:
     resolution: {integrity: sha512-9NykojV5Uih4lgo5So5dtw+f0JgJX30KCNI8gwhz2J9A15wD0Ml6tjHKwf6fTSa6fAdVBdZeNOs9eJ71qCk8vA==}
@@ -3839,6 +3854,7 @@ packages:
   whatwg-encoding@3.1.1:
     resolution: {integrity: sha512-6qN4hJdMwfYBtE3YBTTHhoeuUrDBPZmbQaxWAqSALV/MeEnR5z1xd8UKud2RAkFoPkmB+hli1TZSnyi84xz1vQ==}
     engines: {node: '>=18'}
+    deprecated: Use @exodus/bytes instead for a more spec-conformant and faster implementation
 
   whatwg-mimetype@3.0.0:
     resolution: {integrity: sha512-nt+N2dzIutVRxARx1nghPKGv1xHikU7HKdfafKkLNLindmPU/ch3U31NOCGGA/dmPcmb1VlofO0vnKAcsm0o/Q==}
@@ -5323,7 +5339,7 @@ snapshots:
 
   '@types/trusted-types@2.0.7': {}
 
-  '@types/web-bluetooth@0.0.20': {}
+  '@types/web-bluetooth@0.0.21': {}
 
   '@typescript-eslint/eslint-plugin@8.25.0(@typescript-eslint/parser@8.25.0(eslint@9.21.0(jiti@1.21.7))(typescript@5.8.2))(eslint@9.21.0(jiti@1.21.7))(typescript@5.8.2)':
     dependencies:
@@ -5581,15 +5597,12 @@ snapshots:
       js-beautify: 1.15.4
       vue-component-type-helpers: 2.2.8
 
-  '@vueuse/core@10.11.1(vue@3.5.13(typescript@5.8.2))':
+  '@vueuse/core@14.2.0(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      '@types/web-bluetooth': 0.0.20
-      '@vueuse/metadata': 10.11.1
-      '@vueuse/shared': 10.11.1(vue@3.5.13(typescript@5.8.2))
-      vue-demi: 0.14.10(vue@3.5.13(typescript@5.8.2))
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
+      '@types/web-bluetooth': 0.0.21
+      '@vueuse/metadata': 14.2.0
+      '@vueuse/shared': 14.2.0(vue@3.5.13(typescript@5.8.2))
+      vue: 3.5.13(typescript@5.8.2)
 
   '@vueuse/head@2.0.0(vue@3.5.13(typescript@5.8.2))':
     dependencies:
@@ -5599,14 +5612,11 @@ snapshots:
       '@unhead/vue': 1.11.20(vue@3.5.13(typescript@5.8.2))
       vue: 3.5.13(typescript@5.8.2)
 
-  '@vueuse/metadata@10.11.1': {}
+  '@vueuse/metadata@14.2.0': {}
 
-  '@vueuse/shared@10.11.1(vue@3.5.13(typescript@5.8.2))':
+  '@vueuse/shared@14.2.0(vue@3.5.13(typescript@5.8.2))':
     dependencies:
-      vue-demi: 0.14.10(vue@3.5.13(typescript@5.8.2))
-    transitivePeerDependencies:
-      - '@vue/composition-api'
-      - vue
+      vue: 3.5.13(typescript@5.8.2)
 
   abbrev@2.0.0: {}
 
@@ -7667,7 +7677,7 @@ snapshots:
 
   universalify@2.0.1: {}
 
-  unplugin-auto-import@0.18.6(@vueuse/core@10.11.1(vue@3.5.13(typescript@5.8.2)))(rollup@2.79.2):
+  unplugin-auto-import@0.18.6(@vueuse/core@14.2.0(vue@3.5.13(typescript@5.8.2)))(rollup@2.79.2):
     dependencies:
       '@antfu/utils': 0.7.10
       '@rollup/pluginutils': 5.1.4(rollup@2.79.2)
@@ -7678,7 +7688,7 @@ snapshots:
       unimport: 3.14.6(rollup@2.79.2)
       unplugin: 1.16.1
     optionalDependencies:
-      '@vueuse/core': 10.11.1(vue@3.5.13(typescript@5.8.2))
+      '@vueuse/core': 14.2.0(vue@3.5.13(typescript@5.8.2))
     transitivePeerDependencies:
       - rollup
 
