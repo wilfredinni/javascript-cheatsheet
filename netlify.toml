@@ -5,7 +5,7 @@
 
 [build]
   publish = "dist"
-  command = "npx pnpm i --store=node_modules/.pnpm-store && npx puppeteer browsers install chrome && npx pnpm run build"
+  command = "bun install && npx puppeteer browsers install chrome && bun run build"
 
 [[redirects]]
   from = "/*"
