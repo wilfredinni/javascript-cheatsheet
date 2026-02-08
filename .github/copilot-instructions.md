@@ -9,11 +9,11 @@
 
 ## Critical workflows
 
-- Dev: pnpm run dev (runs build:content first, then Vite).
-- Build: pnpm run build (build:content -> vite build -> prerender).
-- Preview: pnpm run preview.
-- Tests: pnpm run test (Vitest with jsdom).
-- Lint/typecheck: pnpm run lint / pnpm run typecheck.
+- Dev: bun run dev (runs build:content first, then Vite).
+- Build: bun run build (build:content -> vite build -> prerender).
+- Preview: bun run preview.
+- Tests: bun run test (Vitest with jsdom).
+- Lint/typecheck: bun run lint / bun run typecheck.
 
 ## Content and routing conventions
 
