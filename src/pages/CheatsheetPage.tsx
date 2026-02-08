@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useParams } from '@tanstack/react-router'
 import BaseTitle from '../components/ui/BaseTitle'
+import MarkdownContent from '../components/MarkdownContent'
 import Prose from '../components/Prose'
 import Seo from '../components/Seo'
 import { siteMetadata } from '../content/site'
@@ -68,7 +69,7 @@ export default function CheatsheetPage() {
       >
         {heading}
       </BaseTitle>
-      <div dangerouslySetInnerHTML={{ __html: page.html }} />
+      <MarkdownContent html={page.html} />
     </Prose>
   )
 }
