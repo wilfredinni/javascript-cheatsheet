@@ -1,4 +1,4 @@
-import { FunctionalComponent } from 'vue'
+import type { ComponentType } from 'react'
 
 type optionsObject = {
   [key: string]: string
@@ -45,7 +45,7 @@ type sizeObject = {
 }
 
 type iconObject = {
-  [key: string]: FunctionalComponent
+  [key: string]: ComponentType
 }
 
 export { optionsObject, colorObject, sizeObject, iconObject }

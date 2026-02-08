@@ -1,7 +1,30 @@
+@config "../../tailwind.config.js";
+@plugin "@tailwindcss/typography";
+@import 'tailwindcss';
 @import './markdown.css';
 @import './fonts.css';
 @import './docsearch.css';
 @import './carbon.css';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+
+.doc-title {
+  font-family:
+    Lexend,
+    ui-sans-serif,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Helvetica Neue,
+    Arial,
+    Noto Sans,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    Segoe UI Symbol,
+    'Noto Color Emoji';
+}
+
+.overflow-overlay {
+  overflow-y: overlay;
+}

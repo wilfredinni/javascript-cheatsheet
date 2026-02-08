@@ -9,7 +9,7 @@
     ],
     "strict": true,
     "esModuleInterop": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "skipLibCheck": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -20,10 +20,7 @@
     "types": [
       "vitest",
       "vite/client",
-      "vue/ref-macros",
-      "vite-plugin-pages/client",
-      "vite-plugin-vue-layouts/client",
-      "vite-plugin-pwa/client",
+      "vite-plugin-pwa/client"
     ],
     "paths": {
       "~/*": [
@@ -38,6 +35,11 @@
     "tailwind.config.js",
     "coverage",
     "cheatsheet",
+    "src/composables",
+    "src/store",
+    "src/modules",
+    "src/main.ts",
+    "src/types.ts",
   ],
   "typeRoots": [
     "./src/types"
