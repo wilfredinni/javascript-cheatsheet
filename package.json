@@ -1,10 +1,11 @@
 {
+  "packageManager": "bun@1.1.30",
   "private": true,
   "scripts": {
     "build:content": "esno scripts/build-content.ts",
-    "dev": "pnpm run build:content && vite",
+    "dev": "bun run build:content && vite",
     "prerender": "esno scripts/prerender.ts",
-    "build": "pnpm run build:content && vite build && pnpm run prerender",
+    "build": "bun run build:content && vite build && bun run prerender",
     "preview": "vite preview",
     "test": "vitest --run",
     "lint": "eslint .",
@@ -59,13 +60,5 @@
     "typescript": "^5.9.3",
     "vite": "^5.4.21",
     "vitest": "^2.1.9"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": [
-        "@algolia/client-search",
-        "@types/react"
-      ]
-    }
   }
 }
