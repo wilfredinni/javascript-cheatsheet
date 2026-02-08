@@ -52,7 +52,7 @@
     "ofetch": "^1.5.1",
     "postcss": "^8.5.6",
     "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.6.14",
+    "prettier-plugin-tailwindcss": "^0.7.0",
     "prismjs": "^1.30.0",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
