@@ -10,30 +10,84 @@ export function useToc(triggerKey: string) {
   const [currentSection, setCurrentSection] = useState('')
 
   useEffect(() => {
-    const headings = Array.from(document.querySelectorAll('article h2'))
-    setToc(
-      headings.map((heading) => ({
-        header: heading.textContent || '',
-        id: heading.id,
-      })),
-    )
+    let intersectionObserver: IntersectionObserver | null = null
+    let mutationObserver: MutationObserver | null = null
+    let refreshTimer: number | null = null
 
-    if (!headings.length) return
+    const clearRefreshTimer = () => {
+      if (refreshTimer !== null) {
+        window.clearTimeout(refreshTimer)
+        refreshTimer = null
+      }
+    }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.intersectionRatio > 0) {
-            setCurrentSection(entry.target.getAttribute('id') || '')
-          }
-        })
-      },
-      { rootMargin: '0px 0px -50% 0px' },
-    )
+    const buildToc = () => {
+      const headings = Array.from(document.querySelectorAll('article h2'))
+      setToc(
+        headings.map((heading) => ({
+          header: heading.textContent || '',
+          id: heading.id,
+        })),
+      )
 
-    headings.forEach((heading) => observer.observe(heading))
+      if (!headings.length) {
+        setCurrentSection('')
+        if (intersectionObserver) {
+          intersectionObserver.disconnect()
+          intersectionObserver = null
+        }
+        return
+      }
 
-    return () => observer.disconnect()
+      if (intersectionObserver) {
+        intersectionObserver.disconnect()
+        intersectionObserver = null
+      }
+
+      intersectionObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.intersectionRatio > 0) {
+              setCurrentSection(entry.target.getAttribute('id') || '')
+            }
+          })
+        },
+        { rootMargin: '0px 0px -50% 0px' },
+      )
+
+      headings.forEach((heading) => intersectionObserver?.observe(heading))
+    }
+
+    const observeArticleChanges = () => {
+      const article = document.querySelector('article')
+      if (!article) {
+        return
+      }
+
+      mutationObserver = new MutationObserver(() => {
+        clearRefreshTimer()
+        refreshTimer = window.setTimeout(() => {
+          buildToc()
+        }, 0)
+      })
+
+      mutationObserver.observe(article, { childList: true, subtree: true })
+    }
+
+    buildToc()
+    observeArticleChanges()
+
+    return () => {
+      clearRefreshTimer()
+      if (mutationObserver) {
+        mutationObserver.disconnect()
+        mutationObserver = null
+      }
+      if (intersectionObserver) {
+        intersectionObserver.disconnect()
+        intersectionObserver = null
+      }
+    }
   }, [triggerKey])
 
   return { toc, currentSection }
