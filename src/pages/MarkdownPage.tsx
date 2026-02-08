@@ -1,9 +1,10 @@
-import docsData from '../content/docs.json'
+import { useEffect, useState } from 'react'
 import BaseTitle from '../components/ui/BaseTitle'
 import Prose from '../components/Prose'
 import Seo from '../components/Seo'
 import { siteMetadata } from '../content/site'
 import NotFoundPage from './NotFoundPage'
+import { usePrerenderReady } from '../hooks/usePrerenderReady'
 
 type DocEntry = {
   slug: string
@@ -25,8 +26,34 @@ type MarkdownPageProps = {
 }
 
 export default function MarkdownPage({ pageSlug }: MarkdownPageProps) {
-  const { pages } = docsData as DocsPayload
-  const page = pages.find((entry) => entry.slug === pageSlug)
+  const [docsPayload, setDocsPayload] = useState<DocsPayload | null>(null)
+
+  useEffect(() => {
+    let isActive = true
+
+    import('../content/docs.json').then((module) => {
+      if (isActive) {
+        setDocsPayload(module.default as DocsPayload)
+      }
+    })
+
+    return () => {
+      isActive = false
+    }
+  }, [])
+
+  const page = docsPayload?.pages.find((entry) => entry.slug === pageSlug)
+
+  usePrerenderReady(docsPayload !== null)
+
+  if (!docsPayload) {
+    return (
+      <Prose>
+        <Seo title={siteMetadata.title} description={siteMetadata.description} />
+        <p>Loading...</p>
+      </Prose>
+    )
+  }
 
   if (!page) {
     return <NotFoundPage />

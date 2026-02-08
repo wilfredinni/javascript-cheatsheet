@@ -30,7 +30,7 @@ md.use(LinkAttributes, {
   matcher: (link: string) => /^https?:\/\//.test(link),
   attrs: {
     target: '_blank',
-    rel: 'noopener',
+    rel: 'noopener noreferrer',
   },
 })
 
@@ -134,6 +134,16 @@ function replaceCustomBlocks(content: string) {
     .replace(/<\/base-warning-content>/g, '</p></div>')
 }
 
+function normalizeBaseUrl(raw: string | undefined) {
+  if (!raw) {
+    return 'http://localhost:3000'
+  }
+  if (/^https?:\/\//.test(raw)) {
+    return raw
+  }
+  return `https://${raw}`
+}
+
 async function readMarkdownFiles(directory: string) {
   const files = await fs.readdir(directory)
   const markdownFiles = files.filter((file) => file.endsWith('.md'))
@@ -205,6 +215,19 @@ async function buildDocs() {
     ...docs.map((doc) => doc.route),
   ]
   await fs.writeJson(path.join(outputDir, 'routes.json'), routes, { spaces: 2 })
+
+  const baseUrl = normalizeBaseUrl(process.env.VITE_BASE_URL)
+  const sitemapEntries = routes
+    .map((route) => {
+      const url = new URL(route, baseUrl).toString()
+      return `  <url><loc>${url}</loc></url>`
+    })
+    .join('\n')
+  const sitemap = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapEntries}\n</urlset>\n`
+  await fs.writeFile(
+    path.resolve(process.cwd(), 'public', 'sitemap.xml'),
+    sitemap,
+  )
 }
 
 buildDocs().catch((error) => {

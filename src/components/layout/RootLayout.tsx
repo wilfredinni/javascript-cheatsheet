@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Outlet, useRouterState } from '@tanstack/react-router'
 import { useReader } from '../../context/reader'
 import { useScrollBehavior } from '../../hooks/useScrollBehavior'
@@ -16,14 +15,6 @@ export default function RootLayout() {
   const { location } = useRouterState()
 
   useScrollBehavior(location.pathname, location.hash)
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      document.dispatchEvent(new Event('prerender-ready'))
-    }, 0)
-
-    return () => clearTimeout(timeout)
-  }, [location.pathname])
 
   const repository = rootRepositoryRoutes.includes(location.pathname)
     ? 'https://github.com/wilfredinni/javascript-cheatsheet/blob/master/src/pages'

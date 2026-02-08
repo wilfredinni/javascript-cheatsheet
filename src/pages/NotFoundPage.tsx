@@ -1,7 +1,10 @@
 import { Link } from '@tanstack/react-router'
 import Seo from '../components/Seo'
+import { usePrerenderReady } from '../hooks/usePrerenderReady'
 
 export default function NotFoundPage() {
+  usePrerenderReady()
+
   return (
     <div className="flex min-h-full flex-col bg-zinc-900 pb-12 pt-16">
       <Seo title="404 Not Found" description="Page not found." />

@@ -1,13 +1,16 @@
+import { lazy, Suspense } from 'react'
 import { Link } from '@tanstack/react-router'
 import ArrowIcon from '../components/icons/ArrowIcon'
 import GridIcon from '../components/icons/GridIcon'
 import PluginIcon from '../components/icons/PluginIcon'
-import Contributors from '../components/Contributors'
 import Prose from '../components/Prose'
 import BaseLinkCard from '../components/ui/BaseLinkCard'
 import BaseTitle from '../components/ui/BaseTitle'
 import Seo from '../components/Seo'
 import { siteMetadata } from '../content/site'
+import { usePrerenderReady } from '../hooks/usePrerenderReady'
+
+const Contributors = lazy(() => import('../components/Contributors'))
 
 const cardLinks = [
   {
@@ -33,6 +36,8 @@ const cardLinks = [
 ]
 
 export default function IndexPage() {
+  usePrerenderReady()
+
   return (
     <article>
       <Seo title={siteMetadata.title} description={siteMetadata.description} />
@@ -113,7 +118,9 @@ export default function IndexPage() {
             Contributors
           </h2>
         </Prose>
-        <Contributors />
+        <Suspense fallback={<div className="text-center text-sm text-zinc-500">Loading contributors...</div>}>
+          <Contributors />
+        </Suspense>
       </div>
     </article>
   )
