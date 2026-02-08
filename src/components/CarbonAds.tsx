@@ -40,7 +40,7 @@ export default function CarbonAds() {
 
   return (
     <div className="mt-4 space-y-1.5">
-      <div className="relative flex h-[270px] w-[200px] justify-center rounded-md bg-zinc-100/70 dark:border-zinc-700 dark:bg-zinc-800">
+      <div className="relative flex h-67.5 w-50 justify-center rounded-md bg-zinc-100/70 dark:border-zinc-700 dark:bg-zinc-800">
         <div id="carbonads" ref={containerRef} className="mb-40 h-full" />
         <div
           className={`absolute top-0 h-full w-full rounded-md bg-zinc-100/70 transition-opacity duration-300 dark:border-zinc-700 dark:bg-zinc-800 ${placeholder ? 'opacity-100' : 'opacity-0'}`}

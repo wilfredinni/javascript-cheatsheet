@@ -10,13 +10,13 @@ export default function Navbar() {
   const { location } = useRouterState()
 
   return (
-    <nav className="sticky top-0 z-40 w-full flex-none border-b border-zinc-900/10 bg-white/90 backdrop-blur dark:border-zinc-50/[0.06] dark:bg-transparent lg:z-50">
+    <nav className="sticky top-0 z-40 w-full flex-none border-b border-zinc-900/10 bg-white/90 backdrop-blur dark:border-zinc-50/6 dark:bg-transparent lg:z-50">
       <div className="mx-auto max-w-8xl px-2 sm:px-6 lg:px-12">
         <div className="relative flex h-14 justify-between">
           <SidebarMobile />
 
           <div className="ml-14 flex flex-1 items-center space-x-6 lg:ml-0">
-            <div className="mr-3 flex flex-shrink-0 items-center">
+            <div className="mr-3 flex shrink-0 items-center">
               <Link to="/">
                 <img
                   className="h-6 w-auto rounded"

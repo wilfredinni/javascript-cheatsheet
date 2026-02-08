@@ -8,7 +8,7 @@ export default function PluginIcon({ className = '' }: IconProps) {
       aria-hidden="true"
       viewBox="0 0 32 32"
       fill="none"
-      className={`h-8 w-8 [--icon-foreground:theme(colors.slate.900)] [--icon-background:theme(colors.white)] ${className}`}
+      className={`h-8 w-8 [--icon-foreground:var(--color-slate-900)] [--icon-background:var(--color-white)] ${className}`}
     >
       <defs>
         <radialGradient
@@ -52,7 +52,7 @@ export default function PluginIcon({ className = '' }: IconProps) {
         <circle cx="20" cy="20" r="12" fill="url(#:r1d:-gradient)"></circle>
         <g
           fillOpacity="0.5"
-          className="fill-[var(--icon-background)] stroke-[color:var(--icon-foreground)]"
+          className="fill-(--icon-background) stroke-(--icon-foreground)"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
@@ -63,10 +63,10 @@ export default function PluginIcon({ className = '' }: IconProps) {
         <path
           d="M11 4h8v2l6 3-10 6L5 9l6-3V4Z"
           fillOpacity="0.5"
-          className="fill-[var(--icon-background)]"
+          className="fill-(--icon-background)"
         ></path>
         <g
-          className="stroke-[color:var(--icon-foreground)]"
+          className="stroke-(--icon-foreground)"
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"

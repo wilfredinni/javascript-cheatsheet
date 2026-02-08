@@ -603,7 +603,7 @@ svg.DocSearch-Hit-Select-Icon {
     border-color 0.3s;
 }
 
-@screen md {
+@media (min-width: 768px) {
   .dark .DocSearch-Button {
     background: #27272a !important;
   }

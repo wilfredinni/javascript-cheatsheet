@@ -8,7 +8,7 @@ export default function GridIcon({ className = '' }: IconProps) {
       aria-hidden="true"
       viewBox="0 0 32 32"
       fill="none"
-      className={`h-8 w-8 [--icon-foreground:theme(colors.slate.900)] [--icon-background:theme(colors.white)] ${className}`}
+      className={`h-8 w-8 [--icon-foreground:var(--color-slate-900)] [--icon-background:var(--color-white)] ${className}`}
     >
       <defs>
         <radialGradient
@@ -39,7 +39,7 @@ export default function GridIcon({ className = '' }: IconProps) {
       <g className="dark:hidden">
         <circle cx="20" cy="12" r="12" fill="url(#:rb:-gradient)"></circle>
         <g
-          className="fill-[var(--icon-background)] stroke-[color:var(--icon-foreground)]"
+          className="fill-(--icon-background) stroke-(--icon-foreground)"
           fillOpacity="0.5"
           strokeWidth="2"
           strokeLinecap="round"

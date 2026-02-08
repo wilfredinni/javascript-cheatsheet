@@ -5,8 +5,8 @@ export default function NotFoundPage() {
   return (
     <div className="flex min-h-full flex-col bg-zinc-900 pb-12 pt-16">
       <Seo title="404 Not Found" description="Page not found." />
-      <main className="mx-auto flex w-full max-w-7xl flex-grow flex-col justify-center px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-shrink-0 justify-center">
+      <main className="mx-auto flex w-full max-w-7xl grow flex-col justify-center px-4 sm:px-6 lg:px-8">
+        <div className="flex shrink-0 justify-center">
           <Link to="/" className="inline-flex">
             <span className="sr-only">Javascript Cheatsheet</span>
             <img

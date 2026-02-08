@@ -57,7 +57,7 @@ export default function IndexPage() {
           </BaseTitle>
         </div>
 
-        <h1 className="mb-2 bg-gradient-to-r from-indigo-400 to-amber-400 bg-clip-text text-center font-display text-4xl font-medium tracking-tight text-transparent dark:from-amber-400 dark:via-teal-300 dark:to-amber-300 sm:hidden">
+        <h1 className="mb-2 bg-linear-to-r from-indigo-400 to-amber-400 bg-clip-text text-center font-display text-4xl font-medium tracking-tight text-transparent dark:from-amber-400 dark:via-teal-300 dark:to-amber-300 sm:hidden">
           Javascript Cheatsheet
         </h1>
       </Prose>
@@ -65,15 +65,30 @@ export default function IndexPage() {
       <Prose className="hidden sm:block">
         <p>
           Anyone can forget how to{' '}
-          <Link to="/cheatsheet/regular-expressions#making-your-own-character-classes">
+          <Link
+            to="/cheatsheet/$slug"
+            params={{ slug: 'regular-expressions' }}
+            hash="making-your-own-character-classes"
+          >
             make character classes
           </Link>{' '}
           for a regex,{' '}
-          <Link to="/cheatsheet/lists-and-tuples#getting-sublists-with-slices">
+          <Link
+            to="/cheatsheet/$slug"
+            params={{ slug: 'lists-and-tuples' }}
+            hash="getting-sublists-with-slices"
+          >
             slice a list
           </Link>{' '}
-          or do a <Link to="/cheatsheet/control-flow#for-loop">for loop</Link>.
-          This Javascript Cheatsheet tries to provide basic reference for
+          or do a{' '}
+          <Link
+            to="/cheatsheet/$slug"
+            params={{ slug: 'control-flow' }}
+            hash="for-loop"
+          >
+            for loop
+          </Link>
+          . This Javascript Cheatsheet tries to provide basic reference for
           beginner and advanced developers, lower the entry barrier for
           newcomers and help veterans refresh the old tricks.
         </p>

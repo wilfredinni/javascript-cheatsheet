@@ -23,7 +23,7 @@ export default function NavbarReader() {
   }
 
   return (
-    <nav className="sticky top-0 z-40 w-full flex-none bg-transparent backdrop-blur dark:border-zinc-50/[0.06] lg:z-50 lg:border-b lg:border-zinc-900/10">
+    <nav className="sticky top-0 z-40 w-full flex-none bg-transparent backdrop-blur dark:border-zinc-50/6 lg:z-50 lg:border-b lg:border-zinc-900/10">
       <div className="mx-auto max-w-8xl px-4 xl:px-10">
         <div className="relative flex h-14 justify-between">
           <div className="flex flex-1 items-center justify-end space-x-5 sm:items-center">
