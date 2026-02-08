@@ -9,6 +9,16 @@ updated: February 25, 2023
 Changelog
 </base-title>
 
+## 2026-02-08
+
+- Updated to React 19.
+- Improved SEO metadata with normalized canonical URLs, richer Open Graph/Twitter tags, and a social image.
+- Added sitemap generation and updated robots.txt to reference it.
+- Reduced initial bundle size by lazy-loading docs content and the contributors section.
+- Adjusted prerender readiness to fire when page content is ready.
+- Removed PWA support and manifest generation.
+- Added reduced-motion handling for smooth scrolling and corrected analytics domain.
+
 ## 2024-09-22
 
 - Added Javascript Map Objects. Thanks [@Harish-clb](https://github.com/Harish-clb)
