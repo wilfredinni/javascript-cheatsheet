@@ -17,7 +17,7 @@ The `console.log()` function is quite versatile and can be used in several ways 
 
 ```javascript run
 let x = 10;
-console.log(x);  // Outputs: 10
+console.log(x);
 ```
 
 2. **Logging multiple values**: You can pass multiple arguments to `console.log()` to print them all.
@@ -25,28 +25,28 @@ console.log(x);  // Outputs: 10
 ```javascript run
 let x = 10;
 let y = 20;
-console.log(x, y);  // Outputs: 10 20
+console.log(x, y);
 ```
 
 3. **String substitution**: `console.log()` supports string substitution, similar to `printf` in C.
 
 ```javascript run
 let name = 'Alice';
-console.log('Hello, %s', name);  // Outputs: Hello, Alice
+console.log('Hello, %s', name);
 ```
 
 4. **Logging objects**: You can log entire objects, and `console.log()` will format them nicely.
 
 ```javascript run
 let obj = {a: 1, b: 2, c: 3};
-console.log(obj);  // Outputs: { a: 1, b: 2, c: 3 }
+console.log(obj);
 ```
 
 5. **Logging arrays**: Similarly, you can log entire arrays.
 
 ```javascript run
 let arr = [1, 2, 3, 4, 5];
-console.log(arr);  // Outputs: [ 1, 2, 3, 4, 5 ]
+console.log(arr);
 ```
 
 Remember, excessive use of `console.log()` can slow down your application, especially when logging large objects or arrays. It's a good practice to remove or comment out `console.log()` statements once you're done debugging.
