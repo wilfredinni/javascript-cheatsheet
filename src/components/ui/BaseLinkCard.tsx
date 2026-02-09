@@ -20,7 +20,7 @@ export default function BaseLinkCard({
 }: BaseLinkCardProps) {
   return (
     <div className="group relative rounded-xl border border-zinc-200 dark:border-zinc-800">
-      <div className="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 transition duration-200 [background:linear-gradient(var(--link-grid-hover-bg,theme(colors.zinc.50)),var(--link-grid-hover-bg,theme(colors.zinc.50)))_padding-box,linear-gradient(to_top,theme(colors.gray.400),theme(colors.neutral.400),theme(colors.zinc.500))_border-box] group-hover:opacity-100 dark:[--link-grid-hover-bg:theme(colors.slate.800)]" />
+      <div className="absolute -inset-px rounded-xl border-2 border-transparent opacity-0 transition duration-200 [background:linear-gradient(var(--link-grid-hover-bg,var(--color-zinc-50)),var(--link-grid-hover-bg,var(--color-zinc-50)))_padding-box,linear-gradient(to_top,var(--color-gray-400),var(--color-neutral-400),var(--color-zinc-500))_border-box] group-hover:opacity-100 dark:[--link-grid-hover-bg:var(--color-slate-800)]" />
       <div className="relative overflow-hidden rounded-xl p-6">
         <Icon className="h-8 w-8" />
         <p className="mt-4 font-display text-base text-zinc-900 dark:text-white">

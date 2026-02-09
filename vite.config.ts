@@ -13,21 +13,11 @@ export default defineConfig(async ({ mode }) => {
       },
     },
 
-    server: {
-      proxy: {
-        '/newsletter': {
-          target: process.env.VITE_GRUDGET_ENDPOINT,
-          changeOrigin: true,
-          secure: false,
-          rewrite: (path) => path.replace(/^\/newsletter/, ''),
-        },
-      },
-    },
+    plugins: [react(), tailwindcss()],
 
-    plugins: [
-      react(),
-      tailwindcss(),
-    ],
+    build: {
+      sourcemap: true,
+    },
 
     // https://github.com/vitest-dev/vitest
     test: {

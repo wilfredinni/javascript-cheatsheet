@@ -12,7 +12,7 @@ export default function BaseThemeToggle() {
         isDark
           ? 'border-zinc-700 bg-zinc-800 text-zinc-100'
           : 'border-zinc-200 bg-white/80 text-zinc-600'
-      } inline-flex h-8 w-8 flex-shrink-0 cursor-pointer items-center justify-center rounded-full border transition-colors duration-200 ease-in-out focus:outline-none`}
+      } inline-flex h-8 w-8 shrink-0 cursor-pointer items-center justify-center rounded-full border transition-colors duration-200 ease-in-out focus:outline-none`}
     >
       <span className="sr-only">Toggle theme</span>
       {isDark ? (
