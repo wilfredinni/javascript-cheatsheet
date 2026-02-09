@@ -14,6 +14,10 @@ Changelog
 - We can now run code examples in the documentation! The output will be displayed in the bellow of the code block.
 - Added code runner utilities and console formatting helpers for runnable examples.
 - Refactored code structure for readability and maintainability.
+- Redesigned the homepage with new hero content, learning paths, and topic highlights.
+- Expanded reader mode with reading progress, time-to-read, font size controls, and bookmarks.
+- Refreshed navigation and theme toggle styling for better clarity.
+- Added reader stats and bookmark hooks to support the new reader UI.
 
 ## 2026-02-08
 
