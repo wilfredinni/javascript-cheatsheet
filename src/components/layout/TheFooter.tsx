@@ -37,7 +37,7 @@ export default function Footer({ repository = '' }: FooterProps) {
   const EditIconComponent = editLink.icon
 
   return (
-    <footer className="mt-5 border-t dark:border-t-zinc-800">
+    <footer className="mt-5 border-t dark:border-t-zinc-800 border-t-zinc-200">
       <div className="justify-between pt-5 sm:flex">
         <div
           className={`grid text-xs ${

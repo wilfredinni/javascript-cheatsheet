@@ -525,17 +525,18 @@ svg.DocSearch-Hit-Select-Icon {
   align-items: center;
   background: #f3f4f6 !important;
   border: 1px solid transparent;
-  border-radius: 8px;
+  border-radius: 9999px;
   color: var(--docsearch-muted-color);
   cursor: pointer;
   display: flex;
-  font-weight: 500;
-  height: 28px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  height: 32px;
   justify-content: space-between;
   margin: 0 0 0 0px;
-  padding: 0 10px;
+  padding: 0 14px;
   user-select: none;
-  width: 140px;
+  width: 180px;
   transition: border-color 0.3s;
 }
 .dark .DocSearch-Button:active,
@@ -572,9 +573,9 @@ svg.DocSearch-Hit-Select-Icon {
 }
 .DocSearch-Button-Placeholder {
   margin-top: 0;
-  font-size: 12px;
-  font-weight: 500;
-  padding: 0 12px 0 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0 10px 0 6px;
   transition: color 0.3s;
 }
 .DocSearch-Button-Keys {
@@ -589,15 +590,15 @@ svg.DocSearch-Hit-Select-Icon {
   box-shadow: var(--docsearch-key-shadow);
   color: var(--docsearch-muted-color);
   display: flex;
-  height: 18px;
+  height: 20px;
   justify-content: center;
   position: relative;
   padding: 0 0 0;
   margin: 1px 0 0;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: 0.75rem;
+  font-weight: 600;
   border: 0;
-  width: 14px;
+  width: 16px;
   transition:
     color 0.3s,
     border-color 0.3s;
