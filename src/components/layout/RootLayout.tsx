@@ -43,7 +43,7 @@ export default function RootLayout() {
             reader.isActive ? 'max-w-2xl lg:max-w-4xl' : 'lg:max-w-none'
           }`}
         >
-          <article>
+          <article id="reader-content">
             <Outlet />
           </article>
 

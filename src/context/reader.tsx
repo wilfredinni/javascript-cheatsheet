@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { createContext, useContext, useMemo, useState } from 'react'
+import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 type ReaderContextValue = {
   isActive: boolean
@@ -12,13 +12,38 @@ type ReaderContextValue = {
 const ReaderContext = createContext<ReaderContextValue | undefined>(undefined)
 
 const fontSizes = ['prose-sm', 'prose-md', 'prose-lg', 'prose-xl', 'prose-2xl']
+const storageKey = 'reader-preferences'
+const defaultFontSize = 'prose-xl'
 
 export function ReaderProvider({ children }: { children: ReactNode }) {
   const [isActive, setIsActive] = useState(false)
-  const [fontSize, setFontSizeState] = useState('prose-xl')
+  const [fontSize, setFontSizeState] = useState(defaultFontSize)
+
+  useEffect(() => {
+    const stored = localStorage.getItem(storageKey)
+    if (!stored) return
+
+    try {
+      const parsed = JSON.parse(stored) as {
+        fontSize?: string
+        isActive?: boolean
+      }
+      if (parsed.fontSize && fontSizes.includes(parsed.fontSize)) {
+        setFontSizeState(parsed.fontSize)
+      }
+      if (typeof parsed.isActive === 'boolean') {
+        setIsActive(parsed.isActive)
+      }
+    } catch {
+      setFontSizeState(defaultFontSize)
+    }
+  }, [])
+
+  useEffect(() => {
+    localStorage.setItem(storageKey, JSON.stringify({ fontSize, isActive }))
+  }, [fontSize, isActive])
 
   const toggle = () => {
-    setFontSizeState('prose-xl')
     setIsActive((current) => !current)
   }
 

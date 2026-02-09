@@ -28,3 +28,18 @@
 .overflow-overlay {
   overflow-y: overlay;
 }
+
+@media print {
+  nav,
+  footer {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff;
+  }
+
+  .prose {
+    max-width: none;
+  }
+}

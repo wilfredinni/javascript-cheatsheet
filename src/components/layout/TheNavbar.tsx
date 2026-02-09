@@ -15,7 +15,7 @@ export default function Navbar() {
           <SidebarMobile />
 
           <div className="ml-14 flex flex-1 items-center gap-4 lg:ml-0">
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex min-w-0 items-center gap-3">
               <img
                 className="h-8 w-8 rounded"
                 src="/icons/javascript_logo.png"
@@ -25,9 +25,12 @@ export default function Navbar() {
               />
               <div className="hidden sm:block">
                 <p className="text-sm font-semibold text-zinc-900 dark:text-white">
-                  Javascript Cheatsheet
+                  <span className="xl:hidden">JS Cheatsheet</span>
+                  <span className="hidden xl:inline">
+                    Javascript Cheatsheet
+                  </span>
                 </p>
-                <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                <p className="hidden text-xs text-zinc-500 dark:text-zinc-400 xl:block">
                   Fast, practical reference
                 </p>
               </div>
