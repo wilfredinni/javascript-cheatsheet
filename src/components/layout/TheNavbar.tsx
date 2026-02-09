@@ -14,7 +14,7 @@ export default function Navbar() {
         <div className="relative flex h-16 items-center justify-between">
           <SidebarMobile />
 
-          <div className="ml-14 flex flex-1 items-center gap-4 lg:ml-0">
+          <div className="ml-14 flex flex-1 items-center gap-8 lg:ml-0">
             <Link to="/" className="flex min-w-0 items-center gap-3">
               <img
                 className="h-8 w-8 rounded"

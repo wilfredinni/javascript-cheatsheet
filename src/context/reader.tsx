@@ -43,6 +43,30 @@ export function ReaderProvider({ children }: { children: ReactNode }) {
     localStorage.setItem(storageKey, JSON.stringify({ fontSize, isActive }))
   }, [fontSize, isActive])
 
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key.toLowerCase() !== 'r') return
+      if (event.metaKey || event.ctrlKey || event.altKey) return
+
+      const target = event.target as HTMLElement | null
+      if (target) {
+        const tagName = target.tagName.toLowerCase()
+        const isInput =
+          tagName === 'input' || tagName === 'textarea' || tagName === 'select'
+        const isEditable = target.isContentEditable
+        if (isInput || isEditable) {
+          return
+        }
+      }
+
+      event.preventDefault()
+      setIsActive((current) => !current)
+    }
+
+    window.addEventListener('keydown', onKeyDown)
+    return () => window.removeEventListener('keydown', onKeyDown)
+  }, [])
+
   const toggle = () => {
     setIsActive((current) => !current)
   }
