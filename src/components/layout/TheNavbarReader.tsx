@@ -23,11 +23,11 @@ export default function NavbarReader() {
   }
 
   return (
-    <nav className="sticky top-0 z-40 w-full flex-none bg-transparent backdrop-blur dark:border-zinc-50/6 lg:z-50 lg:border-b lg:border-zinc-900/10">
+    <nav className="sticky top-0 z-40 w-full flex-none border-b border-zinc-900/10 bg-white/80 backdrop-blur dark:border-zinc-50/6 dark:bg-zinc-900/80 lg:z-50">
       <div className="mx-auto max-w-8xl px-4 xl:px-10">
-        <div className="relative flex h-14 justify-between">
+        <div className="relative flex h-16 justify-between">
           <div className="flex flex-1 items-center justify-end space-x-5 sm:items-center">
-            <div className="ml-6 space-x-6 border-r border-zinc-200 dark:border-zinc-800">
+            <div className="ml-6 space-x-6 border-r border-zinc-200 pr-6 dark:border-zinc-800">
               <button
                 className={`text-zinc-400 transition duration-300 dark:text-zinc-500 ${
                   hasNext
