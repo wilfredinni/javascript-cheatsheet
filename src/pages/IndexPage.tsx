@@ -37,6 +37,24 @@ const featuredTopics = [
   },
 ]
 
+const personaPaths = [
+  {
+    label: 'New to JS',
+    description: 'Start with core syntax and fundamentals.',
+    slug: 'basics',
+  },
+  {
+    label: 'Returning',
+    description: 'Refresh arrays, objects, and control flow.',
+    slug: 'arrays',
+  },
+  {
+    label: 'Power user',
+    description: 'Jump to advanced patterns and APIs.',
+    slug: 'array-methods',
+  },
+]
+
 const learningPaths = [
   {
     title: 'Strings and Formatting',
@@ -62,6 +80,9 @@ const learningPaths = [
 
 export default function IndexPage() {
   usePrerenderReady()
+
+  const primaryTopics = featuredTopics.slice(0, 4)
+  const secondaryTopics = featuredTopics.slice(4)
 
   return (
     <article className="space-y-16">
@@ -110,14 +131,41 @@ export default function IndexPage() {
 
       <section className="space-y-8">
         <Prose>
+          <h2>Pick your path</h2>
+          <p>Choose a starting point based on how you want to learn today.</p>
+        </Prose>
+        <div className="not-prose grid gap-4 lg:grid-cols-3">
+          {personaPaths.map((path) => (
+            <Link
+              key={path.label}
+              to="/cheatsheet/$slug"
+              params={{ slug: path.slug }}
+              className="group rounded-2xl border border-zinc-200 bg-white p-6 transition hover:border-zinc-300 hover:shadow-sm dark:border-zinc-800 dark:bg-zinc-900/60 dark:hover:border-zinc-700"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.25em] text-zinc-500">
+                {path.label}
+              </p>
+              <p className="mt-3 text-lg font-semibold text-zinc-900 dark:text-white">
+                {path.description}
+              </p>
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-amber-600 dark:text-amber-400">
+                Start here
+              </p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="space-y-8">
+        <Prose>
           <h2>Popular topics</h2>
           <p>
-            Jump into the chapters that developers revisit most. Each section
-            keeps the essentials close and avoids the fluff.
+            Focus on the chapters developers revisit most, then branch out
+            whenever you are ready.
           </p>
         </Prose>
-        <div className="not-prose grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {featuredTopics.map((topic) => (
+        <div className="not-prose grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {primaryTopics.map((topic) => (
             <Link
               key={topic.slug}
               to="/cheatsheet/$slug"
@@ -130,9 +178,21 @@ export default function IndexPage() {
               <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
                 {topic.description}
               </p>
-              <p className="mt-4 text-xs font-semibold uppercase tracking-widest text-amber-600 dark:text-amber-400">
+              <p className="mt-4 text-xs font-semibold uppercase tracking-[0.2em] text-amber-600 dark:text-amber-400">
                 Learn more
               </p>
+            </Link>
+          ))}
+        </div>
+        <div className="not-prose flex flex-wrap gap-3">
+          {secondaryTopics.map((topic) => (
+            <Link
+              key={topic.slug}
+              to="/cheatsheet/$slug"
+              params={{ slug: topic.slug }}
+              className="rounded-full border border-zinc-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600 transition hover:border-zinc-300 hover:text-zinc-900 dark:border-zinc-800 dark:text-zinc-300 dark:hover:border-zinc-600"
+            >
+              {topic.title}
             </Link>
           ))}
         </div>
