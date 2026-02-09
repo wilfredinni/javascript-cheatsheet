@@ -34,6 +34,28 @@ md.use(LinkAttributes, {
   },
 })
 
+const runnableFlags = new Set(['run', 'runnable'])
+const defaultFenceRenderer = md.renderer.rules.fence
+
+md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+  const token = tokens[idx]
+  const info = (token.info || '').trim()
+  const parts = info.split(/\s+/).filter(Boolean)
+  const flags = parts.slice(1)
+  const isRunnable = flags.some((flag) => runnableFlags.has(flag))
+  const rendered = defaultFenceRenderer
+    ? defaultFenceRenderer(tokens, idx, options, env, self)
+    : self.renderToken(tokens, idx, options)
+
+  if (!isRunnable) {
+    return rendered
+  }
+
+  return rendered
+    .replace('<pre', '<pre data-run="true"')
+    .replace('<code', '<code data-run="true"')
+}
+
 const lightBulbIcon = `
 <svg aria-hidden="true" viewBox="0 0 32 32" fill="none" class="h-8 w-8 flex-none [--icon-foreground:var(--color-slate-900)] [--icon-background:var(--color-white)]">
   <defs>

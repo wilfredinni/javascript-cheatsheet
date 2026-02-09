@@ -52,6 +52,9 @@ export default function MarkdownContent({ html }: MarkdownContentProps) {
 
       const preClassName = node.attribs?.class
       const codeClassName = codeElement.attribs?.class
+      const runnable =
+        node.attribs?.['data-run'] === 'true' ||
+        codeElement.attribs?.['data-run'] === 'true'
       const code = getTextFromNodes((codeElement.children || []) as DOMNode[])
       const language = extractLanguage(codeClassName)
 
@@ -61,6 +64,7 @@ export default function MarkdownContent({ html }: MarkdownContentProps) {
           language={language}
           preClassName={preClassName}
           codeClassName={codeClassName}
+          runnable={runnable}
         >
           {domToReact(codeElement.children as DOMNode[])}
         </CodeBlock>
