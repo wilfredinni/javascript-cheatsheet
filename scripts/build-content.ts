@@ -34,6 +34,28 @@ md.use(LinkAttributes, {
   },
 })
 
+const runnableFlags = new Set(['run', 'runnable'])
+const defaultFenceRenderer = md.renderer.rules.fence
+
+md.renderer.rules.fence = (tokens, idx, options, env, self) => {
+  const token = tokens[idx]
+  const info = (token.info || '').trim()
+  const parts = info.split(/\s+/).filter(Boolean)
+  const flags = parts.slice(1)
+  const isRunnable = flags.some((flag) => runnableFlags.has(flag))
+  const rendered = defaultFenceRenderer
+    ? defaultFenceRenderer(tokens, idx, options, env, self)
+    : self.renderToken(tokens, idx, options)
+
+  if (!isRunnable) {
+    return rendered
+  }
+
+  return rendered
+    .replace('<pre', '<pre data-run="true"')
+    .replace('<code', '<code data-run="true"')
+}
+
 const lightBulbIcon = `
 <svg aria-hidden="true" viewBox="0 0 32 32" fill="none" class="h-8 w-8 flex-none [--icon-foreground:var(--color-slate-900)] [--icon-background:var(--color-white)]">
   <defs>
@@ -104,14 +126,14 @@ function replaceCustomBlocks(content: string) {
   return content
     .replace(
       /<base-disclaimer(?:\s[^>]*)?>/g,
-      `<div class="my-8 flex rounded-2xl bg-amber-50 p-6 dark:bg-zinc-800/60 dark:ring-1 dark:ring-zinc-300/10">${lightBulbIcon}<div class="flex-auto sm:ml-4">`,
+      '<div class="my-8 rounded-2xl bg-amber-50 p-6 dark:bg-zinc-800/60 dark:ring-1 dark:ring-zinc-300/10">',
     )
     .replace(/<\/base-disclaimer>/g, '</div></div>')
     .replace(
       /<base-disclaimer-title[^>]*>/g,
-      '<p class="m-0 font-display text-xl text-amber-900 dark:text-amber-400!">',
+      `<div class="flex items-center gap-4">${lightBulbIcon}<p class="m-0 font-display text-xl leading-tight text-amber-900 dark:text-amber-400!">`,
     )
-    .replace(/<\/base-disclaimer-title>/g, '</p>')
+    .replace(/<\/base-disclaimer-title>/g, '</p></div>')
     .replace(
       /<base-disclaimer-content[^>]*>/g,
       '<div class="dark:!prose-code:text-zinc-300 prose mt-2.5 text-amber-800 [--tw-prose-background:var(--color-sky-50)] prose-a:text-amber-900! prose-a:decoration-amber-600 prose-a:decoration-2 prose-a:underline-offset-0 prose-code:text-amber-900 dark:text-zinc-300 dark:prose-a:text-amber-400!"><p>',
@@ -119,14 +141,14 @@ function replaceCustomBlocks(content: string) {
     .replace(/<\/base-disclaimer-content>/g, '</p></div>')
     .replace(
       /<base-warning(?:\s[^>]*)?>/g,
-      `<div class="my-8 flex rounded-2xl bg-amber-50 p-6 dark:bg-zinc-800/60 dark:ring-1 dark:ring-zinc-300/10">${warningIcon}<div class="flex-auto sm:ml-4">`,
+      '<div class="my-8 rounded-2xl bg-amber-50 p-6 dark:bg-zinc-800/60 dark:ring-1 dark:ring-zinc-300/10">',
     )
     .replace(/<\/base-warning>/g, '</div></div>')
     .replace(
       /<base-warning-title[^>]*>/g,
-      '<p class="m-0 font-display text-xl text-amber-900 dark:text-amber-500">',
+      `<div class="flex items-center gap-4">${warningIcon}<p class="m-0 font-display text-xl leading-tight text-amber-900 dark:text-amber-500">`,
     )
-    .replace(/<\/base-warning-title>/g, '</p>')
+    .replace(/<\/base-warning-title>/g, '</p></div>')
     .replace(
       /<base-warning-content[^>]*>/g,
       '<div class="prose mt-2.5 text-amber-800 [--tw-prose-background:var(--color-amber-50)] [--tw-prose-underline:var(--color-amber-400)] prose-a:text-amber-900 prose-code:text-amber-900 dark:text-zinc-300 dark:[--tw-prose-underline:var(--color-amber-700)] dark:prose-code:text-zinc-300"><p>',

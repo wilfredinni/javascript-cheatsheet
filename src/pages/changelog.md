@@ -9,6 +9,12 @@ updated: February 25, 2023
 Changelog
 </base-title>
 
+## 2026-02-09
+
+- We can now run code examples in the documentation! The output will be displayed in the bellow of the code block.
+- Added code runner utilities and console formatting helpers for runnable examples.
+- Refactored code structure for readability and maintainability.
+
 ## 2026-02-08
 
 - Updated to React 19.

@@ -22,39 +22,39 @@ In JavaScript, comparison operators are used to compare two values. Here are the
 
 1. **Equal to (`==`)**: This operator checks if the values of two operands are equal or not. If yes, then the condition becomes true.
 
-```javascript
-console.log(5 == 5); // true
-console.log(5 == '5'); // true, because it does type coercion
+```javascript run
+console.log(5 == 5);
+console.log(5 == '5');
 ```
 
 2. **Not equal to (`!=`)**: This operator checks if the values of two operands are equal or not. If the values are not equal, then the condition becomes true.
 
-```javascript
-console.log(5 != 4); // true
-console.log(5 != '5'); // false, because it does type coercion
+```javascript run
+console.log(5 != 4);
+console.log(5 != '5');
 ```
 
 3. **Strictly equal to (`===`)**: This operator checks if the values of two operands are equal or not, and also checks the types. If yes, then the condition becomes true.
 
-```javascript
-console.log(5 === 5); // true
-console.log(5 === '5'); // false, because the types are different
+```javascript run
+console.log(5 === 5);
+console.log(5 === '5');
 ```
 
 4. **Strictly not equal to (`!==`)**: This operator checks if the values of two operands are equal or not, or the types are not the same. If yes, then the condition becomes true.
 
-```javascript
-console.log(5 !== 4); // true
-console.log(5 !== '5'); // true, because the types are different
+```javascript run
+console.log(5 !== 4);
+console.log(5 !== '5');
 ```
 
 5. **Greater than (`>`), Less than (`<`), Greater than or equal to (`>=`), Less than or equal to (`<=`)**: These operators are used to compare the values of two numbers.
 
-```javascript
-console.log(5 > 4); // true
-console.log(5 < 4); // false
-console.log(5 >= 5); // true
-console.log(5 <= 4); // false
+```javascript run
+console.log(5 > 4);
+console.log(5 < 4);
+console.log(5 >= 5);
+console.log(5 <= 4);
 ```
 
 <base-disclaimer>
@@ -72,28 +72,28 @@ In JavaScript, Boolean operators are used to create more complex conditional sta
 
 1. **Logical AND (`&&`)**: This operator returns `true` if both operands are true.
 
-```javascript
-console.log(true && true); // true
-console.log(true && false); // false
+```javascript run
+console.log(true && true);
+console.log(true && false);
 ```
 
 2. **Logical OR (`||`)**: This operator returns `true` if at least one of the operands is true.
 
-```javascript
-console.log(true || false); // true
-console.log(false || false); // false
+```javascript run
+console.log(true || false);
+console.log(false || false);
 ```
 
 3. **Logical NOT (`!`)**: This operator returns `true` if the operand is false, and `false` if the operand is true. It basically reverses the Boolean value of the operand.
 
-```javascript
-console.log(!true); // false
-console.log(!false); // true
+```javascript run
+console.log(!true);
+console.log(!false);
 ```
 
 These operators are often used in combination with comparison operators to create complex logical conditions. For example:
 
-```javascript
+```javascript run
 let a = 10;
 let b = 20;
 if (a > 5 && b > 10) {
@@ -111,7 +111,7 @@ In JavaScript, `if`, `else if`, and `else` are used to create conditional statem
 
 This is used to specify a block of code to be executed if a specified condition is true.
 
-```javascript
+```javascript run
 let a = 10;
 if (a > 5) {
   console.log('a is greater than 5');
@@ -124,7 +124,7 @@ Because `a` is indeed greater than 5, the message 'a is greater than 5' will be 
 
 This is used to specify a new condition to test if the first condition is false.
 
-```javascript
+```javascript run
 let a = 5;
 if (a > 5) {
   console.log('a is greater than 5');
@@ -139,7 +139,7 @@ Because `a` is not greater than 5, the first block of code is not executed. Howe
 
 This is used to specify a block of code to be executed if all previous conditions are false.
 
-```javascript
+```javascript run
 let a = 4;
 if (a > 5) {
   console.log('a is greater than 5');
@@ -162,10 +162,10 @@ condition ? expressionIfTrue : expressionIfFalse
 
 If the `condition` is `true`, the operator returns the value of `expressionIfTrue`; if the `condition` is `false`, it returns the value of `expressionIfFalse`.
 
-```javascript
+```javascript run
 let a = 10;
 let result = a > 5 ? 'a is greater than 5' : 'a is not greater than 5';
-console.log(result); // prints "a is greater than 5"
+console.log(result);
 ```
 
  `a` is indeed greater than 5, the variable `result` is set to the string 'a is greater than 5', and that's what gets printed to the console.
@@ -192,7 +192,7 @@ switch(expression) {
 
 The `switch` statement evaluates an expression, matching the expression's value to a `case` clause, and executes statements associated with that case. If no matching case is found, it executes the code in the `default` clause.
 
-```javascript
+```javascript run
 let fruit = 'apple';
 switch (fruit) {
   case 'banana':
@@ -221,7 +221,7 @@ while (condition) {
 
 The `condition` can be any expression that evaluates to a boolean value, either `true` or `false`. If the condition is `true`, the code inside the loop will be executed. After each execution, the condition is checked again, and if it's still `true`, the loop continues to run. This process repeats until the condition becomes `false`.
 
-```javascript
+```javascript run
 let i = 0;
 while (i < 5) {
   console.log(i);
@@ -257,14 +257,13 @@ In JavaScript, `break` and `continue` are two control flow statements that you c
 
 The `break` statement is used to exit the current loop prematurely, stopping its execution immediately. It's often used in `switch` statements, but can also be used in `for`, `while`, and `do...while` loops.
 
-```javascript
+```javascript run
 for (let i = 0; i < 10; i++) {
   if (i === 5) {
     break;
   }
   console.log(i);
 }
-// This will print the numbers 0 through 4 to the console
 ```
 
 The loop stops running when `i` is equal to 5, even though the loop condition `i < 10` would still be true.
@@ -273,14 +272,13 @@ The loop stops running when `i` is equal to 5, even though the loop condition `i
 
 The `continue` statement is used to skip the current iteration of the loop and move directly to the next one. It ends the current iteration and continues with the next one.
 
-```javascript
+```javascript run
 for (let i = 0; i < 10; i++) {
   if (i === 5) {
     continue;
   }
   console.log(i);
 }
-// This will print the numbers 0 through 4 and 6 through 9 to the console
 ```
 
 In this example, the number 5 is not printed to the console because when `i` is equal to 5, the `continue` statement is executed, ending that iteration of the loop early.
@@ -306,7 +304,7 @@ do {
 
 The `condition` can be any expression that evaluates to a boolean value, either `true` or `false`. If the condition is `true`, the loop will continue to run. This process repeats until the condition becomes `false`.
 
-```javascript
+```javascript run
 let i = 0;
 do {
   console.log(i);
@@ -339,7 +337,7 @@ for (initialization; condition; finalExpression) {
 - `condition` is checked before each loop iteration. If it's `true`, the loop continues; if it's `false`, the loop stops.
 - `finalExpression` is executed at the end of each loop iteration, usually to update the counter.
 
-```javascript
+```javascript run
 for (let i = 0; i < 5; i++) {
   console.log(i);
 }
@@ -367,18 +365,20 @@ Here's an example of using `for` loop and `map` method to double the elements in
 
 **For Loop:**
 
-```javascript
+```javascript run
 let arr = [1, 2, 3, 4, 5];
 for (let i = 0; i < arr.length; i++) {
   arr[i] = arr[i] * 2;
+  console.log(arr[i]);
 }
 ```
 
 **Map Method:**
 
-```javascript
+```javascript run
 let arr = [1, 2, 3, 4, 5];
 let doubled = arr.map(num => num * 2);
+console.log(doubled);
 ```
 
 In general, if you're working with arrays and don't need to break out of the loop, array methods can be a cleaner and more readable choice. If you need more control over the loop or are working with larger datasets, a `for` loop might be a better choice.

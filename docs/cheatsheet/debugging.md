@@ -15,38 +15,38 @@ The `console.log()` function is quite versatile and can be used in several ways 
 
 1. **Logging variable values**: The most common use of `console.log()` is to print the value of a variable.
 
-```javascript
+```javascript run
 let x = 10;
-console.log(x);  // Outputs: 10
+console.log(x);
 ```
 
 2. **Logging multiple values**: You can pass multiple arguments to `console.log()` to print them all.
 
-```javascript
+```javascript run
 let x = 10;
 let y = 20;
-console.log(x, y);  // Outputs: 10 20
+console.log(x, y);
 ```
 
 3. **String substitution**: `console.log()` supports string substitution, similar to `printf` in C.
 
-```javascript
+```javascript run
 let name = 'Alice';
-console.log('Hello, %s', name);  // Outputs: Hello, Alice
+console.log('Hello, %s', name);
 ```
 
 4. **Logging objects**: You can log entire objects, and `console.log()` will format them nicely.
 
-```javascript
+```javascript run
 let obj = {a: 1, b: 2, c: 3};
-console.log(obj);  // Outputs: { a: 1, b: 2, c: 3 }
+console.log(obj);
 ```
 
 5. **Logging arrays**: Similarly, you can log entire arrays.
 
-```javascript
+```javascript run
 let arr = [1, 2, 3, 4, 5];
-console.log(arr);  // Outputs: [ 1, 2, 3, 4, 5 ]
+console.log(arr);
 ```
 
 Remember, excessive use of `console.log()` can slow down your application, especially when logging large objects or arrays. It's a good practice to remove or comment out `console.log()` statements once you're done debugging.
@@ -66,7 +66,7 @@ The `console.info()` method is used to output an informational message to the We
 
 Here's an example of how you can use `console.info()`:
 
-```javascript
+```javascript run
 console.info('This is an informational message');
 ```
 
@@ -78,7 +78,7 @@ In some browsers, the output of `console.info()` might be styled differently fro
 
 Used to output a warning message to the Web Console. It's similar to `console.log()`, but in many environments, the output is styled differently to indicate that it's a warning.
 
-```javascript
+```javascript run
 console.warn('This is a warning message');
 ```
 
@@ -92,7 +92,7 @@ Output an error message to the Web Console. In some environments, the output is 
 
 Here's an example of how you can use `console.error()`:
 
-```javascript
+```javascript run
 console.error('This is an error message');
 ```
 
@@ -102,7 +102,7 @@ Useful for logging error messages that help in debugging your code. It does not 
 
 Display data in a table format in the console. It's particularly useful when working with arrays or objects.
 
-```javascript
+```javascript run
 let people = [
   { name: 'Alice', age: 20 },
   { name: 'Bob', age: 25 },
@@ -112,35 +112,18 @@ let people = [
 console.table(people);
 ```
 
-It will output a table to the console that looks something like this:
-
-```
-(index) | name     | age
--------------------------
-0       | Alice    | 20
-1       | Bob      | 25
-2       | Charlie  | 30
-```
-
 The `console.table()` method can make it easier to visualize and understand complex data structures. It automatically provides an index column, and uses the keys of your objects as the column names.
 
 ## console.group
 
 I group together related log messages. When you call `console.group()`, it starts a new group in the console. All subsequent console messages will be added to this group, until you call `console.groupEnd()`, which ends the group.
 
-```javascript
+```javascript run
+const array = [1, 2, 3, 4, 5];
 console.group('Processing array');
 console.log('Array has', array.length, 'elements');
 console.log('First element:', array[0]);
 console.groupEnd();
-```
-
-When you run this code, it will output something like this to the console:
-
-```
-Processing array
-  Array has 5 elements
-  First element: 1
 ```
 
 The messages inside the group are indented to show that they're part of the group. This can make it easier to understand the flow of complex code with many log messages.
@@ -151,20 +134,10 @@ You can also create nested groups by calling `console.group()` multiple times be
 
 Log the number of times that this particular call to `console.count()` has been invoked. It takes an optional argument label. If provided, `console.count()` outputs the count and label. If label is omitted, the console uses 'default' as the label.
 
-```javascript
+```javascript run
 for(let i = 0; i < 5; i++) {
   console.count('Loop counter');
 }
-```
-
-It will output something like this to the console:
-
-```
-Loop counter: 1
-Loop counter: 2
-Loop counter: 3
-Loop counter: 4
-Loop counter: 5
 ```
 
 This method is useful when you want to know how many times a particular part of your code has been executed.
@@ -173,7 +146,7 @@ This method is useful when you want to know how many times a particular part of 
 
 `console.time` is used in conjunction with `console.timeEnd()` to measure the time taken by a block of code to execute. It's a simple and effective way to benchmark your code.
 
-```javascript
+```javascript run
 console.time('Array processing');
 
 // Some array processing to measure
@@ -183,12 +156,6 @@ for(let i = 0; i < 1000000; i++) {
 }
 
 console.timeEnd('Array processing');
-```
-
-The output will look like this:
-
-```
-Array processing: 123.456ms
 ```
 
 The string you pass to `console.time()` and `console.timeEnd()` is used as the label for the timer. The timer starts when you call `console.time()` and stops when you call `console.timeEnd()`. The elapsed time, in milliseconds, is then output to the console.
@@ -229,7 +196,7 @@ This shows the order in which the functions were called. The function at the top
 
 This method is used to write a message to the console if the assertion is false. If the assertion is true, nothing happens.
 
-```javascript
+```javascript run
 console.assert(1 === 2, '1 is not equal to 2');
 ```
 
@@ -244,7 +211,7 @@ Here's an example of how you can use the `debugger` statement:
 ```javascript
 function potentiallyBuggyFunction() {
   let obj = { a: 1, b: 2 };
-s
+
   // Insert debugger statement
   debugger;
 

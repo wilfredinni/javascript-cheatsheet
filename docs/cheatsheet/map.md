@@ -20,19 +20,21 @@ Javascript Map Object
 
 Creates an empty `Map` instance.
 
-```javascript
+```javascript run
 const map = new Map()
+console.log(map.size)
 ```
 
 ## Initializing a Map
 
 You can initialize a Map with an array of key-value pairs.
 
-```javascript
+```javascript run
 const map = new Map([
   ['id', 1], // key: 'id', value: 1
   ['name', 'Alice'], // key: 'name', value: 'Alice'
 ])
+console.log(map.size)
 ```
 
 ## Map Size
@@ -40,8 +42,12 @@ const map = new Map([
 `size` property returns the number of key-value pairs in a map.
 It returns a number.
 
-```javascript
-map.size // 2
+```javascript run
+const map = new Map([
+  ['id', 1],
+  ['name', 'Alice'],
+])
+console.log(map.size)
 ```
 
 ## Map Set
@@ -50,13 +56,16 @@ The `set(key, value)` method adds a key-value pair.
 If a key exists already, the value will be updated.
 `set()` affects the size of a map.
 
-```javascript
-map.set('age', 50) // sets new key 'age' with value 50
-map.set(2, 200) // sets new key 2 with value 200
-map.set('id', 2) // id key already exists, so value of id will be updated to 2
+```javascript run
+const map = new Map([
+  ['id', 1],
+  ['name', 'Alice'],
+])
+map.set('age', 50)
+map.set(2, 200)
+map.set('id', 2)
 
-// Check size
-map.size // 4
+console.log(map.size)
 ```
 
 You can also chain `set` like `map.set(key, value).set(key, value)`
@@ -66,18 +75,27 @@ You can also chain `set` like `map.set(key, value).set(key, value)`
 The `get(key)` retrieves the value of the specified key.
 If a key exists, its value will be returned otherwise undefined.
 
-```javascript
-map.get('age') // 50
-map.get('none') // undefined as key 'none' do not exist
+```javascript run
+const map = new Map([
+  ['id', 1],
+  ['name', 'Alice'],
+  ['age', 50],
+])
+console.log(map.get('age'))
+console.log(map.get('none'))
 ```
 
 ## Map Has
 
 The `has(key)` returns a boolean by checking the key existence.
 
-```javascript
-map.has('id') // true
-map.has('none') // false
+```javascript run
+const map = new Map([
+  ['id', 1],
+  ['name', 'Alice'],
+])
+console.log(map.has('id'))
+console.log(map.has('none'))
 ```
 
 ## Map Delete
@@ -86,12 +104,16 @@ The `delete(key)` method removes the key-value pair with the specified key.
 It returns true if the key exists, otherwise false.
 `delete()` affects the size of a map.
 
-```javascript
-map.delete('age') // true as key 'age' exists
-map.delete('none') // false as key 'none' do not exist
-
-// Check size
-map.size //  3
+```javascript run
+const map = new Map([
+  ['id', 1],
+  ['name', 'Alice'],
+  ['age', 50],
+  [2, 200],
+])
+console.log(map.delete('age'))
+console.log(map.delete('none'))
+console.log(map.size)
 ```
 
 ## Map Clear
@@ -99,69 +121,59 @@ map.size //  3
 The `clear` method removes all key-value pairs from the map.
 `clear` affects the size of a map.
 
-```javascript
+```javascript run
+const map = new Map([
+  ['id', 1],
+  ['name', 'Alice'],
+])
 map.clear()
-
-// Check size
-map.size // 0
+console.log(map.size)
 ```
 
 ## Iterate Map using for ... of
 
 You can directly iterate using `for ... of` over each key-value pair.
 
-```javascript
+```javascript run
 const map = new Map()
 map.set('name', 'Bob').set('age', 20)
 for (const [key, value] of map) {
   console.log(`${key}: ${value}`)
 }
-
-// name: Bob
-// age: 20
 ```
 
 ## Iterate Map using keys()
 
 You can iterate over the map keys using `keys()` method as in the order it was inserted.
 
-```javascript
+```javascript run
 const map = new Map()
 map.set('name', 'Bob').set('age', 20)
 for (const key of map.keys()) {
   console.log(`${key}`)
 }
-
-// name
-// age
 ```
 
 ## Iterate Map using values()
 
 You can iterate over the map values using `values()` method as in the order it was inserted.
 
-```javascript
+```javascript run
 const map = new Map()
 map.set('name', 'Bob').set('age', 20)
 for (const value of map.values()) {
   console.log(`${value}`)
 }
-
-// Bob
-// 20
 ```
 
 ## Iterate Map using entries()
 
 You can iterate over the map's key-value pair using `entries()` method as in the order it was inserted.
 
-```javascript
+```javascript run
 const map = new Map()
 map.set('name', 'Bob').set('age', 20)
 for (let [key, value] of map.entries()) {
   console.log(`${key}: ${value}`)
 }
-
-// name: Bob
-// age: 20
 ```

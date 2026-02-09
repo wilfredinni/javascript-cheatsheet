@@ -22,12 +22,12 @@ Javascript String Formatting
 
 Template literals can contain placeholders, indicated by the dollar sign and curly braces (`${expression}`). The expressions in the placeholders and the text between them get passed to a function.
 
-```javascript
+```javascript run
 let name = "John";
 let age = 30;
 let greeting = `Hello, my name is ${name} and I am ${age} years old.`;
 
-console.log(greeting); // Outputs: "Hello, my name is John and I am 30 years old."
+console.log(greeting);
 ```
 
 Here, `name` and `age` are variables. The template literal is defined using backticks, and the variables are embedded in the string using `${}` syntax. The resulting string is stored in the `greeting` variable and then logged to the console.
@@ -40,12 +40,12 @@ String concatenation is the operation of joining two or more strings together. T
 
 Here's an example of string concatenation using the `+` operator:
 
-```javascript
+```javascript run
 let str1 = "Hello, ";
 let str2 = "World!";
 let result = str1 + str2;
 
-console.log(result); // Outputs: "Hello, World!"
+console.log(result);
 ```
 
 `str1` and `str2` are strings. The `+` operator is used to concatenate `str1` and `str2` together. The resulting string is stored in the `result` variable and then logged to the console.
@@ -54,12 +54,12 @@ console.log(result); // Outputs: "Hello, World!"
 
 Here's an example of string concatenation using the `concat` method:
 
-```javascript
+```javascript run
 let str1 = "Hello, ";
 let str2 = "World!";
 let result = str1.concat(str2);
 
-console.log(result); // Outputs: "Hello, World!"
+console.log(result);
 ```
 
 `str1` and `str2` are strings. The `concat` method is called on `str1` with `str2` as the argument, concatenating `str1` and `str2` together. The resulting string is stored in the `result` variable and then logged to the console.

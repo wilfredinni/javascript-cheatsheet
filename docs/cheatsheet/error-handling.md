@@ -35,11 +35,11 @@ try {
 
 In the `try` block, you write the code that may throw an error. In the `catch` block, you write the code to handle the error. The error object that is passed to the `catch` block contains information about the error, such as its name and message.
 
-```javascript
+```javascript run
 try {
   let x = y; // y is not defined, so an error is thrown
 } catch (error) {
-  console.log(error.message); // Outputs: "y is not defined"
+  console.log(error.message);
 }
 ```
 
@@ -82,7 +82,7 @@ Creating custom error types can be useful when you want to throw and catch error
 
 Here's an example of how you can define and use a custom error type:
 
-```javascript
+```javascript run
 class DivisionByZeroError extends Error {
   constructor() {
     super("Division by zero is not allowed");
@@ -118,7 +118,7 @@ In many programming languages, when an error is thrown and not immediately caugh
 
 Here's an example in JavaScript:
 
-```javascript
+```javascript run
 function function1() {
   function2();
 }
