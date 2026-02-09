@@ -8,11 +8,12 @@ import NavbarReader from './TheNavbarReader'
 import SidebarDesktop from './TheSidebarDesktop'
 import Toc from './TheToc'
 
-const rootRepositoryRoutes = ['/contributing', '/changelog']
+const rootRepositoryRoutes = ['/contributing', '/changelog', '/playground']
 
 export default function RootLayout() {
   const reader = useReader()
   const { location } = useRouterState()
+  const isPlayground = location.pathname === '/playground'
 
   useScrollBehavior(location.pathname, location.hash)
 
@@ -25,7 +26,7 @@ export default function RootLayout() {
       {!reader.isActive ? <Navbar /> : <NavbarReader />}
 
       <div className="relative mx-auto flex min-h-screen max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12">
-        {!reader.isActive ? (
+        {!reader.isActive && !isPlayground ? (
           <div className="hidden lg:relative lg:block lg:flex-none">
             <div className="absolute inset-y-0 right-0 w-[50vw] dark:hidden" />
             <div className="sticky top-[3.6rem] -ml-0.5 h-[calc(100vh-3.6rem)] overflow-y-auto overflow-x-hidden py-10 pl-0.5">
@@ -39,20 +40,28 @@ export default function RootLayout() {
         ) : null}
 
         <div
-          className={`min-w-0 flex-auto px-4 py-12 xl:px-16 ${
-            reader.isActive ? 'max-w-2xl lg:max-w-4xl' : 'lg:max-w-none'
+          className={`min-w-0 flex-auto ${
+            isPlayground ? 'px-4 pb-12 pt-6' : 'px-4 py-12 xl:px-16'
+          } ${
+            reader.isActive
+              ? 'max-w-2xl lg:max-w-4xl'
+              : isPlayground
+                ? 'max-w-7xl'
+                : 'lg:max-w-none'
           }`}
         >
           <article id="reader-content">
             <Outlet />
           </article>
 
-          {!location.pathname.startsWith('/builtin/') && <BasePagination />}
+          {!isPlayground && !location.pathname.startsWith('/builtin/') && (
+            <BasePagination />
+          )}
 
-          <Footer repository={repository} />
+          {!isPlayground && <Footer repository={repository} />}
         </div>
 
-        {!reader.isActive && location.pathname !== '/' ? (
+        {!reader.isActive && !isPlayground && location.pathname !== '/' ? (
           <div className="overflow-overlay hidden overflow-x-hidden xl:sticky xl:top-[3.6rem] xl:-mr-6 xl:block xl:h-[calc(100vh-3.6rem)] xl:flex-none xl:overflow-y-auto xl:py-10 xl:pr-6">
             <Toc />
           </div>
