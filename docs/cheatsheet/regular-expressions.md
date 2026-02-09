@@ -56,200 +56,200 @@ Javascript Regular Expressions
 
 Matches any character except newline.
 
-```javascript
+```javascript run
 let regex = /a.c/;
 let str = 'abc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Digit (\d)
 
 Matches any digit (0-9).
 
-```javascript
+```javascript run
 let regex = /\d/;
 let str = 'abc123';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Non-Digit (\D)
 
 Matches any non-digit character.
 
-```javascript
+```javascript run
 let regex = /\D/;
 let str = 'abc123';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Whitespace (\s)
 
 Matches any whitespace character.
 
-```javascript
+```javascript run
 let regex = /\s/;
 let str = 'abc def';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Non-Whitespace (\S)
 
 Matches any non-whitespace character.
 
-```javascript
+```javascript run
 let regex = /\S/;
 let str = ' abc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Word Character (\w)
 
 Matches any alphanumeric character (a-z, A-Z, 0-9) and underscore (_).
 
-```javascript
+```javascript run
 let regex = /\w/;
 let str = 'abc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Non-Word Character (\W)
 
 Matches any non-alphanumeric character.
 
-  ```javascript
+  ```javascript run
   let regex = /\W/;
   let str = 'abc-def';
-  console.log(regex.test(str)); // true
+  console.log(regex.test(str));
   ```
 
 ## Character Set ([abc])
 
 Matches any character inside the brackets (a, b, or c).
 
-```javascript
+```javascript run
 let regex = /[abc]/;
 let str = 'defabc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Negated Character Set ([^abc])
 
 Matches any character not inside the brackets.
 
-```javascript
+```javascript run
 let regex = /[^abc]/;
 let str = 'defabc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Start Anchor (^)
 
 Matches the start of the string.
 
-```javascript
+```javascript run
 let regex = /^abc/;
 let str = 'abcdef';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## End Anchor ($)
 
 Matches the end of the string.
 
-```javascript
+```javascript run
 let regex = /def$/;
 let str = 'abcdef';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Zero or More (*):** Matches zero or more occurrences of the preceding element.
 
-```javascript
+```javascript run
 let regex = /a*/;
 let str = 'aaaabc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## One or More (+)
 
 Matches one or more occurrences of the preceding element.
 
-```javascript
+```javascript run
 let regex = /a+/;
 let str = 'aaaabc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Zero or One (?)
 
 Matches zero or one occurrence of the preceding element.
 
-```javascript
+```javascript run
 let regex = /a?/;
 let str = 'abc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Exactly N ({n})
 
 Matches exactly n occurrences of the preceding element.
 
-```javascript
+```javascript run
 let regex = /a{2}/;
 let str = 'aaaabc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## N or More ({n,})
 
 Matches n or more occurrences of the preceding element.
 
-```javascript
+```javascript run
 let regex = /a{2,}/;
 let str = 'aaaabc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Between N and M ({nm})
 
 Matches at least n and at most m occurrences of the preceding element.
 
-```javascript
+```javascript run
 let regex = /a{2,3}/;
 let str = 'aaaabc';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## OR (|)
 
 Acts as a boolean OR. Matches the pattern before or the pattern after the `|`.
 
-```javascript
+```javascript run
 let regex = /abc|def/;
 let str1 = 'abc';
 let str2 = 'def';
-console.log(regex.test(str1)); // true
-console.log(regex.test(str2)); // true
+console.log(regex.test(str1));
+console.log(regex.test(str2));
 ```
 
 ## Grouping (()
 
 Defines a group.
 
-```javascript
+```javascript run
 let regex = /(abc)/;
 let str = 'abcdef';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Non-Capturing Group ((?: ))
 
 Defines a non-capturing group.
 
-```javascript
+```javascript run
 let regex = /(?:abc)/;
 let str = 'abcdef';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 Sure, here is the continuation from item 21:
@@ -258,18 +258,18 @@ Sure, here is the continuation from item 21:
 
 Positive lookahead.
 
-```javascript
+```javascript run
 let regex = /abc(?=def)/;
 let str = 'abcdef';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```
 
 ## Negative Lookahead ((?! ))
 
 Negative lookahead.
 
-```javascript
+```javascript run
 let regex = /abc(?!def)/;
 let str = 'abcghi';
-console.log(regex.test(str)); // true
+console.log(regex.test(str));
 ```

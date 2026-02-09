@@ -24,19 +24,19 @@ Sets are commonly used in scenarios where you need to work with collections of u
 
 Since a Set automatically removes duplicates, you can convert an array to a Set and back to an array to remove duplicate elements.
 
-```javascript
+```javascript run
 let array = [1, 2, 2, 3, 4, 4, 5];
 let uniqueArray = [...new Set(array)];
-console.log(uniqueArray); // Outputs: [1, 2, 3, 4, 5]
+console.log(uniqueArray);
 ```
 
 ### Membership check
 
 Checking if an element exists in a Set is faster and more efficient than checking if it exists in an array.
 
-```javascript
+```javascript run
 let mySet = new Set([1, 2, 3, 4, 5]);
-console.log(mySet.has(3)); // Outputs: true
+console.log(mySet.has(3));
 ```
 
 ### Set operations
@@ -56,15 +56,15 @@ You can perform operations like union, intersection, difference, and symmetric d
 
 A Set is declared using the `new Set()` constructor. You can optionally pass an iterable (like an array) to the constructor to initialize the Set with values.
 
-```javascript
+```javascript run
 // Declare an empty Set
 let set1 = new Set();
 
 // Declare a Set with initial values
 let set2 = new Set([1, 2, 3, 4, 5]);
 
-console.log(set1); // Outputs: Set(0) {}
-console.log(set2); // Outputs: Set(5) { 1, 2, 3, 4, 5 }
+console.log([...set1]);
+console.log([...set2]);
 ```
 
 `set1` is an empty Set, and `set2` is a Set initialized with the values 1, 2, 3, 4, and 5. Note that Sets automatically remove duplicate values, so each value in a Set is unique.
@@ -73,11 +73,11 @@ console.log(set2); // Outputs: Set(5) { 1, 2, 3, 4, 5 }
 
 You can check if a value exists in a Set using the `has` method. The `has` method returns a boolean indicating whether the value exists in the Set:
 
-```javascript
+```javascript run
 let mySet = new Set([1, 2, 3, 4, 5]);
 
-console.log(mySet.has(1)); // Outputs: true
-console.log(mySet.has(6)); // Outputs: false
+console.log(mySet.has(1));
+console.log(mySet.has(6));
 ```
 
 `mySet` is a Set initialized with the values 1, 2, 3, 4, and 5. The `has` method is used to check if the values 1 and 6 exist in the Set.
@@ -90,14 +90,14 @@ Add and delete values in a Set using the `add` and `delete` methods respectively
 
 You can add a value to a Set using the `add` method. The `add` method appends a new element with a specified value to the end of a Set object.
 
-```javascript
+```javascript run
 let mySet = new Set();
 
 mySet.add(1);
 mySet.add(2);
 mySet.add(3);
 
-console.log(mySet); // Outputs: Set(3) { 1, 2, 3 }
+console.log([...mySet]);
 ```
 
 Here, we're adding the values 1, 2, and 3 to the Set `mySet`.
@@ -106,12 +106,12 @@ Here, we're adding the values 1, 2, and 3 to the Set `mySet`.
 
 You can delete a value from a Set using the `delete` method. The `delete` method removes the specified element from a Set.
 
-```javascript
+```javascript run
 let mySet = new Set([1, 2, 3]);
 
 mySet.delete(2);
 
-console.log(mySet); // Outputs: Set(2) { 1, 3 }
+console.log([...mySet]);
 ```
 
 We're deleting the value 2 from the Set `mySet`.
@@ -120,10 +120,10 @@ We're deleting the value 2 from the Set `mySet`.
 
 Get the size (number of elements) of a Set using the `size` property.
 
-```javascript
+```javascript run
 let mySet = new Set([1, 2, 3, 4, 5]);
 
-console.log(mySet.size); // Outputs: 5
+console.log(mySet.size);
 ```
 
 `mySet` is a Set initialized with the values 1, 2, 3, 4, and 5. The `size` property is used to get the number of elements in the Set.
@@ -134,7 +134,7 @@ You can iterate over a Set using several methods:
 
 1. **For...of loop**: Iterate over the values in a Set.
 
-```javascript
+```javascript run
 let mySet = new Set([1, 2, 3, 4, 5]);
 
 for (let value of mySet) {
@@ -144,7 +144,7 @@ for (let value of mySet) {
 
 2. **forEach method**: This allows you to execute a function for each value in a Set.
 
-```javascript
+```javascript run
 let mySet = new Set([1, 2, 3, 4, 5]);
 
 mySet.forEach(function(value) {
@@ -154,7 +154,7 @@ mySet.forEach(function(value) {
 
 3. **Spread operator**: Convert a Set into an Array, which can be useful for iteration.
 
-```javascript
+```javascript run
 let mySet = new Set([1, 2, 3, 4, 5]);
 let array = [...mySet];
 
@@ -169,14 +169,14 @@ In each of these examples, we're iterating over the Set `mySet` and logging each
 
 In JavaScript, you can clear all values from a Set using the `clear` method.
 
-```javascript
+```javascript run
 let mySet = new Set([1, 2, 3, 4, 5]);
 
-console.log(mySet.size); // Outputs: 5
+console.log(mySet.size);
 
 mySet.clear();
 
-console.log(mySet.size); // Outputs: 0
+console.log(mySet.size);
 ```
 
 `mySet` is a Set initialized with the values 1, 2, 3, 4, and 5. The `clear` method is used to remove all values from the Set. After clearing, the size of the Set is 0.
@@ -187,43 +187,43 @@ In JavaScript, you can perform set operations like union, intersection, differen
 
 The union of two sets is a set of all elements from both sets. You can get the union of two sets by creating a new Set from the concatenation of the two sets.
 
-```javascript
+```javascript run
 let setA = new Set([1, 2, 3]);
 let setB = new Set([3, 4, 5]);
 
 let union = new Set([...setA, ...setB]);
-console.log([...union]); // Outputs: [1, 2, 3, 4, 5]
+console.log([...union]);
 ```
 
 ## Set Intersection
 
 The intersection of two sets is a set of elements that are common to both sets. You can get the intersection of two sets by filtering one set for elements that also exist in the other set.
 
-```javascript
+```javascript run
 let setA = new Set([1, 2, 3]);
 let setB = new Set([3, 4, 5]);
 
 let intersection = new Set([...setA].filter(x => setB.has(x)));
-console.log([...intersection]); // Outputs: [3]
+console.log([...intersection]);
 ```
 
 ## Set Difference
 
 The difference of two sets is a set of elements that exist in the first set but not in the second set. You can get the difference of two sets by filtering the first set for elements that do not exist in the second set.
 
-```javascript
+```javascript run
 let setA = new Set([1, 2, 3]);
 let setB = new Set([3, 4, 5]);
 
 let difference = new Set([...setA].filter(x => !setB.has(x)));
-console.log([...difference]); // Outputs: [1, 2]
+console.log([...difference]);
 ```
 
 ## Set Symmetric Difference
 
 The symmetric difference of two sets is a set of elements that exist in either of the two sets but not in their intersection. You can get the symmetric difference of two sets by getting the union of the two sets and then filtering out the intersection.
 
-```javascript
+```javascript run
 let setA = new Set([1, 2, 3]);
 let setB = new Set([3, 4, 5]);
 
@@ -231,5 +231,5 @@ let union = new Set([...setA, ...setB]);
 let intersection = new Set([...setA].filter(x => setB.has(x)));
 
 let symmetricDifference = new Set([...union].filter(x => !intersection.has(x)));
-console.log([...symmetricDifference]); // Outputs: [1, 2, 4, 5]
+console.log([...symmetricDifference]);
 ```

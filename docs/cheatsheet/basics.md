@@ -18,6 +18,38 @@ We all need to start somewhere, so how about doing it here.
   </base-disclaimer-content>
 </base-disclaimer>
 
+## The console.log Function
+
+The `console.log()` function is used to print output to the console. This can be very useful for debugging, as it allows you to output the values of variables at different points in your code, or to output messages that help you understand the flow of execution in your code.
+
+```javascript run
+console.log("Hello, World!");
+```
+
+You can print the value of variables:
+
+```javascript run
+let a = 1;
+console.log(a);
+```
+
+You can also print multiple values at once by separating them with commas:
+
+```javascript run
+let a = 1;
+let b = 2;
+console.log(a, b);
+```
+
+<base-warning>
+  <base-warning-title>
+    console.log and the Interpreter
+  </base-warning-title>
+  <base-warning-content>
+    Note that `console.log()` does not affect the execution of your code. It's purely for outputting information to the console.
+  </base-warning-content>
+</base-warning>
+
 ## Data Types
 
 JavaScript provides seven different data types:
@@ -38,20 +70,23 @@ You can declare variables using `var`, `let`, and `const` keywords. Here's what 
 
 1. `var`: This is the oldest way to declare variables. It's not used as much in modern JavaScript, but it's still important to understand. Variables declared with var are function-scoped, meaning they are only available within the function they're declared in.
 
-    ```javascript
+    ```javascript run
     var name = "John"
+    console.log(name);
     ```
 
 2. `let`: This is a newer way to declare variables, introduced in ES6 (ES2015). Variables declared with let are block-scoped, meaning they are only available within the block they're declared in.
 
-    ```javascript
+    ```javascript run
     let age = 25;
+    console.log(age);
     ```
 
 3. `const`: Also introduced in ES6, const is used to declare constants, i.e., variables that cannot be reassigned. Like let, const is also block-scoped.
 
-    ```javascript
+    ```javascript run
     const pi = 3.14159;
+    console.log(pi);
     ```
 
 ### Here are some important points to remember:
@@ -78,52 +113,60 @@ Arithmetic operators are used to perform mathematical operation:
 
 1. **Addition (`+`)**: Adds two numbers.
 
-```javascript
-let result = 5 + 10; // result is 15
+```javascript run
+let result = 5 + 10;
+console.log(result);
 ```
 
 2. **Subtraction (`-`)**: Subtracts the second number from the first.
 
-```javascript
-let result = 10 - 5; // result is 5
+```javascript run
+let result = 10 - 5;
+console.log(result);
 ```
 
 3. **Multiplication (`*`)**: Multiplies two numbers.
 
-```javascript
-let result = 5 * 10; // result is 50
+```javascript run
+let result = 5 * 10;
+console.log(result);
 ```
 
 4. **Division (`/`)**: Divides the first number by the second.
 
-```javascript
-let result = 10 / 5; // result is 2
+```javascript run
+let result = 10 / 5;
+console.log(result);
 ```
 
 5. **Modulus (`%`)**: Returns the remainder of the division of the first number by the second.
 
-```javascript
-let result = 10 % 3; // result is 1
+```javascript run
+let result = 10 % 3;
+console.log(result);
 ```
 
 6. **Increment (`++`)**: Increases a number by 1.
 
-```javascript
+```javascript run
 let num = 5;
-num++; // num is now 6
+num++;
+console.log(num);
 ```
 
 7. **Decrement (`--`)**: Decreases a number by 1.
 
-```javascript
+```javascript run
 let num = 5;
-num--; // num is now 4
+num--;
+console.log(num);
 ```
 
 8. **Exponentiation (`**`)**: Raises the first number to the power of the second number.
 
-```javascript
-let result = 5 ** 2; // result is 25
+```javascript run
+let result = 5 ** 2;
+console.log(result);
 ```
 
 These operators can be used with numbers, variables, or expressions.
@@ -144,50 +187,57 @@ Assignment operators are used to assign values to variables:
 
 1. **Assignment (`=`)**: Assigns the value on the right to the variable on the left.
 
-```javascript
-let x = 10; // x is now 10
+```javascript run
+let x = 10;
+console.log(x);
 ```
 
 2. **Addition assignment (`+=`)**: Adds the value on the right to the variable on the left and assigns the result to the variable on the left.
 
-```javascript
+```javascript run
 let x = 5;
-x += 10; // x is now 15
+x += 10;
+console.log(x);
 ```
 
 3. **Subtraction assignment (`-=`)**: Subtracts the value on the right from the variable on the left and assigns the result to the variable on the left.
 
-```javascript
+```javascript run
 let x = 10;
-x -= 5; // x is now 5
+x -= 5;
+console.log(x);
 ```
 
 4. **Multiplication assignment (`*=`)**: Multiplies the variable on the left by the value on the right and assigns the result to the variable on the left.
 
-```javascript
+```javascript run
 let x = 5;
-x *= 10; // x is now 50
+x *= 10;
+console.log(x);
 ```
 
 5. **Division assignment (`/=`)**: Divides the variable on the left by the value on the right and assigns the result to the variable on the left.
 
-```javascript
+```javascript run
 let x = 10;
-x /= 5; // x is now 2
+x /= 5;
+console.log(x);
 ```
 
 6. **Modulus assignment (`%=`)**: Divides the variable on the left by the value on the right and assigns the remainder to the variable on the left.
 
-```javascript
+```javascript run
 let x = 10;
-x %= 3; // x is now 1
+x %= 3;
+console.log(x);
 ```
 
 7. **Exponentiation assignment (`**=`)**: Raises the variable on the left to the power of the value on the right and assigns the result to the variable on the left.
 
-```javascript
+```javascript run
 let x = 5;
-x **= 2; // x is now 25
+x **= 2;
+console.log(x);
 ```
 
 These operators provide a shorthand way to update the value of a variable in relation to its current value.
@@ -209,52 +259,62 @@ Comparison operators are used to compare two values:
 
 1. **Equal to (`==`)**: Returns true if the operands are equal.
 
-```javascript
-5 == 5; // true
-'5' == 5; // true, because it does type coercion
+```javascript run
+const a = 5 == 5;
+const b = '5' == 5;
+console.log(a);
+console.log(b);
 ```
 
 2. **Not equal to (`!=`)**: Returns true if the operands are not equal.
 
-```javascript
-5 != 4; // true
+```javascript run
+const a = 5 != 4;
+console.log(a);
 ```
 
 3. **Strictly equal to (`===`)**: Returns true if the operands are equal and of the same type.
 
-```javascript
-5 === 5; // true
-'5' === 5; // false, because the types are different
+```javascript run
+const a = 5 === 5;
+const b = '5' === 5;
+console.log(a);
+console.log(b);
 ```
 
 4. **Strictly not equal to (`!==`)**: Returns true if the operands are not equal or not of the same type.
 
-```javascript
-5 !== '5'; // true
+```javascript run
+const a = 5 !== '5';
+console.log(a);
 ```
 
 5. **Greater than (`>`)**: Returns true if the left operand is greater than the right operand.
 
-```javascript
-10 > 5; // true
+```javascript run
+const a = 10 > 5;
+console.log(a);
 ```
 
 6. **Less than (`<`)**: Returns true if the left operand is less than the right operand.
 
-```javascript
-5 < 10; // true
+```javascript run
+const a = 5 < 10;
+console.log(a);
 ```
 
 7. **Greater than or equal to (`>=`)**: Returns true if the left operand is greater than or equal to the right operand.
 
-```javascript
-10 >= 10; // true
+```javascript run
+const a = 10 >= 10;
+console.log(a);
 ```
 
 8. **Less than or equal to (`<=`)**: Returns true if the left operand is less than or equal to the right operand.
 
-```javascript
-5 <= 5; // true
+```javascript run
+const a = 5 <= 5;
+console.log(a);
 ```
 
 These operators are often used in conditional statements to perform different actions based on different conditions.
@@ -271,23 +331,29 @@ Logical operators are used to determine the logic between variables or values:
 
 1. **Logical AND (`&&`)**: Returns true if both operands are true.
 
-```javascript
-true && true; // true
-true && false; // false
+```javascript run
+const a = true && true;
+const b = true && false;
+console.log(a);
+console.log(b);
 ```
 
 2. **Logical OR (`||`)**: Returns true if at least one of the operands is true.
 
-```javascript
-true || false; // true
-false || false; // false
+```javascript run
+const a = true || false;
+const b = false || false;
+console.log(a);
+console.log(b);
 ```
 
 3. **Logical NOT (`!`)**: Returns true if the operand is false, and false if the operand is true. It basically reverses the boolean value of the operand.
 
-```javascript
-!true; // false
-!false; // true
+```javascript run
+const a = !true;
+const b = !false;
+console.log(a);
+console.log(b);
 ```
 
 These operators are often used in conditional statements to combine or invert boolean conditions. For example, you might use the logical AND operator (`&&`) to check that two conditions are both true before running a piece of code.
@@ -308,44 +374,51 @@ Bitwise operators operate on 32-bit binary representations of numbers:
 
 1. **Bitwise AND (`&`)**: Returns a one in each bit position where operands have ones.
 
-```javascript
-5 & 1; // 1 (0101 & 0001 => 0001)
+```javascript run
+const a = 5 & 1;
+console.log(a);
 ```
 
 2. **Bitwise OR (`|`)**: Returns a one in each bit position where at least one operand has a one.
 
-```javascript
-5 | 1; // 5 (0101 | 0001 => 0101)
+```javascript run
+const a = 5 | 1;
+console.log(a);
 ```
 
 3. **Bitwise XOR (`^`)**: Returns a one in each bit position where exactly one operand has a one.
 
-```javascript
-5 ^ 1; // 4 (0101 ^ 0001 => 0100)
+```javascript run
+const a = 5 ^ 1;
+console.log(a);
 ```
 
 4. **Bitwise NOT (`~`)**: Inverts the bits of its operand.
 
-```javascript
-~5; // -6 (~0101 => 1010)
+```javascript run
+const a = ~5;
+console.log(a);
 ```
 
 5. **Left shift (`<<`)**: Shifts the bits of the first operand to the left by the number of places specified in the second operand. New bits get filled with zeros.
 
-```javascript
-5 << 1; // 10 (0101 << 1 => 1010)
+```javascript run
+const a = 5 << 1;
+console.log(a);
 ```
 
 6. **Sign-propagating right shift (`>>`)**: Shifts the bits of the first operand to the right by the number of places specified in the second operand. The sign bit is used to fill the new bits.
 
-```javascript
-5 >> 1; // 2 (0101 >> 1 => 0010)
+```javascript run
+const a = 5 >> 1;
+console.log(a);
 ```
 
 7. **Zero-fill right shift (`>>>`)**: Shifts the bits of the first operand to the right by the number of places specified in the second operand. New bits get filled with zeros.
 
-```javascript
-5 >>> 1; // 2 (0101 >>> 1 => 0010)
+```javascript run
+const a = 5 >>> 1;
+console.log(a);
 ```
 
 These operators are less commonly used than the arithmetic, assignment, comparison, and logical operators, but they can be useful in certain scenarios, particularly in low-level programming tasks.
@@ -382,34 +455,3 @@ It can span multiple lines
   </base-warning-content>
 </base-warning>
 
-## The console.log Function
-
-The `console.log()` function is used to print output to the console. This can be very useful for debugging, as it allows you to output the values of variables at different points in your code, or to output messages that help you understand the flow of execution in your code.
-
-```javascript
-console.log("Hello, World!"); // prints "Hello, World!" to the console
-```
-
-You can print the value of variables:
-
-```javascript
-let a = 1;
-console.log(a); // prints the value of a (1) to the console
-```
-
-You can also print multiple values at once by separating them with commas:
-
-```javascript
-let a = 1;
-let b = 2;
-console.log(a, b); // prints "1 2" to the console
-```
-
-<base-warning>
-  <base-warning-title>
-    console.log and the Interpreter
-  </base-warning-title>
-  <base-warning-content>
-    Note that `console.log()` does not affect the execution of your code. It's purely for outputting information to the console.
-  </base-warning-content>
-</base-warning>

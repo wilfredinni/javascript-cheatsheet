@@ -20,7 +20,7 @@ JavaScript objects are containers for named values, called properties and method
 
 An example JavaScript object:
 
-```javascript
+```javascript run
 let car = {
   maker: "Toyota",
   model: "Camry",
@@ -29,6 +29,9 @@ let car = {
     return "Engine started";
   }
 };
+
+console.log(car.maker);
+console.log(car.startEngine());
 ```
 
 `maker`, `model`, and `year` are properties of the `car` object, and `startEngine` is a method. You can access the properties using dot notation (e.g., `car.maker`) or bracket notation (e.g., `car["maker"]`), and you can call the method like this: `car.startEngine()`.
@@ -39,26 +42,30 @@ You can declare an object in a few different ways:
 
 1. **Object Literal Syntax**: This is the most common way to create an object in JavaScript. You simply define the property and value within curly braces `{}`.
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2',
   key3: 'value3'
 };
+
+console.log(obj);
 ```
 
 2. **Object Constructor**: This is another way to create an object but it's not as commonly used as the literal syntax.
 
-```javascript
+```javascript run
 let obj = new Object();
 obj.key1 = 'value1';
 obj.key2 = 'value2';
 obj.key3 = 'value3';
+
+console.log(obj);
 ```
 
 3. **Constructor Function**: If you need to create multiple objects with the same structure, you can use a constructor function.
 
-```javascript
+```javascript run
 function MyObject(key1, key2, key3) {
   this.key1 = key1;
   this.key2 = key2;
@@ -66,6 +73,8 @@ function MyObject(key1, key2, key3) {
 }
 
 let obj = new MyObject('value1', 'value2', 'value3');
+
+console.log(obj);
 ```
 
 In all these examples, `obj` is an object with properties `key1`, `key2`, and `key3`.
@@ -76,26 +85,26 @@ You can read an object property using either `dot notation` or `bracket notation
 
 1. **Dot Notation**:
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2',
   key3: 'value3'
 };
 
-console.log(obj.key1); // Outputs: 'value1'
+console.log(obj.key1);
 ```
 
 2. **Bracket Notation**:
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2',
   key3: 'value3'
 };
 
-console.log(obj['key1']); // Outputs: 'value1'
+console.log(obj['key1']);
 ```
 
 In both examples, we're reading the property `key1` from the object `obj`.
@@ -106,7 +115,7 @@ Update the properties of an object using either `dot notation` or `bracket notat
 
 1. **Dot Notation**:
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2',
@@ -114,12 +123,12 @@ let obj = {
 };
 
 obj.key1 = 'new value1';
-console.log(obj.key1); // Outputs: 'new value1'
+console.log(obj.key1);
 ```
 
 2. **Bracket Notation**:
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2',
@@ -127,7 +136,7 @@ let obj = {
 };
 
 obj['key1'] = 'new value1';
-console.log(obj['key1']); // Outputs: 'new value1'
+console.log(obj['key1']);
 ```
 
 In both cases, we're updating the property `key1` of the object `obj` to a new value.
@@ -138,26 +147,26 @@ Add properties to an object after it has been created. This can be done using ei
 
 1. **Dot Notation**:
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2'
 };
 
 obj.key3 = 'value3';
-console.log(obj.key3); // Outputs: 'value3'
+console.log(obj.key3);
 ```
 
 2. **Bracket Notation**:
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2'
 };
 
 obj['key3'] = 'value3';
-console.log(obj['key3']); // Outputs: 'value3'
+console.log(obj['key3']);
 ```
 
 In both examples, we're adding a new property `key3` to the object `obj`.
@@ -166,7 +175,7 @@ In both examples, we're adding a new property `key3` to the object `obj`.
 
 In JavaScript, you can delete properties from an object using the `delete` operator:
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2',
@@ -174,7 +183,7 @@ let obj = {
 };
 
 delete obj.key1;
-console.log(obj.key1); // Outputs: undefined
+console.log(obj.key1);
 ```
 
 We're deleting the property `key1` from the object `obj`. After the deletion, when we try to access `obj.key1`, it returns `undefined` because the property no longer exists.
@@ -185,45 +194,45 @@ You can check if a property exists in an object using several methods:
 
 1. **The `in` operator**: This returns `true` if the property exists in the object.
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2'
 };
 
-console.log('key1' in obj); // Outputs: true
-console.log('key3' in obj); // Outputs: false
+console.log('key1' in obj);
+console.log('key3' in obj);
 ```
 
 2. **The `hasOwnProperty` method**: This returns `true` if the object has the specified property as its own property (not inherited).
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2'
 };
 
-console.log(obj.hasOwnProperty('key1')); // Outputs: true
-console.log(obj.hasOwnProperty('key3')); // Outputs: false
+console.log(obj.hasOwnProperty('key1'));
+console.log(obj.hasOwnProperty('key3'));
 ```
 
 3. **Direct property access**: This checks if the property value is `undefined`. However, this method can give false negatives if the property exists but its value is set to `undefined`.
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2'
 };
 
-console.log(obj.key1 !== undefined); // Outputs: true
-console.log(obj.key3 !== undefined); // Outputs: false
+console.log(obj.key1 !== undefined);
+console.log(obj.key3 !== undefined);
 ```
 
 ## Iterating Over Object Properties
 
 Iterate over an object's properties using a `for...in` loop.
 
-```javascript
+```javascript run
 let obj = {
   key1: 'value1',
   key2: 'value2',
@@ -237,19 +246,13 @@ for (let key in obj) {
 }
 ```
 
-The `for...in` loop iterates over each property in the object `obj`. The `hasOwnProperty` method is used to ensure that the property belongs to the object itself and not its prototype chain. The output will be:
-
-```
-key1: value1
-key2: value2
-key3: value3
-```
+The `for...in` loop iterates over each property in the object `obj`. The `hasOwnProperty` method is used to ensure that the property belongs to the object itself and not its prototype chain.
 
 ## Object Methods
 
 Objects can have methods. Methods are functions that are stored as object properties.
 
-```javascript
+```javascript run
 let obj = {
   property1: 'value1',
   property2: 'value2',
@@ -259,14 +262,14 @@ let obj = {
 };
 
 // Call the method
-obj.myMethod(); // Outputs: 'This is a method!'
+obj.myMethod();
 ```
 
 `myMethod` is a method of the object `obj`. You can call it using the object name followed by the method name.
 
 You can also use the `this` keyword in methods to refer to the object:
 
-```javascript
+```javascript run
 let obj = {
   property1: 'value1',
   property2: 'value2',
@@ -276,7 +279,7 @@ let obj = {
 };
 
 // Call the method
-obj.myMethod(); // Outputs: 'Property1 is value1'
+obj.myMethod();
 ```
 
 `this.property1` within the method refers to the `property1` of the object `obj`.
