@@ -52,7 +52,7 @@ export default function RootLayout() {
           <Footer repository={repository} />
         </div>
 
-        {!reader.isActive ? (
+        {!reader.isActive && location.pathname !== '/' ? (
           <div className="overflow-overlay hidden overflow-x-hidden xl:sticky xl:top-[3.6rem] xl:-mr-6 xl:block xl:h-[calc(100vh-3.6rem)] xl:flex-none xl:overflow-y-auto xl:py-10 xl:pr-6">
             <Toc />
           </div>
