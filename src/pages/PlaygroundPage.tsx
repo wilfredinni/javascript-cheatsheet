@@ -38,8 +38,25 @@ export default function PlaygroundPage() {
   const [output, setOutput] = useState<OutputEntry[]>([])
   const [isHydrated, setIsHydrated] = useState(false)
   const [shareLabel, setShareLabel] = useState('Share')
+  const [savedAt, setSavedAt] = useState<number | null>(null)
+  const [activePane, setActivePane] = useState<'editor' | 'output'>('editor')
+  const [splitPercent, setSplitPercent] = useState(55)
+  const [lastRunAt, setLastRunAt] = useState<number | null>(null)
+  const [lastRunDuration, setLastRunDuration] = useState<number | null>(null)
+  const [outputFilters, setOutputFilters] = useState({
+    log: true,
+    info: true,
+    warn: true,
+    error: true,
+  })
   const workerRef = useRef<Worker | null>(null)
   const groupDepthRef = useRef(0)
+  const runStartRef = useRef<number | null>(null)
+  const splitContainerRef = useRef<HTMLDivElement | null>(null)
+  const isDraggingRef = useRef(false)
+  const editorRef = useRef<
+    import('monaco-editor').editor.IStandaloneCodeEditor | null
+  >(null)
 
   usePrerenderReady(true)
 
@@ -63,6 +80,7 @@ export default function PlaygroundPage() {
   useEffect(() => {
     if (!isHydrated) return
     localStorage.setItem(STORAGE_KEY, code)
+    setSavedAt(Date.now())
   }, [code, isHydrated])
 
   useEffect(() => {
@@ -70,6 +88,35 @@ export default function PlaygroundPage() {
       workerRef.current?.terminate()
     }
   }, [])
+
+  useEffect(() => {
+    if (!isDraggingRef.current) {
+      return
+    }
+
+    const handlePointerMove = (event: PointerEvent) => {
+      const container = splitContainerRef.current
+      if (!container) return
+      const rect = container.getBoundingClientRect()
+      const next = ((event.clientX - rect.left) / rect.width) * 100
+      const clamped = Math.min(75, Math.max(25, next))
+      setSplitPercent(clamped)
+    }
+
+    const handlePointerUp = () => {
+      isDraggingRef.current = false
+      window.removeEventListener('pointermove', handlePointerMove)
+      window.removeEventListener('pointerup', handlePointerUp)
+    }
+
+    window.addEventListener('pointermove', handlePointerMove)
+    window.addEventListener('pointerup', handlePointerUp)
+
+    return () => {
+      window.removeEventListener('pointermove', handlePointerMove)
+      window.removeEventListener('pointerup', handlePointerUp)
+    }
+  }, [splitPercent])
 
   const nodeOnlyReason = useMemo(() => getNodeOnlyReason(code), [code])
   const runDisabled = Boolean(nodeOnlyReason) || isRunning
@@ -90,6 +137,7 @@ export default function PlaygroundPage() {
 
     resetOutput()
     setIsRunning(true)
+    runStartRef.current = performance.now()
     workerRef.current?.terminate()
     const worker = createRunnerWorker()
     workerRef.current = worker
@@ -153,6 +201,10 @@ export default function PlaygroundPage() {
           break
         case 'done':
           setIsRunning(false)
+          if (runStartRef.current !== null) {
+            setLastRunDuration(performance.now() - runStartRef.current)
+          }
+          setLastRunAt(Date.now())
           workerRef.current?.terminate()
           workerRef.current = null
           break
@@ -164,6 +216,10 @@ export default function PlaygroundPage() {
     worker.onerror = (event) => {
       appendOutput('error', event.message || 'Worker error')
       setIsRunning(false)
+      if (runStartRef.current !== null) {
+        setLastRunDuration(performance.now() - runStartRef.current)
+      }
+      setLastRunAt(Date.now())
       workerRef.current?.terminate()
       workerRef.current = null
     }
@@ -174,6 +230,11 @@ export default function PlaygroundPage() {
   const handleReset = () => {
     setCode(DEFAULT_SNIPPET)
     resetOutput()
+  }
+
+  const handleFormat = () => {
+    const action = editorRef.current?.getAction('editor.action.formatDocument')
+    action?.run()
   }
 
   const handleShare = async () => {
@@ -201,6 +262,13 @@ export default function PlaygroundPage() {
     } catch {
       // Ignore clipboard failures.
     }
+  }
+
+  const handleFilterToggle = (key: keyof typeof outputFilters) => {
+    setOutputFilters((current) => ({
+      ...current,
+      [key]: !current[key],
+    }))
   }
 
   const outputTypeClass = (type: OutputEntry['type']) => {
@@ -245,6 +313,35 @@ export default function PlaygroundPage() {
     })
   }
 
+  const handleEditorMount = (
+    editor: import('monaco-editor').editor.IStandaloneCodeEditor,
+  ) => {
+    editorRef.current = editor
+  }
+
+  const filteredOutput = output.filter((entry) => {
+    if (entry.type in outputFilters) {
+      return outputFilters[entry.type as keyof typeof outputFilters]
+    }
+    return true
+  })
+
+  const lastRunLabel = lastRunAt
+    ? new Date(lastRunAt).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+      })
+    : null
+  const lastRunDurationLabel =
+    lastRunDuration !== null ? `${lastRunDuration.toFixed(0)}ms` : null
+  const savedLabel = savedAt
+    ? new Date(savedAt).toLocaleTimeString([], {
+        hour: '2-digit',
+        minute: '2-digit',
+      })
+    : null
+
   return (
     <article className="min-h-[calc(100vh-3.6rem)] w-full bg-white dark:bg-zinc-900">
       <Seo
@@ -253,12 +350,19 @@ export default function PlaygroundPage() {
       />
 
       <section className="not-prose mx-auto flex h-full min-h-[calc(100vh-3.6rem)] max-w-8xl flex-col px-3 pb-6 pt-4 sm:px-6 lg:px-12">
-        <div className="flex items-center justify-between">
-          <div className="text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-400">
-            JavaScript Runner
+        <div className="flex w-full flex-wrap items-center gap-3">
+          <div className="flex items-center gap-3">
+            <div className="text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-400">
+              JavaScript Runner
+            </div>
+            {savedLabel ? (
+              <span className="text-[11px] font-medium text-zinc-400 dark:text-zinc-500">
+                Saved {savedLabel}
+              </span>
+            ) : null}
           </div>
           <button
-            className="rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
+            className="ml-auto rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
             type="button"
             onClick={handleShare}
           >
@@ -271,11 +375,52 @@ export default function PlaygroundPage() {
           </p>
         ) : null}
 
-        <div className="mt-4 grid flex-1 min-h-0 gap-4 lg:grid-cols-2">
-          <div className="flex min-h-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
-            <div className="flex items-center justify-between border-b border-zinc-200/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
-              <span>Editor</span>
+        <div className="mt-4 flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400 lg:hidden">
+          <button
+            className={`rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] transition ${
+              activePane === 'editor'
+                ? 'border-amber-300 text-amber-700 dark:border-amber-400/60 dark:text-amber-200'
+                : 'border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-zinc-300'
+            }`}
+            type="button"
+            onClick={() => setActivePane('editor')}
+          >
+            Editor
+          </button>
+          <button
+            className={`rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] transition ${
+              activePane === 'output'
+                ? 'border-amber-300 text-amber-700 dark:border-amber-400/60 dark:text-amber-200'
+                : 'border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-zinc-300'
+            }`}
+            type="button"
+            onClick={() => setActivePane('output')}
+          >
+            Output
+          </button>
+        </div>
+
+        <div
+          ref={splitContainerRef}
+          className="mt-4 flex-1 min-h-0 gap-4 lg:grid"
+          style={{
+            gridTemplateColumns: `${splitPercent}fr 12px ${100 - splitPercent}fr`,
+          }}
+        >
+          <div
+            className={`flex min-h-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${
+              activePane === 'editor' ? 'flex' : 'hidden'
+            } lg:flex`}
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200/70 py-2 pl-4 pr-0 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
               <div className="flex flex-wrap items-center gap-2">
+                <button
+                  className="rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
+                  type="button"
+                  onClick={handleFormat}
+                >
+                  Format
+                </button>
                 <button
                   className="rounded-full border border-zinc-300 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-700 transition hover:border-zinc-400 hover:text-zinc-900 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-500"
                   type="button"
@@ -295,6 +440,16 @@ export default function PlaygroundPage() {
                   Reset
                 </button>
               </div>
+              {isRunning ? (
+                <span className="text-[10px] font-medium text-zinc-400">
+                  Running...
+                </span>
+              ) : lastRunLabel ? (
+                <span className="text-[10px] font-medium text-zinc-400">
+                  Last run {lastRunLabel}
+                  {lastRunDurationLabel ? ` · ${lastRunDurationLabel}` : ''}
+                </span>
+              ) : null}
             </div>
             <div className="flex-1 min-h-0">
               <Editor
@@ -302,6 +457,7 @@ export default function PlaygroundPage() {
                 language="javascript"
                 theme={theme.isDark ? 'playground-dark' : 'playground-light'}
                 beforeMount={handleEditorBeforeMount}
+                onMount={handleEditorMount}
                 value={code}
                 onChange={(value) => setCode(value ?? '')}
                 options={{
@@ -316,16 +472,89 @@ export default function PlaygroundPage() {
             </div>
           </div>
 
-          <div className="flex min-h-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900/80">
-            <div className="flex items-center justify-between border-b border-zinc-200/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
-              <span>Output</span>
+          <div className="hidden items-center justify-center lg:flex">
+            <button
+              className={`h-full w-full cursor-col-resize rounded-full border border-transparent transition hover:border-zinc-200 dark:hover:border-zinc-700 ${
+                isDraggingRef.current ? 'bg-zinc-100 dark:bg-zinc-800' : ''
+              }`}
+              type="button"
+              onPointerDown={(event) => {
+                event.preventDefault()
+                isDraggingRef.current = true
+              }}
+              aria-label="Resize panels"
+            >
+              <span className="mx-auto block h-12 w-1 rounded-full bg-zinc-200 dark:bg-zinc-700" />
+            </button>
+          </div>
+
+          <div
+            className={`flex min-h-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900/80 ${
+              activePane === 'output' ? 'flex' : 'hidden'
+            } lg:flex`}
+          >
+            <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  className={`rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] transition ${
+                    outputFilters.log
+                      ? 'border-emerald-200 text-emerald-700 dark:border-emerald-400/50 dark:text-emerald-200'
+                      : 'border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-zinc-300'
+                  }`}
+                  type="button"
+                  onClick={() => handleFilterToggle('log')}
+                >
+                  Log
+                </button>
+                <button
+                  className={`rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] transition ${
+                    outputFilters.info
+                      ? 'border-sky-200 text-sky-700 dark:border-sky-400/50 dark:text-sky-200'
+                      : 'border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-zinc-300'
+                  }`}
+                  type="button"
+                  onClick={() => handleFilterToggle('info')}
+                >
+                  Info
+                </button>
+                <button
+                  className={`rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] transition ${
+                    outputFilters.warn
+                      ? 'border-amber-200 text-amber-700 dark:border-amber-400/50 dark:text-amber-200'
+                      : 'border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-zinc-300'
+                  }`}
+                  type="button"
+                  onClick={() => handleFilterToggle('warn')}
+                >
+                  Warn
+                </button>
+                <button
+                  className={`rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] transition ${
+                    outputFilters.error
+                      ? 'border-rose-200 text-rose-700 dark:border-rose-400/50 dark:text-rose-200'
+                      : 'border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-zinc-300'
+                  }`}
+                  type="button"
+                  onClick={() => handleFilterToggle('error')}
+                >
+                  Error
+                </button>
+                <button
+                  className="rounded-full border border-zinc-200 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
+                  type="button"
+                  onClick={resetOutput}
+                >
+                  Clear
+                </button>
+              </div>
               <span className="text-[10px] font-medium text-zinc-400">
-                {output.length} line{output.length === 1 ? '' : 's'}
+                {filteredOutput.length} line
+                {filteredOutput.length === 1 ? '' : 's'}
               </span>
             </div>
             <div className="flex-1 min-h-0 overflow-auto px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-200">
-              {output.length ? (
-                output.map((entry) => (
+              {filteredOutput.length ? (
+                filteredOutput.map((entry) => (
                   <div
                     key={entry.id}
                     className={`whitespace-pre-wrap ${outputTypeClass(entry.type)}`}
