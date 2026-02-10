@@ -18,6 +18,9 @@ Changelog
 - Expanded reader mode with reading progress, time-to-read, font size controls, and bookmarks.
 - Refreshed navigation and theme toggle styling for better clarity.
 - Added reader stats and bookmark hooks to support the new reader UI.
+- Added a JavaScript playground with editor, output panel, shareable links, and resizable split view.
+- Code blocks now include a Playground button and icon actions for running, opening, and copying code.
+- Improved runnable code output styling and filtering controls.
 
 ## 2026-02-08
 
