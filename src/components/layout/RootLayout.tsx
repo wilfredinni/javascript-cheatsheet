@@ -25,7 +25,13 @@ export default function RootLayout() {
     <div className="min-h-screen bg-white dark:bg-zinc-900">
       {!reader.isActive ? <Navbar /> : <NavbarReader />}
 
-      <div className="relative mx-auto flex min-h-screen max-w-8xl justify-center sm:px-2 lg:px-8 xl:px-12">
+      <div
+        className={`relative mx-auto flex min-h-screen justify-center ${
+          isPlayground
+            ? 'max-w-none px-0'
+            : 'max-w-8xl sm:px-2 lg:px-8 xl:px-12'
+        }`}
+      >
         {!reader.isActive && !isPlayground ? (
           <div className="hidden lg:relative lg:block lg:flex-none">
             <div className="absolute inset-y-0 right-0 w-[50vw] dark:hidden" />
@@ -41,12 +47,12 @@ export default function RootLayout() {
 
         <div
           className={`min-w-0 flex-auto ${
-            isPlayground ? 'px-4 pb-12 pt-6' : 'px-4 py-12 xl:px-16'
+            isPlayground ? 'px-0 pb-0 pt-0' : 'px-4 py-12 xl:px-16'
           } ${
             reader.isActive
               ? 'max-w-2xl lg:max-w-4xl'
               : isPlayground
-                ? 'max-w-7xl'
+                ? 'max-w-none'
                 : 'lg:max-w-none'
           }`}
         >

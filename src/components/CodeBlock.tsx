@@ -91,6 +91,9 @@ export default function CodeBlock({
   )
   const nodeOnlyReason = isRunnable ? getNodeOnlyReason(code) : null
   const runDisabled = !isRunnable || Boolean(nodeOnlyReason) || isRunning
+  const playgroundUrl = isRunnable
+    ? `/playground?code=${encodeURIComponent(code)}`
+    : ''
 
   useEffect(() => {
     return () => {
@@ -242,7 +245,7 @@ export default function CodeBlock({
         <div className="flex items-center gap-2">
           {isRunnable ? (
             <button
-              className="rounded-md border border-zinc-200 bg-white px-2 py-1 text-[11px] font-semibold text-zinc-600 transition hover:border-sky-300 hover:text-sky-600 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-sky-400 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-sky-400/60 dark:hover:text-sky-400"
+              className="rounded-md border border-zinc-200 bg-white px-2 py-1 text-[11px] font-semibold normal-case text-zinc-600 transition hover:border-sky-300 hover:text-sky-600 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-sky-400 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-sky-400/60 dark:hover:text-sky-400"
               type="button"
               onClick={handleRun}
               disabled={runDisabled}
@@ -252,8 +255,19 @@ export default function CodeBlock({
               {isRunning ? 'Running...' : 'Run'}
             </button>
           ) : null}
+          {isRunnable ? (
+            <a
+              className="rounded-md border border-zinc-200 bg-white px-2 py-1 text-[11px] font-semibold normal-case text-zinc-600 transition hover:border-emerald-300 hover:text-emerald-600 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-emerald-400 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-emerald-400/60 dark:hover:text-emerald-400"
+              href={playgroundUrl}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Open in playground"
+            >
+              Playground
+            </a>
+          ) : null}
           <button
-            className="rounded-md border border-zinc-200 bg-white px-2 py-1 text-[11px] font-semibold text-zinc-600 transition hover:border-amber-300 hover:text-amber-600 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-amber-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-amber-400/60 dark:hover:text-amber-400"
+            className="rounded-md border border-zinc-200 bg-white px-2 py-1 text-[11px] font-semibold normal-case text-zinc-600 transition hover:border-amber-300 hover:text-amber-600 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-amber-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-amber-400/60 dark:hover:text-amber-400"
             type="button"
             onClick={handleCopy}
             aria-label="Copy code"

@@ -1,7 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Editor from '@monaco-editor/react'
-import BaseTitle from '../components/ui/BaseTitle'
-import Prose from '../components/Prose'
 import Seo from '../components/Seo'
 import { useTheme } from '../context/theme'
 import { usePrerenderReady } from '../hooks/usePrerenderReady'
@@ -13,66 +11,8 @@ import {
 import { createRunnerWorker, getNodeOnlyReason } from '../utils/codeRunner'
 
 const STORAGE_KEY = 'js-playground-code'
-const DEFAULT_SNIPPET = `// Welcome to the JavaScript playground.
-// Tip: console.table() works great for arrays of objects.
-
-const groceries = [
-  { item: 'matcha', price: 8 },
-  { item: 'oats', price: 5 },
-  { item: 'berries', price: 7 },
-]
-
-const total = groceries.reduce((sum, entry) => sum + entry.price, 0)
-
-console.table(groceries)
-console.log('Total:', total)
+const DEFAULT_SNIPPET = `console.log('Hello from the playground!')
 `
-
-const SAMPLE_SNIPPETS = [
-  {
-    id: 'timers',
-    label: 'Timing + groups',
-    code: `console.group('Launch sequence')
-console.time('prep')
-
-const stages = ['boot', 'calibrate', 'ignite']
-console.log('Stages:', stages.join(' -> '))
-
-console.timeEnd('prep')
-console.groupEnd()
-`,
-  },
-  {
-    id: 'arrays',
-    label: 'Array transforms',
-    code: `const scores = [72, 88, 91, 65, 99]
-
-const curved = scores.map((score) => Math.min(100, score + 5))
-const passing = curved.filter((score) => score >= 80)
-
-console.log('Curved:', curved)
-console.log('Passing:', passing)
-`,
-  },
-  {
-    id: 'objects',
-    label: 'Objects + tables',
-    code: `const crew = [
-  { name: 'Sam', role: 'Pilot' },
-  { name: 'Aiko', role: 'Engineer' },
-  { name: 'Jun', role: 'Navigator' },
-]
-
-const roster = crew.reduce((summary, member) => {
-  summary[member.role] = member.name
-  return summary
-}, {})
-
-console.table(crew)
-console.log(roster)
-`,
-  },
-]
 
 type OutputEntry = {
   id: string
@@ -97,13 +37,22 @@ export default function PlaygroundPage() {
   const [isRunning, setIsRunning] = useState(false)
   const [output, setOutput] = useState<OutputEntry[]>([])
   const [isHydrated, setIsHydrated] = useState(false)
-  const [selectedSample, setSelectedSample] = useState('')
+  const [shareLabel, setShareLabel] = useState('Share')
   const workerRef = useRef<Worker | null>(null)
   const groupDepthRef = useRef(0)
 
   usePrerenderReady(true)
 
   useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const paramCode = params.get('code')
+
+    if (paramCode) {
+      setCode(paramCode)
+      setIsHydrated(true)
+      return
+    }
+
     const stored = localStorage.getItem(STORAGE_KEY)
     if (stored) {
       setCode(stored)
@@ -223,107 +172,98 @@ export default function PlaygroundPage() {
   }
 
   const handleReset = () => {
-    setSelectedSample('')
     setCode(DEFAULT_SNIPPET)
     resetOutput()
   }
 
-  const handleSampleChange = (value: string) => {
-    setSelectedSample(value)
-    const snippet = SAMPLE_SNIPPETS.find((entry) => entry.id === value)
-    if (snippet) {
-      setCode(snippet.code)
-      resetOutput()
+  const handleShare = async () => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('code', code)
+
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: 'JavaScript Playground',
+          url: url.toString(),
+        })
+        return
+      } catch {
+        // Ignore share failures.
+      }
+    }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(url.toString())
+        setShareLabel('Copied')
+        window.setTimeout(() => setShareLabel('Share'), 1600)
+      }
+    } catch {
+      // Ignore clipboard failures.
     }
   }
 
   const outputTypeClass = (type: OutputEntry['type']) => {
     switch (type) {
       case 'warn':
-        return 'text-amber-600'
+        return 'text-amber-600 dark:text-amber-300'
       case 'error':
       case 'assert':
-        return 'text-rose-600'
+        return 'text-rose-600 dark:text-rose-300'
       case 'table':
-        return 'text-emerald-600'
+        return 'text-emerald-600 dark:text-emerald-300'
       case 'trace':
-        return 'text-sky-600'
+        return 'text-sky-600 dark:text-sky-300'
       case 'count':
       case 'time':
-        return 'text-indigo-600'
+        return 'text-indigo-600 dark:text-indigo-300'
       case 'group':
-        return 'text-zinc-700'
+        return 'text-zinc-700 dark:text-zinc-200'
       case 'info':
       case 'log':
       default:
-        return 'text-zinc-600'
+        return 'text-zinc-600 dark:text-zinc-200'
     }
   }
 
+  const handleEditorBeforeMount = (monaco: typeof import('monaco-editor')) => {
+    monaco.editor.defineTheme('playground-light', {
+      base: 'vs',
+      inherit: true,
+      rules: [],
+      colors: {
+        'editor.background': '#ffffff',
+      },
+    })
+    monaco.editor.defineTheme('playground-dark', {
+      base: 'vs-dark',
+      inherit: true,
+      rules: [],
+      colors: {
+        'editor.background': '#18181b',
+      },
+    })
+  }
+
   return (
-    <article className="space-y-10">
+    <article className="min-h-[calc(100vh-3.6rem)] w-full bg-white dark:bg-zinc-900">
       <Seo
         title="JavaScript Playground"
         description="Write and execute JavaScript snippets instantly in your browser."
       />
 
-      <Prose>
-        <BaseTitle
-          title="JavaScript Playground"
-          description="Write and execute JavaScript snippets instantly in your browser."
-        >
-          Playground
-        </BaseTitle>
-        <p>
-          Experiment with snippets, run them in a safe Web Worker, and review
-          the output instantly. This sandbox does not allow DOM access and
-          blocks Node-only APIs.
-        </p>
-      </Prose>
-
-      <section className="not-prose rounded-3xl border border-zinc-200 bg-white/80 p-6 shadow-sm dark:border-zinc-800 dark:bg-zinc-900/60">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500">
-              JavaScript Runner
-            </p>
-            <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-300">
-              Runs in a Web Worker with a custom console formatter.
-            </p>
+      <section className="not-prose mx-auto flex h-full min-h-[calc(100vh-3.6rem)] max-w-8xl flex-col px-3 pb-6 pt-4 sm:px-6 lg:px-12">
+        <div className="flex items-center justify-between">
+          <div className="text-xs font-semibold uppercase tracking-[0.3em] text-zinc-500 dark:text-zinc-400">
+            JavaScript Runner
           </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <label className="text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-              Samples
-            </label>
-            <select
-              className="rounded-full border border-zinc-200 bg-white px-3 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-600 transition hover:border-zinc-300 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-200 dark:hover:border-zinc-500"
-              value={selectedSample}
-              onChange={(event) => handleSampleChange(event.target.value)}
-            >
-              <option value="">Choose</option>
-              {SAMPLE_SNIPPETS.map((sample) => (
-                <option key={sample.id} value={sample.id}>
-                  {sample.label}
-                </option>
-              ))}
-            </select>
-            <button
-              className="rounded-full border border-zinc-300 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-700 transition hover:border-zinc-400 hover:text-zinc-900 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-500"
-              type="button"
-              onClick={handleRun}
-              disabled={runDisabled}
-              title={nodeOnlyReason ? `Disabled: ${nodeOnlyReason}` : undefined}
-            >
-              {isRunning ? 'Running...' : 'Run'}
-            </button>
-            <button
-              className="rounded-full border border-zinc-200 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
-              type="button"
-              onClick={handleReset}
-            >
-              Reset
-            </button>
-          </div>
+          <button
+            className="rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
+            type="button"
+            onClick={handleShare}
+          >
+            {shareLabel}
+          </button>
         </div>
         {nodeOnlyReason ? (
           <p className="mt-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-amber-700 dark:border-amber-400/40 dark:bg-amber-400/10 dark:text-amber-200">
@@ -331,36 +271,59 @@ export default function PlaygroundPage() {
           </p>
         ) : null}
 
-        <div className="mt-6 grid gap-4 lg:grid-cols-2">
-          <div className="rounded-2xl border border-zinc-200 bg-zinc-950/95 shadow-sm dark:border-zinc-800">
-            <div className="border-b border-zinc-800/60 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-400">
-              Editor
+        <div className="mt-4 grid flex-1 min-h-0 gap-4 lg:grid-cols-2">
+          <div className="flex min-h-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900">
+            <div className="flex items-center justify-between border-b border-zinc-200/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
+              <span>Editor</span>
+              <div className="flex flex-wrap items-center gap-2">
+                <button
+                  className="rounded-full border border-zinc-300 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-700 transition hover:border-zinc-400 hover:text-zinc-900 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-500"
+                  type="button"
+                  onClick={handleRun}
+                  disabled={runDisabled}
+                  title={
+                    nodeOnlyReason ? `Disabled: ${nodeOnlyReason}` : undefined
+                  }
+                >
+                  {isRunning ? 'Running...' : 'Run'}
+                </button>
+                <button
+                  className="rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
+                  type="button"
+                  onClick={handleReset}
+                >
+                  Reset
+                </button>
+              </div>
             </div>
-            <Editor
-              height="420px"
-              language="javascript"
-              theme={theme.isDark ? 'vs-dark' : 'vs'}
-              value={code}
-              onChange={(value) => setCode(value ?? '')}
-              options={{
-                minimap: { enabled: false },
-                fontSize: 14,
-                lineNumbersMinChars: 3,
-                scrollBeyondLastLine: false,
-                fontFamily:
-                  'ui-monospace, SFMono-Regular, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
-              }}
-            />
+            <div className="flex-1 min-h-0">
+              <Editor
+                height="100%"
+                language="javascript"
+                theme={theme.isDark ? 'playground-dark' : 'playground-light'}
+                beforeMount={handleEditorBeforeMount}
+                value={code}
+                onChange={(value) => setCode(value ?? '')}
+                options={{
+                  minimap: { enabled: false },
+                  fontSize: 14,
+                  lineNumbersMinChars: 3,
+                  scrollBeyondLastLine: false,
+                  fontFamily:
+                    'ui-monospace, SFMono-Regular, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New, monospace',
+                }}
+              />
+            </div>
           </div>
 
-          <div className="rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900/80">
+          <div className="flex min-h-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900/80">
             <div className="flex items-center justify-between border-b border-zinc-200/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
               <span>Output</span>
               <span className="text-[10px] font-medium text-zinc-400">
                 {output.length} line{output.length === 1 ? '' : 's'}
               </span>
             </div>
-            <div className="h-[420px] overflow-auto px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-200">
+            <div className="flex-1 min-h-0 overflow-auto px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-200">
               {output.length ? (
                 output.map((entry) => (
                   <div

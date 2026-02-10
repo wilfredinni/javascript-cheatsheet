@@ -17,13 +17,14 @@
     "@headlessui/react": "^2.2.9",
     "@monaco-editor/react": "^4.7.0",
     "@tanstack/react-router": "^1.159.3",
+    "gray-matter": "^4.0.3",
     "html-react-parser": "^5.1.10",
+    "lucide-react": "^0.563.0",
     "monaco-editor": "^0.52.0",
+    "prism-theme-vars": "^0.2.5",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-helmet-async": "^2.0.5",
-    "gray-matter": "^4.0.3",
-    "prism-theme-vars": "^0.2.5",
     "string": "^3.3.3"
   },
   "devDependencies": {
