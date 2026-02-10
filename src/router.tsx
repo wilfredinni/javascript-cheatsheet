@@ -8,6 +8,7 @@ import IndexPage from './pages/IndexPage'
 import MarkdownPage from './pages/MarkdownPage'
 import CheatsheetPage from './pages/CheatsheetPage'
 import NotFoundPage from './pages/NotFoundPage'
+import PlaygroundPage from './pages/PlaygroundPage'
 
 const rootRoute = createRootRoute({
   component: RootLayout,
@@ -37,11 +38,18 @@ const cheatsheetRoute = createRoute({
   component: CheatsheetPage,
 })
 
+const playgroundRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/playground',
+  component: PlaygroundPage,
+})
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   contributingRoute,
   changelogRoute,
   cheatsheetRoute,
+  playgroundRoute,
 ])
 
 export const router = createRouter({
