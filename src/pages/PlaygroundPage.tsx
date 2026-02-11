@@ -34,7 +34,7 @@ export default function PlaygroundPage() {
     handleFormat,
     handleShare,
     handleFilterToggle,
-    handleVisualizationToggle,
+    handleVisualize,
     resetOutput,
     outputTypeClass,
     handleEditorBeforeMount,
@@ -88,6 +88,7 @@ export default function PlaygroundPage() {
             runDisabled={runDisabled}
             nodeOnlyReason={nodeOnlyReason}
             onRun={handleRun}
+            onVisualize={handleVisualize}
             onReset={handleReset}
             onFormat={handleFormat}
             onEditorBeforeMount={handleEditorBeforeMount}
@@ -111,7 +112,6 @@ export default function PlaygroundPage() {
             outputFilters={outputFilters}
             onFilterToggle={handleFilterToggle}
             onClear={resetOutput}
-            onVisualizationToggle={handleVisualizationToggle}
             outputTypeClass={outputTypeClass}
           />
         </div>

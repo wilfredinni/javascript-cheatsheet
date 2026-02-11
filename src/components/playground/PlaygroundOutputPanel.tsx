@@ -17,7 +17,6 @@ type PlaygroundOutputPanelProps = {
   outputFilters: OutputFilters
   onFilterToggle: (key: OutputFilterKey) => void
   onClear: () => void
-  onVisualizationToggle: () => void
   outputTypeClass: (type: OutputEntry['type']) => string
 }
 
@@ -31,7 +30,6 @@ export default function PlaygroundOutputPanel({
   outputFilters,
   onFilterToggle,
   onClear,
-  onVisualizationToggle,
   outputTypeClass,
 }: PlaygroundOutputPanelProps) {
   const visualizationReason = !visualizationStatus.enabled
@@ -98,21 +96,6 @@ export default function PlaygroundOutputPanel({
             onClick={onClear}
           >
             Clear
-          </button>
-          <button
-            className={`rounded-full border px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] transition ${
-              showVisualization
-                ? 'border-sky-200 text-sky-700 dark:border-sky-400/50 dark:text-sky-200'
-                : 'border-zinc-200 text-zinc-500 dark:border-zinc-700 dark:text-zinc-300'
-            } ${
-              hasVisualization
-                ? 'hover:border-zinc-300 hover:text-zinc-700 dark:hover:border-zinc-500'
-                : 'cursor-not-allowed opacity-60'
-            }`}
-            type="button"
-            onClick={onVisualizationToggle}
-          >
-            Visualize
           </button>
         </div>
         <div className="flex flex-col items-end gap-1 text-[10px] font-medium text-zinc-400">

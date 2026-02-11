@@ -90,12 +90,12 @@ export function usePlaygroundRunner() {
     setOutput((entries) => [...entries, { id, type, text, depth }])
   }
 
-  const handleRun = () => {
+  const handleRun = (options?: { showVisualization?: boolean }) => {
     if (runDisabled) return
 
     resetOutput()
     setIsRunning(true)
-    setShowVisualization(false)
+    setShowVisualization(Boolean(options?.showVisualization))
     setVisualizationStatus({ enabled: false, reason: null })
     runStartRef.current = performance.now()
     workerRef.current?.terminate()
@@ -246,9 +246,10 @@ export function usePlaygroundRunner() {
     }))
   }
 
-  const handleVisualizationToggle = () => {
-    if (!hasVisualization) return
-    setShowVisualization((current) => !current)
+  const handleVisualize = () => {
+    if (runDisabled) return
+    setActivePane('output')
+    handleRun({ showVisualization: true })
   }
 
   const outputTypeClass = (type: OutputEntry['type']) => {
@@ -350,7 +351,7 @@ export function usePlaygroundRunner() {
     handleFormat,
     handleShare,
     handleFilterToggle,
-    handleVisualizationToggle,
+    handleVisualize,
     resetOutput,
     outputTypeClass,
     handleEditorBeforeMount,
