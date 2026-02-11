@@ -20,12 +20,6 @@ const indexRoute = createRoute({
   component: IndexPage,
 })
 
-const contributingRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/contributing',
-  component: () => <MarkdownPage pageSlug="contributing" />,
-})
-
 const changelogRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/changelog',
@@ -46,7 +40,6 @@ const playgroundRoute = createRoute({
 
 const routeTree = rootRoute.addChildren([
   indexRoute,
-  contributingRoute,
   changelogRoute,
   cheatsheetRoute,
   playgroundRoute,

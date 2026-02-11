@@ -17,10 +17,6 @@ export const mainNavigation: NavigationItem[] = [
     path: '/playground',
   },
   {
-    name: 'Contributing',
-    path: '/contributing',
-  },
-  {
     name: 'Changelog',
     path: '/changelog',
   },

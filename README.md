@@ -6,7 +6,6 @@
 
 <div align="center">
   <a href="https://www.javascriptcheatsheet.org/">javascriptcheatsheet.org</a> |
-  <a href="https://github.com/wilfredinni/javascript-cheatsheet/blob/master/src/pages/contributing.md">Contribute</a> |
   <a href="https://github.com/wilfredinni/javascript-cheatsheet/blob/master/src/pages/changelog.md">Changelog</a>
 </div>
 

@@ -19,7 +19,7 @@
 
 - Content updates should be made in docs/cheatsheet or src/pages markdown, never in src/content/\*.json (generated).
 - Custom markdown tags supported in content: <base-disclaimer>, <base-disclaimer-title>, <base-disclaimer-content>, <base-warning>, <base-warning-title>, <base-warning-content> (see scripts/build-content.ts).
-- Cheatsheet pages are rendered via src/pages/CheatsheetPage.tsx using docs.json. Marketing pages (contributing/changelog) use src/pages/MarkdownPage.tsx.
+- Cheatsheet pages are rendered via src/pages/CheatsheetPage.tsx using docs.json. Marketing pages (changelog) use src/pages/MarkdownPage.tsx.
 - Navigation labels/paths are centralized in src/content/navigation.ts; keep paths in sync with markdown slugs.
 
 ## Styling and UI patterns

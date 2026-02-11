@@ -8,7 +8,7 @@ import NavbarReader from './TheNavbarReader'
 import SidebarDesktop from './TheSidebarDesktop'
 import Toc from './TheToc'
 
-const rootRepositoryRoutes = ['/contributing', '/changelog', '/playground']
+const rootRepositoryRoutes = ['/changelog', '/playground']
 
 export default function RootLayout() {
   const reader = useReader()
