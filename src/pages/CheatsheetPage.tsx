@@ -4,6 +4,7 @@ import BaseTitle from '../components/ui/BaseTitle'
 import MarkdownContent from '../components/MarkdownContent'
 import Prose from '../components/Prose'
 import Seo from '../components/Seo'
+import RelatedLinks from '../components/ui/RelatedLinks'
 import { siteMetadata } from '../content/site'
 import NotFoundPage from './NotFoundPage'
 import { usePrerenderReady } from '../hooks/usePrerenderReady'
@@ -48,7 +49,10 @@ export default function CheatsheetPage() {
   if (!docsPayload) {
     return (
       <Prose>
-        <Seo title={siteMetadata.title} description={siteMetadata.description} />
+        <Seo
+          title={siteMetadata.title}
+          description={siteMetadata.description}
+        />
         <p>Loading...</p>
       </Prose>
     )
@@ -69,6 +73,7 @@ export default function CheatsheetPage() {
       >
         {heading}
       </BaseTitle>
+      <RelatedLinks currentPath={page.route} />
       <MarkdownContent html={page.html} />
     </Prose>
   )

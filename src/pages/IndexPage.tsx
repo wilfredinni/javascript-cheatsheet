@@ -206,15 +206,15 @@ export default function IndexPage() {
             guided routes keep you shipping.
           </p>
           <p>
-            Prefer to help improve the cheatsheet? Visit the contribution guide
-            or check the changelog for recent updates.
+            Prefer to keep up with changes? Check the changelog for recent
+            updates.
           </p>
           <div className="not-prose mt-6 flex flex-wrap gap-3">
             <Link
-              to="/contributing"
+              to="/changelog"
               className="inline-flex items-center justify-center rounded-full border border-zinc-300 px-5 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-700 transition hover:border-zinc-400 hover:text-zinc-900 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-500"
             >
-              Contribute
+              Changelog
             </Link>
             <a
               href="https://github.com/wilfredinni/javascript-cheatsheet"
