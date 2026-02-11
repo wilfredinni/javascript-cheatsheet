@@ -275,7 +275,7 @@ export default function CodeBlock({
 
   return (
     <div
-      className="not-prose flex h-full flex-col overflow-hidden rounded-xl border border-zinc-200/80 bg-white shadow-sm ring-1 ring-zinc-900/5 dark:border-zinc-700/60 dark:bg-zinc-900/70 dark:ring-zinc-100/5"
+      className="not-prose mb-4 flex h-full flex-col overflow-hidden rounded-xl border border-zinc-200/80 bg-white shadow-sm ring-1 ring-zinc-900/5 dark:border-zinc-700/60 dark:bg-zinc-900/70 dark:ring-zinc-100/5"
       data-language={language || undefined}
     >
       <div className="flex items-center justify-between border-b border-zinc-200/70 bg-zinc-50/80 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-zinc-500 dark:border-zinc-700/60 dark:bg-zinc-900/60 dark:text-zinc-400">
