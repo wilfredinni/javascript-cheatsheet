@@ -16,6 +16,10 @@ export default function PlaygroundPage() {
     setCode,
     isRunning,
     filteredOutput,
+    traceEvents,
+    showVisualization,
+    hasVisualization,
+    visualizationStatus,
     outputFilters,
     activePane,
     setActivePane,
@@ -30,6 +34,7 @@ export default function PlaygroundPage() {
     handleFormat,
     handleShare,
     handleFilterToggle,
+    handleVisualizationToggle,
     resetOutput,
     outputTypeClass,
     handleEditorBeforeMount,
@@ -99,9 +104,14 @@ export default function PlaygroundPage() {
           <PlaygroundOutputPanel
             activePane={activePane}
             filteredOutput={filteredOutput}
+            traceEvents={traceEvents}
+            showVisualization={showVisualization}
+            hasVisualization={hasVisualization}
+            visualizationStatus={visualizationStatus}
             outputFilters={outputFilters}
             onFilterToggle={handleFilterToggle}
             onClear={resetOutput}
+            onVisualizationToggle={handleVisualizationToggle}
             outputTypeClass={outputTypeClass}
           />
         </div>

@@ -6,12 +6,25 @@ import {
 } from '../../utils/consoleFormat'
 import { createRunnerWorker, getNodeOnlyReason } from '../../utils/codeRunner'
 import { DEFAULT_SNIPPET, STORAGE_KEY } from './constants'
-import type { OutputEntry, OutputFilterKey, OutputFilters } from './types'
+import type {
+  OutputEntry,
+  OutputFilterKey,
+  OutputFilters,
+  TraceEvent,
+  VisualizationStatus,
+} from './types'
 
 export function usePlaygroundRunner() {
   const [code, setCode] = useState(DEFAULT_SNIPPET)
   const [isRunning, setIsRunning] = useState(false)
   const [output, setOutput] = useState<OutputEntry[]>([])
+  const [traceEvents, setTraceEvents] = useState<TraceEvent[]>([])
+  const [showVisualization, setShowVisualization] = useState(false)
+  const [visualizationStatus, setVisualizationStatus] =
+    useState<VisualizationStatus>({
+      enabled: false,
+      reason: null,
+    })
   const [isHydrated, setIsHydrated] = useState(false)
   const [shareLabel, setShareLabel] = useState('Share')
   const [savedAt, setSavedAt] = useState<number | null>(null)
@@ -66,6 +79,9 @@ export function usePlaygroundRunner() {
   const resetOutput = () => {
     groupDepthRef.current = 0
     setOutput([])
+    setTraceEvents([])
+    setShowVisualization(false)
+    setVisualizationStatus({ enabled: false, reason: null })
   }
 
   const appendOutput = (type: OutputEntry['type'], text: string) => {
@@ -79,6 +95,8 @@ export function usePlaygroundRunner() {
 
     resetOutput()
     setIsRunning(true)
+    setShowVisualization(false)
+    setVisualizationStatus({ enabled: false, reason: null })
     runStartRef.current = performance.now()
     workerRef.current?.terminate()
     const worker = createRunnerWorker()
@@ -141,6 +159,21 @@ export function usePlaygroundRunner() {
         case 'error':
           appendOutput(type, formatOutputArgs(payload || []))
           break
+        case 'viz': {
+          const events = Array.isArray(payload) ? payload : []
+          setTraceEvents(events)
+          break
+        }
+        case 'viz-status': {
+          const status = payload && typeof payload === 'object' ? payload : null
+          if (status && typeof status.enabled === 'boolean') {
+            setVisualizationStatus({
+              enabled: status.enabled,
+              reason: status.reason ?? null,
+            })
+          }
+          break
+        }
         case 'done':
           setIsRunning(false)
           if (runStartRef.current !== null) {
@@ -211,6 +244,11 @@ export function usePlaygroundRunner() {
       ...current,
       [key]: !current[key],
     }))
+  }
+
+  const handleVisualizationToggle = () => {
+    if (!hasVisualization) return
+    setShowVisualization((current) => !current)
   }
 
   const outputTypeClass = (type: OutputEntry['type']) => {
@@ -286,12 +324,18 @@ export function usePlaygroundRunner() {
       })
     : null
 
+  const hasVisualization = visualizationStatus.enabled && traceEvents.length > 0
+
   return {
     code,
     setCode,
     isRunning,
     output,
     filteredOutput,
+    traceEvents,
+    showVisualization,
+    hasVisualization,
+    visualizationStatus,
     outputFilters,
     activePane,
     setActivePane,
@@ -306,6 +350,7 @@ export function usePlaygroundRunner() {
     handleFormat,
     handleShare,
     handleFilterToggle,
+    handleVisualizationToggle,
     resetOutput,
     outputTypeClass,
     handleEditorBeforeMount,
