@@ -44,7 +44,7 @@
         "markdown-it": "^14.1.0",
         "markdown-it-anchor": "^9.2.0",
         "markdown-it-link-attributes": "^4.0.1",
-        "markdown-it-prism": "^2.3.1",
+        "markdown-it-prism": "^3.0.0",
         "ofetch": "^1.5.1",
         "postcss": "^8.5.6",
         "prettier": "^3.8.1",
@@ -824,7 +824,7 @@
 
     "markdown-it-link-attributes": ["markdown-it-link-attributes@4.0.1", "", {}, "sha512-pg5OK0jPLg62H4k7M9mRJLT61gUp9nvG0XveKYHMOOluASo9OEF13WlXrpAp2aj35LbedAy3QOCgQCw0tkLKAQ=="],
 
-    "markdown-it-prism": ["markdown-it-prism@2.3.1", "", { "dependencies": { "prismjs": "1.30.0" } }, "sha512-oZl9fGKBeSd94GhqpCrA2MO2uAWxKVe0swyX/nBqly+/6d870zae9raMgxJg+OEjhyuOrxTn8p1vMP8RkawzHw=="],
+    "markdown-it-prism": ["markdown-it-prism@3.0.1", "", { "dependencies": { "prismjs": "1.30.0" }, "peerDependencies": { "markdown-it": ">=7.0.1 <15.0.0" } }, "sha512-JVnVGW8Gjw1TUtArXApnb/paeWye9TZW0kWzV2iqIUp1bxw+Rjh0WGg/BschKxn6fd1lCfv4FebSPMlcviGYSQ=="],
 
     "marked": ["marked@14.0.0", "", { "bin": { "marked": "bin/marked.js" } }, "sha512-uIj4+faQ+MgHgwUW1l2PsPglZLOLOT1uErt06dAPtx2kjteLAkbsd/0FiYg/MGS+i7ZKLb7w2WClxHkzOOuryQ=="],
 
