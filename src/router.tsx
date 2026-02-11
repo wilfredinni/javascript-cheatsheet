@@ -2,13 +2,13 @@ import {
   createRootRoute,
   createRoute,
   createRouter,
+  lazyRouteComponent,
 } from '@tanstack/react-router'
 import RootLayout from './components/layout/RootLayout'
 import IndexPage from './pages/IndexPage'
 import MarkdownPage from './pages/MarkdownPage'
 import CheatsheetPage from './pages/CheatsheetPage'
 import NotFoundPage from './pages/NotFoundPage'
-import PlaygroundPage from './pages/PlaygroundPage'
 
 const rootRoute = createRootRoute({
   component: RootLayout,
@@ -35,7 +35,7 @@ const cheatsheetRoute = createRoute({
 const playgroundRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/playground',
-  component: PlaygroundPage,
+  component: lazyRouteComponent(() => import('./pages/PlaygroundPage')),
 })
 
 const routeTree = rootRoute.addChildren([

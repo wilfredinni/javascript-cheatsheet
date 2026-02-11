@@ -17,6 +17,38 @@ export default defineConfig(async ({ mode }) => {
 
     build: {
       sourcemap: true,
+      chunkSizeWarningLimit: 650,
+      rollupOptions: {
+        output: {
+          manualChunks(id: string) {
+            if (!id.includes('node_modules')) {
+              return undefined
+            }
+
+            if (id.includes('monaco-editor') || id.includes('@monaco-editor')) {
+              return 'vendor-monaco'
+            }
+
+            if (id.includes('@tanstack/react-router')) {
+              return 'vendor-router'
+            }
+
+            if (id.includes('react')) {
+              return 'vendor-react'
+            }
+
+            if (id.includes('prismjs') || id.includes('markdown-it')) {
+              return 'vendor-markdown'
+            }
+
+            if (id.includes('@docsearch') || id.includes('@headlessui')) {
+              return 'vendor-ui'
+            }
+
+            return undefined
+          },
+        },
+      },
     },
 
     // https://github.com/vitest-dev/vitest
