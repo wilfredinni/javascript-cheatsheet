@@ -39,6 +39,11 @@ export const cheatsheetNavigation: NavigationItem[] = [
     updated: false,
   },
   {
+    name: 'Async and Await',
+    path: '/cheatsheet/async-await',
+    updated: false,
+  },
+  {
     name: 'Import and Export',
     path: '/cheatsheet/import-export',
     updated: false,
