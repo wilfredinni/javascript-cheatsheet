@@ -337,7 +337,7 @@ export default function CodeBlock({
             <span>Output</span>
             <div className="flex items-center gap-2">
               <button
-                className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] font-semibold normal-case text-amber-700 transition hover:border-amber-300 hover:text-amber-900 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-amber-400 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:bg-white disabled:text-zinc-400 dark:border-amber-400/50 dark:bg-transparent dark:text-amber-200 dark:hover:border-amber-300"
+                className="rounded-md border border-amber-200 bg-transparent px-2 py-1 text-[11px] font-semibold normal-case text-amber-700 transition hover:border-amber-300 hover:text-amber-900 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-amber-400 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:bg-transparent disabled:text-zinc-400 dark:border-amber-400/50 dark:bg-transparent dark:text-amber-200 dark:hover:border-amber-300"
                 type="button"
                 onClick={handleVisualize}
                 disabled={runDisabled}
