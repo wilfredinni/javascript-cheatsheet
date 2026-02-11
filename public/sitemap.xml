@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>http://localhost:3000/</loc></url>
   <url><loc>http://localhost:3000/changelog</loc></url>
-  <url><loc>http://localhost:3000/contributing</loc></url>
   <url><loc>http://localhost:3000/cheatsheet/array-methods</loc></url>
   <url><loc>http://localhost:3000/cheatsheet/arrays</loc></url>
   <url><loc>http://localhost:3000/cheatsheet/basics</loc></url>
