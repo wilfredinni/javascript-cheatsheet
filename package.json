@@ -13,7 +13,7 @@
     "fetch-contributors": "esno scripts/fetch-contributors.ts"
   },
   "dependencies": {
-    "@docsearch/js": "^3.9.0",
+    "@docsearch/js": "^4.0.0",
     "@headlessui/react": "^2.2.9",
     "@monaco-editor/react": "^4.7.0",
     "@tanstack/react-router": "^1.159.5",
