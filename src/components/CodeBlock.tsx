@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import { useEffect, useRef, useState } from 'react'
-import { Check, Copy } from 'lucide-react'
+import { Check, Copy, Sparkles } from 'lucide-react'
+import VisualizationPanel from './playground/VisualizationPanel'
+import type { TraceEvent, VisualizationStatus } from './playground/types'
 import {
   buildTableOutput,
   formatOutputArgs,
@@ -71,6 +73,13 @@ export default function CodeBlock({
   const [isCopied, setIsCopied] = useState(false)
   const [isRunning, setIsRunning] = useState(false)
   const [output, setOutput] = useState<OutputEntry[]>([])
+  const [traceEvents, setTraceEvents] = useState<TraceEvent[]>([])
+  const [showVisualization, setShowVisualization] = useState(false)
+  const [visualizationStatus, setVisualizationStatus] =
+    useState<VisualizationStatus>({
+      enabled: false,
+      reason: null,
+    })
   const workerRef = useRef<Worker | null>(null)
   const groupDepthRef = useRef(0)
   const hasLanguageClass = Boolean(
@@ -125,15 +134,19 @@ export default function CodeBlock({
   const resetOutput = () => {
     groupDepthRef.current = 0
     setOutput([])
+    setTraceEvents([])
+    setShowVisualization(false)
+    setVisualizationStatus({ enabled: false, reason: null })
   }
 
-  const handleRun = () => {
+  const handleRun = (options?: { showVisualization?: boolean }) => {
     if (runDisabled) {
       return
     }
 
     resetOutput()
     setIsRunning(true)
+    setShowVisualization(Boolean(options?.showVisualization))
     workerRef.current?.terminate()
     const worker = createRunnerWorker()
     workerRef.current = worker
@@ -195,6 +208,21 @@ export default function CodeBlock({
         case 'error':
           appendOutput(type, formatOutputArgs(payload || []))
           break
+        case 'viz': {
+          const events = Array.isArray(payload) ? payload : []
+          setTraceEvents(events)
+          break
+        }
+        case 'viz-status': {
+          const status = payload && typeof payload === 'object' ? payload : null
+          if (status && typeof status.enabled === 'boolean') {
+            setVisualizationStatus({
+              enabled: status.enabled,
+              reason: status.reason ?? null,
+            })
+          }
+          break
+        }
         case 'done':
           setIsRunning(false)
           workerRef.current?.terminate()
@@ -213,6 +241,13 @@ export default function CodeBlock({
     }
 
     worker.postMessage({ code })
+  }
+
+  const handleVisualize = () => {
+    if (runDisabled) {
+      return
+    }
+    handleRun({ showVisualization: true })
   }
 
   const outputTypeClass = (type: OutputEntry['type']) => {
@@ -257,7 +292,7 @@ export default function CodeBlock({
             <button
               className="rounded-md border border-zinc-200 bg-white px-2 py-1 text-[11px] font-semibold normal-case text-zinc-600 transition hover:border-sky-300 hover:text-sky-600 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-sky-400 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-300 dark:hover:border-sky-400/60 dark:hover:text-sky-400"
               type="button"
-              onClick={handleRun}
+              onClick={() => handleRun()}
               disabled={runDisabled}
               aria-label="Run code"
               title={nodeOnlyReason ? `Disabled: ${nodeOnlyReason}` : undefined}
@@ -300,14 +335,36 @@ export default function CodeBlock({
         <div className="border-t border-zinc-200/70 bg-zinc-50/80 dark:border-zinc-700/60 dark:bg-zinc-900/60">
           <div className="flex items-center justify-between px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">
             <span>Output</span>
-            {nodeOnlyReason ? (
-              <span className="normal-case text-[11px] font-medium text-amber-600 dark:text-amber-400">
-                Node-only example: {nodeOnlyReason}
-              </span>
-            ) : null}
+            <div className="flex items-center gap-2">
+              <button
+                className="rounded-md border border-amber-200 bg-amber-50 px-2 py-1 text-[11px] font-semibold normal-case text-amber-700 transition hover:border-amber-300 hover:text-amber-900 focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-amber-400 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:bg-white disabled:text-zinc-400 dark:border-amber-400/50 dark:bg-transparent dark:text-amber-200 dark:hover:border-amber-300"
+                type="button"
+                onClick={handleVisualize}
+                disabled={runDisabled}
+                aria-label="Visualize code"
+                title={
+                  nodeOnlyReason ? `Disabled: ${nodeOnlyReason}` : undefined
+                }
+              >
+                <span className="flex items-center gap-1.5">
+                  <Sparkles className="size-3.5" aria-hidden="true" />
+                  Visualize
+                </span>
+              </button>
+              {nodeOnlyReason ? (
+                <span className="normal-case text-[11px] font-medium text-amber-600 dark:text-amber-400">
+                  Node-only example: {nodeOnlyReason}
+                </span>
+              ) : null}
+            </div>
           </div>
-          <div className="max-h-56 overflow-auto px-3 py-2 font-mono text-xs text-zinc-700 dark:text-zinc-200">
-            {output.length ? (
+          <div className="px-3 pb-4 pt-2 font-mono text-xs text-zinc-700 dark:text-zinc-200">
+            {showVisualization ? (
+              <VisualizationPanel
+                traceEvents={traceEvents}
+                visualizationStatus={visualizationStatus}
+              />
+            ) : output.length ? (
               output.map((entry) => (
                 <div
                   key={entry.id}

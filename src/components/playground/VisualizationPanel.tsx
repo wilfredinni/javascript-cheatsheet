@@ -152,19 +152,17 @@ export default function VisualizationPanel({
           </div>
           <div className="mt-3 space-y-2">
             {traceSummary.map((entry) => (
-              <div key={entry.line} className="flex items-center gap-3">
-                <span className="w-12 text-right text-[11px] text-amber-700/70 dark:text-amber-200/80">
-                  L{entry.line}
-                </span>
-                <div className="h-2 flex-1 rounded-full bg-amber-100 dark:bg-amber-500/20">
+              <div key={entry.line} className="space-y-1">
+                <div className="flex items-center justify-between gap-3 text-[11px] text-amber-700/70 dark:text-amber-200/80">
+                  <span>L{entry.line}</span>
+                  <span>{entry.count}x</span>
+                </div>
+                <div className="h-2 rounded-full bg-amber-100 dark:bg-amber-500/20">
                   <div
                     className="h-2 rounded-full bg-amber-500/70"
                     style={{ width: `${(entry.count / maxTraceCount) * 100}%` }}
                   />
                 </div>
-                <span className="w-8 text-right text-[11px] text-amber-700/70 dark:text-amber-200/80">
-                  {entry.count}
-                </span>
               </div>
             ))}
           </div>
