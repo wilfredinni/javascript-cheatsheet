@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import type {
   OutputEntry,
   OutputFilterKey,
@@ -31,6 +32,10 @@ type TraceEdge = {
   count: number
 }
 
+type TracePathStep = {
+  line: number
+}
+
 const summarizeTrace = (events: TraceEvent[]): TraceSummary[] => {
   const counts = new Map<number, number>()
   for (const event of events) {
@@ -60,6 +65,17 @@ const buildTraceEdges = (events: TraceEvent[]): TraceEdge[] => {
   return Array.from(edges.values()).sort((a, b) => b.count - a.count)
 }
 
+const buildTracePath = (events: TraceEvent[]): TracePathStep[] => {
+  const path: TracePathStep[] = []
+  for (const event of events) {
+    const last = path[path.length - 1]
+    if (!last || last.line !== event.line) {
+      path.push({ line: event.line })
+    }
+  }
+  return path
+}
+
 export default function PlaygroundOutputPanel({
   activePane,
   filteredOutput,
@@ -75,6 +91,7 @@ export default function PlaygroundOutputPanel({
 }: PlaygroundOutputPanelProps) {
   const traceSummary = summarizeTrace(traceEvents)
   const traceEdges = buildTraceEdges(traceEvents)
+  const tracePath = buildTracePath(traceEvents)
   const maxTraceCount = traceSummary.reduce(
     (max, entry) => Math.max(max, entry.count),
     1,
@@ -88,6 +105,11 @@ export default function PlaygroundOutputPanel({
     : traceEvents.length
       ? null
       : 'No trace events captured.'
+  const pathSummary = useMemo(() => {
+    if (!tracePath.length) return ''
+    const parts = tracePath.map((step) => `L${step.line}`)
+    return parts.join(' → ')
+  }, [tracePath])
 
   return (
     <div
@@ -178,80 +200,85 @@ export default function PlaygroundOutputPanel({
       <div className="flex-1 min-h-0 overflow-auto px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-200">
         {showVisualization ? (
           hasVisualization ? (
-            <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
-              <div className="space-y-3">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-zinc-400">
-                  Timeline
+            <div className="space-y-6">
+              {pathSummary ? (
+                <div className="rounded-2xl border border-indigo-100 bg-indigo-50 px-4 py-3 text-[11px] text-indigo-700 shadow-sm dark:border-indigo-500/30 dark:bg-indigo-500/10 dark:text-indigo-200">
+                  <div className="font-semibold uppercase tracking-[0.25em] text-indigo-600 dark:text-indigo-200">
+                    Timeline (Order Of Execution)
+                  </div>
+                  <div className="mt-1 text-[11px] text-indigo-700/80 dark:text-indigo-200/90">
+                    The exact route your code took, line by line.
+                  </div>
+                  <div className="mt-2 break-words text-indigo-700 dark:text-indigo-200">
+                    {pathSummary}
+                  </div>
                 </div>
-                <div className="space-y-2">
-                  {traceEvents.map((entry) => (
-                    <div key={entry.step} className="flex items-center gap-2">
-                      <span className="w-8 text-right text-[11px] text-zinc-400">
-                        {entry.step}
-                      </span>
-                      <span className="rounded-full border border-sky-200 px-2 py-[2px] text-[11px] text-sky-700 dark:border-sky-400/50 dark:text-sky-200">
-                        L{entry.line}
-                      </span>
-                      <div className="h-[1px] flex-1 bg-zinc-200 dark:bg-zinc-800" />
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="space-y-4">
-                <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-zinc-400">
-                  Flow Map
-                </div>
-                <div className="space-y-3">
-                  {traceEdges.length ? (
-                    traceEdges.map((edge) => (
-                      <div
-                        key={`${edge.from}-${edge.to}`}
-                        className="space-y-1"
-                      >
-                        <div className="flex items-center justify-between gap-3 text-[11px] text-zinc-400">
-                          <span>
-                            L{edge.from} → L{edge.to}
-                          </span>
-                          <span>{edge.count}x</span>
+              ) : null}
+              <div className="space-y-6">
+                <div className="rounded-2xl border border-emerald-100 bg-emerald-50 px-4 py-3 text-[11px] text-emerald-700 shadow-sm dark:border-emerald-500/30 dark:bg-emerald-500/10 dark:text-emerald-200">
+                  <div className="font-semibold uppercase tracking-[0.25em] text-emerald-600 dark:text-emerald-200">
+                    Flow Map (Common Jumps)
+                  </div>
+                  <div className="mt-1 text-[11px] text-emerald-700/80 dark:text-emerald-200/90">
+                    Shows which line-to-line jumps happen most often.
+                  </div>
+                  <div className="mt-3 space-y-3">
+                    {traceEdges.length ? (
+                      traceEdges.map((edge) => (
+                        <div
+                          key={`${edge.from}-${edge.to}`}
+                          className="space-y-1"
+                        >
+                          <div className="flex items-center justify-between gap-3 text-[11px] text-emerald-700/70 dark:text-emerald-200/80">
+                            <span>
+                              L{edge.from} → L{edge.to}
+                            </span>
+                            <span>{edge.count}x</span>
+                          </div>
+                          <div className="h-2 rounded-full bg-emerald-100 dark:bg-emerald-500/20">
+                            <div
+                              className="h-2 rounded-full bg-emerald-500/70"
+                              style={{
+                                width: `${(edge.count / maxEdgeCount) * 100}%`,
+                              }}
+                            />
+                          </div>
                         </div>
-                        <div className="h-2 rounded-full bg-zinc-100 dark:bg-zinc-800">
+                      ))
+                    ) : (
+                      <div className="text-emerald-700/70 dark:text-emerald-200/80">
+                        Run a snippet with multiple steps to see flow.
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <div className="rounded-2xl border border-amber-100 bg-amber-50 px-4 py-3 text-[11px] text-amber-700 shadow-sm dark:border-amber-500/30 dark:bg-amber-500/10 dark:text-amber-200">
+                  <div className="font-semibold uppercase tracking-[0.25em] text-amber-600 dark:text-amber-200">
+                    Line Hits
+                  </div>
+                  <div className="mt-1 text-[11px] text-amber-700/80 dark:text-amber-200/90">
+                    Counts how many times each line ran.
+                  </div>
+                  <div className="mt-3 space-y-2">
+                    {traceSummary.map((entry) => (
+                      <div key={entry.line} className="flex items-center gap-3">
+                        <span className="w-12 text-right text-[11px] text-amber-700/70 dark:text-amber-200/80">
+                          L{entry.line}
+                        </span>
+                        <div className="h-2 flex-1 rounded-full bg-amber-100 dark:bg-amber-500/20">
                           <div
-                            className="h-2 rounded-full bg-emerald-500/70"
+                            className="h-2 rounded-full bg-amber-500/70"
                             style={{
-                              width: `${(edge.count / maxEdgeCount) * 100}%`,
+                              width: `${(entry.count / maxTraceCount) * 100}%`,
                             }}
                           />
                         </div>
+                        <span className="w-8 text-right text-[11px] text-amber-700/70 dark:text-amber-200/80">
+                          {entry.count}
+                        </span>
                       </div>
-                    ))
-                  ) : (
-                    <div className="text-zinc-400 dark:text-zinc-500">
-                      Run a snippet with multiple steps to see flow.
-                    </div>
-                  )}
-                </div>
-                <div className="space-y-2">
-                  <div className="text-[11px] font-semibold uppercase tracking-[0.25em] text-zinc-400">
-                    Line Hits
+                    ))}
                   </div>
-                  {traceSummary.map((entry) => (
-                    <div key={entry.line} className="flex items-center gap-3">
-                      <span className="w-12 text-right text-[11px] text-zinc-400">
-                        L{entry.line}
-                      </span>
-                      <div className="h-2 flex-1 rounded-full bg-zinc-100 dark:bg-zinc-800">
-                        <div
-                          className="h-2 rounded-full bg-sky-500/70"
-                          style={{
-                            width: `${(entry.count / maxTraceCount) * 100}%`,
-                          }}
-                        />
-                      </div>
-                      <span className="w-8 text-right text-[11px] text-zinc-400">
-                        {entry.count}
-                      </span>
-                    </div>
-                  ))}
                 </div>
               </div>
             </div>
