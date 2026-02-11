@@ -9,7 +9,7 @@ type PlaygroundEditorPanelProps = {
   runDisabled: boolean
   nodeOnlyReason: string | null
   onRun: () => void
-  onReset: () => void
+  onVisualize: () => void
   onFormat: () => void
   onEditorBeforeMount: (monaco: typeof import('monaco-editor')) => void
   onEditorMount: (
@@ -28,7 +28,7 @@ export default function PlaygroundEditorPanel({
   runDisabled,
   nodeOnlyReason,
   onRun,
-  onReset,
+  onVisualize,
   onFormat,
   onEditorBeforeMount,
   onEditorMount,
@@ -51,7 +51,7 @@ export default function PlaygroundEditorPanel({
             Format
           </button>
           <button
-            className="rounded-full border border-zinc-300 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-700 transition hover:border-zinc-400 hover:text-zinc-900 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:text-zinc-400 dark:border-zinc-700 dark:text-zinc-200 dark:hover:border-zinc-500"
+            className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-700 transition hover:border-emerald-300 hover:text-emerald-900 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:bg-white disabled:text-zinc-400 dark:border-emerald-400/50 dark:bg-emerald-500/10 dark:text-emerald-200 dark:hover:border-emerald-300"
             type="button"
             onClick={onRun}
             disabled={runDisabled}
@@ -60,11 +60,13 @@ export default function PlaygroundEditorPanel({
             {isRunning ? 'Running...' : 'Run'}
           </button>
           <button
-            className="rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
+            className="rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-sky-700 transition hover:border-sky-300 hover:text-sky-900 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:bg-white disabled:text-zinc-400 dark:border-sky-400/50 dark:bg-sky-500/10 dark:text-sky-200 dark:hover:border-sky-300"
             type="button"
-            onClick={onReset}
+            onClick={onVisualize}
+            disabled={runDisabled}
+            title={nodeOnlyReason ? `Disabled: ${nodeOnlyReason}` : undefined}
           >
-            Reset
+            Visualize
           </button>
         </div>
         {isRunning ? (

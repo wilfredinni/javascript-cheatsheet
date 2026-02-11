@@ -1,8 +1,19 @@
-import type { OutputEntry, OutputFilterKey, OutputFilters } from './types'
+import VisualizationPanel from './VisualizationPanel'
+import type {
+  OutputEntry,
+  OutputFilterKey,
+  OutputFilters,
+  TraceEvent,
+  VisualizationStatus,
+} from './types'
 
 type PlaygroundOutputPanelProps = {
   activePane: 'editor' | 'output'
   filteredOutput: OutputEntry[]
+  traceEvents: TraceEvent[]
+  showVisualization: boolean
+  hasVisualization: boolean
+  visualizationStatus: VisualizationStatus
   outputFilters: OutputFilters
   onFilterToggle: (key: OutputFilterKey) => void
   onClear: () => void
@@ -12,11 +23,21 @@ type PlaygroundOutputPanelProps = {
 export default function PlaygroundOutputPanel({
   activePane,
   filteredOutput,
+  traceEvents,
+  showVisualization,
+  hasVisualization,
+  visualizationStatus,
   outputFilters,
   onFilterToggle,
   onClear,
   outputTypeClass,
 }: PlaygroundOutputPanelProps) {
+  const visualizationReason = !visualizationStatus.enabled
+    ? visualizationStatus.reason
+    : traceEvents.length
+      ? null
+      : 'No trace events captured.'
+
   return (
     <div
       className={`flex min-h-0 min-w-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900/80 ${
@@ -77,12 +98,30 @@ export default function PlaygroundOutputPanel({
             Clear
           </button>
         </div>
-        <span className="text-[10px] font-medium text-zinc-400">
-          {filteredOutput.length} line{filteredOutput.length === 1 ? '' : 's'}
-        </span>
+        <div className="flex flex-col items-end gap-1 text-[10px] font-medium text-zinc-400">
+          <span>
+            {filteredOutput.length} line{filteredOutput.length === 1 ? '' : 's'}
+          </span>
+          {!hasVisualization && visualizationReason ? (
+            <span className="text-[9px] uppercase tracking-[0.2em] text-zinc-300">
+              {visualizationReason}
+            </span>
+          ) : null}
+        </div>
       </div>
       <div className="flex-1 min-h-0 overflow-auto px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-200">
-        {filteredOutput.length ? (
+        {showVisualization ? (
+          hasVisualization ? (
+            <VisualizationPanel
+              traceEvents={traceEvents}
+              visualizationStatus={visualizationStatus}
+            />
+          ) : (
+            <div className="text-zinc-400 dark:text-zinc-500">
+              {visualizationReason || 'Run a snippet to visualize execution.'}
+            </div>
+          )
+        ) : filteredOutput.length ? (
           filteredOutput.map((entry) => (
             <div
               key={entry.id}

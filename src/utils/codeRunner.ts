@@ -1,4 +1,4 @@
-const workerSource = `
+const workerSource = String.raw`
 const timers = new Map();
 const counts = new Map();
 
@@ -61,16 +61,137 @@ const console = {
   clear: () => send('clear', []),
 };
 
+const instrumentCode = (source) => {
+  const lines = source.split('\n');
+  let inBlockComment = false;
+  let lastNonEmpty = '';
+
+  const shouldSkipTrace = (trimmed) => {
+    if (!trimmed) return true;
+    if (trimmed.startsWith('//')) return true;
+    if (trimmed.startsWith('/*')) return true;
+    if (trimmed.startsWith('*') && inBlockComment) return true;
+    if (/^[}\]]([,;])?$/.test(trimmed)) return true;
+    if (
+      /^[\w$"'\[]/.test(trimmed) &&
+      trimmed.includes(':') &&
+      !/^case\b/.test(trimmed) &&
+      !/^default\b/.test(trimmed) &&
+      !trimmed.includes('?')
+    ) {
+      return true;
+    }
+    if (/^(else|catch|finally|case|default)\b/.test(trimmed)) return true;
+    if (/^\}\s*(else|catch|finally)\b/.test(trimmed)) return true;
+    if (/^while\b/.test(trimmed) && /^\}/.test(lastNonEmpty)) return true;
+    return false;
+  };
+
+  const result = lines.map((line, index) => {
+    const trimmed = line.trim();
+    const lineNumber = index + 1;
+
+    if (inBlockComment) {
+      if (trimmed.includes('*/')) {
+        inBlockComment = false;
+      }
+      if (trimmed) {
+        lastNonEmpty = trimmed;
+      }
+      return line;
+    }
+
+    if (trimmed.startsWith('/*')) {
+      if (!trimmed.includes('*/')) {
+        inBlockComment = true;
+      }
+      lastNonEmpty = trimmed;
+      return line;
+    }
+
+    if (shouldSkipTrace(trimmed)) {
+      if (trimmed) {
+        lastNonEmpty = trimmed;
+      }
+      return line;
+    }
+
+    lastNonEmpty = trimmed;
+    return '__trace(' + lineNumber + ');\n' + line;
+  });
+
+  return result.join('\n');
+};
+
 self.onmessage = (event) => {
   const { code } = event.data || {};
+  const traceEvents = [];
+  const __trace = (line) => {
+    traceEvents.push({ line, time: Date.now(), step: traceEvents.length + 1 });
+  };
+
+  const execute = (fn, allowViz) => {
+    try {
+      fn(console, __trace);
+      if (allowViz && traceEvents.length) {
+        send('viz', traceEvents);
+      }
+      return null;
+    } catch (error) {
+      return error;
+    }
+  };
+
+  let instrumentedCode = instrumentCode(code || '');
+  let fn;
+  let usedInstrumentation = false;
+  let vizStatus = { enabled: false, reason: null };
   try {
-    const fn = new Function('console', '"use strict";\\n' + code);
-    fn(console);
-    send('done', []);
+    fn = new Function(
+      'console',
+      '__trace',
+      '"use strict";\n' + instrumentedCode,
+    );
+    usedInstrumentation = true;
+    vizStatus = { enabled: true, reason: null };
   } catch (error) {
-    send('error', [safeString(error)]);
-    send('done', []);
+    instrumentedCode = null;
+    vizStatus = {
+      enabled: false,
+      reason: 'Visualization skipped for this snippet.',
+    };
+    try {
+      fn = new Function('console', '__trace', '"use strict";\n' + code);
+    } catch (innerError) {
+      send('error', [safeString(innerError)]);
+      send('viz-status', vizStatus);
+      send('done', []);
+      return;
+    }
   }
+
+  let execError = execute(fn, usedInstrumentation);
+
+  if (execError && usedInstrumentation) {
+    traceEvents.length = 0;
+    usedInstrumentation = false;
+    vizStatus = {
+      enabled: false,
+      reason: 'Visualization disabled for this snippet.',
+    };
+    try {
+      fn = new Function('console', '__trace', '"use strict";\n' + code);
+      execError = execute(fn, false);
+    } catch (innerError) {
+      execError = execError || innerError;
+    }
+  }
+
+  if (execError) {
+    send('error', [safeString(execError)]);
+  }
+  send('viz-status', vizStatus);
+  send('done', []);
 };
 `
 

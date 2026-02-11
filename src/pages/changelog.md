@@ -15,6 +15,12 @@ Changelog
 - Added CommonJS `require()` coverage and a common mistakes section for modules.
 - Code blocks can now show optional file names in the header.
 - Tuned HTML syntax highlighting for better readability.
+- Added visualization mode in the JavaScript playground to interpret execution flow.
+- Moved Run/Visualize controls into the editor panel and updated button styling.
+- Improved the playground visualization layout with timeline, flow map, and line hits cards.
+- Refactored the visualization into a reusable component for future use.
+- Code blocks now support visualization in the output area and a visualizer action button.
+- Updated code block actions with Lucide icons and improved spacing between stacked blocks.
 
 ## 2026-02-09
 

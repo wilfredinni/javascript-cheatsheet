@@ -23,3 +23,14 @@ export type OutputFilters = {
 }
 
 export type OutputFilterKey = keyof OutputFilters
+
+export type TraceEvent = {
+  line: number
+  time: number
+  step: number
+}
+
+export type VisualizationStatus = {
+  enabled: boolean
+  reason: string | null
+}
