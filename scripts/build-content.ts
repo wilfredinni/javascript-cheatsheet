@@ -36,24 +36,58 @@ md.use(LinkAttributes, {
 
 const runnableFlags = new Set(['run', 'runnable'])
 const defaultFenceRenderer = md.renderer.rules.fence
+const fileFlagMatcher = /^(file|filename)=(.+)$/i
+
+function escapeAttribute(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+}
+
+function parseFenceInfo(info: string) {
+  const parts = info.split(/\s+/).filter(Boolean)
+  const flags: string[] = []
+  let fileName: string | undefined
+
+  for (const part of parts.slice(1)) {
+    const match = part.match(fileFlagMatcher)
+    if (match) {
+      fileName = match[2].replace(/^['"]|['"]$/g, '')
+      continue
+    }
+
+    flags.push(part)
+  }
+
+  return { flags, fileName }
+}
 
 md.renderer.rules.fence = (tokens, idx, options, env, self) => {
   const token = tokens[idx]
   const info = (token.info || '').trim()
-  const parts = info.split(/\s+/).filter(Boolean)
-  const flags = parts.slice(1)
+  const { flags, fileName } = parseFenceInfo(info)
   const isRunnable = flags.some((flag) => runnableFlags.has(flag))
   const rendered = defaultFenceRenderer
     ? defaultFenceRenderer(tokens, idx, options, env, self)
     : self.renderToken(tokens, idx, options)
 
-  if (!isRunnable) {
+  const attributes: string[] = []
+  if (isRunnable) {
+    attributes.push('data-run="true"')
+  }
+  if (fileName) {
+    attributes.push(`data-file="${escapeAttribute(fileName)}"`)
+  }
+
+  if (!attributes.length) {
     return rendered
   }
 
+  const attributeString = ` ${attributes.join(' ')}`
   return rendered
-    .replace('<pre', '<pre data-run="true"')
-    .replace('<code', '<code data-run="true"')
+    .replace('<pre', `<pre${attributeString}`)
+    .replace('<code', `<code${attributeString}`)
 }
 
 const lightBulbIcon = `

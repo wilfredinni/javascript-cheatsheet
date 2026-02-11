@@ -39,6 +39,11 @@ export const cheatsheetNavigation: NavigationItem[] = [
     updated: false,
   },
   {
+    name: 'Import and Export',
+    path: '/cheatsheet/import-export',
+    updated: false,
+  },
+  {
     name: 'Arrays',
     path: '/cheatsheet/arrays',
     updated: false,

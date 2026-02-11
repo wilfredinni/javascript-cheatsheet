@@ -38,3 +38,21 @@ html .prose {
   --prism-font-size: 1.03em;
   --prism-tab-size: 4;
 }
+
+html .prose pre[class*='language-html'] .token.doctype,
+html .prose pre[class*='language-html'] .token.tag {
+  color: #7bddff;
+}
+
+html .prose pre[class*='language-html'] .token.attr-name {
+  color: #ffcb6b;
+}
+
+html .prose pre[class*='language-html'] .token.attr-value,
+html .prose pre[class*='language-html'] .token.string {
+  color: #a5e844;
+}
+
+html .prose pre[class*='language-html'] .token.punctuation {
+  color: #89ddff;
+}

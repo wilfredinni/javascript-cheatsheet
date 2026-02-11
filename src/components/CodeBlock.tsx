@@ -10,6 +10,7 @@ import { createRunnerWorker, getNodeOnlyReason } from '../utils/codeRunner'
 type CodeBlockProps = {
   code: string
   language?: string
+  fileName?: string
   preClassName?: string
   codeClassName?: string
   children: ReactNode
@@ -64,6 +65,7 @@ export default function CodeBlock({
   codeClassName,
   children,
   runnable,
+  fileName,
 }: CodeBlockProps) {
   const [label, setLabel] = useState('Copy')
   const [isRunning, setIsRunning] = useState(false)
@@ -241,7 +243,14 @@ export default function CodeBlock({
       data-language={language || undefined}
     >
       <div className="flex items-center justify-between border-b border-zinc-200/70 bg-zinc-50/80 px-3 py-2 text-[11px] font-semibold uppercase tracking-wide text-zinc-500 dark:border-zinc-700/60 dark:bg-zinc-900/60 dark:text-zinc-400">
-        <span>{languageLabel}</span>
+        <div className="flex items-center gap-2">
+          <span>{languageLabel}</span>
+          {fileName ? (
+            <span className="rounded-md bg-zinc-200/80 px-2 py-0.5 text-[10px] font-semibold normal-case text-zinc-600 dark:bg-zinc-800 dark:text-zinc-300">
+              {fileName}
+            </span>
+          ) : null}
+        </div>
         <div className="flex items-center gap-2">
           {isRunnable ? (
             <button

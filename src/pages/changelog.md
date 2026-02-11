@@ -9,6 +9,13 @@ updated: February 25, 2023
 Changelog
 </base-title>
 
+## 2026-02-10
+
+- Added the new Import and Export cheatsheet section with beginner-friendly explanations.
+- Added CommonJS `require()` coverage and a common mistakes section for modules.
+- Code blocks can now show optional file names in the header.
+- Tuned HTML syntax highlighting for better readability.
+
 ## 2026-02-09
 
 - We can now run code examples in the documentation! The output will be displayed in the bellow of the code block.
