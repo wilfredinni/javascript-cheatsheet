@@ -46,7 +46,7 @@
     "autoprefixer": "^10.4.24",
     "esbuild": "^0.27.0",
     "eslint": "^9.39.2",
-    "eslint-config-prettier": "^9.1.2",
+    "eslint-config-prettier": "^10.0.0",
     "esno": "^4.8.0",
     "fs-extra": "^11.3.3",
     "happy-dom": "^20.0.0",
