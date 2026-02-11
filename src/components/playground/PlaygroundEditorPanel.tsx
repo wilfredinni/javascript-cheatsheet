@@ -10,7 +10,6 @@ type PlaygroundEditorPanelProps = {
   nodeOnlyReason: string | null
   onRun: () => void
   onVisualize: () => void
-  onReset: () => void
   onFormat: () => void
   onEditorBeforeMount: (monaco: typeof import('monaco-editor')) => void
   onEditorMount: (
@@ -30,7 +29,6 @@ export default function PlaygroundEditorPanel({
   nodeOnlyReason,
   onRun,
   onVisualize,
-  onReset,
   onFormat,
   onEditorBeforeMount,
   onEditorMount,
@@ -69,13 +67,6 @@ export default function PlaygroundEditorPanel({
             title={nodeOnlyReason ? `Disabled: ${nodeOnlyReason}` : undefined}
           >
             Visualize
-          </button>
-          <button
-            className="rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
-            type="button"
-            onClick={onReset}
-          >
-            Reset
           </button>
         </div>
         {isRunning ? (

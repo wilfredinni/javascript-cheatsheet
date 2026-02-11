@@ -202,11 +202,6 @@ export function usePlaygroundRunner() {
     worker.postMessage({ code })
   }
 
-  const handleReset = () => {
-    setCode(DEFAULT_SNIPPET)
-    resetOutput()
-  }
-
   const handleFormat = () => {
     const action = editorRef.current?.getAction('editor.action.formatDocument')
     action?.run()
@@ -347,7 +342,6 @@ export function usePlaygroundRunner() {
     nodeOnlyReason,
     runDisabled,
     handleRun,
-    handleReset,
     handleFormat,
     handleShare,
     handleFilterToggle,

@@ -105,7 +105,7 @@ export default function VisualizationPanel({
           <div className="mt-1 text-[11px] text-indigo-700/80 dark:text-indigo-200/90">
             The exact route your code took, line by line.
           </div>
-          <div className="mt-2 break-words text-indigo-700 dark:text-indigo-200">
+          <div className="mt-2 wrap-break-word text-indigo-700 dark:text-indigo-200">
             {pathSummary}
           </div>
         </div>

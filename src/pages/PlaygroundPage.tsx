@@ -30,7 +30,6 @@ export default function PlaygroundPage() {
     nodeOnlyReason,
     runDisabled,
     handleRun,
-    handleReset,
     handleFormat,
     handleShare,
     handleFilterToggle,
@@ -89,7 +88,6 @@ export default function PlaygroundPage() {
             nodeOnlyReason={nodeOnlyReason}
             onRun={handleRun}
             onVisualize={handleVisualize}
-            onReset={handleReset}
             onFormat={handleFormat}
             onEditorBeforeMount={handleEditorBeforeMount}
             onEditorMount={handleEditorMount}
