@@ -11,7 +11,8 @@ Changelog
 
 ## 2026-02-12
 
-- Fixed playground visualization skipping code snippets with multi-line expressions (e.g., Map initialization).
+- Improved playground visualization instrumentation to support multi-line expressions (e.g., Map initialization).
+- Refined instrumentation logic to correctly handle block statements (loops, if-statements) and improved object-key detection to avoid false positives.
 
 ## 2026-02-10
 

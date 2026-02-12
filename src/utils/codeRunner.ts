@@ -76,19 +76,30 @@ const instrumentCode = (source) => {
     if (
         lastNonEmpty && 
         (
-            /[,=>?:(\[{\.]$/.test(lastNonEmpty) || 
+            /[,=>?:(\[.]$/.test(lastNonEmpty) || 
             /^(case|default)\b/.test(lastNonEmpty)
         )
     ) {
         return true;
     }
 
+    // Special handling for {
+    if (lastNonEmpty && lastNonEmpty.endsWith('{')) {
+        // We generally skip lines following {, implying it's an object literal or unsupported block (like class)
+        // BUT we must allow specific block statements:
+        // if (...) {, for (...) {, while (...) {, function (...) {, ) {
+        // do {, else {, try {, finally {, => {
+        const isBlockStatement = /(\)|do|else|try|finally|=>)\s*\{$/.test(lastNonEmpty);
+        if (!isBlockStatement) {
+            return true;
+        }
+    }
+
     if (/^[}\]]([,;])?$/.test(trimmed)) return true;
     
     // Skip object keys or label-like lines
     if (
-      /^[\w$"'\[]/.test(trimmed) &&
-      trimmed.includes(':') &&
+      /^([\w$]+|'[^']+'|"[^"]+"|\[.+\])\s*:/.test(trimmed) &&
       !/^case\b/.test(trimmed) &&
       !/^default\b/.test(trimmed) &&
       !trimmed.includes('?') &&
