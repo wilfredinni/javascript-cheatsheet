@@ -13,6 +13,8 @@ Changelog
 
 - Improved playground visualization instrumentation to support multi-line expressions (e.g., Map initialization).
 - Refined instrumentation logic to correctly handle block statements (loops, if-statements) and improved object-key detection to avoid false positives.
+- Fixed playground editor and output panels height on mobile view to ensure they fill the screen.
+- Enforced a fixed layout for the playground page to prevent body scroll and improve the application-like experience.
 
 ## 2026-02-10
 

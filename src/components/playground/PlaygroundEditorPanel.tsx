@@ -37,7 +37,7 @@ export default function PlaygroundEditorPanel({
 }: PlaygroundEditorPanelProps) {
   return (
     <div
-      className={`flex min-h-0 min-w-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${
+      className={`flex h-full min-h-0 min-w-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${
         activePane === 'editor' ? 'flex' : 'hidden'
       } lg:flex`}
     >

@@ -47,13 +47,13 @@ export default function PlaygroundPage() {
   const editorTheme = theme.isDark ? 'playground-dark' : 'playground-light'
 
   return (
-    <article className="min-h-[calc(100vh-3.6rem)] w-full bg-white dark:bg-zinc-900">
+    <article className="h-[calc(100vh-3.6rem)] w-full bg-white dark:bg-zinc-900 overflow-hidden">
       <Seo
         title="JavaScript Playground"
         description="Write and execute JavaScript snippets instantly in your browser."
       />
 
-      <section className="not-prose mx-auto flex h-full min-h-[calc(100vh-3.6rem)] max-w-8xl flex-col px-3 pb-6 pt-4 sm:px-6 lg:px-12">
+      <section className="not-prose mx-auto flex h-full max-w-8xl flex-col px-3 pb-6 pt-4 sm:px-6 lg:px-12">
         <PlaygroundHeader
           savedLabel={savedLabel}
           shareLabel={shareLabel}
@@ -73,7 +73,7 @@ export default function PlaygroundPage() {
 
         <div
           ref={splitContainerRef}
-          className="mt-4 flex-1 min-h-0 min-w-0 gap-4 lg:grid"
+          className="mt-4 flex flex-col flex-1 min-h-0 min-w-0 gap-4 lg:grid"
           style={{
             gridTemplateColumns: `${splitPercent}fr 12px ${100 - splitPercent}fr`,
           }}
