@@ -90,6 +90,9 @@ export default function PlaygroundOutputPanel({
           >
             Error
           </button>
+
+          <div className="mx-1 h-3 w-px bg-zinc-200 dark:bg-zinc-800" />
+
           <button
             className="rounded-full border border-zinc-200 px-2 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
             type="button"

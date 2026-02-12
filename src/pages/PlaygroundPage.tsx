@@ -38,6 +38,8 @@ export default function PlaygroundPage() {
     outputTypeClass,
     handleEditorBeforeMount,
     handleEditorMount,
+    isLiveExecution,
+    setIsLiveExecution,
   } = usePlaygroundRunner()
   const { splitPercent, splitContainerRef, isDragging, startDrag } =
     useSplitResize()
@@ -92,6 +94,8 @@ export default function PlaygroundPage() {
             onEditorBeforeMount={handleEditorBeforeMount}
             onEditorMount={handleEditorMount}
             onCodeChange={setCode}
+            isLiveExecution={isLiveExecution}
+            onLiveExecutionChange={setIsLiveExecution}
             theme={editorTheme}
           />
 

@@ -15,6 +15,10 @@ Changelog
 - Refined instrumentation logic to correctly handle block statements (loops, if-statements) and improved object-key detection to avoid false positives.
 - Fixed playground editor and output panels height on mobile view to ensure they fill the screen.
 - Enforced a fixed layout for the playground page to prevent body scroll and improve the application-like experience.
+- Added keyboard shortcuts for the playground: **Cmd + Enter** to run and **Cmd + Shift + F** to format code.
+- Implemented **Live Execution** mode for real-time code evaluation with debouncing.
+- Refined playground UI with improved button ordering, logical grouping, and visual separators in both editor and output panels.
+- Improved discoverability with shortcut tooltips and a dedicated Shortcuts Info pill in the header.
 
 ## 2026-02-10
 
