@@ -16,6 +16,8 @@ type PlaygroundEditorPanelProps = {
     editor: import('monaco-editor').editor.IStandaloneCodeEditor,
   ) => void
   onCodeChange: (value: string) => void
+  isLiveExecution: boolean
+  onLiveExecutionChange: (value: boolean) => void
   theme: 'playground-dark' | 'playground-light'
 }
 
@@ -33,29 +35,24 @@ export default function PlaygroundEditorPanel({
   onEditorBeforeMount,
   onEditorMount,
   onCodeChange,
+  isLiveExecution,
+  onLiveExecutionChange,
   theme,
 }: PlaygroundEditorPanelProps) {
   return (
     <div
-      className={`flex min-h-0 min-w-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${
+      className={`flex h-full min-h-0 min-w-0 flex-col rounded-2xl border border-zinc-200 bg-white shadow-sm dark:border-zinc-800 dark:bg-zinc-900 ${
         activePane === 'editor' ? 'flex' : 'hidden'
       } lg:flex`}
     >
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-zinc-200/70 py-2 pl-4 pr-0 text-xs font-semibold uppercase tracking-[0.2em] text-zinc-500 dark:border-zinc-800 dark:text-zinc-400">
         <div className="flex flex-wrap items-center gap-2">
           <button
-            className="rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
-            type="button"
-            onClick={onFormat}
-          >
-            Format
-          </button>
-          <button
             className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-700 transition hover:border-emerald-300 hover:text-emerald-900 disabled:cursor-not-allowed disabled:border-zinc-200 disabled:bg-white disabled:text-zinc-400 dark:border-emerald-400/50 dark:bg-emerald-500/10 dark:text-emerald-200 dark:hover:border-emerald-300"
             type="button"
             onClick={onRun}
             disabled={runDisabled}
-            title={nodeOnlyReason ? `Disabled: ${nodeOnlyReason}` : undefined}
+            title={nodeOnlyReason ? `Disabled: ${nodeOnlyReason}` : 'Run (⌘↵)'}
           >
             {isRunning ? 'Running...' : 'Run'}
           </button>
@@ -67,6 +64,26 @@ export default function PlaygroundEditorPanel({
             title={nodeOnlyReason ? `Disabled: ${nodeOnlyReason}` : undefined}
           >
             Visualize
+          </button>
+          <label className="flex items-center gap-2 px-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 cursor-pointer hover:text-zinc-700 dark:text-zinc-400 dark:hover:text-zinc-200">
+            <input
+              type="checkbox"
+              checked={isLiveExecution}
+              onChange={(e) => onLiveExecutionChange(e.target.checked)}
+              className="h-3 w-3 rounded border-zinc-300 text-emerald-600 focus:ring-emerald-500 dark:border-zinc-700 dark:bg-zinc-800"
+            />
+            Live
+          </label>
+
+          <div className="mx-1 h-3 w-px bg-zinc-200 dark:bg-zinc-800" />
+
+          <button
+            className="rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
+            type="button"
+            onClick={onFormat}
+            title="Format Code (⌘⇧F)"
+          >
+            Format
           </button>
         </div>
         {isRunning ? (
@@ -86,7 +103,22 @@ export default function PlaygroundEditorPanel({
           language="javascript"
           theme={theme}
           beforeMount={onEditorBeforeMount}
-          onMount={onEditorMount}
+          onMount={(editor, monaco) => {
+            onEditorMount(editor)
+
+            // CMD/CTRL + ENTER to run
+            editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+              onRun()
+            })
+
+            // CMD/CTRL + SHIFT + F to format
+            editor.addCommand(
+              monaco.KeyMod.CtrlCmd | monaco.KeyMod.Shift | monaco.KeyCode.KeyF,
+              () => {
+                onFormat()
+              },
+            )
+          }}
           value={code}
           onChange={(value) => onCodeChange(value ?? '')}
           options={{

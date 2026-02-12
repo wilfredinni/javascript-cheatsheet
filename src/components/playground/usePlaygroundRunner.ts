@@ -28,6 +28,7 @@ export function usePlaygroundRunner() {
   const [isHydrated, setIsHydrated] = useState(false)
   const [shareLabel, setShareLabel] = useState('Share')
   const [savedAt, setSavedAt] = useState<number | null>(null)
+  const [isLiveExecution, setIsLiveExecution] = useState(false)
   const [activePane, setActivePane] = useState<'editor' | 'output'>('editor')
   const [lastRunAt, setLastRunAt] = useState<number | null>(null)
   const [lastRunDuration, setLastRunDuration] = useState<number | null>(null)
@@ -66,6 +67,16 @@ export function usePlaygroundRunner() {
     localStorage.setItem(STORAGE_KEY, code)
     setSavedAt(Date.now())
   }, [code, isHydrated])
+
+  useEffect(() => {
+    if (!isLiveExecution || !isHydrated || isRunning) return
+
+    const timer = setTimeout(() => {
+      handleRun()
+    }, 500)
+
+    return () => clearTimeout(timer)
+  }, [code, isLiveExecution, isHydrated])
 
   useEffect(() => {
     return () => {
@@ -350,5 +361,7 @@ export function usePlaygroundRunner() {
     outputTypeClass,
     handleEditorBeforeMount,
     handleEditorMount,
+    isLiveExecution,
+    setIsLiveExecution,
   }
 }

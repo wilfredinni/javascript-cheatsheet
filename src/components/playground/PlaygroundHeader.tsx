@@ -1,3 +1,5 @@
+import { Keyboard } from 'lucide-react'
+
 type PlaygroundHeaderProps = {
   savedLabel: string | null
   shareLabel: string
@@ -21,8 +23,18 @@ export default function PlaygroundHeader({
           </span>
         ) : null}
       </div>
+
+      <div
+        className="ml-auto flex cursor-pointer items-center gap-1.5 rounded-full bg-zinc-50 px-2.5 py-1.5 text-zinc-500 dark:bg-zinc-800/50 dark:text-zinc-400"
+        title="Run: ⌘↵ | Format: ⌘⇧F"
+      >
+        <Keyboard size={12} />
+        <span className="text-[9px] font-bold uppercase tracking-widest">
+          Shortcuts Info
+        </span>
+      </div>
       <button
-        className="ml-auto rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
+        className="rounded-full border border-zinc-200 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-zinc-500 transition hover:border-zinc-300 hover:text-zinc-700 dark:border-zinc-700 dark:text-zinc-300 dark:hover:border-zinc-500"
         type="button"
         onClick={onShare}
       >

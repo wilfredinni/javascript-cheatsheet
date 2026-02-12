@@ -71,19 +71,53 @@ const instrumentCode = (source) => {
     if (trimmed.startsWith('//')) return true;
     if (trimmed.startsWith('/*')) return true;
     if (trimmed.startsWith('*') && inBlockComment) return true;
-    if (/^[}\]]([,;])?$/.test(trimmed)) return true;
+    
+    // Skip if previous line looks like it continues an expression
     if (
-      /^[\w$"'\[]/.test(trimmed) &&
-      trimmed.includes(':') &&
+        lastNonEmpty && 
+        (
+            /[,=>?:(\[.]$/.test(lastNonEmpty) || 
+            /^(case|default)\b/.test(lastNonEmpty)
+        )
+    ) {
+        return true;
+    }
+
+    // Special handling for {
+    if (lastNonEmpty && lastNonEmpty.endsWith('{')) {
+        // We generally skip lines following {, implying it's an object literal or unsupported block (like class)
+        // BUT we must allow specific block statements:
+        // if (...) {, for (...) {, while (...) {, function (...) {, ) {
+        // do {, else {, try {, finally {, => {
+        const isBlockStatement = /(\)|do|else|try|finally|=>)\s*\{$/.test(lastNonEmpty);
+        if (!isBlockStatement) {
+            return true;
+        }
+    }
+
+    if (/^[}\]]([,;])?$/.test(trimmed)) return true;
+    
+    // Skip object keys or label-like lines
+    if (
+      /^([\w$]+|'[^']+'|"[^"]+"|\[.+\])\s*:/.test(trimmed) &&
       !/^case\b/.test(trimmed) &&
       !/^default\b/.test(trimmed) &&
-      !trimmed.includes('?')
+      !trimmed.includes('?') &&
+      !trimmed.includes(';') // Ensure it's not a statement like "foo: bar;"
     ) {
       return true;
     }
+
     if (/^(else|catch|finally|case|default)\b/.test(trimmed)) return true;
     if (/^\}\s*(else|catch|finally)\b/.test(trimmed)) return true;
     if (/^while\b/.test(trimmed) && /^\}/.test(lastNonEmpty)) return true;
+
+    // Skip lines starting with dot (method chaining)
+    if (trimmed.startsWith('.')) return true;
+
+    // Skip lines starting with closing brackets/parens/curlies
+    if (/^[}\]\)]/.test(trimmed)) return true;
+
     return false;
   };
 
@@ -117,6 +151,7 @@ const instrumentCode = (source) => {
     }
 
     lastNonEmpty = trimmed;
+    // We add a check for the last character of the previous line to be careful
     return '__trace(' + lineNumber + ');\n' + line;
   });
 
