@@ -24,6 +24,7 @@ html .prose {
   --prism-function: #c792ea;
   --prism-deleted: #a14f55;
   --prism-class: #ffcb6b;
+  --prism-constant: #ffcb6b;
   --prism-builtin: #82aaff;
   --prism-property: #80cbc4;
   --prism-namespace: #db889a;
