@@ -19,6 +19,7 @@ export const mainNavigation: NavigationItem[] = [
   {
     name: 'Changelog',
     path: '/changelog',
+    updated: true,
   },
 ]
 
@@ -44,6 +45,11 @@ export const cheatsheetNavigation: NavigationItem[] = [
     updated: false,
   },
   {
+    name: 'Fetch API',
+    path: '/cheatsheet/fetch-api',
+    updated: true,
+  },
+  {
     name: 'Import and Export',
     path: '/cheatsheet/import-export',
     updated: false,
@@ -62,6 +68,16 @@ export const cheatsheetNavigation: NavigationItem[] = [
     name: 'Objects',
     path: '/cheatsheet/objects',
     updated: false,
+  },
+  {
+    name: 'Classes',
+    path: '/cheatsheet/classes',
+    updated: true,
+  },
+  {
+    name: 'JSON',
+    path: '/cheatsheet/json',
+    updated: true,
   },
   {
     name: 'Map',
@@ -87,6 +103,16 @@ export const cheatsheetNavigation: NavigationItem[] = [
     name: 'Regular Expressions',
     path: '/cheatsheet/regular-expressions',
     updated: false,
+  },
+  {
+    name: 'Date & Time',
+    path: '/cheatsheet/date-time',
+    updated: true,
+  },
+  {
+    name: 'Math',
+    path: '/cheatsheet/math',
+    updated: true,
   },
   {
     name: 'Files and Directories',

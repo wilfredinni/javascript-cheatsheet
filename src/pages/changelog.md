@@ -2,12 +2,16 @@
 title: 'Changelog - Javascript Cheatsheet'
 description: See what is new, what got fixed, and what is coming.
 date: July 19, 2022
-updated: February 12, 2026
+updated: February 13, 2026
 ---
 
 <base-title :title="frontmatter.title" :description="frontmatter.description">
 Changelog
 </base-title>
+
+## 2026-02-13
+
+- Added 5 new cheatsheet sections: **Fetch API**, **JSON**, **Classes**, **Date & Time**, and **Math**.
 
 ## 2026-02-12
 
