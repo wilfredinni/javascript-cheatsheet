@@ -15,6 +15,9 @@ Changelog
 - Fixed playground visualization for JavaScript classes by skipping instrumentation on method definitions, which was causing syntax errors.
 - Fixed syntax highlighting for the `JSON` global object (and other constants) in JavaScript code blocks.
 - Fixed code block output persistence when navigating between cheatsheets.
+- Optimized build chunk sizes by refactoring content loading to implement dynamic code-splitting for cheatsheets, eliminating large bundle warnings.
+- Refined vendor chunk strategy to better split libraries like Algolia Search and React for faster initial loads.
+- Configured `.gitignore` and removed generated build artifacts from tracking to keep the repository clean.
 
 ## 2026-02-12
 
