@@ -118,6 +118,28 @@ const instrumentCode = (source) => {
     // Skip lines starting with closing brackets/parens/curlies
     if (/^[}\]\)]/.test(trimmed)) return true;
 
+    // Skip class methods / short object methods
+    // e.g. "method() {", "async method() {", "get prop() {", "static method() {"
+    // But NOT "function method() {" or "if (...) {"
+    if (
+        trimmed.endsWith('{') &&
+        !trimmed.startsWith('function') &&
+        !trimmed.startsWith('class') &&
+        !trimmed.startsWith('if') &&
+        !trimmed.startsWith('for') &&
+        !trimmed.startsWith('while') &&
+        !trimmed.startsWith('switch') &&
+        !trimmed.startsWith('catch') &&
+        !trimmed.startsWith('do') &&
+        !trimmed.startsWith('try') &&
+        !trimmed.startsWith('finally') &&
+        !trimmed.startsWith('else') &&
+        // Ensure it looks like a method call signature
+        /\)\s*\{$/.test(trimmed)
+    ) {
+         return true;
+    }
+
     return false;
   };
 
