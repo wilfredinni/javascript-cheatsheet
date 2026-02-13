@@ -13,9 +13,11 @@ type DocEntry = {
   title: string
   description?: string
   heading?: string
-  html: string
   section: 'docs' | 'pages'
+  html?: string // Optional for index, required for full content
 }
+
+
 
 const md = new MarkdownIt({
   html: true,
@@ -257,9 +259,26 @@ async function buildDocs() {
 
   const outputDir = path.resolve(process.cwd(), 'src/content')
   await fs.ensureDir(outputDir)
+  
+  const entriesDir = path.join(outputDir, 'entries')
+  await fs.ensureDir(entriesDir)
+
+  // Write individual content files
+  for (const doc of [...docs, ...pages]) {
+    await fs.writeJson(
+      path.join(entriesDir, `${doc.slug}.json`),
+      doc,
+      { spaces: 2 }
+    )
+  }
+
+  // Write lightweight index (metadata only, no HTML)
+  const docsIndex = docs.map(({ html, ...rest }) => rest)
+  const pagesIndex = pages.map(({ html, ...rest }) => rest)
+
   await fs.writeJson(
     path.join(outputDir, 'docs.json'),
-    { docs, pages },
+    { docs: docsIndex, pages: pagesIndex },
     {
       spaces: 2,
     },

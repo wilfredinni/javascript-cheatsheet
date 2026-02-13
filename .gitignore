@@ -23,3 +23,9 @@ dist-ssr
 .vite-ssg-temp
 coverage
 .env
+
+# Generated content
+src/content/docs.json
+src/content/routes.json
+src/content/entries
+public/sitemap.xml

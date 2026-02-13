@@ -15,8 +15,12 @@ type DocEntry = {
   title: string
   description?: string
   heading?: string
-  html: string
   section: 'docs' | 'pages'
+  // html is now loaded separately or not needed in index
+}
+
+type DocContent = DocEntry & {
+  html: string
 }
 
 type DocsPayload = {
@@ -25,28 +29,44 @@ type DocsPayload = {
 }
 
 export default function CheatsheetPage() {
+
   const { slug } = useParams({ from: '/cheatsheet/$slug' })
   const [docsPayload, setDocsPayload] = useState<DocsPayload | null>(null)
+  const [content, setContent] = useState<DocContent | null>(null)
 
   useEffect(() => {
     let isActive = true
 
+    // Load metadata index
     import('../content/docs.json').then((module) => {
       if (isActive) {
         setDocsPayload(module.default as DocsPayload)
       }
     })
 
+    // Load specific content
+    import(`../content/entries/${slug}.json`)
+      .then((module) => {
+        if (isActive) {
+          setContent(module.default as DocContent)
+        }
+      })
+      .catch((err) => {
+        console.error('Failed to load content', err)
+        if (isActive) setContent(null)
+      })
+
     return () => {
       isActive = false
     }
-  }, [])
+  }, [slug])
 
-  const page = docsPayload?.docs.find((entry) => entry.slug === slug)
+  // We need both the metadata index (for checking validity/title) AND the content
+  const pageMetadata = docsPayload?.docs.find((entry) => entry.slug === slug)
 
-  usePrerenderReady(docsPayload !== null)
+  usePrerenderReady(docsPayload !== null && content !== null)
 
-  if (!docsPayload) {
+  if (!docsPayload || !content) {
     return (
       <Prose>
         <Seo
@@ -58,23 +78,24 @@ export default function CheatsheetPage() {
     )
   }
 
-  if (!page) {
+  if (!pageMetadata) {
     return <NotFoundPage />
   }
 
-  const heading = page.heading || page.title
+  const heading = pageMetadata.heading || pageMetadata.title
 
+  // Use content.html for rendering
   return (
     <Prose>
-      <Seo title={page.title} description={page.description} />
+      <Seo title={pageMetadata.title} description={pageMetadata.description} />
       <BaseTitle
-        title={page.title}
-        description={page.description || siteMetadata.description}
+        title={pageMetadata.title}
+        description={pageMetadata.description || siteMetadata.description}
       >
         {heading}
       </BaseTitle>
-      <RelatedLinks currentPath={page.route} />
-      <MarkdownContent html={page.html} />
+      <RelatedLinks currentPath={pageMetadata.route} />
+      <MarkdownContent html={content.html} />
     </Prose>
   )
 }

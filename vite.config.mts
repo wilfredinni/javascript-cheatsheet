@@ -33,15 +33,23 @@ export default defineConfig(async ({ mode }) => {
               return 'vendor-router'
             }
 
-            if (id.includes('react')) {
+            if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler')) {
               return 'vendor-react'
+            }
+
+            if (id.includes('lucide-react')) {
+              return 'vendor-icons'
+            }
+
+            if (id.includes('algolia') || id.includes('@docsearch')) {
+              return 'vendor-search'
             }
 
             if (id.includes('prismjs') || id.includes('markdown-it')) {
               return 'vendor-markdown'
             }
 
-            if (id.includes('@docsearch') || id.includes('@headlessui')) {
+            if (id.includes('@headlessui')) {
               return 'vendor-ui'
             }
 
