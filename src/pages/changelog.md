@@ -14,6 +14,7 @@ Changelog
 - Added 5 new cheatsheet sections: **Fetch API**, **JSON**, **Classes**, **Date & Time**, and **Math**.
 - Fixed playground visualization for JavaScript classes by skipping instrumentation on method definitions, which was causing syntax errors.
 - Fixed syntax highlighting for the `JSON` global object (and other constants) in JavaScript code blocks.
+- Fixed code block output persistence when navigating between cheatsheets.
 
 ## 2026-02-12
 

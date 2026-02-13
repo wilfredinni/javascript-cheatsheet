@@ -13,10 +13,6 @@ export const mainNavigation: NavigationItem[] = [
     path: '/',
   },
   {
-    name: 'Playground',
-    path: '/playground',
-  },
-  {
     name: 'Changelog',
     path: '/changelog',
     updated: true,

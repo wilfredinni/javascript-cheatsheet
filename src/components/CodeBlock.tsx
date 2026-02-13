@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import { Check, Copy, Sparkles } from 'lucide-react'
 import VisualizationPanel from './playground/VisualizationPanel'
 import type { TraceEvent, VisualizationStatus } from './playground/types'
@@ -131,13 +131,21 @@ export default function CodeBlock({
     setOutput((entries) => [...entries, { id, type, text, depth }])
   }
 
-  const resetOutput = () => {
+  const resetOutput = useCallback(() => {
     groupDepthRef.current = 0
     setOutput([])
     setTraceEvents([])
     setShowVisualization(false)
     setVisualizationStatus({ enabled: false, reason: null })
-  }
+  }, [])
+
+  useEffect(() => {
+    resetOutput()
+    setIsRunning(false)
+    setIsCopied(false)
+    workerRef.current?.terminate()
+    workerRef.current = null
+  }, [code, resetOutput])
 
   const handleRun = (options?: { showVisualization?: boolean }) => {
     if (runDisabled) {
