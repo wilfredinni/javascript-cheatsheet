@@ -24,7 +24,7 @@
     "prism-theme-vars": "^0.2.5",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-helmet-async": "^2.0.5",
+    "react-helmet-async": "^3.0.0",
     "string": "^3.3.3"
   },
   "devDependencies": {
