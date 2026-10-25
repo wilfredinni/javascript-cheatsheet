@@ -1,5 +1,5 @@
 {
-  "packageManager": "bun@1.1.30",
+  "packageManager": "bun@1.4.4",
   "private": true,
   "scripts": {
     "build:content": "esno scripts/build-content.ts",
